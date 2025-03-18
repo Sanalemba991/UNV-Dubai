@@ -1,10 +1,12 @@
 ---
+// Destructure and set default values for props
 const {
   label = "Search",
   title = "Subscribe",
   id = "footer-input",
 } = Astro.props;
 
+// Define the Props interface for TypeScript (optional)
 interface Props {
   label?: string;
   title?: string;
@@ -12,11 +14,15 @@ interface Props {
 }
 ---
 
+<!-- Footer Container -->
 <div
   class="mt-4 flex flex-col items-center gap-2 rounded-lg bg-neutral-200 p-2 dark:bg-neutral-800 sm:flex-row sm:gap-3"
 >
+  <!-- Input Section -->
   <div class="w-full">
+    <!-- Label for accessibility (hidden visually) -->
     <label for={id} class="sr-only">{label}</label>
+    <!-- Input Field -->
     <input
       type="text"
       id={id}
@@ -25,8 +31,10 @@ interface Props {
       placeholder="Enter your email"
     />
   </div>
+
+  <!-- Subscribe Button -->
   <a
-    class="inline-flex w-full items-center justify-center gap-x-2 whitespace-nowrap rounded-lg border border-transparent bg-[#fa5a15] p-3 text-sm font-bold text-neutral-50 outline-none ring-zinc-500 transition duration-300 hover:bg-[#e14d0b] focus-visible:ring disabled:pointer-events-none disabled:opacity-50 dark:ring-zinc-200 dark:focus:outline-none dark:focus:ring-1 sm:w-auto"
+    class="inline-flex w-full items-center justify-center gap-x-2 whitespace-nowrap rounded-lg border border-transparent bg-blue-500 p-3 text-sm font-bold text-neutral-50 outline-none ring-zinc-500 transition duration-300 hover:bg-[#e14d0b] focus-visible:ring disabled:pointer-events-none disabled:opacity-50 dark:ring-zinc-200 dark:focus:outline-none dark:focus:ring-1 sm:w-auto"
     href="#"
   >
     {title}
