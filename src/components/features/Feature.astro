@@ -34,6 +34,16 @@ const title: string = `Welcome to<span class="text-blue-500 ml-2 dark:text-yello
   .translate-y-4 {
     transform: translateY(1rem);
   }
+
+  /* Added margin between <h3> and remaining content */
+  .tab-nav h3 {
+    margin-bottom: 0.5rem; /* Adjust this value to your desired space */
+  }
+
+  /* Added more space above the main heading */
+  h2 {
+    margin-top: 3rem; /* Adjust this value to create more space above the heading */
+  }
 </style>
 
 <section class="mx-auto max-w-[85rem] px-0 py-2 sm:px-2 lg:px-2 lg:py-2 2xl:max-w-full">
@@ -41,7 +51,7 @@ const title: string = `Welcome to<span class="text-blue-500 ml-2 dark:text-yello
     <div class="relative z-10 lg:grid lg:grid-cols-12 lg:items-center lg:gap-2">
       <!-- Section's heading and tab navigation -->
       <div class="mb-10 lg:order-2 lg:col-span-6 lg:col-start-8 lg:mb-0">
-        <h2 class="text-2xl text-neutral-800 dark:text-neutral-200 sm:text-3xl mb-4">
+        <h2 class="text-2xl text-neutral-800 dark:text-neutral-200 sm:text-3xl">
           <span set:html={title} />
         </h2>
         <!-- Tab navigation - using data attributes to link content -->

@@ -29,7 +29,11 @@ const Feature = ({ title, body, icon }: FeatureProps) => {
         }}
       >
         {/* Title */}
-        <h3 className="text-xl font-bold text-white mb-3 color-black">
+        <h3 className="text-xl text-white mb-3 color-black" style={{
+          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)", // Subtle text shadow
+          fontFamily: "'Roboto', sans-serif", // Unique font family
+          letterSpacing: "1px", // Slight letter spacing for uniqueness
+        }}>
           {title}
         </h3>
 
@@ -40,13 +44,13 @@ const Feature = ({ title, body, icon }: FeatureProps) => {
 
         {/* Icon */}
         <div className="flex justify-end">
-        <img 
-  src={icon} 
-  width={62} 
-  height={62} 
-  alt={title}
-  className="transition-transform duration-300 hover:scale-110"
-/>
+          <img 
+            src={icon} 
+            width={62} 
+            height={62} 
+            alt={title}
+            className="transition-transform duration-300 hover:scale-110"
+          />
         </div>
       </div>
     </div>

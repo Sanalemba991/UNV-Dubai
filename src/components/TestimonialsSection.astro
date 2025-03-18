@@ -8,24 +8,24 @@ import AvatarTestimonial from "~/components/ui/AvatarTestimonial.astro";
 const { title,testimonials } = Astro.props;
 
 
-
-//Define TypeScript interface for props
+// Define TypeScript interface for props
 interface Props {
   title: string;
   testimonials: CollectionEntry<"testimonials">[];
 }
 ---
+
 <!-- Main div that wraps the testimonials section -->
 <section
   class="mx-auto max-w-[85rem] px-0 py-10 sm:px-2 lg:px-8 lg:py-14 2xl:max-w-full"
   id="testimonials"
 >
   <!-- Title of the testimonials section -->
-  <div class="mb-6 w-full  sm:mb-10 md:mb-16  text-center">
+  <div class="mb-6 w-full sm:mb-10 md:mb-16 text-center">
     <h2
-      class="text-balance text-2xl  font-bold text-neutral-800 dark:text-neutral-200 sm:text-3xl lg:text-4xl"
+      class="text-balance text-2xl text-neutral-800 dark:text-neutral-200 sm:text-3xl lg:text-4xl"
     >
-       {title} 
+      {title}
     </h2>
   </div>
 
@@ -50,7 +50,7 @@ interface Props {
                 />
 
                 <div class="ms-3 grow">
-                  <p class="text-sm font-bold text-neutral-800 dark:text-neutral-200 sm:text-base">
+                  <p class="text-sm text-neutral-800 dark:text-neutral-200 sm:text-base">
                     {testimonial.data.author}
                   </p>
                   <p class="text-xs text-neutral-600 dark:text-neutral-400">
