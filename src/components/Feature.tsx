@@ -24,8 +24,8 @@ const Feature = ({ title, body, icon }: FeatureProps) => {
             ? "" // Dark blue shadow on hover
             : "", // Lighter dark blue shadow by default
           background: isHovered 
-            ? "linear-gradient(135deg, #1e3a8a, #3b82f6)" // Gradient on hover
-            : "#3b82f6", // Solid blue by default
+            ? "linear-gradient(135deg,rgb(132, 133, 137),rgb(210, 237, 210))" // Gradient on hover
+            : "#8a9493", // Solid blue by default
         }}
       >
         {/* Title */}
