@@ -10,19 +10,19 @@ import Logo from "../assets/images/digitallogo.svg";
             <Image
                 src={Logo}
                 alt="Digital Link Technology"
-                width="120"
-                height="40"
+                width={120}
+                height={40}
                 class="h-10 w-auto"
             />
         </a>
 
         <!-- Navigation Links -->
-        <div class="hidden md:flex flex-1 justify-center">
-            <ul class="flex space-x-10 text-xl font-medium items-center">
+        <div class="hidden md:flex flex-1 justify-center font-sans">
+            <ul class="flex space-x-10 text-xl items-center">
                 <li>
                     <a
                         href="/"
-                        class="font-medium text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Home
                     </a>
@@ -30,7 +30,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/about"
-                        class="font-medium text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
                     >
                         About
                     </a>
@@ -38,7 +38,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/services"
-                        class="font-medium text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Services
                     </a>
@@ -46,7 +46,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/contact"
-                        class="font-medium text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Contact Us
                     </a>
@@ -58,7 +58,7 @@ import Logo from "../assets/images/digitallogo.svg";
         <div class="hidden md:flex">
             <a
                 href="/contact"
-                class="ml-4 bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition duration-300"
+                class="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-300"
                 >Get Started</a
             >
         </div>
@@ -79,43 +79,49 @@ import Logo from "../assets/images/digitallogo.svg";
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M4 6h16M4 12h16m-7 6h7"></path>
+                    d="M4 6h16M4 12h16m-7 6h7"
+                ></path>
             </svg>
         </button>
     </div>
 
     <!-- Mobile Menu (Hidden by Default) -->
-    <div id="mobile-menu" class="hidden md:hidden">
-        <ul class="bg-white border-t border-gray-200 px-6 py-4 space-y-4">
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+        <ul class="px-6 py-4 space-y-4">
             <li>
                 <a
                     href="/"
-                    class="block font-medium hover:text-blue-600 transition duration-300"
-                    >Home</a>
+                    class="block hover:text-blue-600 transition duration-300"
+                    >Home</a
+                >
             </li>
             <li>
                 <a
                     href="/about"
-                    class="block font-medium hover:text-blue-600 transition duration-300"
-                    >About</a>
+                    class="block hover:text-blue-600 transition duration-300"
+                    >About</a
+                >
             </li>
             <li>
                 <a
                     href="/services"
-                    class="block font-medium hover:text-blue-600 transition duration-300"
-                    >Services</a>
+                    class="block hover:text-blue-600 transition duration-300"
+                    >Services</a
+                >
             </li>
             <li>
                 <a
                     href="/contact"
-                    class="block font-medium hover:text-blue-600 transition duration-300"
-                    >Contact Us</a>
+                    class="block hover:text-blue-600 transition duration-300"
+                    >Contact Us</a
+                >
             </li>
             <li>
                 <a
                     href="/contact"
-                    class="block mt-6 bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition duration-300 text-center"
-                    >Get Started</a>
+                    class="block mt-6 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-300 text-center"
+                    >Get Started</a
+                >
             </li>
         </ul>
     </div>
@@ -128,5 +134,13 @@ import Logo from "../assets/images/digitallogo.svg";
 
     toggleButton.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
+    });
+
+    // Close mobile menu when a link is clicked
+    const mobileLinks = mobileMenu.querySelectorAll("a");
+    mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+        });
     });
 </script>
