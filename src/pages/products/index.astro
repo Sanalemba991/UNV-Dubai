@@ -1,0 +1,88 @@
+---
+import Layout from '~/layouts/Layout.astro';
+
+// Define the product data as a const array
+const products = [
+  {
+    id: 1,
+    title: "UAC-B115-AF28(40)-W",
+    description: "5MP ColorHunter Fixed Warm Light Bullet Analog Camera with high quality imaging and 24/7 color capabilities",
+    image: "/images/categories/products/analog-cameras/UAC-B115-AF28(40)-W.png",
+    features: [
+      "5MP high quality image",
+      "TVI/AHD/CVI/CVBS multi-format support",
+      "White light illumination for 24/7 color images",
+      "180° horizontal and vertical flip support",
+      "OSD configuration menu with 11 languages",
+      "IP67 waterproof and dustproof design",
+      "Built-in microphone for audio transmission",
+      "Easy to operate OSD menu"
+    ],
+    specifications: {
+      sensor: "1/2.7\" CMOS",
+      resolution: "5MP@25fps: 2880×1620, 5MP@20fps: 2592×1944",
+      focalLength: "2.8mm / 4.0mm",
+      irRange: "20m white light",
+      powerSupply: "DC 12V ± 25%",
+      protection: "IP67",
+      storage: "N/A",
+      dimensions: "142mm × 63mm × 65mm"
+    },
+    price: "Contact Sales"
+  },
+  {
+    id: 2,
+    title: "UAC-B115-AF28(40)",
+    description: "5MP Fixed IR Bullet Analog Camera with built-in microphone, IP67 protection, and multi-format video output support",
+    image: "/images/categories/products/analog-cameras/UAC-B115-AF28(40).png",
+    features: [
+      "5MP high quality image TVI/AHD/CVI/CVBS",
+      "IR-cut filter with auto-switch (ICR)",
+      "180° horizontal flip, 180° vertical flip",
+      "OSD configuration menu in 11 languages",
+      "IP67 waterproof and dustproof design",
+      "Built-in microphone for audio transmission",
+      "Smart IR technology"
+    ],
+    specifications: {
+      sensor: "1/2.7\" CMOS, 5MP, Min. illumination: 0.02 lux (F2.0, AGC ON), 0 lux (IR ON)",
+      resolution: "5MP@25fps: 2880×1620, 5MP@20fps: 2592×1944",
+      focalLength: "2.8mm / 4.0mm options",
+      irRange: "20m",
+      powerSupply: "DC 12V ± 25%",
+      protection: "IP67",
+      storage: "-30°C to 60°C operating temperature",
+      dimensions: "142mm × 63mm × 65mm"
+    },
+    price: "Contact Sales"
+  },
+  // Add other products similarly...
+];
+
+// Define variables for page content
+const title: string = "Explore Our Products";
+const subTitle: string = "Discover high-quality security cameras designed for your needs.";
+const secondTitle: string = "Product Features";
+const secondSubTitle: string = "Learn more about the advanced features of our products.";
+---
+
+<Layout title={title}>
+	<main>
+    <!-- Hero Section -->
+    <section class="mx-auto max-w-[85rem] space-y-8 px-4 pt-16 sm:px-6 lg:px-8 2xl:max-w-full">
+      <div class="mx-auto max-w-3xl text-left sm:text-center">
+        <h1 class="block text-balance text-4xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-5xl lg:text-6xl">
+          {title}
+        </h1>
+        <p class="mt-4 text-pretty text-lg text-neutral-600 dark:text-neutral-400">
+          {subTitle}
+        </p>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+  
+    <!-- Features Section -->
+    
+	</main>
+</Layout>

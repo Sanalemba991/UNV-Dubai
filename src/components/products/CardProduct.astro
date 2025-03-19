@@ -1,0 +1,28 @@
+---
+const { product } = Astro.props;
+---
+
+<article class="flex flex-col overflow-hidden rounded-lg shadow-lg bg-white dark:bg-neutral-800">
+  <img src={product.image} alt={product.title} class="h-48 w-full object-cover" />
+  <div class="flex flex-1 flex-col p-6">
+    <h2 class="text-xl font-bold text-neutral-800 dark:text-neutral-200">{product.title}</h2>
+    <p class="mt-2 text-neutral-600 dark:text-neutral-400">{product.description}</p>
+    <div class="mt-4">
+      <h3 class="text-lg font-semibold">Features</h3>
+      <ul class="list-disc pl-5">
+        {product.features.map((feature) => (
+          <li class="text-neutral-600 dark:text-neutral-400">{feature}</li>
+        ))}
+      </ul>
+    </div>
+    <div class="mt-4">
+      <h3 class="text-lg font-semibold">Specifications</h3>
+      <ul>
+        {Object.entries(product.specifications).map(([key, value]) => (
+          <li class="text-neutral-600 dark:text-neutral-400"><strong>{key}:</strong> {value}</li>
+        ))}
+      </ul>
+    </div>
+    <p class="mt-4 text-lg font-bold text-neutral-800 dark:text-neutral-200">{product.price}</p>
+  </div>
+</article>
