@@ -1,0 +1,44 @@
+---
+interface Props {
+  product: {
+    data: {
+      title: string;
+      subTitle: string;
+      category: string;
+      imgCard: {
+        src: string;
+      };
+      rating?: number;
+      reviewCount?: number;
+    };
+  };
+}
+
+const { product } = Astro.props;
+---
+
+<div class="container mx-auto px-4 py-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+      <img 
+        src={product.data.imgCard.src} 
+        alt={product.data.title}
+        class="w-full rounded-lg shadow-lg"
+      />
+    </div>
+    <div>
+      <h1 class="text-3xl font-bold mb-4">{product.data.title}</h1>
+      <p class="text-gray-600 mb-4">{product.data.subTitle}</p>
+      <p class="text-sm text-gray-500 mb-4">Category: {product.data.category}</p>
+      {product.data.rating && (
+        <div class="flex items-center mb-4">
+          <span class="text-yellow-400">★</span>
+          <span class="ml-2">{product.data.rating.toFixed(1)}</span>
+          {product.data.reviewCount && (
+            <span class="ml-2 text-gray-500">({product.data.reviewCount} reviews)</span>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</div> 

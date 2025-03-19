@@ -1,5 +1,18 @@
 import { z, defineCollection } from 'astro:content';
 
+const productsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    price: z.number(),
+    image: z.string(),
+  }),
+});
+
+
+
+
 const ipCamerasCollection = defineCollection({
   type: 'content',
   schema: z.object({
@@ -247,10 +260,14 @@ export const collections = {
     type: 'content',
     schema: accessoriesSchema,
   }),
+  
+
+
   'blog': blogCollection,
   'insights': insightsCollection,
   'testimonials': testimonialCollection,
   'feature': featureCollection,
   'slider': sliderCollection,
-  'teams': teamCollection
+  'teams': teamCollection,
+  'products': productsCollection
 };

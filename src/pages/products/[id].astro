@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Define getStaticPaths to generate static paths for all products
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+
+  // Return an array of objects with `params` for each product
+  return products.map(product => ({
+    params: { id: product.id }, // `id` is the dynamic parameter
+    props: { product }, // Pass the product data as props
+  }));
+}
+
+// Destructure the `product` prop passed from getStaticPaths
+const { product } = Astro.props;
+---
+
+<Layout>
+  <h1>{product.data.title}</h1>
+  <p>{product.data.description}</p>
+  <p>Price: ${product.data.price}</p>
+  <img src={product.data.image} alt={product.data.title} />
+  <article>
+    {product.body}
+  </article>
+</Layout>
