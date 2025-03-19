@@ -3,7 +3,10 @@ import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
 // Fetch all products
-const products = await getCollection('products');
+const allProducts = await getCollection('products');
+
+// Limit the products to only two
+const products = allProducts.slice(0, 2);
 ---
 
 <Layout>
@@ -15,8 +18,6 @@ const products = await getCollection('products');
           <!-- Link to the individual product page -->
           <a href={`/products/${product.id}`}>{product.data.title}</a>
         </h2>
- 
-       
       </li>
     ))}
   </ul>
