@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch all products
+const allProducts = await getCollection('laptop');
+
+// Limit the products to only two if needed
+const products = allProducts; // This will include all products without any limit
+---
+
+<Layout>
+  <h1>All Products</h1>
+  <ul>
+    {products.map(product => (
+      <li>
+        <h2>
+          <!-- Link to the individual product page using ID from data -->
+          <a href={`/laptop/${product.slug}`}>{product.data.title}</a>
+        </h2>
+      </li>
+    ))}
+  </ul>
+</Layout>
