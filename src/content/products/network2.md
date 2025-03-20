@@ -1,9 +1,6 @@
 ---
-id: "2"
-title: "GIve me 2"
-description: "This is the description of Product 2."
-price: 90
-image: "/images/product1.jpg"
+id: 2
+title:  "UNV camera in Dubai"
+body:   "Step into the future of surveillance with Dahua CCTV cameras. Renowned for their innovation and performance, Dahua cameras deliver crystal-clear images and robust security features. Whether for home or business, trust Dahua to provide comprehensive monitoring solutions tailored to your needs."
+icon: "../icons/dahua.svg"
 ---
-
-This is the detailed description of Product 1.

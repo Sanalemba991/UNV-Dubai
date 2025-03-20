@@ -7,16 +7,16 @@ export async function getStaticPaths() {
 
     return products.map((product) => ({
         params: { id: product.id },
-        props: { product }, // Pass the product data as props
+        props: { product },
     }));
 }
 
-// Destructure the `product` prop passed from getStaticPaths
+
 const { product } = Astro.props;
 ---
 
 <Layout>
     <h1>{product.data.title}</h1>
-    <p>{product.data.description}</p>
-    <p>Price: ${product.data.price}</p>
+    <p>{product.data.body}</p>
+    <p>Price: ${product.data.icon}</p>
 </Layout>
