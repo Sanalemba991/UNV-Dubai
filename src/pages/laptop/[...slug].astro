@@ -18,22 +18,289 @@ const { product } = Astro.props;
 ---
 
 <Layout>
-  <div class="max-w-xs w-full bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 transform transition-all duration-300">
-    <img
-      src={product.imageCard.src} 
-      alt={product.title}
-      class="w-full h-48 object-cover"
-    />
-    <div class="p-4">
-      <h3 class="text-lg font-semibold text-gray-700 mb-4">
-        {product.title}
-      </h3>
-      <p class="text-sm text-gray-600 mb-4">
-        {product.body} <!-- Use body from the product data -->
-      </p>
-      <a href="#" class="text-blue-500 hover:text-blue-700">
-        Explore
-      </a>
+  <div class="">
+    <div class="grid grid-cols-1 mt-1 lg:grid-cols-2 min-h-screen">
+      <!-- Image Section (Left) -->
+      <div class="flex items-center justify-center p-8 relative overflow-hidden">
+        <!-- Decorative background elements -->
+        <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-200 rounded-full opacity-20 blur-xl animate-float"></div>
+        <div class="absolute bottom-10 -right-10 w-40 h-40 bg-indigo-300 rounded-full opacity-20 blur-xl animate-float-delayed"></div>
+        
+        <div class="relative overflow-hidden w-full max-w-lg z-10">
+          <div class="product-card-container relative p-6 rounded-2xl bg-white/80 backdrop-blur-lg shadow-xl transition-all duration-500 hover:shadow-2xl border border-white/20">
+            <img
+              src={product.imageCard.src}
+              alt={product.title}
+              class="w-full h-auto object-cover rounded-xl shadow-lg transform transition-all duration-700 hover:scale-105"
+            />
+            <div class="absolute -top-2 -right-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-1 rounded-full opacity-0 animate-bounce-in shadow-lg">
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                New
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Details Section (Right) -->
+      <div class="flex items-center justify-center p-8 bg-white/90 backdrop-blur-sm relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute -top-10 right-20 w-20 h-20 rounded-full bg-gradient-to-br from-blue-200 to-blue-100 opacity-30"></div>
+        <div class="absolute bottom-10 left-10 w-32 h-32 rounded-full bg-gradient-to-tr from-indigo-200 to-blue-100 opacity-30"></div>
+        
+        <div class="max-w-md w-full z-10">
+          <div class="overflow-hidden">
+            <h2 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-700 mb-2 transform transition-all duration-300 hover:scale-105 opacity-0 animate-title-reveal">
+              {product.title}
+            </h2>
+            <div class="h-1 w-24 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mb-6 opacity-0 animate-line-reveal"></div>
+          </div>
+          
+          <div class="space-y-5 mb-8">
+            <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100 opacity-0 animate-slide-in hover:shadow-md transition-all duration-300 transform hover:translate-x-1">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center mr-4 shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs text-gray-500 uppercase tracking-wider">Processor</span>
+                <p class="text-gray-800 font-medium">{product.processor || "Intel Core i5"}</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100 opacity-0 animate-slide-in hover:shadow-md transition-all duration-300 transform hover:translate-x-1" style="animation-delay: 100ms;">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center mr-4 shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs text-gray-500 uppercase tracking-wider">Memory</span>
+                <p class="text-gray-800 font-medium">{product.memory || "8GB RAM"}</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100 opacity-0 animate-slide-in hover:shadow-md transition-all duration-300 transform hover:translate-x-1" style="animation-delay: 200ms;">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center mr-4 shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs text-gray-500 uppercase tracking-wider">Storage</span>
+                <p class="text-gray-800 font-medium">{product.storage || "256GB SSD"}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative">
+            <div class="absolute -left-2 top-0 h-full w-1 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full opacity-0 animate-line-appear"></div>
+            <div class="pl-4">
+              <p class="text-gray-700 mb-8 leading-relaxed opacity-0 animate-fade-up">
+                {product.body}
+              </p>
+            </div>
+          </div>
+          
+          <div class="flex justify-between items-center mt-8">
+            <div class="relative overflow-hidden">
+              <span class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 animate-price-reveal">${product.price || "999"}</span>
+              <div class="h-1 w-full bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full mt-1 opacity-0 animate-line-reveal-delayed"></div>
+            </div>
+            <button class="relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium py-3 px-8 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 group">
+              <span class="relative z-10">Explore Now</span>
+              <div class="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine"></div>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </Layout>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { 
+      transform: translateX(-30px);
+      opacity: 0;
+    }
+    to { 
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeUp {
+    from { 
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to { 
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pulseIn {
+    0% { 
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    50% { 
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes titleReveal {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes lineReveal {
+    0% {
+      width: 0;
+      opacity: 0;
+    }
+    100% {
+      width: 24px;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes lineAppear {
+    0% {
+      height: 0%;
+      opacity: 0;
+    }
+    100% {
+      height: 100%;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes priceReveal {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bounceIn {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes shine {
+    100% {
+      left: 125%;
+    }
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  @keyframes floatDelayed {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out 0.3s forwards;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.6s ease-out 0.5s forwards;
+  }
+  
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out 0.7s forwards;
+  }
+  
+  .animate-title-reveal {
+    animation: titleReveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards;
+  }
+  
+  .animate-line-reveal {
+    animation: lineReveal 0.8s ease-out 0.6s forwards;
+  }
+  
+  .animate-line-reveal-delayed {
+    animation: lineReveal 0.8s ease-out 1.2s forwards;
+  }
+  
+  .animate-line-appear {
+    animation: lineAppear 0.8s ease-out 0.9s forwards;
+  }
+  
+  .animate-price-reveal {
+    animation: priceReveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s forwards;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s forwards;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: floatDelayed 7s ease-in-out 1s infinite;
+  }
+  
+  .animate-shine {
+    animation: shine 1.5s ease-in-out;
+  }
+</style>
