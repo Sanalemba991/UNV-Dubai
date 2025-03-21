@@ -1,78 +1,60 @@
 ---
-import Layout from '~/layouts/Layout.astro';
-import CardBlog from "~/components/blogs/CardBlog.astro";
-import type { CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import CardInsight from '~/components/blogs/CardInsight.astro';
 
-const blogPosts: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
-  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
-    b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
-// Get all insights posts
-const insightPosts: CollectionEntry<"insights">[] =
-  await getCollection("insights");
-  
-// Separate the most recent post from others
-const mostRecentPost: CollectionEntry<"blog"> = blogPosts[0];
-const otherPosts: CollectionEntry<"blog">[] = blogPosts.slice(1);
+// Fetch blog posts dynamically from the 'blog' collection
+const allPosts = await getCollection("blog");
 
-// Define variables for page content
-const title: string = "Welcome to Digital Link Technology blogs";
-const subTitle: string =
-  "From Intruders to Peace of Mind: A Guide to Selecting the Right Security System for Your Home";
-const secondTitle: string = "Insights";
-const secondSubTitle: string =
-  "Stay up-to-date with the latest trends and developments in the security solution industry with insights from Digital Link Technology team of security system experts. ";
+// Limit the posts to only 2
+const posts = allPosts.slice(0, 2); // Display the first 2 posts
 ---
 
-<Layout title={title}>
-	<main>
-		
-    <!-- <Hero client:load />  -->
-  <section class="mx-auto max-w-[85rem] space-y-8 px-4 pt-16 sm:px-6 lg:px-8 2xl:max-w-full">
-    <!--Page header-->
-  <div class="mx-auto max-w-3xl text-left sm:text-center">
-  <h1 class="block text-balance text-4xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-5xl lg:text-6xl">
-        {title}
-  </h1>
-  <p class="mt-4 text-pretty text-lg text-neutral-600 dark:text-neutral-400">
-    {subTitle}
-  </p>
-  </div>
-  </section>
-
-  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
-    <!--Blog posts grid-->
-  <div class="grid gap-6 lg:grid-cols-2">
-      {otherPosts.map((blogEntry) => <CardBlog blogEntry={blogEntry} />)}
-  </div>
-  </section>
-  <!--Most recent blog post-->
-  <!-- <section
-    class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
-  >
-    <CardBlogRecent blogEntry={mostRecentPost} />
-  </section> -->
-  <!--Insights section-->
-  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
-    <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
-      <h2
-        class="text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
-      >
-        {secondTitle}
-      </h2>
-      <p class="mt-1 text-pretty text-neutral-600 dark:text-neutral-400">
-        {secondSubTitle}
-      </p>
-    </div>
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+<Layout>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl text-center mb-8">Link Technology Blogs</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center">
       {
-        insightPosts.map((insightEntry) => (
-          <CardInsight insightEntry={insightEntry} />
+        posts.map((post) => (
+          <a
+            href={`/blog/${post.slug}`}
+            key={post.slug} 
+            class="block bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden relative group"
+          >
+            <div class="relative">
+              {/* Larger Image with Hover Effect */}
+              {post.data.cardImage && (
+                <div class="relative overflow-hidden">
+                  <img
+                    src={post.data.cardImage.src}
+                    alt={post.data.title}
+                    class="w-full h-96 object-cover transform transition-all duration-300 group-hover:scale-105 group-hover:grayscale"
+                  />
+                  {/* Author and Date Inside the Image */}
+                  <div class="absolute top-4 left-4 flex items-center space-x-4">
+                    {post.data.authorImage && (
+                      <img
+                        src={post.data.authorImage.src}
+                        alt={post.data.author}
+                        class="w-12 h-12 rounded-full border-2 border-white"
+                      />
+                    )}
+                    <div class="text-white">
+                      <p>{post.data.author}</p>
+                      <p class="text-sm">10 Feb 2025</p>
+                    </div>
+                  </div>
+                  {/* Title Below the Author and Date */}
+                  <div class="absolute bottom-4 left-4 right-4">
+                    <h2 class="text-xl text-white mb-2">
+                      {post.data.title}
+                    </h2>
+                  </div>
+                </div>
+              )}
+            </div>
+          </a>
         ))
       }
     </div>
-  </section>  
-	</main>
+  </div>
 </Layout>
