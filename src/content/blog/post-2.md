@@ -1,6 +1,6 @@
 ---
 id: 2
-title: "Why Choose Uniview Cameras for Your Business Security Needs"
+title: "Why Choose Uniview IP Cameras for Your Business Security Needs"
 description: "Quality security solution for lasting results"
 author: "Shajid"
 authorImage: "../../assets/images/shajid.png"

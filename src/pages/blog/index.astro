@@ -10,44 +10,65 @@ const posts = allPosts.slice(0, 2); // Display the first 2 posts
 ---
 
 <Layout>
-  <div class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl text-center mb-8">Link Technology Blogs</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center">
+  <div class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl md:text-5xl font-bold text-center mb-12 animate-title">
+      Welcome to Digital Link Technology Blogs
+    </h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center">
       {
-        posts.map((post) => (
+        posts.map((post, index) => (
           <a
             href={`/blog/${post.slug}`}
-            key={post.slug} 
-            class="block bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden relative group"
+            key={post.slug}
+            class="block bg-white rounded-lg shadow-lg overflow-hidden relative group animate-card"
+            style={`animation-delay: ${index * 200}ms`}
           >
             <div class="relative">
-              {/* Larger Image with Hover Effect */}
               {post.data.cardImage && (
                 <div class="relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-70 z-10"></div>
+                  
                   <img
                     src={post.data.cardImage.src}
                     alt={post.data.title}
-                    class="w-full h-96 object-cover transform transition-all duration-300 group-hover:scale-105 group-hover:grayscale"
+                    class="w-full h-96 object-cover transform transition-all duration-500 group-hover:scale-110"
                   />
+                  
+                  {/* Animated overlay on hover */}
+                  <div class="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-30 transition-opacity duration-300 z-0"></div>
+                  
                   {/* Author and Date Inside the Image */}
-                  <div class="absolute top-4 left-4 flex items-center space-x-4">
+                  <div class="absolute top-4 left-4 flex items-center space-x-4 z-20">
                     {post.data.authorImage && (
-                      <img
-                        src={post.data.authorImage.src}
-                        alt={post.data.author}
-                        class="w-12 h-12 rounded-full border-2 border-white"
-                      />
+                      <div class="overflow-hidden rounded-full border-2 border-white shadow-lg">
+                        <img
+                          src={post.data.authorImage.src}
+                          alt={post.data.author}
+                          class="w-12 h-12 rounded-full transform transition duration-300 group-hover:scale-110"
+                        />
+                      </div>
                     )}
-                    <div class="text-white">
-                      <p>{post.data.author}</p>
-                      <p class="text-sm">10 Feb 2025</p>
+                    <div class="bg-white bg-opacity-90 rounded-lg px-3 py-1 backdrop-blur-sm transform transition duration-300 translate-y-0 group-hover:-translate-y-1">
+                      <p class="text-gray-800 font-bold">{post.data.author}</p>
+                      <p class="text-gray-500 text-sm">10 Feb 2025</p>
                     </div>
                   </div>
-                  {/* Title Below the Author and Date */}
-                  <div class="absolute bottom-4 left-4 right-4">
-                    <h2 class="text-xl text-white mb-2">
+                  
+                  {/* Title with animated underline */}
+                  <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                    <h2 class="text-2xl font-bold text-white mb-3 relative inline-block transition-transform duration-300 group-hover:translate-x-2">
                       {post.data.title}
+                      <span class="block h-1 w-0 bg-white group-hover:w-full transition-all duration-500 mt-1"></span>
                     </h2>
+                    
+                    {/* Read more button that slides in */}
+                    <div class="bg-white text-blue-600 py-2 px-4 rounded-lg inline-block opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 font-medium">
+                      Read More
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
               )}
@@ -56,5 +77,122 @@ const posts = allPosts.slice(0, 2); // Display the first 2 posts
         ))
       }
     </div>
-  </div>
+    
+    
+    
+    
 </Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate elements when they come into view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    });
+    
+    // Observe all animated elements
+    document.querySelectorAll('.animate-title, .animate-card, .animate-card-slow, .animate-fade-up').forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Mouse movement effect on cards
+    document.querySelectorAll('.animate-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Base animations */
+  .animate-title,
+  .animate-card,
+  .animate-card-slow,
+  .animate-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .animate-title.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .animate-card.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .animate-card-slow.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .animate-fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* 3D card animation */
+  .animate-card,
+  .animate-card-slow {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+  }
+  
+  /* Enhanced animations */
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    }
+  }
+  
+  /* Apply floating animation to cards when hovered */
+  .animate-card.show:hover {
+    animation: float 3s ease-in-out infinite;
+  }
+</style>

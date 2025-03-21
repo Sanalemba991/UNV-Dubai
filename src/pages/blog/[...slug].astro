@@ -28,33 +28,28 @@ const relatedPosts: CollectionEntry<"blog">[] = blogPosts.filter(
 ---
 
 <Layout title={post.data.title + " | UNV camera dubai"}>
-  <section class="mx-auto max-w-3xl px-4 pb-12 pt-6 sm:px-6 lg:px-8 lg:pt-10">
+  <!-- Main blog post section with fade-in animation -->
+  <section class="mx-auto max-w-3xl px-4 pb-12 pt-6 transition-all duration-700 sm:px-6 lg:px-8 lg:pt-10 animate-[fadeIn_0.7s_ease-in-out]">
     <div class="max-w-2xl">
-      <div class="mb-6 flex items-center justify-between">
+      <!-- Author and date info with slide-in animation -->
+      <div class="mb-6 flex items-center justify-between animate-[slideInRight_0.6s_ease-out]">
         <div class="flex w-full gap-x-5 sm:items-center sm:gap-x-3">
-          <AvatarBlogLarge blogEntry={post} />
+          <div class="transition-transform duration-300 hover:scale-105">
+            <AvatarBlogLarge blogEntry={post} />
+          </div>
           <div class="grow">
             <div class="flex items-center justify-between gap-x-2">
               <div>
-                <div
-                  class="hs-tooltip inline-block [--placement:bottom] [--trigger:hover]"
-                >
-                  <!--Post metadata and author info-->
-                  <span
-                    class="font-bold text-neutral-700 dark:text-neutral-300"
-                  >
+                <div class="hs-tooltip inline-block [--placement:bottom] [--trigger:hover]">
+                  <span class="font-bold text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors duration-300">
                     {post.data.author}
                   </span>
                 </div>
                 <ul class="text-xs text-neutral-500">
-                  <li
-                    class="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-neutral-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600"
-                  >
+                  <li class="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-neutral-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600">
                     {formatDate(post.data.pubDate)}
                   </li>
-                  <li
-                    class="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-neutral-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600"
-                  >
+                  <li class="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-neutral-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600">
                     {post.data.readTime} min read
                   </li>
                 </ul>
@@ -63,85 +58,127 @@ const relatedPosts: CollectionEntry<"blog">[] = blogPosts.filter(
           </div>
         </div>
       </div>
-      <!--Blog post title-->
-      <h2
-        class="mb-3 text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-3xl"
-      >
+
+      <!-- Blog post title with gradient effect -->
+      <h2 class="mb-3 text-2xl font-bold bg-gradient-to-r from-neutral-800 to-neutral-600 bg-clip-text text-transparent transition-all duration-700 animate-[fadeInUp_0.8s_ease-out] dark:from-neutral-200 dark:to-neutral-400 md:text-3xl">
         {post.data.title}
       </h2>
-      <!--Blog post contents-->
+
+      <!-- Blog post contents with staggered animations -->
       <div class="mb-5 space-y-5 md:mb-8 md:space-y-8">
         {
-          post.data.contents.map((content: string, index: any) =>
+          post.data.contents.map((content: string, index: number) =>
             index === 1 ? (
               <>
-                <p class="text-pretty text-lg text-neutral-700 dark:text-neutral-300">
+                <p class="text-pretty text-lg text-neutral-700 dark:text-neutral-300 animate-[fadeInUp_0.7s_ease-out] [animation-delay:200ms] [animation-fill-mode:both]">
                   {content}
                 </p>
-                <Image
-                  class="w-full rounded-xl object-cover"
-                  src={post.data.cardImage}
-                  alt={post.data.cardImageAlt}
-                  draggable={"false"}
-                  format={"avif"}
-                />
+                <!-- Image with hover effect and shadow -->
+                <div class="overflow-hidden rounded-xl shadow-lg transition-all duration-500 hover:shadow-xl animate-[fadeInUp_0.7s_ease-out] [animation-delay:400ms] [animation-fill-mode:both]">
+                  <Image
+                    class="w-full object-cover transition-transform duration-500 hover:scale-105 rounded-xl"
+                    src={post.data.cardImage}
+                    alt={post.data.cardImageAlt}
+                    draggable={"false"}
+                    format={"avif"}
+                  />
+                </div>
               </>
             ) : (
-              <p class="text-pretty text-lg text-neutral-700 dark:text-neutral-300">
+              <p class={`text-pretty text-lg text-neutral-700 dark:text-neutral-300 animate-[fadeInUp_0.7s_ease-out] [animation-delay:${(index+1)*200}ms] [animation-fill-mode:both]`}>
                 {content}
               </p>
             )
           )
         }
       </div>
-      <div
-        class="mx-auto grid max-w-screen-lg gap-y-5 sm:flex sm:items-center sm:justify-between sm:gap-y-0"
-      >
-        <!--Blog post tags-->
-        <div
-          class="flex flex-wrap gap-x-2 gap-y-1 sm:flex-nowrap sm:items-center sm:gap-y-0"
-        >
+
+      <!-- Tags and social sharing with slide-up animation -->
+      <div class="mx-auto grid max-w-screen-lg gap-y-5 sm:flex sm:items-center sm:justify-between sm:gap-y-0 animate-[fadeInUp_0.7s_ease-out] [animation-delay:600ms] [animation-fill-mode:both]">
+        <!-- Blog post tags with hover effect -->
+        <div class="flex flex-wrap gap-x-2 gap-y-1 sm:flex-nowrap sm:items-center sm:gap-y-0">
           {
             post.data.tags?.map((tag: string) => (
-              <span class="inline-flex items-center gap-x-1.5 rounded-lg bg-neutral-400/30 px-3 py-1.5 text-xs font-medium text-neutral-700 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring dark:bg-neutral-700/60 dark:text-neutral-300">
+              <span class="inline-flex items-center gap-x-1.5 rounded-lg bg-neutral-400/30 px-3 py-1.5 text-xs font-medium text-neutral-700 transition-all duration-300 hover:bg-neutral-400/50 hover:scale-105 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring dark:bg-neutral-700/60 dark:text-neutral-300 dark:hover:bg-neutral-700/80">
                 {capitalize(tag)}
               </span>
             ))
           }
         </div>
-        <!--Bookmark and Share buttons-->
+
+        <!-- Bookmark and Share buttons with hover effects -->
         <div class="flex items-center justify-end gap-x-1.5">
-          <Bookmark />
-          <div
-            class="mx-3 block h-4 border-e border-neutral-400 dark:border-neutral-500"
-          >
+          <div class="transition-transform duration-300 hover:scale-110">
+            <Bookmark />
           </div>
-          <div class="inline-flex">
+          <div class="mx-3 block h-4 border-e border-neutral-400 dark:border-neutral-500"></div>
+          <div class="inline-flex transition-transform duration-300 hover:scale-110">
             <SocialShare pageTitle={post.data.title} />
           </div>
         </div>
       </div>
     </div>
-    <PostFeedback
-      title="Was this post helpful?"
-      firstChoice="Yes"
-      secondChoice="No"
-    />
+
+    <!-- Post feedback section with delay animation -->
+    <div class="animate-[fadeIn_0.7s_ease-out] [animation-delay:800ms] [animation-fill-mode:both]">
+      <PostFeedback
+        title="Was this post helpful?"
+        firstChoice="Yes"
+        secondChoice="No"
+      />
+    </div>
   </section>
 
-  <!--Related articles section-->
-  <section class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+  <!-- Related articles section with fade-in animation -->
+  <section class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 animate-[fadeIn_1s_ease-out] [animation-delay:1000ms] [animation-fill-mode:both]">
     <div class="mb-10 max-w-2xl">
-      <h2
-        class="text-balance text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
-      >
+      <h2 class="text-balance text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight bg-gradient-to-r from-neutral-800 to-neutral-600 bg-clip-text text-transparent dark:from-neutral-200 dark:to-neutral-400">
         Related articles
       </h2>
     </div>
 
-    <div class="grid grid-cols-2 gap-6">
-      {relatedPosts.map((entry) => <CardRelated blogEntry={entry} />)}
+    <!-- Related posts grid with staggered animations -->
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      {relatedPosts.map((entry, i) => (
+        <div class={`transition-all duration-500 hover:scale-[1.03] hover:shadow-lg rounded-xl animate-[fadeInUp_0.7s_ease-out] [animation-delay:${(i+1)*200 + 1000}ms] [animation-fill-mode:both]`}>
+          <CardRelated blogEntry={entry} />
+        </div>
+      ))}
     </div>
   </section>
-</Layout>
+  
+  <!-- Add a subtle floating background grid -->
+  <div class="fixed inset-0 -z-10 h-full w-full bg-white dark:bg-neutral-900 opacity-50">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] dark:bg-[linear-gradient(to_right,#303030_1px,transparent_1px),linear-gradient(to_bottom,#303030_1px,transparent_1px)]"></div>
+  </div>
 
+  <!-- Additional styles for animations -->
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</Layout>

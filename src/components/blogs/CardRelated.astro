@@ -12,27 +12,56 @@ interface Props {
 ---
 
 <a
-  class="group block rounded-xl outline-none ring-zinc-500 transition duration-300 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none"
+  class="group relative block overflow-hidden rounded-xl outline-none transition-all duration-300 focus-visible:ring ring-zinc-500 dark:ring-zinc-200 border-2 border-zinc-300 dark:border-zinc-600 hover:border-blue-500 dark:hover:border-blue-400"
   href={`/blog/${blogEntry.slug}/`}
   data-astro-prefetch
 >
-  <div>
+  <div class="overflow-hidden rounded-t-xl">
     <Image
-      class="aspect-video rounded-xl"
+      class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
       src={blogEntry.data.cardImage}
       alt={blogEntry.data.cardImageAlt}
       draggable={"false"}
       format={"avif"}
     />
+    <!-- Removed the gradient overlay -->
+  </div>
+  
+  <div class="p-5">
     <!-- The title of the blog post -->
     <h3
-      class="mt-2 text-balance text-lg font-medium text-neutral-800 group-hover:text-[#fa5a15] dark:text-neutral-300 dark:group-hover:text-neutral-50"
+      class="text-balance text-xl font-medium text-neutral-800 group-hover:text-blue-500 dark:text-neutral-300 dark:group-hover:text-blue-300 transition-colors duration-300"
     >
       {blogEntry.data.title}
     </h3>
+    
     <!-- The formatted publication date of the blog post -->
-    <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-      {formatDate(blogEntry.data.pubDate)}
+    <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400 opacity-80">
+      <span class="inline-block transition-colors duration-300">
+        {formatDate(blogEntry.data.pubDate)}
+      </span>
     </p>
-  </div></a
->
+    
+    <!-- Simple read more text that changes color on hover -->
+    <div class="mt-4">
+      <span class="inline-flex items-center text-neutral-600 dark:text-neutral-400 group-hover:text-blue-500 dark:group-hover:text-blue-300 transition-colors duration-300 font-medium">
+        Read more
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transition-colors duration-300" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </span>
+    </div>
+  </div>
+</a>
+
+<style>
+  /* Optional: Add this for a subtle color transition on hover */
+  a {
+    transition: border-color 0.3s ease;
+  }
+
+  /* Ensure consistent size for all cards */
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+</style>
