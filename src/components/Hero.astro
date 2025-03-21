@@ -2,7 +2,7 @@
   <!-- Carousel wrapper -->
   <div class="relative h-full overflow-hidden rounded-lg">
     <!-- Item 1 -->
-    <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0" data-carousel-item>
+    <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
       <img
         src="https://img.freepik.com/free-vector/3d-vector-white-safety-security-video-spy-camera_107791-20921.jpg?t=st=1742204957~exp=1742208557~hmac=939fe26f079ce237cf425443cf8350926383a706c9de0ac3c04e9c4d76c14d74&w=1800"
         class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 transform transition-transform duration-300 ease-in-out hover:scale-105"
@@ -10,7 +10,7 @@
       />
     </div>
     <!-- Item 2 -->
-    <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full" data-carousel-item>
+    <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
       <img
         src="https://img.freepik.com/free-photo/home-security-camera_181624-58835.jpg?t=st=1742204992~exp=1742208592~hmac=79df2465fb66e6801878dd441f953e199b06e5664c506d19c1e6649c0f99e469&w=1380"
         class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 transform transition-transform duration-300 ease-in-out hover:scale-105"
@@ -18,7 +18,7 @@
       />
     </div>
     <!-- Item 3 -->
-    <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full" data-carousel-item>
+    <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
       <img
         src="https://img.freepik.com/free-vector/security-cam-cctv-video-camera-street-observe-surveillance-equipment-front-side-angle-view_107791-4295.jpg?t=st=1742205055~exp=1742208655~hmac=705c1bc1d8f50dd46b12076297466c3e782beaa3ead4efadf32b873e68b8d317&w=1380"
         class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 transform transition-transform duration-300 ease-in-out hover:scale-105"
@@ -26,7 +26,6 @@
       />
     </div>
   </div>
-  
 
   <!-- Slider indicators -->
   <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
@@ -106,8 +105,10 @@
   // Function to show the current item
   function showItem(index) {
     items.forEach((item, i) => {
-      (item as HTMLElement).style.transform = `translateX(${100 * (i - index)}%)`;
+      item.classList.remove('opacity-100', 'translate-x-0', 'translate-x-full', 'translate-x-[-100%]');
+      item.classList.add('opacity-0', 'translate-x-full');
     });
+
     // Remove active state from all buttons
     const buttons = document.querySelectorAll('[data-carousel-slide-to]');
     buttons.forEach(button => {
@@ -115,6 +116,11 @@
       button.classList.add('bg-white/50');
       button.setAttribute('aria-current', 'false');
     });
+    
+    const currentItem = items[index];
+    currentItem.classList.remove('opacity-0', 'translate-x-full');
+    currentItem.classList.add('opacity-100', 'translate-x-0');
+
     // Add active state to current button
     const currentButton = buttons[index];
     if (currentButton) {
@@ -170,7 +176,7 @@
   });
 
   // Show the first item initially
-
+  showItem(currentIndex);
 
   // Start auto-slide on page load
   startAutoSlide();
