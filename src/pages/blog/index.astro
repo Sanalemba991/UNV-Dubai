@@ -7,6 +7,15 @@ const allPosts = await getCollection("blog");
 
 // Limit the posts to only 2
 const posts = allPosts.slice(0, 2); // Display the first 2 posts
+
+// Format date helper
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+};
 ---
 
 <Layout>
@@ -20,7 +29,6 @@ const posts = allPosts.slice(0, 2); // Display the first 2 posts
         posts.map((post, index) => (
           <a
             href={`/blog/${post.slug}`}
-            key={post.slug}
             class="block bg-white rounded-lg shadow-lg overflow-hidden relative group animate-card"
             style={`animation-delay: ${index * 200}ms`}
           >
@@ -51,7 +59,7 @@ const posts = allPosts.slice(0, 2); // Display the first 2 posts
                     )}
                     <div class="bg-white bg-opacity-90 rounded-lg px-3 py-1 backdrop-blur-sm transform transition duration-300 translate-y-0 group-hover:-translate-y-1">
                       <p class="text-gray-800 font-bold">{post.data.author}</p>
-                      <p class="text-gray-500 text-sm">10 Feb 2025</p>
+                      <p class="text-gray-500 text-sm">{formatDate(post.data.pubDate)}</p>
                     </div>
                   </div>
                   
@@ -105,8 +113,8 @@ const posts = allPosts.slice(0, 2); // Display the first 2 posts
     
     // Mouse movement effect on cards
     document.querySelectorAll('.animate-card').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
+      card.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect = (card as HTMLElement).getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         
@@ -116,11 +124,11 @@ const posts = allPosts.slice(0, 2); // Display the first 2 posts
         const rotateX = (y - centerY) / 20;
         const rotateY = (centerX - x) / 20;
         
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        (card as HTMLElement).style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
       
       card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        (card as HTMLElement).style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
       });
     });
   });

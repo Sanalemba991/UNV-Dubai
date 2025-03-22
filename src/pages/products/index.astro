@@ -1,190 +1,228 @@
 ---
 import Layout from "~/layouts/Layout.astro";
-import { getCollection } from "astro:content";
-import image1 from "/src/assets/images/camip.jpg";
+import CategoryCard from "~/components/CategoryCard.astro";
+import Sections from "~/components/Sections.astro";
 
-const products = [
-  {
-    id: 1,
-    title: "Laptop Model 1",
-    description:
-      "Laptop Model 1 is a lightweight, powerful computer designed for professionals on the go. Featuring the latest technology and impressive battery life.",
-    image: image1,
-    link: "/laptop",
-    category: "laptop",
-  },
-  {
-    id: 2,
-    title: "Digital Link Technology",
-    description:
-      "Welcome to Digital Link Technology - our advanced networking solution that provides seamless connectivity and enhanced security for your business.",
-    image: image1,
-    link: "/network",
-    category: "network",
-  },
+const title = "Product Categories | Surveillance Solutions";
+const description =
+    "Explore our comprehensive range of surveillance solutions including IP cameras, analog cameras, PTZ cameras, thermal cameras, NVR, DVR, storage solutions, and accessories.";
+const canonicalURL = new URL("/categories", Astro.site);
+
+// Enhanced meta tags and SEO
+const metadata = {
+    title,
+    description,
+    canonical: canonicalURL.toString(),
+    openGraph: {
+        title,
+        description,
+        type: "website",
+        image: "/images/og-image.png",
+        url: canonicalURL.toString(),
+        site_name: "Your Company Name",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        image: "/images/og-image.png",
+    },
+    alternates: {
+        canonical: canonicalURL.toString(),
+    },
+};
+
+// Define your categories data first
+const categories = [
+    {
+        title: "IP Cameras",
+        description:
+            "Network cameras with high resolution and advanced features for professional surveillance systems",
+        imageUrl: "images/categories/ip-camera.png",
+        href: "/categories/ip-cameras",
+        icon: "video",
+    },
+    {
+        title: "Analog Camera",
+        description:
+            "Traditional CCTV cameras offering reliable surveillance at an economical price point",
+        imageUrl: "images/categories/analog-camera.png",
+        href: "/categories/analog-cameras",
+        icon: "camera",
+    },
+    {
+        title: "PTZ CAMERA",
+        description:
+            "Pan-Tilt-Zoom cameras with remote directional and zoom control capabilities",
+        imageUrl: "images/categories/ptz-camera.png",
+        href: "/categories/ptz-cameras",
+        icon: "rotate-cw",
+    },
+    {
+        title: "Thermal Camera",
+        description:
+            "Advanced thermal imaging cameras for temperature detection and night vision",
+        imageUrl: "images/categories/thermal-camera.png",
+        href: "/categories/thermal-cameras",
+        icon: "thermometer",
+    },
+    {
+        title: "NVR",
+        description:
+            "Network Video Recorders for managing and storing IP camera footage",
+        imageUrl: "images/categories/nvr.png",
+        href: "/categories/nvr",
+        icon: "hard-drive",
+    },
+    {
+        title: "DVR",
+        description:
+            "Digital Video Recorders for recording and managing analog camera systems",
+        imageUrl: "images/categories/dvr.png",
+        href: "/categories/dvr",
+        icon: "server",
+    },
+    {
+        title: "Storage",
+        description:
+            "Professional surveillance storage solutions including HDDs and storage arrays",
+        imageUrl: "images/categories/storage.png",
+        href: "/categories/storage",
+        icon: "database",
+    },
+    {
+        title: "Accessories",
+        description:
+            "Essential surveillance system accessories including cables, mounts, and power supplies",
+        imageUrl: "images/categories/accessories.png",
+        href: "/categories/accessories",
+        icon: "tool",
+    },
 ];
 
-// Group products by category
-const laptops = products.filter((product) => product.category === "laptop");
-const networkSolutions = products.filter(
-  (product) => product.category === "network",
-);
+// Schema.org markup (now categories is defined)
+const schemaOrg = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: title,
+    description: description,
+    url: canonicalURL.toString(),
+    mainEntity: {
+        "@type": "ItemList",
+        itemListElement: categories.map((category, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: {
+                "@type": "Product",
+                name: category.title,
+                description: category.description,
+                url: new URL(category.href, Astro.site).toString(),
+                image: new URL(category.imageUrl, Astro.site).toString(),
+            },
+        })),
+    },
+};
 ---
 
-<Layout>
-  <main class="max-w-6xl mx-auto px-4 py-8">
-    <h1
-      class="text-3xl md:text-4xl lg:text-5xl text-center my-8 relative overflow-hidden"
-    >
-      <span
-        class=""
-        >Our Products</span
-      >
-    </h1>
-
-    <!-- Sections Container - Row Layout -->
-    <div class="flex flex-col lg:flex-row gap-8">
-      <!-- Laptops Section -->
-      <section class="w-full lg:w-1/2">
-        <h2 class="text-2xl md:text-3xl lg:text-4xl text-center mb-10 relative">
-          <span
-            class="inline-block relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-1/4 after:right-1/4 after:h-1 after:bg-blue-600 after:rounded-full"
-            >Laptops</span
-          >
-        </h2>
-
-       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-  {
-    laptops.map((product, index) => (
-      <div
-        class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all duration-300 hover:-translate-y-2 product-card"
-        style={`animation-delay: ${index * 150}ms`}
-      >
-        <div class="overflow-hidden">
-          <img
-            src={product.image.src}
-            alt={product.title}
-            class="w-full h-48 sm:h-56 object-cover transform transition-transform duration-700 hover:scale-110"
-          />
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">
-            {product.title}
-          </h3>
-          <p class="text-gray-600 mb-6 leading-relaxed">
-            {product.description}
-          </p>
-          <div class="flex justify-between items-center mt-6">
-                  <a
-                     href={product.link}
-                    class="inline-flex items-center px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium text-sm hover:from-blue-600 hover:to-indigo-700 transition duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-1"
-                  >
-                  View More
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </a>
-
-                  <button class="p-2 rounded-full text-gray-400 hover:text-blue-600 hover:bg-blue-50 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-        </div>
-    
-    ))
-  }
-</div>
-      </section>
-
-      <!-- Network Solutions Section -->
-      <section class="w-full lg:w-1/2">
-        <h2 class="text-2xl md:text-3xl lg:text-4xl text-center mb-10 relative">
-          <span
-            class="inline-block relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-1/4 after:right-1/4 after:h-1 after:bg-blue-600 after:rounded-full"
-            >Network Solutions</span
-          >
-        </h2>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-          {
-            networkSolutions.map((product, index) => (
-              <div
-                class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all duration-300 hover:-translate-y-2 product-card"
-                style={`animation-delay: ${index * 150}ms`}
-              >
-                <div class="overflow-hidden">
-                  <img
-                    src={product.image.src}
-                    alt={product.title}
-                    class="w-full h-48 sm:h-56 object-cover transform transition-transform duration-700 hover:scale-110"
-                  />
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-semibold text-gray-800 mb-3">
-                    {product.title}
-                  </h3>
-                  <p class="text-gray-600 mb-6 leading-relaxed">
-                    {product.description}
-                  </p>
-                  <div class="flex justify-between items-center mt-6">
-                  <a
-                     href={product.link}
-                    class="inline-flex items-center px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium text-sm hover:from-blue-600 hover:to-indigo-700 transition duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-1"
-                  >
-                  View More
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </a>
-
-                  <button class="p-2 rounded-full text-gray-400 hover:text-blue-600 hover:bg-blue-50 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-        </div>
-             
-            
-            ))
-          }
-        </div>
-      </section>
-    </div>
-  </main>
-</Layout>
-
 <style>
-  @keyframes slideIn {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
+    /* Define the animation */
+    @keyframes slideUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
+    /* Apply the animation to the product categories */
+    .category-item {
+        animation: slideUp 0.5s ease-out forwards;
+        opacity: 0; /* Start with opacity 0 to make it invisible before animation */
     }
-    100% {
-      opacity: 1;
-    }
-  }
 
-  .animate-slideIn {
-    animation: slideIn 0.8s ease-out forwards;
-  }
-
-  .product-card {
-    opacity: 0;
-    animation: fadeIn 0.6s ease-out forwards;
-  }
+    /* Delay each category item's animation */
+    .category-item:nth-child(1) { animation-delay: 0.1s; }
+    .category-item:nth-child(2) { animation-delay: 0.2s; }
+    .category-item:nth-child(3) { animation-delay: 0.3s; }
+    .category-item:nth-child(4) { animation-delay: 0.4s; }
+    .category-item:nth-child(5) { animation-delay: 0.5s; }
+    .category-item:nth-child(6) { animation-delay: 0.6s; }
+    .category-item:nth-child(7) { animation-delay: 0.7s; }
+    .category-item:nth-child(8) { animation-delay: 0.8s; }
 </style>
+
+<Layout
+    title={metadata.title}
+    description={metadata.description}
+    canonical={metadata.canonical}
+    openGraph={metadata.openGraph}
+    twitter={metadata.twitter}
+    schema={schemaOrg}
+>
+    <div class="bg-gradient-to-b from-gray-50 to-white dark:from-neutral-950 dark:to-neutral-900">
+        <Sections>
+            <div class="py-16">
+                <div class="max-w-2xl">
+                    <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+                        {title}
+                    </h1>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                    {categories.map((category, index) => (
+                        <div class="category-item transition-transform duration-300 hover:scale-105">
+                            <CategoryCard
+                                title={category.title}
+                                imageUrl={category.imageUrl}
+                                href={category.href}
+                                description={category.description}
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                <div class="mt-16 rounded-2xl bg-gray-50 dark:bg-neutral-800/50 p-8">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Need help choosing?
+                    </h2>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">
+                        Our security experts are here to help you find the
+                        perfect solution for your needs.
+                    </p>
+                    <div class="mt-6">
+                        <a
+                            href="/contact"
+                            class="inline-flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400"
+                        >
+                            Contact Sales
+                            <svg
+                                class="ml-2 h-4 w-4"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M13.75 6.75L19.25 12L13.75 17.25"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></path>
+                                <path
+                                    d="M19 12H4.75"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </Sections>
+    </div>
+</Layout>
