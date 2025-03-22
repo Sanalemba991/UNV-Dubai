@@ -2,9 +2,7 @@
 import { Image } from "astro:assets";
 import Logo from "../assets/images/digitallogo.svg";
 ---
-
-<nav class="bg-gray-200 text-gray-200 shadow-md
-">
+<nav class="bg-gray-200 text-gray-200 shadow-md dark:bg-black dark:text-gray-100">
     <div class="container mx-auto flex justify-between items-center px-6 py-4">
         <!-- Logo -->
         <a href="/" class="flex items-center">
@@ -23,7 +21,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/"
-                        class="text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Home
                     </a>
@@ -31,7 +29,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/about"
-                        class="text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
                     >
                         About
                     </a>
@@ -39,7 +37,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/services"
-                        class="text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Services
                     </a>
@@ -47,7 +45,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/products"
-                        class="text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Products
                     </a>
@@ -55,7 +53,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/blog"
-                        class="text-gray-800 hover:text-blue-600 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Blogs
                     </a>
@@ -63,14 +61,13 @@ import Logo from "../assets/images/digitallogo.svg";
             </ul>
         </div>
 
-        <!-- Get Started Button (Right Aligned) -->
+        <!-- Dark Mode Toggle Button -->
         <div class="hidden md:flex items-center">
-            <a
-                href="/contact"
-                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition duration-300"
-            >
-                Get Started
-            </a>
+            <button id="dark-mode-toggle" class="p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1.5m0 15V21M21 12h-1.5M3 12H1.5M15.364 8.636l-.707-.707M8.636 15.364l-.707-.707m7.778 7.778l-.707-.707M4.222 4.222l-.707-.707m12.728 12.728A9.014 9.014 0 0112 21a9 9 0 010-18c4.97 0 9 4.03 9 9a8.963 8.963 0 01-1.636 5.364z"></path>
+                </svg>
+            </button>
         </div>
 
         <!-- Mobile Menu Toggle -->
@@ -96,53 +93,54 @@ import Logo from "../assets/images/digitallogo.svg";
     </div>
 
     <!-- Mobile Menu (Hidden by Default) -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
         <ul class="px-6 py-4 space-y-4">
             <li>
                 <a
                     href="/"
-                    class="block hover:text-blue-600 transition duration-300"
+                    class="block hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
                     >Home</a
                 >
             </li>
             <li>
                 <a
                     href="/about"
-                    class="block hover:text-blue-600 transition duration-300"
+                    class="block hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
                     >About</a
                 >
             </li>
             <li>
                 <a
                     href="/services"
-                    class="block hover:text-blue-600 transition duration-300"
+                    class="block hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
                     >Services</a
                 >
             </li>
             <li>
                 <a
                     href="/products"
-                    class="block hover:text-blue-600 transition duration-300"
+                    class="block hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
                     >Products</a
                 >
             </li>
             <li>
                 <a
                     href="/contact"
-                    class="block hover:text-blue-600 transition duration-300"
+                    class="block hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
                     >Contact Us</a
                 >
             </li>
             <li>
                 <a
                     href="/blog"
-                    class="block hover:text-blue-600 transition duration-300"
+                    class="block hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
                     >Blogs</a
                 >
             </li>
         </ul>
     </div>
 </nav>
+
 
 <script>
     // Add interactivity for mobile menu toggle
@@ -159,5 +157,25 @@ import Logo from "../assets/images/digitallogo.svg";
         link.addEventListener("click", () => {
             mobileMenu.classList.add("hidden");
         });
+    });
+
+    // Dark Mode Toggle Functionality
+    const darkModeToggle = document.getElementById("dark-mode-toggle");
+
+    // Check the current dark mode status from localStorage
+    if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.classList.add("dark");
+    }
+
+    // Toggle Dark Mode
+    darkModeToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+
+        // Save the user's theme preference in localStorage
+        if (document.documentElement.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
     });
 </script>
