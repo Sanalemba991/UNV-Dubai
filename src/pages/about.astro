@@ -16,101 +16,103 @@ const description =
 ---
 
 <Layout title={title} description={description}>
-   <div class="container mx-auto px-4">
-      <div class="flex flex-wrap items-center justify-between gap-4 md:gap-8">
-         <!-- Abdul Gafoor Section -->
-         <div class="w-full lg:w-1/2">
-            <div class="flex items-center">
-               <div class="w-full">
-                  <!-- Image with Transition and Animation -->
-                  <div class="relative z-10 my-4 transition-transform duration-300 transform animate-fade-in-up">
-                     <Image
-                        src={gafoor}
-                        loading="eager"
-                        alt="Abdul Gafoor, CEO & Co-Founder of Digital Link Technology"
-                        class="w-full rounded-2xl"
-                     />
-                     <span class="absolute -right-7 -bottom-7 z-[-1]">
-                        <svg
-                           width="134"
-                           height="106"
-                           viewBox="0 0 134 106"
-                           fill="none"
-                           xmlns="http://www.w3.org/2000/svg"
-                        >
-                           <!-- SVG circles here -->
-                        </svg>
-                     </span>
+   <div class="delayed-transition">
+      <div class="container mx-auto">
+         <div class="flex flex-wrap items-center justify-between -mx-4">
+            <!-- Abdul Gafoor Section -->
+            <div class="w-full px-4 lg:w-1/2">
+               <div class="flex items-center -mx-3 sm:-mx-4">
+                  <div class="w-full px-3 sm:px-4 xl:w-full">
+                     <!-- Image with Transition and Animation -->
+                     <div class="relative z-10 my-4 transition-transform duration-300 transform animate-fade-in-up">
+                        <Image
+                           src={gafoor}
+                           loading="eager"
+                           alt="Abdul Gafoor, CEO & Co-Founder of Digital Link Technology"
+                           class="w-full rounded-2xl"
+                        />
+                        <span class="absolute -right-7 -bottom-7 z-[-1]">
+                           <svg
+                              width="134"
+                              height="106"
+                              viewBox="0 0 134 106"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                           >
+                              <!-- SVG circles here -->
+                           </svg>
+                        </span>
+                     </div>
+                     <!-- Text with Transition and Animation -->
+                     <div class="text-center mb-8 transition-transform duration-300 transform hover:scale-105 animate-fade-in-up">
+                        <p class="dark:text-white text-2xl">Abdul Gafoor</p>
+                        <p class="text-gray-500">CEO & CO-FOUNDER</p>
+                     </div>
                   </div>
-                  <!-- Text with Transition and Animation -->
-                  <div class="text-center mb-8 transition-transform duration-300 transform hover:scale-105 animate-fade-in-up">
-                     <p class="dark:text-white text-2xl">Abdul Gafoor</p>
-                     <p class="text-gray-500">CEO & CO-FOUNDER</p>
-                  </div>
+               </div>
+            </div>
+
+            <!-- Why Choose Us Section -->
+            <div class="w-full px-4 lg:w-1/2 xl:w-5/12">
+               <div class="mt-10 lg:mt-0 transition-transform duration-300 transform hover:scale-105 animate-fade-in-up translate-from-right">
+                  <span class="block mb-4 text-lg text-blue-500 dark:text-blue-400 font-medium">
+                     Why Choose Us?
+                  </span>
+                  <h2 class="mb-5 text-3xl text-dark dark:text-white sm:text-[40px]/[48px]">
+                     Make your customers happy by giving services.
+                  </h2>
+                  <p class="mb-5 text-base text-body-color dark:text-white">
+                     In today's digital age, the importance of a reliable,
+                     efficient, and user-friendly website cannot be overstated.
+                     At Digitallink, we've been proud to embark on our digital
+                     journey.
+                  </p>
+                  <p class="mb-8 text-base text-body-color dark:text-white">
+                     Our aim has always been to provide our visitors with not
+                     just information, but an experience. An experience that is
+                     seamless, intuitive, and reflective of the quality we stand
+                     for.
+                  </p>
+                  <a
+                     href="javascript:void(0)"
+                     class="inline-flex items-center justify-center py-3 text-base font-medium text-center text-white border border-transparent rounded-md px-7 bg-primary hover:bg-opacity-90"
+                  >
+                     Get Started
+                  </a>
                </div>
             </div>
          </div>
 
-         <!-- Why Choose Us Section -->
-         <div class="w-full lg:w-1/2 xl:w-5/12">
-            <div class="mt-10 lg:mt-0 transition-transform duration-300 transform hover:scale-105 animate-fade-in-up translate-from-right">
-               <span class="block mb-4 text-lg text-blue-500 dark:text-blue-400 font-medium">
-                  Why Choose Us?
-               </span>
-               <h2 class="mb-5 text-3xl text-dark dark:text-white sm:text-[40px]/[48px]">
-                  Make your customers happy by giving services.
+         <!-- Executive Management Team Section -->
+         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+               <h2 class="font-manrope text-5xl text-center text-gray-900 dark:text-white">
+                  Our Executive Management Team
                </h2>
-               <p class="mb-5 text-base text-body-color dark:text-white">
-                  In today's digital age, the importance of a reliable,
-                  efficient, and user-friendly website cannot be overstated.
-                  At Digitallink, we've been proud to embark on our digital
-                  journey.
-               </p>
-               <p class="mb-8 text-base text-body-color dark:text-white">
-                  Our aim has always been to provide our visitors with not
-                  just information, but an experience. An experience that is
-                  seamless, intuitive, and reflective of the quality we stand
-                  for.
-               </p>
-               <a
-                  href="javascript:void(0)"
-                  class="inline-flex items-center justify-center py-3 text-base font-medium text-center text-white border border-transparent rounded-md px-7 bg-primary hover:bg-opacity-90"
-               >
-                  Get Started
-               </a>
             </div>
          </div>
-      </div>
-
-      <!-- Executive Management Team Section -->
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-         <div class="mb-12">
-            <h2 class="font-manrope text-5xl text-center text-gray-900 dark:text-white">
-               Our Executive Management Team
-            </h2>
-         </div>
-      </div>
-      <div
-         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-xl mx-auto md:max-w-3xl lg:max-w-full executive-team-section"
-      >
-         {publishedTeamMembers.map((teamMemberEntry) => (
-            <div class="block group md:col-span-1 lg:col-span-1">
-               <div class="relative mb-6">
-                  <Image
-                     src={teamMemberEntry.data.avatar.src}
-                     alt={teamMemberEntry.data.avatar.alt}
-                     loading="eager"
-                     class="w-40 h-40 rounded-full mx-auto transition-all duration-500 object-cover border border-solid border-transparent group-hover:border-indigo-600"
-                  />
+         <div
+            class="grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-6 lg:grid-cols-5 gap-8 max-w-xl mx-auto md:max-w-3xl lg:max-w-full executive-team-section"
+         >
+            {publishedTeamMembers.map((teamMemberEntry) => (
+               <div class="block group md:col-span-2 lg:col-span-1">
+                  <div class="relative mb-6">
+                     <Image
+                        src={teamMemberEntry.data.avatar.src}
+                        alt={teamMemberEntry.data.avatar.alt}
+                        loading="eager"
+                        class="w-40 h-40 rounded-full mx-auto transition-all duration-500 object-cover border border-solid border-transparent group-hover:border-indigo-600"
+                     />
+                  </div>
+                  <h4 class="text-xl text-gray-900 dark:text-white mb-2 capitalize text-center transition-all duration-500 group-hover:text-indigo-600">
+                     {teamMemberEntry.data.name}
+                  </h4>
+                  <span class="text-gray-500 text-center block transition-all duration-500 group-hover:text-gray-900">
+                     {teamMemberEntry.data.title}
+                  </span>
                </div>
-               <h4 class="text-xl text-gray-900 dark:text-white mb-2 capitalize text-center transition-all duration-500 group-hover:text-indigo-600">
-                  {teamMemberEntry.data.name}
-               </h4>
-               <span class="text-gray-500 text-center block transition-all duration-500 group-hover:text-gray-900">
-                  {teamMemberEntry.data.title}
-               </span>
-            </div>
-         ))}
+            ))}
+         </div>
       </div>
    </div>
 </Layout>
@@ -168,49 +170,5 @@ const description =
 
    .translate-from-right {
       animation: translateFromRight 0.8s ease-out forwards;
-   }
-
-   /* Responsive styles */
-   @media (max-width: 320px) {
-      .text-2xl {
-         font-size: 1.5rem;
-      }
-      .text-xl {
-         font-size: 1.25rem;
-      }
-      .w-40 {
-         width: 8rem;
-         height: 8rem;
-      }
-      .text-3xl {
-         font-size: 1.75rem;
-      }
-   }
-
-   @media (max-width: 375px) {
-      .text-2xl {
-         font-size: 1.75rem;
-      }
-   }
-
-   @media (max-width: 425px) {
-      .text-2xl {
-         font-size: 1.875rem;
-      }
-      .text-3xl {
-         font-size: 2rem;
-      }
-   }
-
-   @media (max-width: 728px) {
-      .lg\:w-1/2 {
-         width: 100%;
-      }
-      .xl\:w-5\/12 {
-         width: 100%;
-      }
-      .text-3xl {
-         font-size: 1.5rem;
-      }
    }
 </style>
