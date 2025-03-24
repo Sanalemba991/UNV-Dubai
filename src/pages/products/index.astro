@@ -54,7 +54,7 @@ const categories = [
         title: "PTZ CAMERA",
         description:
             "Pan-Tilt-Zoom cameras with remote directional and zoom control capabilities",
-        imageUrl: "images/categories/products/ptz-cameras/IPC6424SR-X25-VF-B.png",
+        imageUrl: "images/categories/ptz-camera.png",
         href: "/categories/ptz-cameras",
         icon: "rotate-cw",
     },
@@ -62,7 +62,7 @@ const categories = [
         title: "Thermal Camera",
         description:
             "Advanced thermal imaging cameras for temperature detection and night vision",
-        imageUrl: "/images/categories/products/thermal-cameras/TIC2A32SA-F7-4F6AC-I1.png",
+        imageUrl: "images/categories/thermal-camera.png",
         href: "/categories/thermal-cameras",
         icon: "thermometer",
     },
@@ -70,7 +70,7 @@ const categories = [
         title: "NVR",
         description:
             "Network Video Recorders for managing and storing IP camera footage",
-        imageUrl: "/images/categories/products/nvr/NVR501-04B-P4-A.png",
+        imageUrl: "images/categories/nvr.png",
         href: "/categories/nvr",
         icon: "hard-drive",
     },
@@ -78,7 +78,7 @@ const categories = [
         title: "DVR",
         description:
             "Digital Video Recorders for recording and managing analog camera systems",
-        imageUrl: "/images/categories/products/dvr/XVR301-04U3-P4.png",
+        imageUrl: "images/categories/dvr.png",
         href: "/categories/dvr",
         icon: "server",
     },
@@ -86,7 +86,7 @@ const categories = [
         title: "Storage",
         description:
             "Professional surveillance storage solutions including HDDs and storage arrays",
-        imageUrl: "images/categories/products/storage/VX3048-V2.png",
+        imageUrl: "images/categories/storage.png",
         href: "/categories/storage",
         icon: "database",
     },
@@ -100,7 +100,7 @@ const categories = [
     },
 ];
 
-// Schema.org markup (now categories is defined)
+// Schema.org markup
 const schemaOrg = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -165,7 +165,8 @@ const schemaOrg = {
     <div class="bg-gradient-to-b from-gray-50 to-white dark:from-neutral-950 dark:to-neutral-900">
         <Sections>
             <div class="py-16">
-                <div class="max-w-2xl">
+                <!-- Center the title container -->
+                <div class="max-w-2xl mx-auto text-center">
                     <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
                         {title}
                     </h1>

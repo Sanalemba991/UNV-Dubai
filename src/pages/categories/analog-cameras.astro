@@ -130,32 +130,7 @@ const schemaMarkup = {
                                     </div>
 
                                     {/* Features with Enhanced Animations */}
-                                    <div class="mt-4 space-y-2">
-                                        {camera.data.features.slice(0, 3).map(
-                                            (feature: string, i: number) => (
-                                                <div class="flex items-center space-x-2 group/feature" style={{ transitionDelay: `${i * 100}ms` }}>
-                                                    <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20 group-hover/feature:bg-primary/30 dark:group-hover/feature:bg-primary/40 transform group-hover/feature:scale-110 transition-all duration-300">
-                                                        <svg
-                                                            class="h-3 w-3 text-primary"
-                                                            fill="none"
-                                                            stroke="currentColor"
-                                                            viewBox="0 0 24 24"
-                                                        >
-                                                            <path
-                                                                stroke-linecap="round"
-                                                                stroke-linejoin="round"
-                                                                stroke-width="2"
-                                                                d="M5 13l4 4L19 7"
-                                                            />
-                                                        </svg>
-                                                    </span>
-                                                    <span class="text-sm text-gray-700 dark:text-gray-200 group-hover/feature:text-primary transition-colors duration-300">
-                                                        {feature}
-                                                    </span>
-                                                </div>
-                                            ),
-                                        )}
-                                    </div>
+                                    
                                     
                                     <div class="mt-6">
                                         <span class="inline-flex w-full justify-center items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 dark:bg-primary/20 dark:hover:bg-primary/30 transition-colors duration-300 group-hover:translate-x-1 transform transition-transform">

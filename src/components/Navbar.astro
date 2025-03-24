@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import Logo from "../assets/images/digitallogo.svg";
 ---
+
 <nav class="bg-gray-200 text-gray-200 shadow-md dark:bg-black dark:text-gray-100">
     <div class="container mx-auto flex justify-between items-center px-6 py-4">
         <!-- Logo -->
@@ -15,7 +16,7 @@ import Logo from "../assets/images/digitallogo.svg";
             />
         </a>
 
-        <!-- Navigation Links -->
+        <!-- Desktop Navigation Links -->
         <div class="hidden md:flex flex-1 justify-center font-sans">
             <ul class="flex space-x-10 text-xl items-center">
                 <li>
@@ -58,124 +59,104 @@ import Logo from "../assets/images/digitallogo.svg";
                         Blogs
                     </a>
                 </li>
+                <li>
+                    <a
+                        href="/insights"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                    >
+                        Insights
+                    </a>
+                </li>
             </ul>
         </div>
 
-        <!-- Dark Mode Toggle Button -->
-        <div class="hidden md:flex items-center">
-            <button id="dark-mode-toggle" class="p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1.5m0 15V21M21 12h-1.5M3 12H1.5M15.364 8.636l-.707-.707M8.636 15.364l-.707-.707m7.778 7.778l-.707-.707M4.222 4.222l-.707-.707m12.728 12.728A9.014 9.014 0 0112 21a9 9 0 010-18c4.97 0 9 4.03 9 9a8.963 8.963 0 01-1.636 5.364z"></path>
-                </svg>
-            </button>
-        </div>
-
-        <!-- Mobile Menu Toggle -->
+        <!-- Mobile Menu Toggle Button -->
         <button
             id="menu-toggle"
-            class="md:hidden focus:outline-none"
+            class="md:hidden flex flex-col h-12 w-12 rounded justify-center items-center group focus:outline-none"
             aria-label="Toggle navigation"
         >
-            <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                ></path>
-            </svg>
+            <span class="w-6 h-1 bg-gray-800 dark:bg-gray-200 mb-1 transition-all duration-300 group-hover:bg-blue-600 group-focus:bg-blue-600"></span>
+            <span class="w-6 h-1 bg-gray-800 dark:bg-gray-200 mb-1 transition-all duration-300 group-hover:bg-blue-600 group-focus:bg-blue-600"></span>
+            <span class="w-6 h-1 bg-gray-800 dark:bg-gray-200 mb-1 transition-all duration-300 group-hover:bg-blue-600 group-focus:bg-blue-600"></span>
         </button>
     </div>
 
-    <!-- Mobile Menu (Hidden by Default) -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <!-- Mobile Menu -->
+    <div 
+        id="mobile-menu"
+        class="md:hidden bg-gray-200 dark:bg-black overflow-hidden transition-all duration-300 ease-in-out max-h-0"
+    >
         <ul class="px-6 py-4 space-y-4">
             <li>
                 <a
                     href="/"
-                    class="block hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
-                    >Home</a
-                >
+                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
+                >Home</a>
             </li>
             <li>
                 <a
                     href="/about"
-                    class="block hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
-                    >About</a
-                >
+                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
+                >About</a>
             </li>
             <li>
                 <a
                     href="/services"
-                    class="block hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
-                    >Services</a
-                >
+                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
+                >Services</a>
             </li>
             <li>
                 <a
                     href="/products"
-                    class="block hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
-                    >Products</a
-                >
-            </li>
-            <li>
-                <a
-                    href="/contact"
-                    class="block hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
-                    >Contact Us</a
-                >
+                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
+                >Products</a>
             </li>
             <li>
                 <a
                     href="/blog"
-                    class="block hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
-                    >Blogs</a
-                >
+                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
+                >Blogs</a>
+            </li>
+            <li>
+                <a
+                    href="/insights"
+                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
+                >Insights</a>
+            </li>
+            <li>
+                <a
+                    href="/contact"
+                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
+                >Contact Us</a>
             </li>
         </ul>
     </div>
 </nav>
 
-
 <script>
-    // Add interactivity for mobile menu toggle
-    const toggleButton = document.getElementById("menu-toggle");
-    const mobileMenu = document.getElementById("mobile-menu");
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleButton = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-    toggleButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-    });
-
-    // Close mobile menu when a link is clicked
-    const mobileLinks = mobileMenu.querySelectorAll("a");
-    mobileLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-            mobileMenu.classList.add("hidden");
+        toggleButton.addEventListener('click', () => {
+            // Toggle between max-h-0 and max-h-screen
+            if (mobileMenu.classList.contains('max-h-0')) {
+                mobileMenu.classList.remove('max-h-0');
+                mobileMenu.classList.add('max-h-screen');
+            } else {
+                mobileMenu.classList.remove('max-h-screen');
+                mobileMenu.classList.add('max-h-0');
+            }
         });
-    });
 
-    // Dark Mode Toggle Functionality
-    const darkModeToggle = document.getElementById("dark-mode-toggle");
-
-    // Check the current dark mode status from localStorage
-    if (localStorage.getItem("theme") === "dark") {
-        document.documentElement.classList.add("dark");
-    }
-
-    // Toggle Dark Mode
-    darkModeToggle.addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark");
-
-        // Save the user's theme preference in localStorage
-        if (document.documentElement.classList.contains("dark")) {
-            localStorage.setItem("theme", "dark");
-        } else {
-            localStorage.setItem("theme", "light");
-        }
+        // Close menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('max-h-screen');
+                mobileMenu.classList.add('max-h-0');
+            });
+        });
     });
 </script>
