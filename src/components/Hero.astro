@@ -82,12 +82,20 @@
 
 <script>
     class Carousel {
-        constructor(carouselElement) {
+        private carousel: HTMLElement;
+        private items: NodeListOf<HTMLElement>;
+        private indicators: NodeListOf<HTMLElement>;
+        private prevButton: HTMLElement;
+        private nextButton: HTMLElement;
+        private currentIndex: number;
+        private autoSlideInterval: NodeJS.Timeout | null;
+
+        constructor(carouselElement: HTMLElement) {
             this.carousel = carouselElement;
             this.items = this.carousel.querySelectorAll('[data-carousel-item]');
             this.indicators = this.carousel.querySelectorAll('[data-carousel-slide-to]');
-            this.prevButton = this.carousel.querySelector('[data-carousel-prev]');
-            this.nextButton = this.carousel.querySelector('[data-carousel-next]');
+            this.prevButton = this.carousel.querySelector('[data-carousel-prev]')!;
+            this.nextButton = this.carousel.querySelector('[data-carousel-next]')!;
             
             this.currentIndex = 0;
             this.autoSlideInterval = null;
@@ -169,7 +177,7 @@
 
     // Initialize carousel when DOM is fully loaded
     document.addEventListener('DOMContentLoaded', () => {
-        const carouselElement = document.querySelector('[data-carousel="static"]');
+        const carouselElement = document.querySelector('[data-carousel="static"]') as HTMLElement;
         new Carousel(carouselElement);
     });
 </script>
