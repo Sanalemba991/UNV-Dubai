@@ -4,7 +4,7 @@ import Logo from "../assets/images/digitallogo.svg";
 ---
 
 <nav class="bg-gray-200 text-gray-200 shadow-md dark:bg-black dark:text-gray-100">
-    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+    <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 py-3">
         <!-- Logo -->
         <a href="/" class="flex items-center">
             <Image
@@ -12,17 +12,17 @@ import Logo from "../assets/images/digitallogo.svg";
                 alt="Digital Link Technology"
                 width={120}
                 height={40}
-                class="h-10 w-auto"
+                class="h-8 sm:h-10 w-auto"
             />
         </a>
 
         <!-- Desktop Navigation Links -->
-        <div class="hidden md:flex flex-1 justify-center font-sans">
-            <ul class="flex space-x-10 text-xl items-center">
+        <div class="hidden lg:flex flex-1 justify-center font-sans">
+            <ul class="flex space-x-6 xl:space-x-8 text-lg items-center">
                 <li>
                     <a
                         href="/"
-                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-2 px-3 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Home
                     </a>
@@ -30,7 +30,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/about"
-                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-2 px-3 border-b-2 border-transparent hover:border-blue-600"
                     >
                         About
                     </a>
@@ -38,7 +38,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/services"
-                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-2 px-3 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Services
                     </a>
@@ -46,7 +46,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/products"
-                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-2 px-3 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Products
                     </a>
@@ -54,7 +54,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/blog"
-                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-2 px-3 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Blogs
                     </a>
@@ -62,7 +62,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/insights"
-                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-2 px-3 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Insights
                     </a>
@@ -70,7 +70,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 <li>
                     <a
                         href="/contact"
-                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-3 px-4 border-b-2 border-transparent hover:border-blue-600"
+                        class="text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-all duration-300 py-2 px-3 border-b-2 border-transparent hover:border-blue-600"
                     >
                         Contact Us
                     </a>
@@ -78,67 +78,112 @@ import Logo from "../assets/images/digitallogo.svg";
             </ul>
         </div>
 
-        <!-- Mobile Menu Toggle Button -->
+        <!-- Tablet/Mobile Menu Toggle Button -->
         <button
             id="menu-toggle"
-            class="md:hidden flex flex-col h-12 w-12 rounded justify-center items-center group focus:outline-none"
+            class="lg:hidden flex flex-col h-10 w-10 rounded justify-center items-center group focus:outline-none"
             aria-label="Toggle navigation"
+            aria-expanded="false"
         >
-            <span class="w-6 h-1 bg-gray-800 dark:bg-gray-200 mb-1 transition-all duration-300 group-hover:bg-blue-600 group-focus:bg-blue-600"></span>
-            <span class="w-6 h-1 bg-gray-800 dark:bg-gray-200 mb-1 transition-all duration-300 group-hover:bg-blue-600 group-focus:bg-blue-600"></span>
-            <span class="w-6 h-1 bg-gray-800 dark:bg-gray-200 mb-1 transition-all duration-300 group-hover:bg-blue-600 group-focus:bg-blue-600"></span>
+            <span class="w-6 h-0.5 bg-gray-800 dark:bg-gray-200 mb-1.5 transition-all duration-300 transform group-aria-expanded:rotate-45 group-aria-expanded:translate-y-2"></span>
+            <span class="w-6 h-0.5 bg-gray-800 dark:bg-gray-200 mb-1.5 transition-all duration-300 opacity-100 group-aria-expanded:opacity-0"></span>
+            <span class="w-6 h-0.5 bg-gray-800 dark:bg-gray-200 transition-all duration-300 transform group-aria-expanded:-rotate-45 group-aria-expanded:-translate-y-2"></span>
         </button>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile/Tablet Dropdown Menu -->
     <div 
         id="mobile-menu"
-        class="md:hidden bg-gray-200 dark:bg-black overflow-hidden transition-all duration-300 ease-in-out max-h-0"
+        class="lg:hidden bg-gray-100 dark:bg-gray-900 overflow-hidden transition-all duration-500 ease-in-out max-h-0 shadow-lg"
+        aria-hidden="true"
     >
-        <ul class="px-6 py-4 space-y-4">
-            <li>
+        <div class="px-4 py-2 space-y-1">
+            <nav class="flex flex-col">
                 <a
                     href="/"
-                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
-                >Home</a>
-            </li>
-            <li>
+                    class="flex items-center px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-all duration-300 group"
+                >
+                    <span class="w-6 mr-3 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </span>
+                    <span class="font-medium transition-all duration-300 group-hover:font-semibold">Home</span>
+                </a>
+                
                 <a
                     href="/about"
-                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
-                >About</a>
-            </li>
-            <li>
+                    class="flex items-center px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-all duration-300 group"
+                >
+                    <span class="w-6 mr-3 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                    <span class="font-medium transition-all duration-300 group-hover:font-semibold">About</span>
+                </a>
+                
                 <a
                     href="/services"
-                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
-                >Services</a>
-            </li>
-            <li>
+                    class="flex items-center px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-all duration-300 group"
+                >
+                    <span class="w-6 mr-3 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                    </span>
+                    <span class="font-medium transition-all duration-300 group-hover:font-semibold">Services</span>
+                </a>
+                
                 <a
                     href="/products"
-                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
-                >Products</a>
-            </li>
-            <li>
+                    class="flex items-center px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-all duration-300 group"
+                >
+                    <span class="w-6 mr-3 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                    </span>
+                    <span class="font-medium transition-all duration-300 group-hover:font-semibold">Products</span>
+                </a>
+                
                 <a
                     href="/blog"
-                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
-                >Blogs</a>
-            </li>
-            <li>
+                    class="flex items-center px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-all duration-300 group"
+                >
+                    <span class="w-6 mr-3 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                        </svg>
+                    </span>
+                    <span class="font-medium transition-all duration-300 group-hover:font-semibold">Blog</span>
+                </a>
+                
                 <a
                     href="/insights"
-                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
-                >Insights</a>
-            </li>
-            <li>
+                    class="flex items-center px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-all duration-300 group"
+                >
+                    <span class="w-6 mr-3 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </span>
+                    <span class="font-medium transition-all duration-300 group-hover:font-semibold">Insights</span>
+                </a>
+                
                 <a
                     href="/contact"
-                    class="block text-gray-800 dark:text-gray-200 py-2 hover:text-blue-600 dark:hover:text-blue-500 transition-colors duration-300"
-                >Contact Us</a>
-            </li>
-        </ul>
+                    class="flex items-center px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-all duration-300 group"
+                >
+                    <span class="w-6 mr-3 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </span>
+                    <span class="font-medium transition-all duration-300 group-hover:font-semibold">Contact Us</span>
+                </a>
+            </nav>
+        </div>
     </div>
 </nav>
 
@@ -148,13 +193,18 @@ import Logo from "../assets/images/digitallogo.svg";
         const mobileMenu = document.getElementById('mobile-menu');
 
         toggleButton.addEventListener('click', () => {
-            // Toggle between max-h-0 and max-h-screen
-            if (mobileMenu.classList.contains('max-h-0')) {
-                mobileMenu.classList.remove('max-h-0');
-                mobileMenu.classList.add('max-h-screen');
+            const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle button state
+            toggleButton.setAttribute('aria-expanded', String(!isExpanded));
+            
+            // Toggle menu visibility with smooth transition
+            if (!isExpanded) {
+                mobileMenu.setAttribute('aria-hidden', 'false');
+                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
             } else {
-                mobileMenu.classList.remove('max-h-screen');
-                mobileMenu.classList.add('max-h-0');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                mobileMenu.style.maxHeight = '0';
             }
         });
 
@@ -162,9 +212,19 @@ import Logo from "../assets/images/digitallogo.svg";
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.remove('max-h-screen');
-                mobileMenu.classList.add('max-h-0');
+                toggleButton.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                mobileMenu.style.maxHeight = '0';
             });
+        });
+
+        // Handle window resize to close menu if it becomes unnecessary
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                toggleButton.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                mobileMenu.style.maxHeight = '0';
+            }
         });
     });
 </script>
