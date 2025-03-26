@@ -1,27 +1,28 @@
 ---
-title: "UAC-B145-AF28(40)LM-DL"
-description: "5MP ColorHunter Fixed Dual-light Bullet Analog Camera with high quality imaging, smart dual light capability, and IP67 protection"
-image: "/images/categories/products/analog-cameras/UAC-B145-AF28(40)LM-DL.png"
+title: "UAC-T112-F28-W-X"
+description: "2MP ColourHunter Fixed Turret Analog Camera."
+image: "/images/categories/products/analog-cameras/UAC-T112-F28-W-X.png"
 features:
-  - High quality imaging with 5MP resolution
-  - TVI/AHD/CVI/CVBS support
-  - IR-cut filter with auto-switch (ICR)
-  - Smart Dual Light (TVI only)
-  - 180° horizontal and vertical flip support
-  - Easy-to-operate OSD configuration menu
-  - IP67 waterproof and dustproof design
-  - OSD menu in 11 languages
-  - Built-in microphone for coaxial audio transmission
+  - 2MP high quality image
+  - TVI/AHD/CVI/CVBS
+  - Supports white light illumination, 24/7 full-color imaging
+  - Supports 180° horizontal flip, 180° vertical flip
+  - OSD configuration menu, easy to operate
+  - IP67 waterproof and dustproof design, high reliability
+  - OSD configuration menu in 11 languages
+  - 3D noise reduction technology delivers clean and sharp images
+  - 3-Axis
 price: "Contact Sales"
 specifications:
-  sensor: "1/2.7\" CMOS, 5MP"
-  resolution: "5MP@25fps: 2880×1620, 5MP@20fps: 2592×1944, 4MP: 2560×1440, 1080P: 1920×1080"
-  focalLength: "2.8 mm / 4.0 mm"
-  irRange: "IR: 40m (131.23 ft), White light: 40m (131.23ft)"
-  powerSupply: "DC 12 V ± 25%, MAX 3.5W"
+  sensor: "1/3.0\" CMOS"
+  resolution: "	1080P: 1920(H)×1080(V)
+720P: 1280(H) ×720(V)"
+  focalLength: "N/A"
+  irRange: "N/A"
+  powerSupply: "	DC 12 V±25%"
   protection: "IP67"
-  storage: "≤ 95% RH (non-condensing), -30°C to 60°C (-22°F to 140°F)"
-  dimensions: "198mm×74mm×74mm (L×W×H), 227g (0.50lb)"
+  storage: "N/A"
+  dimensions: "	Φ118mm*96mm (diameter*height)"
 certifications:
   - "CE-EMC"
   - "FCC"

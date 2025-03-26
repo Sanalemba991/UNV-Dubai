@@ -1,36 +1,41 @@
 ---
-title: "IPC3234EA-AHDZK-I1"
-description: "Professional 4MP dome network camera featuring LightHunter technology, 140dB WDR, and advanced AI capabilities for superior surveillance in challenging lighting conditions."
-image: "/images/categories/products/ip-cameras/IPC3234EA-AHDZK-I1.png"
+title: "IPC3222SS-ADF40K-I1"
+description: "2*2MP LightHunter MultiView Fixed IR Dome Network Camera."
+image: "/images/categories/products/ip-cameras/IPC3222SS-ADF40K-I1.png"
 
 features:
-  - "4MP resolution with 1/1.8\" CMOS sensor"
-  - "2688×1520@60fps main stream for smooth video"
-  - "Ultra 265/H.265/H.264/MJPEG compression"
-  - "LightHunter technology for ultra-low light performance"
-  - "140dB Optical Wide Dynamic Range"
-  - "Metadata analysis for human, vehicle detection"
-  - "Smart intrusion prevention with false alarm filtering"
-  - "People counting and crowd density monitoring"
-  - "IR illumination up to 40m (131.2 ft)"
-  - "IP67 and IK10 rated for outdoor use"
+- High quality image with 2*2MP resolution, 1/2.8"CMOS sensor
+- Single IP with dual channels
+- 2MP (1920*1080)@30/25fps; 720P (1280*720) @30/25fps
+- Ultra 265, H.264,H.265, MJPEG
+- Both channels support intelligent perimeter protection, include cross line, intrusion, enter area, leave area detection
+- Based on target classification, smart intrusion prevention significantly reduce false alarm caused by leaves, birds and lights etc., accurately focus on human and motor vehicle and non-motor vehicle
+- (Only Channel 1)
+- Intelligent People Flow Counting and Crowd Density Monitoring (Only Channel 1)
+- 130dB true WDR technology enables clear image in strong light scene
+- Built-in two Mics
+- Supports 512 GB Micro SD card
+- DC12V or PoE(IEEE 802.3af) power supply
+- IP67 protection and IK10 vandal resistant
+- 3-Axis
 
 specifications:
-  sensor: "1/1.8\" CMOS"
-  resolution: "4MP (2688×1520)"
+  sensor: "1/2.8\" CMOS"
+  resolution: "2MP "
   framerate: "60fps"
   lens: "2.8 to 12mm, 4X optical zoom"
   fov: "106.6°~ 51.3° (Horizontal)"
   minIllumination: "Color: 0.0003 lux (F1.2), B/W: 0.0001 lux"
   wdr: "140 dB"
-  irRange: "40m (131.2 ft)"
+  irRange: "30 m (98.4 ft)"
   compression: "Ultra 265, H.265, H.264, MJPEG"
-  storage: "Micro SD up to 512GB"
+  storage: "Micro SD up to 512 GB"
   power: "DC12V(±25%), PoE+ (IEEE 802.3af)"
-  protection: "IP67, IK10"
-  dimensions: "Ø 148.0 x 111.4 mm"
+  protection: "IP67,
+               IK10 "
+  dimensions: "176×104×72mm (6.9” × 4.1’’ ×2.8”) (L x W x H)"
   weight: "1.01kg (2.23lb)"
   temperature: "-30°C ~ 60°C (-22°F ~ 140°F)"
-  focalLength: "2.8-12mm"
-  powerSupply: "DC12V(±25%), PoE+ (IEEE 802.3af)"
+  focalLength: "4.0 mm"
+  powerSupply: "DC 12V±25%, PoE (IEEE 802.3af),DC 12V±25%, PoE (IEEE 802.3af)"
 ---

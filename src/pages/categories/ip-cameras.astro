@@ -2,9 +2,9 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from 'astro:content';
 
-const title = "IP Cameras - UNV Dubai";
+const title = "Network Cameras";
 const description = "High-performance surveillance solutions";
-const canonicalURL = new URL("/categories/ip-cameras", Astro.site);
+const canonicalURL = new URL("/categories/network-cameras", Astro.site);
 
 // SEO metadata
 const metadata = {
@@ -151,7 +151,7 @@ const products = await getCollection('ip-cameras');
                     <h1 class="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
                         <span class="relative inline-block">
                             <span class="absolute -inset-1 block -skew-y-3 bg-primary/20 dark:bg-primary/30 animate-pulse"></span>
-                            <span class="relative text-black dark:text-white">IP Cameras</span>
+                            <span class="relative text-black dark:text-white">Network Cameras</span>
                         </span>
                     </h1>
 

@@ -1,34 +1,34 @@
 ---
-title: "IPC6852ER-X45-VF"
-description: "Professional PTZ camera featuring a 2MP 1/1.8'' CMOS sensor with 45X optical zoom and advanced Lighthunter technology for superior low-light performance. Ideal for large-scale surveillance with 250m IR range and IP66 protection."
-image: "/images/categories/products/ptz-cameras/IPC6852ER-X45-VF.png"
+title: "IPC94144SR-X25-F40C"
+description: "4MP+4MP 25X LightHunter MultiView IR Network PTZ Camera."
+image: "/images/categories/products/ptz-cameras/IPC94144SR-X25-F40C.png"
 features:
-  - High quality image with 2MP,1/1.8'' CMOS sensor
-  - 1920*1080@30fps in the main stream
+  - Fixed camera and PTZ camera integration, dual channels with one IP, look at overall situation and consider details at the same time
+  - High quality image with 4MP,1/2.7’’ CMOS sensor
   - Ultra 265, H.265, H.264, MJPEG
-  - 45X Optical Zoom
-  - Smart intrusion prevention with false alarm filtering
-  - People Counting with flow counting and crowd density monitoring
-  - Lighthunter technology for ultra-high image quality in low light
-  - Smart IR, up to 250m (820ft) IR distance
-  - AC 24V ±25%, DC 24V±25%, PoE++ power supply
-  - Alarm 7 in and 2 out, Audio 1 in and 1 out
-  - IP66 ingress protection
+  - 25X optical zoom of PTZ channel allows for closer viewing of subjects
+  - Smart intrusion prevention, support false alarm filtering, include Cross Line, Intrusion, Enter Area, Leave Area detection
+  - People Counting, support people flow counting and crowd density monitoring, suitable for different statistical scenarios
+  - PTZ channel can be linked to fixed channel’s smart intrusion prevention to track the objects triggering the rule
+  - Support sound and light warning, makes warning and alarming more noticeable
+  - LightHunter technology ensures ultra-high image quality in low illumination environment
+  - DC12V or PoE+(IEEE 802.3at) power supply
+  - Alarm 2 in and 1 out, Audio 1 in and 1 out
 specifications:
-  sensor: "1/1.8\" CMOS"
+  sensor: "N/A"
   minIllumination: "Colour: 0.0005Lux (F1.2, AGC ON), 0Lux with IR"
   opticalZoom: "45X"
-  focalLength: "5.7 to 256.5 mm"
+  focalLength: "4.0 mm / 4.8 to 120 mm"
   videoCompression: "Ultra 265, H.265, H.264, MJPEG"
-  maxResolution: "2MP (1920*1080)"
+  maxResolution: "N/A"
   frameRate: "30fps"
-  irRange: "250m"
+  irRange: "30 m (98.4 ft) / 100 m (328.1 ft)"
   protection: "IP66"
-  powerSupply: "AC 24V ±25%, DC 24V±25%, PoE++ (IEEE 802.3bt)"
-  dimensions: "Ø 270 x 497mm (Ø 10.6\" x 19.6\") (Ø x H)"
+  powerSupply: "DC12V (±25%), PoE+ (IEEE 802.3at)"
+  dimensions: "304 x 195 x 163mm (12.0\" x 7.7\" x 6.4\" ) (L x W x H)"
   weight: "10.3kg (22.66lb)"
   workingTemperature: "-40°C to 70°C (-40°F to 158°F)"
   humidity: "≤95% RH (non-condensing)"
-  resolution: "1920 x 1080"
-  storage: "NAS, Edge Storage (Micro SD/SDHC/SDXC card up to 256GB)"
+  resolution: "N/A"
+  storage: "Micro SD up to 512 GB"
 ---

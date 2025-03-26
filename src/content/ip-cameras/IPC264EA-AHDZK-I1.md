@@ -1,38 +1,41 @@
 ---
-title: "IPC264EA-AHDZK-I1"
-description: "4MP LightHunter Wise-ISP VF IR Bullet Network Camera with advanced features including ultra-low light performance, smart intrusion prevention, and metadata analysis capabilities"
-image: "/images/categories/products/ip-cameras/IPC264EA-AHDZK-I1.png"
+title: "IPC324LB-AF28-A2"
+description: "4MP Fixed IR Dome Network Camera"
+image: "/images/categories/products/ip-cameras/IPC324LB-AF28-A2 1.png"
 price: "Contact for Price"
-features:
-  - High quality 4MP image with 1/1.8" CMOS sensor
-  - 2688×1520@60fps main stream for smooth video
-  - Ultra 265/H.265/H.264/MJPEG compression
-  - Advanced ISP technology for improved image quality
-  - LightHunter technology for ultra-low light performance
-  - 140dB Wide Dynamic Range
-  - Smart intrusion prevention with false alarm filtering
-  - People counting and crowd density monitoring
-  - Metadata analysis for human, vehicle detection
-  - Up to 100m IR illumination distance
-  - IP67 and IK10 rated for outdoor use
-  - Supports PoE+ power supply
+features: [
+  "High quality image with 4MP, 1/3.0\"CMOS sensor",
+  "4MP (2560*1440) @25/20fps; 3MP (2304*1296) @30/25fps; 2MP (1920*1080) @30/25fps",
+  "Support accurate Human Body Detection 2.0",
+  "Ultra H.265, H.265, H.264 compression",
+  "Built-in Mic",
+  "Smart IR, up to 30m (98ft) IR distance",
+  "Day/night functionality",
+  "2D/3D DNR (Digital Noise Reduction)",
+  "DC12V or PoE (IEEE 802.3af) power supply",
+  "IP67 protection",
+  "IK10 vandal resistant",
+  "2-Axis adjustment"
+]
+
 
 specifications:
-  sensor: "1/1.8\" Progressive Scan CMOS"
-  resolution: "4MP (2688×1520)"
+  sensor: "1/3.0 \"CMOS"
+  resolution: "4MP "
   frameRate: "60fps max"
-  minIllumination: "Color: 0.0003 lux @F1.2, B/W: 0.0001 lux @F1.2"
-  lens: "2.8-12mm motorized varifocal"
+  minIllumination: "Color: 0.01 lux(F2.0,AGC ON)0 lux with IR on"
+  lens: "2.8 mm"
   opticalZoom: "4X"
-  wdr: "140dB"
-  irRange: "100m (328ft)"
+  wdr: "DWDR"
+  irRange: "30 m (98.4 ft)"
   compression: "Ultra 265, H.265, H.264, MJPEG"
-  powerSupply: "DC12V±25%, PoE+ (IEEE 802.3at)"
+  powerSupply: "DC 12V±25%, PoE (IEEE 802.3af)"
   powerConsumption: "16W max"
   operatingTemp: "-40°C to 60°C (-40°F to 140°F)"
-  protection: "IP67, IK10"
-  dimensions: "406 × 126 × 130 mm"
+  protection: "IP67 ,
+IK10 "
+  dimensions: "	Ø111 x 82.5 mm (Ø4.4’’ x 3.2’’) (Ø x H)"
   weight: "1.92kg"
-  focalLength: "2.8-12mm"
-  storage: "Micro SD card up to 256GB"
+  focalLength: "2.8mm / 12mm"
+  storage: "N/A"
 ---

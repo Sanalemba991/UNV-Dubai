@@ -1,32 +1,29 @@
 ---
-title: "IPC3612LB-AF28K-A2"
-description: "2MP Fixed IR Turret Network Camera with Human Body Detection 2.0, Ultra H.265 compression, and reliable day/night surveillance with 30m IR range."
-image: "/images/categories/products/ip-cameras/IPC3612LB-AF28K-A2.png"
+title: "IPC8544EA-KM-I1"
+description: "16MP LightHunter OmniView Fixed IR Network Camera."
+image: "/images/categories/products/ip-cameras/IPC8544EA-KM-I1.png"
 features: [
-  "2MP 1/3.0\" CMOS sensor",
-  "1920×1080@30fps resolution", 
-  "Human Body Detection 2.0",
-  "Ultra H.265 compression",
-  "Built-in Mic",
-  "30m IR distance",
-  "Day/night functionality", 
-  "2D/3D DNR",
-  "Micro SD card up to 512GB",
-  "DC12V/PoE power",
-  "IP67 protection",
-  "3-Axis adjustment"
+  "High quality image with 16MP, 1/1.8'' CMOS sensor4800*2688@30fps in the main stream offers 180° panoramic view, and 16:9 ratio can better fit the screen",
+"Smart IR, up to 50m (164 ft) IR distance",
+" Built-in fan, allows dissipating heat and eliminating the mist of window",
+"Ultra 265,H.265, H.264, MJPEG",
+"2D/3D DNR (Digital Noise Reduction)",
+"AC24V, DC24V or PoE(IEEE 802.3at) power supply",
+" Micro SD, up to 512 GB",
+"Alarm 2 in and 1 out, Audio 1 in and 1 out",
+"IP67 ingress protection"
 ]
 price: "Contact for Price"
 specifications:
-  sensor: "1/3.0\" CMOS"
-  resolution: "2MP (1920×1080)@30fps"
-  focalLength: "2.8mm fixed lens"
+  sensor: "1/1.8\" CMOS"
+  resolution: "N/A"
+  focalLength: "2.8 mm"
   fieldOfView: "H: 99.5°, V: 56.5°, D: 114.4°"
-  irRange: "Up to 30m (98.4ft)"
-  powerSupply: "DC12V±25%, PoE (IEEE 802.3af)"
+  irRange: "50 m (164.0 ft)"
+  powerSupply: "AC24V±25%/DC24V±25%, PoE(IEEE 802.3at)"
   protection: "IP67"
-  storage: "Micro SD up to 512GB"
-  dimensions: "Ø118 x 95mm (Ø4.6\" x 3.8\")"
+  storage: "Micro SD, up to 512 GB"
+  dimensions: "259 × 211 × 115 mm (10.2 × 8.3 × 4.5 in) (L × W × H)"
   videoCompression: "Ultra 265, H.265, H.264"
   operatingTemp: "-30°C to 60°C"
   powerConsumption: "Max 3.9W"
