@@ -6,6 +6,12 @@ type Props = {
     product: Product; 
 };
 
+interface ProductImage {
+    url: string;
+    caption?: string;
+    type?: string;
+}
+
 interface ProductSpecifications { 
     sensor: string; 
     resolution: string; 
@@ -21,6 +27,7 @@ interface Product {
     title: string; 
     description: string; 
     image: string; 
+    images?: ProductImage[]; // Add images array
     features: string[]; 
     specifications: ProductSpecifications; 
 } 
@@ -34,6 +41,9 @@ export async function getStaticPaths() {
 } 
 
 const { product } = Astro.props as Props; 
+
+// Handle both legacy single image and new images array
+const images = product.images || (product.image ? [{ url: product.image }] : []);
 --- 
 
 <Layout 
@@ -64,14 +74,52 @@ const { product } = Astro.props as Props;
             </div> 
 
             <div class="grid lg:grid-cols-2 gap-8 slide-in-bottom"> 
-                <!-- Product Image --> 
-                <div class="relative group"> 
-                    <img 
-                        src={product.image} 
-                        alt={product.title} 
-                        class="w-full rounded-lg shadow-lg transform transition-transform duration-700 group-hover:scale-105" 
-                    /> 
-                </div> 
+                <!-- Product Image Gallery --> 
+                <div class="relative group">
+                    {images.length > 0 ? (
+                        <div class="space-y-4">
+                            <!-- Main Image -->
+                            <div class="relative rounded-lg overflow-hidden shadow-lg">
+                                <img
+                                    src={images[0].url}
+                                    alt={images[0].caption || product.title}
+                                    class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                                    id="main-image"
+                                    loading="lazy"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                            </div>
+
+                            <!-- Thumbnail Gallery -->
+                            {images.length > 1 && (
+                                <div class="grid grid-cols-4 gap-2">
+                                    {images.map((image, index) => (
+                                        <button
+                                            class={`thumbnail-btn relative rounded-md overflow-hidden transition-all duration-300 ${index === 0 ? 'ring-2 ring-blue-500' : 'hover:ring-2 hover:ring-blue-300'}`}
+                                            onclick={`document.getElementById('main-image').src = '${image.url}'; document.querySelectorAll('.thumbnail-btn').forEach(btn => btn.classList.remove('ring-2', 'ring-blue-500')); this.classList.add('ring-2', 'ring-blue-500');`}
+                                        >
+                                            <img
+                                                src={image.url}
+                                                alt={image.caption || `${product.title} - view ${index + 1}`}
+                                                class="w-full h-20 object-cover"
+                                                loading="lazy"
+                                            />
+                                            {image.type && (
+                                                <span class="absolute bottom-1 left-1 bg-black/70 text-white text-xs px-1 rounded">
+                                                    {image.type}
+                                                </span>
+                                            )}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
+                            No images available
+                        </div>
+                    )}
+                </div>
 
                 <!-- Product Details --> 
                 <div class="bg-white rounded-lg p-6 shadow-lg relative overflow-hidden"> 
@@ -175,7 +223,23 @@ const { product } = Astro.props as Props;
     </section> 
 </Layout> 
 
-<style> 
+<style is:global>
+    /* Add these new styles */
+    .thumbnail-btn {
+        aspect-ratio: 1;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .thumbnail-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .thumbnail-btn.ring-2 {
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+    
+    /* Keep all your existing styles */
     @keyframes float { 
         0% { transform: translateY(0px); } 
         50% { transform: translateY(-15px); } 
@@ -261,7 +325,7 @@ const { product } = Astro.props as Props;
     } 
 
     .tab-button.active .tab-indicator { 
-        background-color: #2563eb; /* Blue-600 color */ 
+        background-color: #2563eb;
     } 
 
     .tab-button:not(.active) .tab-indicator { 
@@ -303,8 +367,8 @@ const { product } = Astro.props as Props;
     } 
 </style> 
 
-<script> 
-    document.addEventListener("DOMContentLoaded", () => { 
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
         // Tab functionality 
         const tabs = document.querySelectorAll(".tab-button"); 
         const contents = document.querySelectorAll(".tab-content"); 
@@ -348,6 +412,17 @@ const { product } = Astro.props as Props;
                     otherIndicator.style.backgroundColor = "transparent"; 
                 } 
             }); 
-        } 
+        }
+        
+        // Image gallery functionality
+        const thumbnails = document.querySelectorAll('.thumbnail-btn');
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                // Remove active class from all thumbnails
+                thumbnails.forEach(t => t.classList.remove('ring-2', 'ring-blue-500'));
+                // Add active class to clicked thumbnail
+                this.classList.add('ring-2', 'ring-blue-500');
+            });
+        });
     }); 
-</script> 
+</script>

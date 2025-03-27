@@ -1,7 +1,13 @@
 ---
 title: "IPC8645EA-ADZKM-I1"
 description: "20MP Super Startlight IR 4-Directional Panoramic Dome Network Camera."
-image: "/images/categories/products/ip-cameras/IPC8645EA-ADZKM-I1.png"
+image: "/images/categories/products/ip-cameras/IPC8645EA-ADZKM-I1/Network1 (3).png"
+images:
+  - url: "/images/categories/products/ip-cameras/IPC8645EA-ADZKM-I1/Network1 (1).png"
+  - url: "/images/categories/products/ip-cameras/IPC8645EA-ADZKM-I1/Network1 (2).png"
+    caption: "Front view"
+  - url: "/images/categories/products/ip-cameras/IPC8645EA-ADZKM-I1/Network1 (3).png"
+    caption: "Side view"
 features:
 
   - "Quad-channel IP camera - single device supports four independent channels"

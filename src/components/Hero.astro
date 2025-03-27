@@ -6,105 +6,275 @@
     <title>UNV Security Camera Carousel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+       
+        @keyframes fadeInScale {
+            from { 
+                opacity: 0; 
+                transform: translate(-50%, -50%) scale(0.7);
+            }
+            to { 
+                opacity: 1; 
+                transform: translate(-50%, -50%) scale(1);
+            }
         }
-        @keyframes slideIn {
-            from { transform: translateX(100%) scale(0.9); opacity: 0; }
-            to { transform: translateX(0) scale(1); opacity: 1; }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px rgba(255,255,255,0.3); }
+            50% { text-shadow: 0 0 15px rgba(255,255,255,0.7); }
+            100% { text-shadow: 0 0 5px rgba(255,255,255,0.3); }
         }
+
+        @keyframes buttonPulse {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-3px) scale(1.05); }
+            100% { transform: translateY(0) scale(1); }
+        }
+
+        /* Base Carousel Styles */
         .carousel-image {
             object-fit: cover;
             width: 100%;
             height: 100%;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .carousel-item-container {
+            position: relative;
+            height: 100%;
+            cursor: pointer;
+            overflow: hidden;
+            perspective: 1000px;
+            touch-action: manipulation;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1.5rem;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            border-radius: 1rem;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .carousel-item-container:hover .carousel-caption,
+        .carousel-item-container:active .carousel-caption {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            animation: fadeInScale 0.5s ease-out;
+        }
+
+        .carousel-caption h3 {
+            transition: all 0.3s ease;
+            animation: textGlow 3s infinite alternate;
+        }
+
+        .carousel-item-container:hover .carousel-caption h3,
+        .carousel-item-container:active .carousel-caption h3 {
+            letter-spacing: 1px;
+        }
+
+        .shop-now-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.5rem;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+
+        .shop-now-btn:hover,
+        .shop-now-btn:active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            animation: buttonPulse 0.5s ease;
+            box-shadow: 0 10px 20px rgba(59,130,246,0.3);
+        }
+
+        .carousel-item-container:hover .carousel-image,
+        .carousel-item-container:active .carousel-image {
+            filter: brightness(0.6);
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .carousel-wrapper {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+        /* Mobile Wallpaper Style */
+        @media (max-width: 640px) {
+            #default-carousel {
+                height: 100vh !important;
+            }
+            .carousel-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .carousel-caption {
+                width: 90%;
+                padding: 1rem;
+                background: rgba(0, 0, 0, 0.6);
+            }
+            .carousel-caption h3 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            .carousel-caption p {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+            .shop-now-btn {
+                padding: 0.5rem 1.2rem;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Tablet Wallpaper Style */
+        @media (min-width: 641px) and (max-width: 1024px) {
+            #default-carousel {
+                height: 75vh !important;
+            }
+            .carousel-image {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+            .carousel-caption {
+                width: 80%;
+                padding: 1.2rem;
+                background: rgba(0, 0, 0, 0.7);
+            }
         }
     </style>
 </head>
-<body>
-<div id="default-carousel" class="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]" data-carousel="static">
-    <!-- Carousel wrapper -->
-    <div class="relative h-full overflow-hidden rounded-lg mt-4 sm:mt-6 md:mt-10">
-        <!-- Item 1 -->
-        <div class="duration-1000 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
-            <img
-                src="/images/categories/products/hero/hero1.png"
-                class="carousel-image absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 transform transition-all duration-700 hover:scale-105 hover:brightness-110"
-                alt="3D Vector Security Camera"
-            />
-            <div class="absolute bottom-5 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity text-sm sm:text-base">
-                3D Vector Security Camera
+<body class="bg-gray-100">
+<div class="carousel-wrapper mb-10">
+    <div id="default-carousel" class="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] xl:h-[650px]" data-carousel="static">
+        <!-- Carousel wrapper -->
+        <div class="relative h-full overflow-hidden rounded-none">
+            <!-- Item 1 -->
+            <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
+                <div class="carousel-item-container" onclick="window.location.href='/products'">
+                    <img
+                        src="/images/categories/products/hero/hero1.png"
+                        class="carousel-image absolute block w-full h-full object-cover transition-all duration-500"
+                        alt="3D Vector Security Camera"
+                    />
+                    <div class="carousel-caption">
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 uppercase">Products</h3>
+                        <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-5 opacity-80">High-performance surveillance solutions</p>
+                        <span class="shop-now-btn">Explore Products</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 2 -->
+            <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
+                <div class="carousel-item-container" onclick="window.location.href='/blog'">
+                    <img
+                        src="/images/categories/products/hero/hero2.png"
+                        class="carousel-image absolute block w-full h-full object-cover transition-all duration-500"
+                        alt="Home Security Camera"
+                    />
+                    <div class="carousel-caption">
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 uppercase">Blogs</h3>
+                        <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-5 opacity-80">Protect your home with advanced monitoring systems</p>
+                        <span class="shop-now-btn">See More</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 3 -->
+            <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
+                <div class="carousel-item-container" onclick="window.location.href='/insights'">
+                    <img
+                        src="/images/categories/products/hero/hero3.png"
+                        class="carousel-image absolute block w-full h-full object-cover transition-all duration-500"
+                        alt="CCTV Security Camera"
+                    />
+                    <div class="carousel-caption">
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 uppercase">Insights</h3>
+                        <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-5 opacity-80">Professional-grade surveillance for businesses and institutions</p>
+                        <span class="shop-now-btn">See More</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- Item 2 -->
-        <div class="duration-1000 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
-            <img
-                src="/images/categories/products/hero/hero2.png"
-                class="carousel-image absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 transform transition-all duration-700 hover:scale-105 hover:brightness-110"
-                alt="Home Security Camera"
-            />
-            <div class="absolute bottom-5 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity text-sm sm:text-base">
-                Home Security Camera
-            </div>
-        </div>
-        <!-- Item 3 -->
-        <div class="duration-1000 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
-            <img
-                src="/images/categories/products/hero/hero3.png"
-                class="carousel-image absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 transform transition-all duration-700 hover:scale-105 hover:brightness-110"
-                alt="CCTV Security Camera"
-            />
-            <div class="absolute bottom-5 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity text-sm sm:text-base">
-                CCTV Security Camera
-            </div>
-        </div>
-    </div>
 
-    <!-- Slider indicators -->
-    <div class="absolute z-30 flex -translate-x-1/2 bottom-3 sm:bottom-4 md:bottom-5 left-1/2 space-x-2 sm:space-x-3 rtl:space-x-reverse">
-        <button type="button" class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-    </div>
+        <!-- Slider indicators -->
+        <div class="absolute z-30 flex -translate-x-1/2 bottom-3 sm:bottom-4 md:bottom-5 left-1/2 space-x-2 sm:space-x-3 rtl:space-x-reverse">
+            <button type="button" class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+            <button type="button" class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+            <button type="button" class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        </div>
 
-    <!-- Slider controls -->
-    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-2 sm:px-3 md:px-4 cursor-pointer group" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-transparent hover:bg-blue-500/50 transition-all duration-200">
-            <svg class="w-3 h-3 sm:w-4 sm:h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-2 sm:px-3 md:px-4 cursor-pointer group" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-transparent hover:bg-blue-500/50 transition-all duration-200">
-            <svg class="w-3 h-3 sm:w-4 sm:h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
+        <!-- Slider controls -->
+        <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-2 sm:px-3 md:px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+            <span class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-transparent hover:bg-blue-500/50 transition-all duration-200 focus:ring-2 focus:ring-white">
+                <svg class="w-3 h-3 sm:w-4 sm:h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                </svg>
+                <span class="sr-only">Previous</span>
+            </span>
+        </button>
+        <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-2 sm:px-3 md:px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+            <span class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-transparent hover:bg-blue-500/50 transition-all duration-200 focus:ring-2 focus:ring-white">
+                <svg class="w-3 h-3 sm:w-4 sm:h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                </svg>
+                <span class="sr-only">Next</span>
+            </span>
+        </button>
+    </div>
 </div>
 
 <script>
     class Carousel {
-        private carousel: HTMLElement;
-        private items: NodeListOf<HTMLElement>;
-        private indicators: NodeListOf<HTMLElement>;
-        private prevButton: HTMLElement;
-        private nextButton: HTMLElement;
-        private currentIndex: number;
-        private autoSlideInterval: NodeJS.Timeout | null;
-
-        constructor(carouselElement: HTMLElement) {
+        constructor(carouselElement) {
             this.carousel = carouselElement;
             this.items = this.carousel.querySelectorAll('[data-carousel-item]');
             this.indicators = this.carousel.querySelectorAll('[data-carousel-slide-to]');
-            this.prevButton = this.carousel.querySelector('[data-carousel-prev]')!;
-            this.nextButton = this.carousel.querySelector('[data-carousel-next]')!;
+            this.prevButton = this.carousel.querySelector('[data-carousel-prev]');
+            this.nextButton = this.carousel.querySelector('[data-carousel-next]');
             
             this.currentIndex = 0;
             this.autoSlideInterval = null;
+            this.touchStartX = 0;
+            this.touchEndX = 0;
             
             this.initEventListeners();
             this.showItem(this.currentIndex);
@@ -115,13 +285,50 @@
             // Indicator clicks
             this.indicators.forEach((indicator, index) => {
                 indicator.addEventListener('click', () => this.goToSlide(index));
+                indicator.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    this.goToSlide(index);
+                });
             });
             
             // Previous button
             this.prevButton.addEventListener('click', () => this.goToPrevSlide());
+            this.prevButton.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.goToPrevSlide();
+            });
             
             // Next button
             this.nextButton.addEventListener('click', () => this.goToNextSlide());
+            this.nextButton.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.goToNextSlide();
+            });
+            
+            // Touch events for swipe
+            this.carousel.addEventListener('touchstart', (e) => {
+                this.touchStartX = e.changedTouches[0].screenX;
+            }, {passive: true});
+            
+            this.carousel.addEventListener('touchend', (e) => {
+                this.touchEndX = e.changedTouches[0].screenX;
+                this.handleSwipe();
+            }, {passive: true});
+        }
+        
+        handleSwipe() {
+            const threshold = 50; // minimum swipe distance
+            const difference = this.touchStartX - this.touchEndX;
+            
+            if (Math.abs(difference) < threshold) return;
+            
+            if (difference > 0) {
+                // Swipe left - next slide
+                this.goToNextSlide();
+            } else {
+                // Swipe right - previous slide
+                this.goToPrevSlide();
+            }
         }
         
         showItem(index) {
@@ -148,13 +355,14 @@
             currentIndicator.classList.remove('bg-white/50');
             currentIndicator.classList.add('bg-white');
             currentIndicator.setAttribute('aria-current', 'true');
+            
+            // Reset auto-slide timer
+            this.resetAutoSlide();
         }
         
         goToSlide(index) {
-            this.stopAutoSlide();
             this.currentIndex = index;
             this.showItem(this.currentIndex);
-            this.startAutoSlide();
         }
         
         goToNextSlide() {
@@ -168,10 +376,14 @@
         }
         
         startAutoSlide() {
-            this.stopAutoSlide(); // Clear any existing interval
             this.autoSlideInterval = setInterval(() => {
                 this.goToNextSlide();
             }, 5000);
+        }
+        
+        resetAutoSlide() {
+            this.stopAutoSlide();
+            this.startAutoSlide();
         }
         
         stopAutoSlide() {
@@ -183,7 +395,7 @@
 
     // Initialize carousel when DOM is fully loaded
     document.addEventListener('DOMContentLoaded', () => {
-        const carouselElement = document.querySelector('[data-carousel="static"]') as HTMLElement;
+        const carouselElement = document.querySelector('[data-carousel="static"]');
         new Carousel(carouselElement);
     });
 </script>

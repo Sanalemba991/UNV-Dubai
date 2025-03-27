@@ -1,7 +1,14 @@
 ---
 title: "IPC3238SA-ADZK-WP-PI-I2A"
 description: "8MP Super Starlight WDR IR VF P-IRIS Dome Network Camera"
-image: "/images/categories/products/ip-cameras/IPC324LB-AF28-A2 1.png"
+image: "/images/categories/products/ip-cameras/IPC3238SA-ADZK-WP-PI-I2A/IPC3238SA-ADZK-WP-PI-I2A (1).png"
+images:
+  - url: "/images/categories/products/ip-cameras/IPC3238SA-ADZK-WP-PI-I2A/IPC3238SA-ADZK-WP-PI-I2A (2).png"
+    caption: "Front view"
+  - url: "/images/categories/products/ip-cameras/IPC3238SA-ADZK-WP-PI-I2A/IPC3238SA-ADZK-WP-PI-I2A (3).png"
+    caption: "Side view"
+  - url: "/images/categories/products/ip-cameras/IPC3238SA-ADZK-WP-PI-I2A/IPC3238SA-ADZK-WP-PI-I2A (1).png"
+    caption: "Side view"
 features: [
  "High quality image with 8MP, 1/1.8 CMOS sensor" ,
  "3840*2160@30fps in the main stream, deliver ultra high definition live",
@@ -9,7 +16,7 @@ features: [
 " Ultra 265, H.265, H.264, MJPEG",
 " Smart intrusion prevention, support false alarm filtering, include Cross Line, Intrusion, Enter Area, Leave Area detection",
 " People counting, support people flow counting and crowd density monitoring, suitable for different statistical scenarios",
- "Traffic monitoring, support capturing license plate and collect car information when the car passes tripwire",
+"Traffic monitoring, support capturing license plate and collect car information when the car passes tripwire",
 "Wise-ISP technology, comprehensive improvement in image quality",
 " Up to 130 dB optical WDR (Wide Dynamic Range)",
 "DC12V or PoE (IEEE 802.3af) power supply",
