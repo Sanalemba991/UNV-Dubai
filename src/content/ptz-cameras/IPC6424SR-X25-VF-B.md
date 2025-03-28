@@ -1,7 +1,14 @@
 ---
 title: "IPC6424SR-X25-VF-B"
 description: "4MP 25x LightHunter IR Network PTZ Camera with advanced features for bright and clear imaging in ultra-low light environments"
-image: "/images/categories/products/ptz-cameras/IPC6424SR-X25-VF-B.png"
+images:
+  - url: "/images/categories/products/ptz-cameras/IPC6424SR-X25-VF-B/IPC6424SR-X25-VF-B.png"
+    caption: "Front view"
+  - url: "/images/categories/products/ptz-cameras/IPC6424SR-X25-VF-B/IPC6424SR-X25-VF-B1.png"
+    caption: "Side view"
+  - url: "/images/categories/products/ptz-cameras/IPC6424SR-X25-VF-B/IPC6424SR-X25-VF-B2.png"
+    caption: "Back view"
+image: "/images/categories/products/ptz-cameras/IPC6424SR-X25-VF-B/IPC6424SR-X25-VF-B.png"
 features:
   - High quality image with 4MP, 1/2.8" CMOS sensor
   - 2688×1520@30fps in main stream

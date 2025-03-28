@@ -6,10 +6,17 @@ type Props = {
     product: Product;
 };
 
+interface ProductImage {
+    url: string;
+    caption?: string;
+    type?: string;
+}
+
 interface Product {
     title: string;
     description: string;
     image: string;
+    images?: ProductImage[];
     features: string[];
     specifications: {
         [key: string]: string;
@@ -25,6 +32,7 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props as Props;
+const images = product.images || (product.image ? [{ url: product.image }] : []);
 ---
 
 <Layout
@@ -32,7 +40,7 @@ const { product } = Astro.props as Props;
     description={product.description}
 >
     <section class="py-16 relative overflow-hidden">
-        <!-- Floating background elements -->
+        <!-- Background elements -->
         <div class="absolute w-96 h-96 -top-48 -left-48 rounded-full bg-blue-500/5 blur-3xl animate-float-slow"></div>
         <div class="absolute w-96 h-96 -bottom-48 -right-48 rounded-full bg-indigo-500/5 blur-3xl animate-float-slow-reverse"></div>
 
@@ -55,13 +63,79 @@ const { product } = Astro.props as Props;
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8 slide-in-bottom">
-                <!-- Product Image -->
+                <!-- Product Image Gallery -->
                 <div class="relative group">
-                    <img
-                        src={product.image}
-                        alt={product.title}
-                        class="w-full rounded-lg shadow-lg transform transition-transform duration-700 group-hover:scale-105"
-                    />
+                    {images.length > 0 ? (
+                        <div class="space-y-4">
+                            <!-- Main Image -->
+                            <div class="relative rounded-lg overflow-hidden shadow-lg">
+                                <img
+                                    src={images[0].url}
+                                    alt={images[0].caption || product.title}
+                                    class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                                    id="main-image"
+                                    loading="lazy"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                            </div>
+
+                            <!-- Thumbnail Gallery with Integrated Navigation -->
+                            {images.length > 1 && (
+                                <div class="flex items-center gap-4">
+                                    <!-- Previous Button -->
+                                    <button
+                                        class="nav-btn w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition-all"
+                                        onclick="navigateGallery(-1)"
+                                        aria-label="Previous image"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    
+                                    <!-- Thumbnails Container -->
+                                    <div class="flex-1 overflow-x-auto py-2">
+                                        <div class="grid grid-flow-col auto-cols-fr gap-2">
+                                            {images.map((image, index) => (
+                                                <button
+                                                    class={`thumbnail-btn relative min-w-[60px] rounded-md overflow-hidden transition-all duration-300 ${index === 0 ? 'active-thumbnail' : ''}`}
+                                                    onclick={`updateMainImage('${image.url}', this)`}
+                                                    aria-label={`View image ${index + 1}`}
+                                                >
+                                                    <img
+                                                        src={image.url}
+                                                        alt={image.caption || `${product.title} - view ${index + 1}`}
+                                                        class="w-full h-16 object-cover"
+                                                        loading="lazy"
+                                                    />
+                                                    {image.type && (
+                                                        <span class="absolute bottom-1 left-1 bg-black/70 text-white text-xs px-1 rounded">
+                                                            {image.type}
+                                                        </span>
+                                                    )}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Next Button -->
+                                    <button
+                                        class="nav-btn w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition-all"
+                                        onclick="navigateGallery(1)"
+                                        aria-label="Next image"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
+                            No images available
+                        </div>
+                    )}
                 </div>
 
                 <!-- Product Details -->
@@ -166,13 +240,27 @@ const { product } = Astro.props as Props;
     </section>
 </Layout>
 
-<style>
-    @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
-        100% { transform: translateY(0px); }
+<style is:global>
+    /* Thumbnail Gallery Styles */
+    .thumbnail-btn {
+        aspect-ratio: 1;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .thumbnail-btn:hover {
+        transform: scale(1.05);
+        border-color: #3b82f6;
+    }
+    
+    .thumbnail-btn.active-thumbnail {
+        border-color: #2563eb;
+        border-width: 2px;
+        box-shadow: 0 0 0 2px #3b82f6, 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
+    /* Animation Styles */
     @keyframes float-slow {
         0% { transform: translateY(0px); }
         50% { transform: translateY(-10px); }
@@ -215,8 +303,9 @@ const { product } = Astro.props as Props;
         to { transform: translateX(0); opacity: 1; }
     }
 
-    .animate-float {
-        animation: float 6s ease-in-out infinite;
+    @keyframes fade {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 
     .animate-float-slow {
@@ -251,8 +340,13 @@ const { product } = Astro.props as Props;
         animation: slide-in 0.6s ease-out forwards;
     }
 
+    .animate-fade {
+        animation: fade 0.3s ease-out forwards;
+    }
+
+    /* Tab Styles */
     .tab-button.active .tab-indicator {
-        background-color: #2563eb; /* Blue-600 color */
+        background-color: #2563eb;
     }
 
     .tab-button:not(.active) .tab-indicator {
@@ -260,30 +354,102 @@ const { product } = Astro.props as Props;
     }
 </style>
 
-<script>
+<script is:inline>
+    // Image gallery navigation functions
+    function updateMainImage(imageUrl, thumbnailElement) {
+        const mainImage = document.getElementById('main-image');
+        if (mainImage) {
+            mainImage.src = imageUrl;
+        }
+
+        // Remove active state from all thumbnails
+        const thumbnails = document.querySelectorAll('.thumbnail-btn');
+        thumbnails.forEach(thumb => thumb.classList.remove('active-thumbnail'));
+
+        // Add active state to clicked thumbnail
+        if (thumbnailElement) {
+            thumbnailElement.classList.add('active-thumbnail');
+        }
+    }
+
+    function navigateGallery(direction) {
+        const thumbnails = document.querySelectorAll('.thumbnail-btn');
+        let currentIndex = Array.from(thumbnails).findIndex(thumb => 
+            thumb.classList.contains('active-thumbnail')
+        );
+        
+        if (currentIndex === -1) currentIndex = 0;
+        
+        let newIndex = currentIndex + direction;
+        
+        // Wrap around if needed
+        if (newIndex < 0) newIndex = thumbnails.length - 1;
+        if (newIndex >= thumbnails.length) newIndex = 0;
+        
+        // Update main image and thumbnail state
+        const newThumbnail = thumbnails[newIndex];
+        if (newThumbnail) {
+            updateMainImage(newThumbnail.querySelector('img').src, newThumbnail);
+            
+            // Scroll thumbnails container to make active thumbnail visible
+            const container = document.querySelector('.overflow-x-auto');
+            if (container) {
+                const containerWidth = container.offsetWidth;
+                const thumbWidth = newThumbnail.offsetWidth;
+                const scrollPosition = newThumbnail.offsetLeft - (containerWidth / 2) + (thumbWidth / 2);
+                
+                container.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }
+
+    // Tab functionality
     document.addEventListener("DOMContentLoaded", () => {
-        // Tab functionality
         const tabs = document.querySelectorAll(".tab-button");
         const contents = document.querySelectorAll(".tab-content");
 
-        // Set initial active state
-        const initialActiveTab = document.querySelector('[data-tab="features"]');
+        function setActiveTab(tab) {
+            if (!tab) return;
+            
+            tab.setAttribute("aria-selected", "true");
+            const indicator = tab.querySelector(".tab-indicator");
+            if (indicator) {
+                indicator.style.backgroundColor = "#2563eb";
+            }
+
+            // Remove active state from other tabs
+            tabs.forEach(t => {
+                if (t !== tab) {
+                    t.setAttribute("aria-selected", "false");
+                    const otherIndicator = t.querySelector(".tab-indicator");
+                    if (otherIndicator) {
+                        otherIndicator.style.backgroundColor = "transparent";
+                    }
+                }
+            });
+        }
+
+        // Set initial active tab
+        const initialActiveTab = document.querySelector('.tab-button[data-tab="features"]');
         setActiveTab(initialActiveTab);
 
-        tabs.forEach((tab) => {
+        // Add click handlers
+        tabs.forEach(tab => {
             tab.addEventListener("click", () => {
-                tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
+                const targetId = tab.getAttribute("data-tab");
                 setActiveTab(tab);
 
-                const targetId = tab.getAttribute("data-tab");
-                contents.forEach((content) => {
+                // Show/hide content
+                contents.forEach(content => {
                     if (content.id === targetId) {
                         content.classList.remove("hidden");
                         content.classList.add("block");
-
-                        // Trigger fade animation
+                        // Trigger animation
                         content.classList.remove("animate-fade");
-                        void content.offsetWidth; // Force reflow
+                        void content.offsetWidth;
                         content.classList.add("animate-fade");
                     } else {
                         content.classList.remove("block");
@@ -292,19 +458,5 @@ const { product } = Astro.props as Props;
                 });
             });
         });
-
-        function setActiveTab(tab) {
-            tab.setAttribute("aria-selected", "true");
-            const indicator = tab.querySelector(".tab-indicator");
-            indicator.style.backgroundColor = "#2563eb"; // Blue-600 color
-
-            // Remove underline from the other tab
-            tabs.forEach((t) => {
-                if (t !== tab) {
-                    const otherIndicator = t.querySelector(".tab-indicator");
-                    otherIndicator.style.backgroundColor = "transparent";
-                }
-            });
-        }
     });
 </script>
