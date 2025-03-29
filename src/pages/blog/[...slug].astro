@@ -29,8 +29,8 @@ const relatedPosts: CollectionEntry<"blog">[] = blogPosts.filter(
 
 <Layout title={post.data.title + " | UNV camera dubai"}>
   <!-- Main blog post section with fade-in animation -->
-  <section class="mx-auto max-w-3xl px-4 pb-12 pt-6 transition-all duration-700 sm:px-6 lg:px-8 lg:pt-10 animate-[fadeIn_0.7s_ease-in-out]">
-    <div class="max-w-2xl">
+  <section class="mx-auto max-w-3xl px-4 pb-12 pt-6 sm:pt-10 md:pt-12 lg:pt-16 transition-all duration-700 sm:px-6 lg:px-8 animate-[fadeIn_0.7s_ease-in-out]">
+    <div class="max-w-2xl mt-10 sm:mt-12 md:mt-0">
       <!-- Author and date info with slide-in animation -->
       <div class="mb-6 flex items-center justify-between animate-[slideInRight_0.6s_ease-out]">
         <div class="flex w-full gap-x-5 sm:items-center sm:gap-x-3">
@@ -120,7 +120,7 @@ const relatedPosts: CollectionEntry<"blog">[] = blogPosts.filter(
     </div>
 
     <!-- Post feedback section with delay animation -->
-    <div class="animate-[fadeIn_0.7s_ease-out] [animation-delay:800ms] [animation-fill-mode:both]">
+    <div class="animate-[fadeIn_0.7s_ease-out] [animation-delay:800ms] [animation-fill-mode:both] mt-8 sm:mt-10">
       <PostFeedback
         title="Was this post helpful?"
         firstChoice="Yes"
@@ -130,7 +130,7 @@ const relatedPosts: CollectionEntry<"blog">[] = blogPosts.filter(
   </section>
 
   <!-- Related articles section with fade-in animation -->
-  <section class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 animate-[fadeIn_1s_ease-out] [animation-delay:1000ms] [animation-fill-mode:both]">
+  <section class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 animate-[fadeIn_1s_ease-out] [animation-delay:1000ms] [animation-fill-mode:both] mt-12 sm:mt-16">
     <div class="mb-10 max-w-2xl">
       <h2 class="text-balance text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight bg-gradient-to-r from-neutral-800 to-neutral-600 bg-clip-text text-transparent dark:from-neutral-200 dark:to-neutral-400">
         Related articles
@@ -178,6 +178,26 @@ const relatedPosts: CollectionEntry<"blog">[] = blogPosts.filter(
       to {
         opacity: 1;
         transform: translateX(0);
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      /* Adjust main content padding */
+      section {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      
+      /* Reduce font sizes on mobile */
+      h2 {
+        font-size: 1.75rem;
+        line-height: 2rem;
+      }
+      
+      /* Adjust content spacing */
+      .space-y-5 > * + * {
+        margin-top: 1rem;
       }
     }
   </style>
