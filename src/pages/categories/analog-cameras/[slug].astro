@@ -256,13 +256,12 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
 </Layout>
 
 <style is:global>
-    /* Thumbnail Gallery Styles */
    .thumbnail-btn {
     aspect-ratio: 1;
     transition: all 0.3s ease;
     border: 2px solid transparent;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-bottom: 2px solid transparent; /* Add default transparent bottom border */
+    position: relative; /* Add for positioning the animated underline */
 }
 
 /* Remove hover transform effect */
@@ -271,10 +270,26 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
     transform: none; /* Remove the scale effect */
 }
 
+/* Create a pseudo-element for the animated underline */
+.thumbnail-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Start with 0 width */
+    height: 3px;
+    background-color: #2563eb;
+    transition: width 0.3s ease;
+}
+
 .thumbnail-btn.active-thumbnail {
     border: 2px solid transparent; /* Keep side borders transparent */
-    border-bottom: 3px solid #2563eb; /* Professional blue underline */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Animate the underline from left to right */
+.thumbnail-btn.active-thumbnail::after {
+    width: 100%; /* Expand to full width */
 }
 
 /* Remove hover effect on the main image */
@@ -284,6 +299,12 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
 
 #main-image:hover {
     transform: none !important; /* Remove any scale effect */
+}
+
+/* Add this keyframe for the underline animation */
+@keyframes underline-slide-right {
+    from { width: 0; }
+    to { width: 100%; }
 }
     /* Animation Styles */
     @keyframes float-slow {
@@ -396,6 +417,22 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
             thumbnailElement.classList.add('active-thumbnail');
         }
     }
+    function updateMainImage(imageUrl, thumbnailElement) {
+    const mainImage = document.getElementById('main-image');
+    if (mainImage) {
+        mainImage.src = imageUrl;
+    }
+
+    // Remove active state from all thumbnails
+    const thumbnails = document.querySelectorAll('.thumbnail-btn');
+    thumbnails.forEach(thumb => thumb.classList.remove('active-thumbnail'));
+
+    // Add active state to clicked thumbnail
+    if (thumbnailElement) {
+        // Trigger animation by temporarily removing and re-adding class
+        thumbnailElement.classList.add('active-thumbnail');
+    }
+}
 
     function navigateGallery(direction) {
         const thumbnails = document.querySelectorAll('.thumbnail-btn');
