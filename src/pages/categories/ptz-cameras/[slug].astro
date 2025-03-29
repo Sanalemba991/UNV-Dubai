@@ -252,22 +252,31 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
 <style is:global>
     /* Thumbnail Gallery Styles */
     .thumbnail-btn {
-        aspect-ratio: 1;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
-    .thumbnail-btn:hover {
-        transform: scale(1.05);
-        border-color: #3b82f6;
-    }
-    
-    .thumbnail-btn.active-thumbnail {
-        border-color: #2563eb;
-        border-width: 2px;
-        box-shadow: 0 0 0 2px #3b82f6, 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+    aspect-ratio: 1;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid transparent; /* Add default transparent bottom border */
+}
+
+/* Remove hover transform effect */
+.thumbnail-btn:hover {
+    border-color: #3b82f6;
+    transform: none; /* Remove the scale effect */
+}
+
+.thumbnail-btn.active-thumbnail {
+    border: 2px solid transparent; /* Keep side borders transparent */
+    border-bottom: 3px solid #2563eb; /* Professional blue underline */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Remove hover effect on the main image */
+
+
+#main-image:hover {
+    transform: none !important; /* Remove any scale effect */
+}
 
     /* Animation Styles */
     @keyframes float-slow {
