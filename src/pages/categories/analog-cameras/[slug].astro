@@ -293,13 +293,9 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
 }
 
 /* Remove hover effect on the main image */
-#main-image {
-    transition: none; /* Remove transition */
-}
 
-#main-image:hover {
-    transform: none !important; /* Remove any scale effect */
-}
+
+
 
 /* Add this keyframe for the underline animation */
 @keyframes underline-slide-right {

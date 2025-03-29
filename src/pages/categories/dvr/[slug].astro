@@ -61,8 +61,13 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
 
             <!-- Product Header -->
             <div class="text-center mb-8 fade-in-up">
-                <h1 class="text-4xl font-bold text-gray-900 mb-2 animate-title-reveal">{product.title}</h1>
-                <p class="text-gray-600 max-w-3xl mx-auto animate-fade-up">{product.description}</p>
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2 animate-title-reveal">{product.title}</h1>
+                <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto animate-fade-up">{product.description}</p>
+                {product.price && (
+                    <div class="mt-4 text-xl font-semibold text-blue-600">
+                        {product.price}
+                    </div>
+                )}
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8 slide-in-bottom">
@@ -87,11 +92,11 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                                 <div class="flex items-center gap-4">
                                     <!-- Previous Button -->
                                     <button
-                                        class="nav-btn w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition-all"
+                                        class="nav-btn w-10 h-10 bg-white dark:bg-gray-700 rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-600 transition-all"
                                         onclick="navigateGallery(-1)"
                                         aria-label="Previous image"
                                     >
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
                                         </svg>
                                     </button>
@@ -123,11 +128,11 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                                     
                                     <!-- Next Button -->
                                     <button
-                                        class="nav-btn w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition-all"
+                                        class="nav-btn w-10 h-10 bg-white dark:bg-gray-700 rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-600 transition-all"
                                         onclick="navigateGallery(1)"
                                         aria-label="Next image"
                                     >
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                                         </svg>
                                     </button>
@@ -135,14 +140,14 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                             )}
                         </div>
                     ) : (
-                        <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
+                        <div class="w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-300">
                             No images available
                         </div>
                     )}
                 </div>
 
                 <!-- Product Details -->
-                <div class="bg-white rounded-lg p-6 shadow-lg relative overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg relative overflow-hidden">
                     <!-- Animated background pattern -->
                     <div class="absolute inset-0 opacity-5">
                         <div class="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat"></div>
@@ -151,13 +156,13 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                     <div class="relative space-y-6">
                         <!-- Tabs for Features and Specifications -->
                         <div class="tabs-container">
-                            <div class="relative flex border-b border-gray-200 mb-4">
+                            <div class="relative flex border-b border-gray-200 dark:border-gray-700 mb-4">
                                 <button
                                     class="tab-button flex-1 active px-4 py-3 text-sm font-semibold transition-all duration-300 relative focus:outline-none"
                                     data-tab="features"
                                     aria-selected="true"
                                 >
-                                    <span class="relative z-10">Features</span>
+                                    <span class="relative z-10 dark:text-white">Features</span>
                                     <div class="tab-indicator absolute bottom-0 inset-x-0 h-0.5 bg-blue-600 transition-all duration-300"></div>
                                 </button>
                                 <button
@@ -165,7 +170,7 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                                     data-tab="specifications"
                                     aria-selected="false"
                                 >
-                                    <span class="relative z-10">Specifications</span>
+                                    <span class="relative z-10 dark:text-white">Specifications</span>
                                     <div class="tab-indicator absolute bottom-0 inset-x-0 h-0.5 bg-transparent transition-all duration-300"></div>
                                 </button>
                             </div>
@@ -174,14 +179,14 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                             <div class="tab-content block animate-fade" id="features">
                                 <div class="space-y-3">
                                     {product.features.map((feature, index) => (
-                                        <div class="feature-item flex items-start gap-3 p-2 rounded-lg hover:bg-blue-50 transition-colors duration-300 opacity-0 animate-slide-in" style={`animation-delay: ${index * 100}ms;`}>
+                                        <div class="feature-item flex items-start gap-3 p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-300 opacity-0 animate-slide-in" style={`animation-delay: ${index * 100}ms;`}>
                                             <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                                 </svg>
                                             </div>
                                             <div>
-                                                <h3 class="text-sm font-medium text-gray-900">{feature}</h3>
+                                                <h3 class="text-sm font-medium text-gray-900 dark:text-white">{feature}</h3>
                                             </div>
                                         </div>
                                     ))}
@@ -192,9 +197,9 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                             <div class="tab-content hidden animate-fade" id="specifications">
                                 <div class="grid grid-cols-2 gap-3">
                                     {Object.entries(product.specifications).map(([key, value], index) => (
-                                        <div class="spec-item p-3 rounded-lg bg-gray-50 opacity-0 animate-slide-in" style={`animation-delay: ${index * 100}ms;`}>
-                                            <div class="text-xs text-gray-500">{key}</div>
-                                            <div class="text-sm font-bold text-gray-900">{value}</div>
+                                        <div class="spec-item p-3 rounded-lg bg-gray-50 dark:bg-gray-700 opacity-0 animate-slide-in" style={`animation-delay: ${index * 100}ms;`}>
+                                            <div class="text-xs text-gray-500 dark:text-gray-300">{key}</div>
+                                            <div class="text-sm font-bold text-gray-900 dark:text-white">{value}</div>
                                         </div>
                                     ))}
                                 </div>
@@ -232,7 +237,7 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
             <!-- Related Products Section -->
             <div class="mt-16 slide-in-bottom-delay">
                 <div class="text-center mb-8">
-                    <h2 class="text-2xl font-bold text-gray-900">Related Products</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Related Products</h2>
                     <div class="mt-2 w-16 h-1 bg-blue-600 mx-auto rounded-full"></div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -244,12 +249,12 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
 </Layout>
 
 <style is:global>
-    .thumbnail-btn {
+   .thumbnail-btn {
     aspect-ratio: 1;
     transition: all 0.3s ease;
     border: 2px solid transparent;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-bottom: 2px solid transparent; /* Add default transparent bottom border */
+    position: relative; /* Add for positioning the animated underline */
 }
 
 /* Remove hover transform effect */
@@ -258,19 +263,38 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
     transform: none; /* Remove the scale effect */
 }
 
+/* Create a pseudo-element for the animated underline */
+.thumbnail-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Start with 0 width */
+    height: 3px;
+    background-color: #2563eb;
+    transition: width 0.3s ease;
+}
+
 .thumbnail-btn.active-thumbnail {
     border: 2px solid transparent; /* Keep side borders transparent */
-    border-bottom: 3px solid #2563eb; /* Professional blue underline */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Remove hover effect on the main image */
-
-
-#main-image:hover {
-    transform: none !important; /* Remove any scale effect */
+/* Animate the underline from left to right */
+.thumbnail-btn.active-thumbnail::after {
+    width: 100%; /* Expand to full width */
 }
 
+/* Remove hover effect on the main image */
+#main-image:hover {
+    transform: none !important;
+}
+
+/* Add this keyframe for the underline animation */
+@keyframes underline-slide-right {
+    from { width: 0; }
+    to { width: 100%; }
+}
     /* Animation Styles */
     @keyframes float-slow {
         0% { transform: translateY(0px); }
@@ -294,14 +318,29 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
         to { transform: translateY(0); opacity: 1; }
     }
 
+    @keyframes slide-in-bottom-delay {
+        from { transform: translateY(30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
     @keyframes fade-in-up {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes title-reveal {
         from { transform: translateY(20px); opacity: 0; }
         to { transform: translateY(0); opacity: 1; }
     }
 
     @keyframes slide-in {
         from { transform: translateX(-30px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fade {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 
     .animate-float-slow {
@@ -320,61 +359,53 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
         animation: slide-in-bottom 0.8s ease-out forwards;
     }
 
+    .slide-in-bottom-delay {
+        animation: slide-in-bottom 0.8s ease-out 0.5s forwards;
+    }
+
     .fade-in-up {
         animation: fade-in-up 0.8s ease-out forwards;
+    }
+
+    .animate-title-reveal {
+        animation: title-reveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
 
     .animate-slide-in {
         animation: slide-in 0.6s ease-out forwards;
     }
+
+    .animate-fade {
+        animation: fade 0.3s ease-out forwards;
+    }
+
+    /* Tab Styles */
+    .tab-button.active .tab-indicator {
+        background-color: #2563eb;
+    }
+
+    .tab-button:not(.active) .tab-indicator {
+        background-color: transparent;
+    }
 </style>
 
 <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-        // Tab functionality
-        const tabs = document.querySelectorAll(".tab-button");
-        const contents = document.querySelectorAll(".tab-content");
-
-        tabs.forEach((tab) => {
-            tab.addEventListener("click", () => {
-                // Reset all tabs
-                tabs.forEach((t) => {
-                    t.setAttribute("aria-selected", "false");
-                    t.querySelector(".tab-indicator").style.backgroundColor = "transparent";
-                });
-
-                // Set current tab active
-                tab.setAttribute("aria-selected", "true");
-                tab.querySelector(".tab-indicator").style.backgroundColor = "#2563eb";
-
-                const targetId = tab.getAttribute("data-tab");
-                contents.forEach((content) => {
-                    if (content.id === targetId) {
-                        content.classList.remove("hidden");
-                        content.classList.add("block");
-                        content.classList.remove("animate-fade");
-                        void content.offsetWidth;
-                        content.classList.add("animate-fade");
-                    } else {
-                        content.classList.remove("block");
-                        content.classList.add("hidden");
-                    }
-                });
-            });
-        });
-    });
-
     // Image gallery navigation functions
     function updateMainImage(imageUrl, thumbnailElement) {
         const mainImage = document.getElementById('main-image');
-        mainImage.src = imageUrl;
+        if (mainImage) {
+            mainImage.src = imageUrl;
+        }
 
         // Remove active state from all thumbnails
         const thumbnails = document.querySelectorAll('.thumbnail-btn');
         thumbnails.forEach(thumb => thumb.classList.remove('active-thumbnail'));
 
         // Add active state to clicked thumbnail
-        thumbnailElement.classList.add('active-thumbnail');
+        if (thumbnailElement) {
+            // Trigger animation by temporarily removing and re-adding class
+            thumbnailElement.classList.add('active-thumbnail');
+        }
     }
 
     function navigateGallery(direction) {
@@ -392,20 +423,76 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
         if (newIndex >= thumbnails.length) newIndex = 0;
         
         // Update main image and thumbnail state
-        updateMainImage(thumbnails[newIndex].querySelector('img').src, thumbnails[newIndex]);
-        
-        // Scroll thumbnails container to make active thumbnail visible
-        const container = document.querySelector('.overflow-x-auto');
-        const activeThumb = thumbnails[newIndex];
-        if (container && activeThumb) {
-            const containerWidth = container.offsetWidth;
-            const thumbWidth = activeThumb.offsetWidth;
-            const scrollPosition = activeThumb.offsetLeft - (containerWidth / 2) + (thumbWidth / 2);
+        const newThumbnail = thumbnails[newIndex];
+        if (newThumbnail) {
+            updateMainImage(newThumbnail.querySelector('img').src, newThumbnail);
             
-            container.scrollTo({
-                left: scrollPosition,
-                behavior: 'smooth'
-            });
+            // Scroll thumbnails container to make active thumbnail visible
+            const container = document.querySelector('.overflow-x-auto');
+            if (container) {
+                const containerWidth = container.offsetWidth;
+                const thumbWidth = newThumbnail.offsetWidth;
+                const scrollPosition = newThumbnail.offsetLeft - (containerWidth / 2) + (thumbWidth / 2);
+                
+                container.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+            }
         }
     }
+
+    // Tab functionality
+    document.addEventListener("DOMContentLoaded", () => {
+        const tabs = document.querySelectorAll(".tab-button");
+        const contents = document.querySelectorAll(".tab-content");
+
+        function setActiveTab(tab) {
+            if (!tab) return;
+            
+            tab.setAttribute("aria-selected", "true");
+            const indicator = tab.querySelector(".tab-indicator");
+            if (indicator) {
+                indicator.style.backgroundColor = "#2563eb";
+            }
+
+            // Remove active state from other tabs
+            tabs.forEach(t => {
+                if (t !== tab) {
+                    t.setAttribute("aria-selected", "false");
+                    const otherIndicator = t.querySelector(".tab-indicator");
+                    if (otherIndicator) {
+                        otherIndicator.style.backgroundColor = "transparent";
+                    }
+                }
+            });
+        }
+
+        // Set initial active tab
+        const initialActiveTab = document.querySelector('.tab-button[data-tab="features"]');
+        setActiveTab(initialActiveTab);
+
+        // Add click handlers
+        tabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                const targetId = tab.getAttribute("data-tab");
+                setActiveTab(tab);
+
+                // Show/hide content
+                contents.forEach(content => {
+                    if (content.id === targetId) {
+                        content.classList.remove("hidden");
+                        content.classList.add("block");
+                        // Trigger animation
+                        content.classList.remove("animate-fade");
+                        void content.offsetWidth;
+                        content.classList.add("animate-fade");
+                    } else {
+                        content.classList.remove("block");
+                        content.classList.add("hidden");
+                    }
+                });
+            });
+        });
+    });
 </script>

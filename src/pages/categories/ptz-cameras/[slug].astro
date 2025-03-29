@@ -29,6 +29,7 @@ interface Product {
     image: string;
     images?: ProductImage[];
     features: string[];
+    price?: string;
     specifications: ProductSpecifications;
 }
 
@@ -67,8 +68,13 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
 
             <!-- Product Header -->
             <div class="text-center mb-8 fade-in-up">
-                <h1 class="text-4xl font-bold text-gray-900 mb-2 animate-title-reveal">{product.title}</h1>
-                <p class="text-gray-600 max-w-3xl mx-auto animate-fade-up">{product.description}</p>
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2 animate-title-reveal">{product.title}</h1>
+                <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto animate-fade-up">{product.description}</p>
+                {product.price && (
+                    <div class="mt-4 text-xl font-semibold text-blue-600">
+                        {product.price}
+                    </div>
+                )}
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8 slide-in-bottom">
@@ -93,11 +99,11 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                                 <div class="flex items-center gap-4">
                                     <!-- Previous Button -->
                                     <button
-                                        class="nav-btn w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition-all"
+                                        class="nav-btn w-10 h-10 bg-white dark:bg-gray-700 rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-600 transition-all"
                                         onclick="navigateGallery(-1)"
                                         aria-label="Previous image"
                                     >
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
                                         </svg>
                                     </button>
@@ -129,11 +135,11 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                                     
                                     <!-- Next Button -->
                                     <button
-                                        class="nav-btn w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition-all"
+                                        class="nav-btn w-10 h-10 bg-white dark:bg-gray-700 rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-600 transition-all"
                                         onclick="navigateGallery(1)"
                                         aria-label="Next image"
                                     >
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                                         </svg>
                                     </button>
@@ -141,14 +147,14 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                             )}
                         </div>
                     ) : (
-                        <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
+                        <div class="w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-300">
                             No images available
                         </div>
                     )}
                 </div>
 
                 <!-- Product Details -->
-                <div class="bg-white rounded-lg p-6 shadow-lg relative overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg relative overflow-hidden">
                     <!-- Animated background pattern -->
                     <div class="absolute inset-0 opacity-5">
                         <div class="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat"></div>
@@ -157,13 +163,13 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                     <div class="relative space-y-6">
                         <!-- Tabs for Features and Specifications -->
                         <div class="tabs-container">
-                            <div class="relative flex border-b border-gray-200 mb-4">
+                            <div class="relative flex border-b border-gray-200 dark:border-gray-700 mb-4">
                                 <button
                                     class="tab-button flex-1 active px-4 py-3 text-sm font-semibold transition-all duration-300 relative focus:outline-none"
                                     data-tab="features"
                                     aria-selected="true"
                                 >
-                                    <span class="relative z-10">Features</span>
+                                    <span class="relative z-10 dark:text-white">Features</span>
                                     <div class="tab-indicator absolute bottom-0 inset-x-0 h-0.5 bg-blue-600 transition-all duration-300"></div>
                                 </button>
                                 <button
@@ -171,7 +177,7 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                                     data-tab="specifications"
                                     aria-selected="false"
                                 >
-                                    <span class="relative z-10">Specifications</span>
+                                    <span class="relative z-10 dark:text-white">Specifications</span>
                                     <div class="tab-indicator absolute bottom-0 inset-x-0 h-0.5 bg-transparent transition-all duration-300"></div>
                                 </button>
                             </div>
@@ -180,14 +186,14 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                             <div class="tab-content block animate-fade" id="features">
                                 <div class="space-y-3">
                                     {product.features.map((feature, index) => (
-                                        <div class="feature-item flex items-start gap-3 p-2 rounded-lg hover:bg-blue-50 transition-colors duration-300 opacity-0 animate-slide-in" style={`animation-delay: ${index * 100}ms;`}>
+                                        <div class="feature-item flex items-start gap-3 p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-300 opacity-0 animate-slide-in" style={`animation-delay: ${index * 100}ms;`}>
                                             <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                                 </svg>
                                             </div>
                                             <div>
-                                                <h3 class="text-sm font-medium text-gray-900">{feature}</h3>
+                                                <h3 class="text-sm font-medium text-gray-900 dark:text-white">{feature}</h3>
                                             </div>
                                         </div>
                                     ))}
@@ -198,9 +204,9 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
                             <div class="tab-content hidden animate-fade" id="specifications">
                                 <div class="grid grid-cols-2 gap-3">
                                     {Object.entries(product.specifications).map(([key, value], index) => (
-                                        <div class="spec-item p-3 rounded-lg bg-gray-50 opacity-0 animate-slide-in" style={`animation-delay: ${index * 100}ms;`}>
-                                            <div class="text-xs text-gray-500">{key}</div>
-                                            <div class="text-sm font-bold text-gray-900">{value}</div>
+                                        <div class="spec-item p-3 rounded-lg bg-gray-50 dark:bg-gray-700 opacity-0 animate-slide-in" style={`animation-delay: ${index * 100}ms;`}>
+                                            <div class="text-xs text-gray-500 dark:text-gray-300">{key}</div>
+                                            <div class="text-sm font-bold text-gray-900 dark:text-white">{value}</div>
                                         </div>
                                     ))}
                                 </div>
@@ -238,7 +244,7 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
             <!-- Related Products Section -->
             <div class="mt-16 slide-in-bottom-delay">
                 <div class="text-center mb-8">
-                    <h2 class="text-2xl font-bold text-gray-900">Related Products</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Related Products</h2>
                     <div class="mt-2 w-16 h-1 bg-blue-600 mx-auto rounded-full"></div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -250,13 +256,12 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
 </Layout>
 
 <style is:global>
-    /* Thumbnail Gallery Styles */
-    .thumbnail-btn {
+   .thumbnail-btn {
     aspect-ratio: 1;
     transition: all 0.3s ease;
     border: 2px solid transparent;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-bottom: 2px solid transparent; /* Add default transparent bottom border */
+    position: relative; /* Add for positioning the animated underline */
 }
 
 /* Remove hover transform effect */
@@ -265,19 +270,38 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
     transform: none; /* Remove the scale effect */
 }
 
+/* Create a pseudo-element for the animated underline */
+.thumbnail-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Start with 0 width */
+    height: 3px;
+    background-color: #2563eb;
+    transition: width 0.3s ease;
+}
+
 .thumbnail-btn.active-thumbnail {
     border: 2px solid transparent; /* Keep side borders transparent */
-    border-bottom: 3px solid #2563eb; /* Professional blue underline */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Remove hover effect on the main image */
-
-
-#main-image:hover {
-    transform: none !important; /* Remove any scale effect */
+/* Animate the underline from left to right */
+.thumbnail-btn.active-thumbnail::after {
+    width: 100%; /* Expand to full width */
 }
 
+/* Remove hover effect on the main image */
+#main-image:hover {
+    transform: none !important;
+}
+
+/* Add this keyframe for the underline animation */
+@keyframes underline-slide-right {
+    from { width: 0; }
+    to { width: 100%; }
+}
     /* Animation Styles */
     @keyframes float-slow {
         0% { transform: translateY(0px); }
@@ -386,6 +410,7 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
 
         // Add active state to clicked thumbnail
         if (thumbnailElement) {
+            // Trigger animation by temporarily removing and re-adding class
             thumbnailElement.classList.add('active-thumbnail');
         }
     }
