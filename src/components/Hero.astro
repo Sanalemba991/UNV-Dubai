@@ -15,7 +15,7 @@
             50% { text-shadow: 0 0 8px rgba(255,255,255,0.4); }
             100% { text-shadow: 0 0 1px rgba(255,255,255,0.2); }
         }
-
+    
         @keyframes buttonReveal {
             from { 
                 opacity: 0; 
@@ -26,17 +26,20 @@
                 transform: translateY(0);
             }
         }
-
+    
         /* Professional font styling */
         body {
             font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
-
+    
         .heading-font {
             font-family: 'Montserrat', sans-serif;
             letter-spacing: 0.5px;
         }
-
+    
         /* Base Carousel Styles */
         .carousel-image {
             object-fit: cover;
@@ -44,7 +47,7 @@
             height: 100%;
             transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
         }
-
+    
         .carousel-item-container {
             position: relative;
             height: 100%;
@@ -53,7 +56,7 @@
             perspective: 1000px;
             touch-action: manipulation;
         }
-
+    
         .carousel-caption {
             position: absolute;
             top: 50%;
@@ -76,26 +79,26 @@
             border: 1px solid rgba(255,255,255,0.08);
             backdrop-filter: blur(3px);
         }
-
+    
         .carousel-caption h3 {
             margin-bottom: 0.5rem;
             transform: translateY(-5px);
             transition: all 0.4s ease;
             opacity: 0;
         }
-
+    
         .carousel-caption p {
             transform: translateY(5px);
             transition: all 0.4s ease 0.1s;
             opacity: 0;
         }
-
+    
         .carousel-item-container:hover .carousel-caption,
         .carousel-item-container:active .carousel-caption,
         .carousel-item-container.mobile-active .carousel-caption {
             opacity: 1;
         }
-
+    
         .carousel-item-container:hover .carousel-caption h3,
         .carousel-item-container:active .carousel-caption h3,
         .carousel-item-container.mobile-active .carousel-caption h3 {
@@ -103,14 +106,14 @@
             transform: translateY(0);
             animation: subtleGlow 4s infinite alternate;
         }
-
+    
         .carousel-item-container:hover .carousel-caption p,
         .carousel-item-container:active .carousel-caption p,
         .carousel-item-container.mobile-active .carousel-caption p {
             opacity: 1;
             transform: translateY(0);
         }
-
+    
         .shop-now-btn {
             display: inline-block;
             margin-top: 1.25rem;
@@ -131,13 +134,13 @@
             text-transform: uppercase;
             font-size: 0.85rem;
         }
-
+    
         .carousel-item-container:hover .shop-now-btn,
         .carousel-item-container:active .shop-now-btn,
         .carousel-item-container.mobile-active .shop-now-btn {
             animation: buttonReveal 0.4s ease 0.2s forwards;
         }
-
+    
         .shop-now-btn:hover,
         .shop-now-btn:active {
             background: #1e40af;
@@ -145,20 +148,13 @@
             box-shadow: 0 5px 15px rgba(30,64,175,0.3);
             transform: translateY(-2px);
         }
-
+    
         .carousel-item-container:hover .carousel-image,
         .carousel-item-container:active .carousel-image,
         .carousel-item-container.mobile-active .carousel-image {
-            filter: brightness(0.5) saturate(1.1);
             transform: scale(1.05);
         }
-
-        body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
+    
         .carousel-wrapper {
             width: 100vw;
             position: relative;
@@ -167,81 +163,127 @@
             margin-left: -50vw;
             margin-right: -50vw;
         }
-
+    
         /* Indicator styling improvements */
         [data-carousel-slide-to] {
             transition: all 0.3s ease;
         }
-
+    
         [data-carousel-slide-to]:hover {
             transform: scale(1.2);
         }
+    
+        /* Desktop-specific styles */
+        @media (min-width: 1024px) {
+            #default-carousel {
+                height: 90vh; /* Increased from 80vh to 90vh */
+                min-height: 700px; /* Increased minimum height */
+                max-height: 1000px; /* Increased maximum height */
+            }
+            
+            .carousel-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
 
-        /* Mobile Wallpaper Style */
-   /* Updated mobile styles - remove darkening effect */
-@media (max-width: 640px) {
-    #default-carousel {
-        height: 100vh !important;
-    }
-    .carousel-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    /* Remove the filter darkening the image */
-    .carousel-item-container .carousel-image {
-        filter: none;
-        transform: none;
-    }
-    /* Caption with more transparent background */
-    .carousel-caption {
-        width: 90%;
-        padding: 1.25rem;
-        background: rgba(0, 0, 0, 0.4);
-    }
-    .carousel-caption h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-    }
-    .carousel-caption p {
-        font-size: 1rem;
-        margin-bottom: 0.8rem;
-    }
-    .shop-now-btn {
-        padding: 0.5rem 1.2rem;
-        font-size: 0.875rem;
-        background: rgba(0, 0, 0, 0.5);
-    }
-}
+            /* Make captions slightly larger on desktop */
+            .carousel-caption {
+                padding: 2.5rem;
+                max-width: 700px;
+            }
 
-/* Also update tablet styles to match */
-@media (min-width: 641px) and (max-width: 1024px) {
-    #default-carousel {
-        height: 75vh !important;
-    }
-    .carousel-image {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-    }
-    /* Remove the filter darkening the image */
-    .carousel-item-container .carousel-image {
-        filter: none;
-    }
-    .carousel-caption {
-        width: 80%;
-        padding: 1.5rem;
-        background: rgba(0, 0, 0, 0.4);
-    }
-}
+            .carousel-caption h3 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .carousel-caption p {
+                font-size: 1.25rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .shop-now-btn {
+                padding: 0.9rem 2.2rem;
+                font-size: 1rem;
+            }
+        }
+    
+        /* Mobile Styles (applies to all mobile sizes) */
+        @media (max-width: 1023px) {
+            #default-carousel {
+                height: 100vh !important;
+                max-height: -webkit-fill-available;
+            }
+            
+            .carousel-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) !important;
+            }
+            
+            /* Caption styling for mobile */
+            .carousel-caption {
+                width: 85%;
+                padding: 1.5rem;
+                background: rgba(0, 0, 0, 0.6);
+                transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1) !important;
+            }
+            
+            .carousel-caption h3 {
+                font-size: 1.5rem;
+                margin-bottom: 0.75rem;
+                transition: all 0.4s ease !important;
+            }
+            
+            .carousel-caption p {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+                transition: all 0.4s ease 0.1s !important;
+            }
+            
+            .shop-now-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.85rem;
+                background: rgba(0, 0, 0, 0.6);
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            }
+            
+            /* Always show caption on mobile but with proper transitions */
+            .carousel-item-container .carousel-caption {
+                opacity: 1 !important;
+            }
+            
+            .carousel-item-container .carousel-caption h3,
+            .carousel-item-container .carousel-caption p {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+            
+            .carousel-item-container .shop-now-btn {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+                animation: none !important;
+            }
+            
+            /* Adjust indicator position for mobile */
+            [data-carousel-slide-to] {
+                width: 10px;
+                height: 10px;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100">
 <div class="carousel-wrapper mb-10">
-    <div id="default-carousel" class="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]" data-carousel="static">
+    <div id="default-carousel" class="relative w-full" data-carousel="static">
         <!-- Carousel wrapper -->
         <div class="relative h-full overflow-hidden rounded-none">
             <!-- Item 1 -->
@@ -255,7 +297,7 @@
                     />
                     <!-- Mobile Image -->
                     <img
-                        src="/images/categories/products/hero/mobile.png"
+                        src="/images/categories/products/hero/mobile1.png"
                         class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 sm:hidden"
                         alt="UNV Security Products Mobile"
                     />
@@ -278,7 +320,7 @@
                     />
                     <!-- Mobile Image -->
                     <img
-                        src="/images/categories/products/hero/mobile1.png"
+                        src="/images/categories/products/hero/mobile2.png"
                         class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 sm:hidden"
                         alt="UNV Security Blog Mobile"
                     />
@@ -301,7 +343,7 @@
                     />
                     <!-- Mobile Image -->
                     <img
-                        src="/images/categories/products/hero/mobile2.png"
+                        src="/images/categories/products/hero/mobile.png"
                         class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 sm:hidden"
                         alt="UNV Security Insights Mobile"
                     />
@@ -355,28 +397,16 @@
             this.autoSlideInterval = null;
             this.touchStartX = 0;
             this.touchEndX = 0;
-            this.isMobile = window.innerWidth <= 1024;
+            this.isMobile = window.innerWidth <= 1023;
             
             this.initEventListeners();
             this.showItem(this.currentIndex);
             this.startAutoSlide();
             
-            // Check if we need to automatically apply effects on mobile
-            this.checkMobileEffects();
-            
             // Listen for window resize to recheck mobile status
             window.addEventListener('resize', () => {
-                this.isMobile = window.innerWidth <= 1024;
-                this.checkMobileEffects();
+                this.isMobile = window.innerWidth <= 1023;
             });
-        }
-        
-        checkMobileEffects() {
-            // If on mobile/tablet, apply the active class to the currently visible slide
-            if (this.isMobile) {
-                const currentItemContainer = this.items[this.currentIndex].querySelector('.carousel-item-container');
-                currentItemContainer.classList.add('mobile-active');
-            }
         }
         
         initEventListeners() {
@@ -412,24 +442,6 @@
                 this.touchEndX = e.changedTouches[0].screenX;
                 this.handleSwipe();
             }, {passive: true});
-            
-            // Add touch event listeners to each carousel item container
-            this.carouselItemContainers.forEach(container => {
-                container.addEventListener('touchstart', () => {
-                    if (!this.isMobile) {
-                        container.classList.add('mobile-active');
-                    }
-                }, {passive: true});
-                
-                container.addEventListener('touchend', () => {
-                    // For tablet/desktop, we'll remove the active class after a delay
-                    if (!this.isMobile) {
-                        setTimeout(() => {
-                            container.classList.remove('mobile-active');
-                        }, 3000); // Keep effects visible for 3 seconds after touch
-                    }
-                }, {passive: true});
-            });
         }
         
         handleSwipe() {
@@ -452,12 +464,6 @@
             this.items.forEach((item) => {
                 item.classList.remove('opacity-100', 'translate-x-0');
                 item.classList.add('opacity-0', 'translate-x-full');
-                
-                // Remove mobile-active class from all item containers
-                const container = item.querySelector('.carousel-item-container');
-                if (container) {
-                    container.classList.remove('mobile-active');
-                }
             });
             
             // Reset all indicators
@@ -471,14 +477,6 @@
             const currentItem = this.items[index];
             currentItem.classList.remove('opacity-0', 'translate-x-full');
             currentItem.classList.add('opacity-100', 'translate-x-0');
-            
-            // If mobile, add the mobile-active class to the current slide
-            if (this.isMobile) {
-                const currentItemContainer = currentItem.querySelector('.carousel-item-container');
-                if (currentItemContainer) {
-                    currentItemContainer.classList.add('mobile-active');
-                }
-            }
             
             // Activate current indicator
             const currentIndicator = this.indicators[index];
