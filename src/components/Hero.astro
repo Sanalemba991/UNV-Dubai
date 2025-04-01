@@ -5,28 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNV Security Camera Carousel</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        @keyframes fadeInScale {
+        /* Base animations with more professional effects */
+        @keyframes subtleGlow {
+            0% { text-shadow: 0 0 1px rgba(255,255,255,0.2); }
+            50% { text-shadow: 0 0 8px rgba(255,255,255,0.4); }
+            100% { text-shadow: 0 0 1px rgba(255,255,255,0.2); }
+        }
+
+        @keyframes buttonReveal {
             from { 
                 opacity: 0; 
-                transform: translate(-50%, -50%) scale(0.7);
+                transform: translateY(10px);
             }
             to { 
                 opacity: 1; 
-                transform: translate(-50%, -50%) scale(1);
+                transform: translateY(0);
             }
         }
 
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px rgba(255,255,255,0.3); }
-            50% { text-shadow: 0 0 15px rgba(255,255,255,0.7); }
-            100% { text-shadow: 0 0 5px rgba(255,255,255,0.3); }
+        /* Professional font styling */
+        body {
+            font-family: 'Roboto', sans-serif;
         }
 
-        @keyframes buttonPulse {
-            0% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-3px) scale(1.05); }
-            100% { transform: translateY(0) scale(1); }
+        .heading-font {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         /* Base Carousel Styles */
@@ -34,7 +42,7 @@
             object-fit: cover;
             width: 100%;
             height: 100%;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .carousel-item-container {
@@ -50,69 +58,99 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            background: rgba(0, 0, 0, 0.8);
+            transform: translate(-50%, -50%) !important;
+            background: rgba(0, 0, 0, 0.75);
             color: white;
-            padding: 1.5rem;
+            padding: 2rem;
             width: 90%;
             max-width: 600px;
             text-align: center;
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             opacity: 0;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .carousel-item-container:hover .carousel-caption,
-        .carousel-item-container:active .carousel-caption {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-            animation: fadeInScale 0.5s ease-out;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(3px);
         }
 
         .carousel-caption h3 {
-            transition: all 0.3s ease;
-            animation: textGlow 3s infinite alternate;
+            margin-bottom: 0.5rem;
+            transform: translateY(-5px);
+            transition: all 0.4s ease;
+            opacity: 0;
+        }
+
+        .carousel-caption p {
+            transform: translateY(5px);
+            transition: all 0.4s ease 0.1s;
+            opacity: 0;
+        }
+
+        .carousel-item-container:hover .carousel-caption,
+        .carousel-item-container:active .carousel-caption,
+        .carousel-item-container.mobile-active .carousel-caption {
+            opacity: 1;
         }
 
         .carousel-item-container:hover .carousel-caption h3,
-        .carousel-item-container:active .carousel-caption h3 {
-            letter-spacing: 1px;
+        .carousel-item-container:active .carousel-caption h3,
+        .carousel-item-container.mobile-active .carousel-caption h3 {
+            opacity: 1;
+            transform: translateY(0);
+            animation: subtleGlow 4s infinite alternate;
+        }
+
+        .carousel-item-container:hover .carousel-caption p,
+        .carousel-item-container:active .carousel-caption p,
+        .carousel-item-container.mobile-active .carousel-caption p {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .shop-now-btn {
             display: inline-block;
-            margin-top: 1rem;
-            padding: 0.6rem 1.5rem;
-            background: transparent;
+            margin-top: 1.25rem;
+            padding: 0.7rem 1.8rem;
+            background: rgba(0, 0, 0, 0.3);
             color: white;
-            border: 2px solid white;
-            border-radius: 2.5rem;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            font-weight: 700;
-            letter-spacing: 1px;
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 0.25rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            font-weight: 500;
+            letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
             touch-action: manipulation;
+            opacity: 0;
+            transform: translateY(10px);
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .carousel-item-container:hover .shop-now-btn,
+        .carousel-item-container:active .shop-now-btn,
+        .carousel-item-container.mobile-active .shop-now-btn {
+            animation: buttonReveal 0.4s ease 0.2s forwards;
         }
 
         .shop-now-btn:hover,
         .shop-now-btn:active {
-            background: #3b82f6;
-            border-color: #3b82f6;
-            animation: buttonPulse 0.5s ease;
-            box-shadow: 0 10px 20px rgba(59,130,246,0.3);
+            background: #1e40af;
+            border-color: #1e40af;
+            box-shadow: 0 5px 15px rgba(30,64,175,0.3);
+            transform: translateY(-2px);
         }
 
         .carousel-item-container:hover .carousel-image,
-        .carousel-item-container:active .carousel-image {
-            filter: brightness(0.6);
-            transform: scale(1.1) rotate(2deg);
+        .carousel-item-container:active .carousel-image,
+        .carousel-item-container.mobile-active .carousel-image {
+            filter: brightness(0.5) saturate(1.1);
+            transform: scale(1.05);
         }
 
         body {
@@ -130,54 +168,75 @@
             margin-right: -50vw;
         }
 
+        /* Indicator styling improvements */
+        [data-carousel-slide-to] {
+            transition: all 0.3s ease;
+        }
+
+        [data-carousel-slide-to]:hover {
+            transform: scale(1.2);
+        }
+
         /* Mobile Wallpaper Style */
-        @media (max-width: 640px) {
-            #default-carousel {
-                height: 100vh !important;
-            }
-            .carousel-image {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-            .carousel-caption {
-                width: 90%;
-                padding: 1rem;
-                background: rgba(0, 0, 0, 0.6);
-            }
-            .carousel-caption h3 {
-                font-size: 1.5rem;
-                margin-bottom: 0.5rem;
-            }
-            .carousel-caption p {
-                font-size: 1rem;
-                margin-bottom: 0.8rem;
-            }
-            .shop-now-btn {
-                padding: 0.5rem 1.2rem;
-                font-size: 1rem;
-            }
-        }
-        
-        /* Tablet Wallpaper Style */
-        @media (min-width: 641px) and (max-width: 1024px) {
-            #default-carousel {
-                height: 75vh !important;
-            }
-            .carousel-image {
-                object-fit: cover;
-                width: 100%;
-                height: 100%;
-            }
-            .carousel-caption {
-                width: 80%;
-                padding: 1.2rem;
-                background: rgba(0, 0, 0, 0.7);
-            }
-        }
+   /* Updated mobile styles - remove darkening effect */
+@media (max-width: 640px) {
+    #default-carousel {
+        height: 100vh !important;
+    }
+    .carousel-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    /* Remove the filter darkening the image */
+    .carousel-item-container .carousel-image {
+        filter: none;
+        transform: none;
+    }
+    /* Caption with more transparent background */
+    .carousel-caption {
+        width: 90%;
+        padding: 1.25rem;
+        background: rgba(0, 0, 0, 0.4);
+    }
+    .carousel-caption h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .carousel-caption p {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    .shop-now-btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.875rem;
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Also update tablet styles to match */
+@media (min-width: 641px) and (max-width: 1024px) {
+    #default-carousel {
+        height: 75vh !important;
+    }
+    .carousel-image {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+    /* Remove the filter darkening the image */
+    .carousel-item-container .carousel-image {
+        filter: none;
+    }
+    .carousel-caption {
+        width: 80%;
+        padding: 1.5rem;
+        background: rgba(0, 0, 0, 0.4);
+    }
+}
     </style>
 </head>
 <body class="bg-gray-100">
@@ -201,9 +260,9 @@
                         alt="UNV Security Products Mobile"
                     />
                     <div class="carousel-caption">
-                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 uppercase">Products</h3>
-                        <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-5 opacity-80">High-performance surveillance solutions</p>
-                        <span class="shop-now-btn">Explore Products</span>
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold heading-font">OUR PRODUCTS</h3>
+                        <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-4 opacity-90">Cutting-edge surveillance solutions designed for superior performance.</p>
+                        <span class="shop-now-btn">Explore Our Products</span>
                     </div>
                 </div>
             </div>
@@ -224,9 +283,9 @@
                         alt="UNV Security Blog Mobile"
                     />
                     <div class="carousel-caption">
-                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 uppercase">Blogs</h3>
-                        <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-5 opacity-80">Protect your home with advanced monitoring systems</p>
-                        <span class="shop-now-btn">See More</span>
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold heading-font">LATEST BLOGS</h3>
+                        <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-4 opacity-90">Enhance your home's security with state-of-the-art monitoring solutions.</p>
+                        <span class="shop-now-btn">Discover More</span>
                     </div>
                 </div>
             </div>
@@ -247,9 +306,9 @@
                         alt="UNV Security Insights Mobile"
                     />
                     <div class="carousel-caption">
-                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 uppercase">Insights</h3>
-                        <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-5 opacity-80">Professional-grade surveillance for businesses and institutions</p>
-                        <span class="shop-now-btn">See More</span>
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold heading-font">INSIGHTS</h3>
+                        <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-4 opacity-90">Top-tier surveillance solutions tailored for businesses and institutions.</p>
+                        <span class="shop-now-btn">Explore Insights</span>
                     </div>
                 </div>
             </div>
@@ -290,15 +349,34 @@
             this.indicators = this.carousel.querySelectorAll('[data-carousel-slide-to]');
             this.prevButton = this.carousel.querySelector('[data-carousel-prev]');
             this.nextButton = this.carousel.querySelector('[data-carousel-next]');
+            this.carouselItemContainers = this.carousel.querySelectorAll('.carousel-item-container');
             
             this.currentIndex = 0;
             this.autoSlideInterval = null;
             this.touchStartX = 0;
             this.touchEndX = 0;
+            this.isMobile = window.innerWidth <= 1024;
             
             this.initEventListeners();
             this.showItem(this.currentIndex);
             this.startAutoSlide();
+            
+            // Check if we need to automatically apply effects on mobile
+            this.checkMobileEffects();
+            
+            // Listen for window resize to recheck mobile status
+            window.addEventListener('resize', () => {
+                this.isMobile = window.innerWidth <= 1024;
+                this.checkMobileEffects();
+            });
+        }
+        
+        checkMobileEffects() {
+            // If on mobile/tablet, apply the active class to the currently visible slide
+            if (this.isMobile) {
+                const currentItemContainer = this.items[this.currentIndex].querySelector('.carousel-item-container');
+                currentItemContainer.classList.add('mobile-active');
+            }
         }
         
         initEventListeners() {
@@ -334,6 +412,24 @@
                 this.touchEndX = e.changedTouches[0].screenX;
                 this.handleSwipe();
             }, {passive: true});
+            
+            // Add touch event listeners to each carousel item container
+            this.carouselItemContainers.forEach(container => {
+                container.addEventListener('touchstart', () => {
+                    if (!this.isMobile) {
+                        container.classList.add('mobile-active');
+                    }
+                }, {passive: true});
+                
+                container.addEventListener('touchend', () => {
+                    // For tablet/desktop, we'll remove the active class after a delay
+                    if (!this.isMobile) {
+                        setTimeout(() => {
+                            container.classList.remove('mobile-active');
+                        }, 3000); // Keep effects visible for 3 seconds after touch
+                    }
+                }, {passive: true});
+            });
         }
         
         handleSwipe() {
@@ -356,6 +452,12 @@
             this.items.forEach((item) => {
                 item.classList.remove('opacity-100', 'translate-x-0');
                 item.classList.add('opacity-0', 'translate-x-full');
+                
+                // Remove mobile-active class from all item containers
+                const container = item.querySelector('.carousel-item-container');
+                if (container) {
+                    container.classList.remove('mobile-active');
+                }
             });
             
             // Reset all indicators
@@ -369,6 +471,14 @@
             const currentItem = this.items[index];
             currentItem.classList.remove('opacity-0', 'translate-x-full');
             currentItem.classList.add('opacity-100', 'translate-x-0');
+            
+            // If mobile, add the mobile-active class to the current slide
+            if (this.isMobile) {
+                const currentItemContainer = currentItem.querySelector('.carousel-item-container');
+                if (currentItemContainer) {
+                    currentItemContainer.classList.add('mobile-active');
+                }
+            }
             
             // Activate current indicator
             const currentIndicator = this.indicators[index];
