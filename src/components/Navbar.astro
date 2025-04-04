@@ -7,7 +7,7 @@ import Logo from "../assets/images/digitallogo.svg";
 <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 bg-gray-200/90 dark:bg-gray-900/90 backdrop-blur-sm transition-all duration-300 shadow-sm">
     <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 py-3">
         <!-- Logo -->
-        <a href="/" class="flex items-center group">
+        <a href="" class="flex items-center group">
             <Image
                 src={Logo}
                 alt="Digital Link Technology"
@@ -173,7 +173,10 @@ import Logo from "../assets/images/digitallogo.svg";
         @apply relative text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400 transition-colors duration-300 py-2 px-3;
     }
     
-    /* Modified for consistent font/underline behavior */
+    .nav-link.active {
+        @apply text-blue-600 dark:text-blue-400;
+    }
+    
     .nav-link-text {
         @apply relative inline-block;
     }
@@ -192,11 +195,16 @@ import Logo from "../assets/images/digitallogo.svg";
         @apply flex items-center px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 rounded-lg transition-all duration-300;
     }
     
+    .mobile-nav-link.active {
+        @apply bg-gray-200/50 dark:bg-gray-700/50;
+    }
+    
     .mobile-nav-icon {
         @apply w-6 h-6 mr-3 text-gray-500 dark:text-gray-400 transition-colors duration-300;
     }
     
-    .mobile-nav-link:hover .mobile-nav-icon {
+    .mobile-nav-link:hover .mobile-nav-icon,
+    .mobile-nav-link.active .mobile-nav-icon {
         @apply text-blue-600 dark:text-blue-400;
     }
 
@@ -223,15 +231,26 @@ import Logo from "../assets/images/digitallogo.svg";
         const toggleButton = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         
-        // Get all the nav links
-        const navLinks = document.querySelectorAll('.nav-link');
+        // Get all the nav links (both desktop and mobile)
+        const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
         
         // Set active link based on current URL
         const currentPath = window.location.pathname;
         navLinks.forEach(link => {
             const href = link.getAttribute('href');
-            if (href === currentPath || (href !== '/' && currentPath.startsWith(href))) {
+            // Check for exact match or starts with (for nested pages)
+            // Fixed condition for home page - special handling for both "/" and "/home"
+            if ((href === '/' && (currentPath === '/' || currentPath === '/home')) || 
+                (href !== '/' && currentPath.startsWith(href) && href !== '')) {
                 link.classList.add('active');
+                
+                // For mobile nav links, also highlight the icon
+                if (link.classList.contains('mobile-nav-link')) {
+                    const icon = link.querySelector('.mobile-nav-icon');
+                    if (icon) {
+                        icon.classList.add('text-blue-600', 'dark:text-blue-400');
+                    }
+                }
             }
         });
 

@@ -2,7 +2,7 @@
 id: 5
 pubDate: 2024-05-19
 title: "5MP ColourHunter Fixed Turret Analog Camera"
-description: "Experience a new standard in surveillance clarity with the 5MP ColorHunter Fixed Turret Analog Camera from UNV. Engineered with precision optics and advanced imaging technology, this camera delivers vivid, true-to-life color imagery for unparalleled monitoring accuracy."
+description: "Experience a new standard in clarity with the 5MP ColorHunter Fixed Turret Analog Camera from UNV."
 cardImage: "../../assets/images/digi7.jpg"
 cardImageAlt: "Top view mechanical tools arrangement"
 contents: [

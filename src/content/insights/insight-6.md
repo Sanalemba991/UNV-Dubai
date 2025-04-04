@@ -2,7 +2,7 @@
 id: 6
 pubDate: 2024-06-19
 title: "The Impact of Sustainable Practices"
-description: "Discover how ScrewFast is leading the charge in promoting sustainability within the construction industry"
+description: "Discover how ScrewFast is revolutionizing the construction industry by championing sustainability through innovative foundation solutions, reducing environmental impact, and setting new standards for eco-conscious engineering practices."
 cardImage: "../../assets/images/dahua.jpg"
 cardImageAlt: "Top view mechanical tools arrangement"
 contents: [
