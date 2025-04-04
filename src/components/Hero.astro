@@ -411,166 +411,182 @@
 
 <script>
     class Carousel {
-        constructor(carouselElement) {
-            this.carousel = carouselElement;
-            this.items = this.carousel.querySelectorAll('[data-carousel-item]');
-            this.indicators = this.carousel.querySelectorAll('[data-carousel-slide-to]');
-            this.prevButton = this.carousel.querySelector('[data-carousel-prev]');
-            this.nextButton = this.carousel.querySelector('[data-carousel-next]');
-            this.carouselItemContainers = this.carousel.querySelectorAll('.carousel-item-container');
-            
-            this.currentIndex = 0;
-            this.autoSlideInterval = null;
-            this.touchStartX = 0;
-            this.touchEndX = 0;
-            this.isMobile = window.innerWidth <= 1023;
-            
-            this.initEventListeners();
-            this.showItem(this.currentIndex);
-            this.startAutoSlide();
-            
-            // Listen for window resize to recheck mobile status
-            window.addEventListener('resize', () => {
-                this.isMobile = window.innerWidth <= 1023;
-            });
+    private carousel: HTMLElement;
+    private items: NodeListOf<HTMLElement>;
+    private indicators: NodeListOf<HTMLElement>;
+    private prevButton: HTMLElement | null;
+    private nextButton: HTMLElement | null;
+    private carouselItemContainers: NodeListOf<HTMLElement>;
+    
+    private currentIndex: number;
+    private autoSlideInterval: number | null;
+    private touchStartX: number;
+    private touchEndX: number;
+    private isMobile: boolean;
+    
+    constructor(carouselElement: HTMLElement | null) {
+        if (!carouselElement) {
+            throw new Error('Carousel element not found');
         }
+
+        this.carousel = carouselElement;
+        this.items = this.carousel.querySelectorAll<HTMLElement>('[data-carousel-item]');
+        this.indicators = this.carousel.querySelectorAll<HTMLElement>('[data-carousel-slide-to]');
+        this.prevButton = this.carousel.querySelector<HTMLElement>('[data-carousel-prev]');
+        this.nextButton = this.carousel.querySelector<HTMLElement>('[data-carousel-next]');
+        this.carouselItemContainers = this.carousel.querySelectorAll<HTMLElement>('.carousel-item-container');
         
-        initEventListeners() {
-            // Indicator clicks
-            this.indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => this.goToSlide(index));
-                indicator.addEventListener('touchstart', (e) => {
-                    e.preventDefault();
-                    this.goToSlide(index);
-                });
+        this.currentIndex = 0;
+        this.autoSlideInterval = null;
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+        this.isMobile = window.innerWidth <= 1023;
+        
+        this.initEventListeners();
+        this.showItem(this.currentIndex);
+        this.startAutoSlide();
+        
+        window.addEventListener('resize', () => {
+            this.isMobile = window.innerWidth <= 1023;
+        });
+    }
+    
+    private initEventListeners(): void {
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+            indicator.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.goToSlide(index);
             });
-            
-            // Previous button
+        });
+        
+        if (this.prevButton) {
             this.prevButton.addEventListener('click', () => this.goToPrevSlide());
             this.prevButton.addEventListener('touchstart', (e) => {
                 e.preventDefault();
                 this.goToPrevSlide();
             });
-            
-            // Next button
+        }
+        
+        if (this.nextButton) {
             this.nextButton.addEventListener('click', () => this.goToNextSlide());
             this.nextButton.addEventListener('touchstart', (e) => {
                 e.preventDefault();
                 this.goToNextSlide();
             });
-            
-            // Touch events for swipe
-            this.carousel.addEventListener('touchstart', (e) => {
-                this.touchStartX = e.changedTouches[0].screenX;
-            }, {passive: true});
-            
-            this.carousel.addEventListener('touchend', (e) => {
-                this.touchEndX = e.changedTouches[0].screenX;
-                this.handleSwipe();
-            }, {passive: true});
         }
         
-        handleSwipe() {
-            const threshold = 50; // minimum swipe distance
-            const difference = this.touchStartX - this.touchEndX;
-            
-            if (Math.abs(difference) < threshold) return;
-            
-            if (difference > 0) {
-                // Swipe left - next slide
-                this.goToNextSlide();
-            } else {
-                // Swipe right - previous slide
-                this.goToPrevSlide();
-            }
-        }
+        this.carousel.addEventListener('touchstart', (e) => {
+            this.touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
         
-        showItem(index) {
-            // Reset all items
-            this.items.forEach((item) => {
-                item.classList.remove('opacity-100', 'translate-x-0', 'active');
-                item.classList.add('opacity-0', 'translate-x-full');
-            });
-            
-            // Reset all indicators
-            this.indicators.forEach((btn) => {
-                btn.classList.remove('bg-white');
-                btn.classList.add('bg-white/50');
-                btn.setAttribute('aria-current', 'false');
-            });
-            
-            // Show current item
-            const currentItem = this.items[index];
-            currentItem.classList.remove('opacity-0', 'translate-x-full');
-            currentItem.classList.add('opacity-100', 'translate-x-0', 'active');
-            
-            // Activate current indicator
-            const currentIndicator = this.indicators[index];
-            currentIndicator.classList.remove('bg-white/50');
-            currentIndicator.classList.add('bg-white');
-            currentIndicator.setAttribute('aria-current', 'true');
-            
-            // For mobile devices, add mobile-active class to carousel container
-            if (this.isMobile) {
-                this.items.forEach((item) => {
-                    const container = item.querySelector('.carousel-item-container');
-                    container.classList.remove('mobile-active');
-                });
-                
-                const activeContainer = currentItem.querySelector('.carousel-item-container');
-                activeContainer.classList.add('mobile-active');
-            }
-            
-            // Reset auto-slide timer
-            this.resetAutoSlide();
-        }
+        this.carousel.addEventListener('touchend', (e) => {
+            this.touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe();
+        }, {passive: true});
+    }
+    
+    private handleSwipe(): void {
+        const threshold = 50;
+        const difference = this.touchStartX - this.touchEndX;
         
-        goToSlide(index) {
-            this.currentIndex = index;
-            this.showItem(this.currentIndex);
-        }
+        if (Math.abs(difference) < threshold) return;
         
-        goToNextSlide() {
-            this.currentIndex = (this.currentIndex + 1) % this.items.length;
-            this.showItem(this.currentIndex);
-        }
-        
-        goToPrevSlide() {
-            this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
-            this.showItem(this.currentIndex);
-        }
-        
-        startAutoSlide() {
-            this.autoSlideInterval = setInterval(() => {
-                this.goToNextSlide();
-            }, 5000);
-        }
-        
-        resetAutoSlide() {
-            this.stopAutoSlide();
-            this.startAutoSlide();
-        }
-        
-        stopAutoSlide() {
-            if (this.autoSlideInterval) {
-                clearInterval(this.autoSlideInterval);
-            }
+        if (difference > 0) {
+            this.goToNextSlide();
+        } else {
+            this.goToPrevSlide();
         }
     }
-
-    // Initialize carousel when DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', () => {
-        const carouselElement = document.querySelector('[data-carousel="static"]');
-        const carousel = new Carousel(carouselElement);
+    
+    private showItem(index: number): void {
+        this.items.forEach((item) => {
+            item.classList.remove('opacity-100', 'translate-x-0', 'active');
+            item.classList.add('opacity-0', 'translate-x-full');
+        });
         
-        // Force enable animations on the first slide at load
-        setTimeout(() => {
-            const activeItem = document.querySelector('[data-carousel-item].opacity-100');
-            if (activeItem) {
-                activeItem.classList.add('active');
-            }
-        }, 100);
-    });
+        this.indicators.forEach((btn) => {
+            btn.classList.remove('bg-white');
+            btn.classList.add('bg-white/50');
+            btn.setAttribute('aria-current', 'false');
+        });
+        
+        const currentItem = this.items[index];
+        currentItem.classList.remove('opacity-0', 'translate-x-full');
+        currentItem.classList.add('opacity-100', 'translate-x-0', 'active');
+        
+        const currentIndicator = this.indicators[index];
+        currentIndicator.classList.remove('bg-white/50');
+        currentIndicator.classList.add('bg-white');
+        currentIndicator.setAttribute('aria-current', 'true');
+        
+        if (this.isMobile) {
+            this.items.forEach((item) => {
+                const container = item.querySelector<HTMLElement>('.carousel-item-container');
+                container?.classList.remove('mobile-active');
+            });
+            
+            const activeContainer = currentItem.querySelector<HTMLElement>('.carousel-item-container');
+            activeContainer?.classList.add('mobile-active');
+        }
+        
+        this.resetAutoSlide();
+    }
+    
+    public goToSlide(index: number): void {
+        if (index < 0 || index >= this.items.length) return;
+        this.currentIndex = index;
+        this.showItem(this.currentIndex);
+    }
+    
+    public goToNextSlide(): void {
+        this.currentIndex = (this.currentIndex + 1) % this.items.length;
+        this.showItem(this.currentIndex);
+    }
+    
+    public goToPrevSlide(): void {
+        this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
+        this.showItem(this.currentIndex);
+    }
+    
+    private startAutoSlide(): void {
+        this.autoSlideInterval = window.setInterval(() => {
+            this.goToNextSlide();
+        }, 5000);
+    }
+    
+    private resetAutoSlide(): void {
+        this.stopAutoSlide();
+        this.startAutoSlide();
+    }
+    
+    private stopAutoSlide(): void {
+        if (this.autoSlideInterval) {
+            clearInterval(this.autoSlideInterval);
+            this.autoSlideInterval = null;
+        }
+    }
+}
+
+// Initialize carousel when DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const carouselElement = document.querySelector<HTMLElement>('[data-carousel="static"]');
+    
+    try {
+        if (carouselElement) {
+            const carousel = new Carousel(carouselElement);
+            
+            setTimeout(() => {
+                const activeItem = document.querySelector<HTMLElement>('[data-carousel-item].opacity-100');
+                activeItem?.classList.add('active');
+            }, 100);
+        } else {
+            console.warn('Carousel element not found');
+        }
+    } catch (error) {
+        console.error('Carousel initialization failed:', error);
+    }
+});
 </script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+const id = "IPC3222SS-ADF40K-I1.md";
+						const collection = "ip-cameras";
+						const slug = "ipc3222ss-adf40k-i1";
+						const body = "";
+						const data = {title:"IPC3222SS-ADF40K-I1",description:"2*2MP LightHunter MultiView Fixed IR Dome Network Camera.",image:"/images/categories/products/ip-cameras/IPC3222SS-ADF40K-11/Network3 (3).png",images:[{url:"/images/categories/products/ip-cameras/IPC3222SS-ADF40K-11/Network3 (1).png",caption:"Front view"},{url:"/images/categories/products/ip-cameras/IPC3222SS-ADF40K-11/Network3 (2).png",caption:"Side view"},{url:"/images/categories/products/ip-cameras/IPC3222SS-ADF40K-11/Network3 (3).png",caption:"Back view"}],features:["High quality image with 2*2MP resolution, 1/2.8\"CMOS sensor","Single IP with dual channels","2MP (1920*1080)@30/25fps; 720P (1280*720) @30/25fps","Ultra 265, H.264,H.265, MJPEG","Both channels support intelligent perimeter protection, include cross line, intrusion, enter area, leave area detection","Based on target classification, smart intrusion prevention significantly reduce false alarm caused by leaves, birds and lights etc., accurately focus on human and motor vehicle and non-motor vehicle","(Only Channel 1)","Intelligent People Flow Counting and Crowd Density Monitoring (Only Channel 1)","130dB true WDR technology enables clear image in strong light scene","Built-in two Mics","Supports 512 GB Micro SD card","DC12V or PoE(IEEE 802.3af) power supply","IP67 protection and IK10 vandal resistant","3-Axis"],specifications:{sensor:"1/2.8\" CMOS",resolution:"2MP ",focalLength:"4.0 mm",irRange:"30 m (98.4 ft)",powerSupply:"DC 12V±25%, PoE (IEEE 802.3af),DC 12V±25%, PoE (IEEE 802.3af)",protection:"IP67, IK10 ",storage:"Micro SD up to 512 GB",dimensions:"176×104×72mm (6.9” × 4.1’’ ×2.8”) (L x W x H)"}};
+						const _internal = {
+							type: 'content',
+							filePath: "C:/Users/sanalemba/UNV-Dubai/src/content/ip-cameras/IPC3222SS-ADF40K-I1.md",
+							rawData: undefined,
+						};
+
+export { _internal, body, collection, data, id, slug };

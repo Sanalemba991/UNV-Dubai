@@ -1,0 +1,12 @@
+const id = "UAC-D112-F28(40).md";
+						const collection = "analog-cameras";
+						const slug = "uac-d112-f2840";
+						const body = "";
+						const data = {title:"UAC-D112-F28(40)",description:"2MP Fixed IR Dome Analog Camera.",image:"/images/categories/products/analog-cameras/UAC-D112-F28 (40)/UAC-D112-F28 (40)2.png",images:[{url:"/images/categories/products/analog-cameras/UAC-D112-F28 (40)/UAC-D112-F28 (40).png",caption:"Front view"},{url:"/images/categories/products/analog-cameras/UAC-D112-F28 (40)/UAC-D112-F28 (40)1.png",caption:"Side view"},{url:"/images/categories/products/analog-cameras/UAC-D112-F28 (40)/UAC-D112-F28 (40)2.png",caption:"Back view"}],features:["2MP high quality image","TVI/AHD/CVI/CVBS","IR-cut filter with auto switch (ICR)","Supports 180° horizontal flip, 180° vertical flip","OSD configuration menu, easy to operate","IP67 waterproof and dustproof design, high reliability","OSD configuration menu in 11 languages"],specifications:{sensor:"1/3.0\" CMOS",resolution:"1080P=1920(H)×1080(V) 720P= 1280(H) ×720(V)",focalLength:"N/A",irRange:"N/A",powerSupply:"DC 12 V ± 25%",protection:"IP67",storage:"N/A",dimensions:"142mm*63mm*65mm (L*W*H)"}};
+						const _internal = {
+							type: 'content',
+							filePath: "C:/Users/sanalemba/UNV-Dubai/src/content/analog-cameras/UAC-D112-F28(40).md",
+							rawData: undefined,
+						};
+
+export { _internal, body, collection, data, id, slug };
