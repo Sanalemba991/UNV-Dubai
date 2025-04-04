@@ -19,12 +19,13 @@ import Logo from "../assets/images/digitallogo.svg";
 
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex flex-1 justify-center">
-            <ul class="flex space-x-6 xl:space-x-8 text-lg items-center">
+            <ul class="flex space-x-10 xl:space-x-8 text-lg items-center">
                 <li>
                     <a href="/" class="nav-link">
                         <span class="nav-link-text">Home</span>
                     </a>
                 </li>
+            
                 <li>
                     <a href="/about" class="nav-link">
                         <span class="nav-link-text">About</span>
@@ -35,11 +36,48 @@ import Logo from "../assets/images/digitallogo.svg";
                         <span class="nav-link-text">Services</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/products" class="nav-link">
+                
+                <!-- Products with dropdown -->
+                <li class="relative group/dropdown">
+                    <a href="/products" class="nav-link flex items-center">
                         <span class="nav-link-text">Products</span>
+                        <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover/dropdown:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
                     </a>
+                    <!-- Dropdown menu -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white dark:bg-gray-800 rounded-md shadow-xl opacity-0 invisible transition-all duration-300 z-50 border border-gray-200 dark:border-gray-700 dropdown-menu">
+                        <div class="py-1">
+                            <a href="/categories/ip-cameras" class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-b border-gray-100 dark:border-gray-700 flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                                <span>Network Cameras</span>
+                            </a>
+                            <a href="/categories/analog-cameras" class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-b border-gray-100 dark:border-gray-700 flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>Analog Cameras</span>
+                            </a>
+                            <a href="/categories/ptz-cameras" class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-b border-gray-100 dark:border-gray-700 flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                                </svg>
+                                <span>PTZ Cameras</span>
+                            </a>
+                            <a href="/categories/dvr" class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                                </svg>
+                                <span>DVR</span>
+                            </a>
+                        </div>
+                    </div>
                 </li>
+                <!-- End of Products dropdown -->
+                
                 <li>
                     <a href="/blog" class="nav-link">
                         <span class="nav-link-text">Blog</span>
@@ -96,12 +134,45 @@ import Logo from "../assets/images/digitallogo.svg";
                 </svg>
                 <span>Services</span>
             </a>
-            <a href="/products" class="mobile-nav-link">
+            
+            <!-- Mobile Products Dropdown -->
+            <div class="mobile-nav-link" id="mobile-products-toggle">
                 <svg class="mobile-nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
                 <span>Products</span>
-            </a>
+                <svg class="w-5 h-5 ml-auto transform transition-transform duration-200" id="mobile-products-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </div>
+            <div id="mobile-products-menu" class="hidden ml-4 mt-2 space-y-2">
+                <a href="/categories/ip-cameras" class="block pl-8 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 rounded-lg flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                    Network Cameras
+                </a>
+                <a href="/categories/analog-cameras" class="block pl-8 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 rounded-lg flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                    </svg>
+                    Analog Cameras
+                </a>
+                <a href="/categories/ptz-cameras" class="block pl-8 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 rounded-lg flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                    </svg>
+                    PTZ Cameras
+                </a>
+                <a href="/categories/dvr" class="block pl-8 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 rounded-lg flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                    </svg>
+                    DVR
+                </a>
+            </div>
+            <!-- End Mobile Products Dropdown -->
+            
             <a href="/blog" class="mobile-nav-link">
                 <svg class="mobile-nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
@@ -125,23 +196,66 @@ import Logo from "../assets/images/digitallogo.svg";
 </nav>
 
 <!-- Spacer to offset fixed navbar -->
-<div class="mt-10 "></div>
+<div class="mt-16 sm:mt-14"></div>
 
 <style>
     .nav-link {
         @apply relative text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400 transition-colors duration-300 py-2 px-3;
     }
+    
+    /* Modified for consistent font/underline behavior */
     .nav-link-text {
-        @apply relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-blue-600 dark:before:bg-blue-400 before:transition-all before:duration-300 hover:before:w-full;
+        @apply relative inline-block;
     }
+    
+    .nav-link-text::after {
+        content: '';
+        @apply absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300;
+    }
+    
+    .nav-link:hover .nav-link-text::after,
+    .nav-link.active .nav-link-text::after {
+        @apply w-full;
+    }
+    
     .mobile-nav-link {
         @apply flex items-center px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 rounded-lg transition-all duration-300;
     }
+    
     .mobile-nav-icon {
         @apply w-6 h-6 mr-3 text-gray-500 dark:text-gray-400 transition-colors duration-300;
     }
+    
     .mobile-nav-link:hover .mobile-nav-icon {
         @apply text-blue-600 dark:text-blue-400;
+    }
+    
+    #mobile-products-chevron {
+        @apply text-gray-500 dark:text-gray-400;
+    }
+    
+    #mobile-products-toggle:hover #mobile-products-chevron {
+        @apply text-blue-600 dark:text-blue-400;
+    }
+
+    /* Fixed dropdown styles */
+    .dropdown-menu {
+        @apply transition-all duration-300;
+        transform: translate(-50%, 10px);
+    }
+
+    .group\/dropdown:hover .dropdown-menu {
+        @apply opacity-100 visible;
+        transform: translate(-50%, 0);
+    }
+
+    /* Mobile menu transitions */
+    #mobile-menu {
+        @apply transition-all duration-500 ease-in-out;
+    }
+
+    #mobile-products-menu {
+        @apply transition-all duration-300;
     }
 </style>
 
@@ -150,23 +264,93 @@ import Logo from "../assets/images/digitallogo.svg";
         const nav = document.getElementById('main-nav');
         const toggleButton = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
+        
+        // Get all the nav links
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        // Set active link based on current URL
+        const currentPath = window.location.pathname;
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPath || (href !== '/' && currentPath.startsWith(href))) {
+                link.classList.add('active');
+            }
+        });
 
-        // Toggle mobile menu
+        // Toggle mobile menu with improved height calculation
         toggleButton.addEventListener('click', () => {
             const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
             toggleButton.setAttribute('aria-expanded', String(!isExpanded));
             
             if (!isExpanded) {
                 mobileMenu.setAttribute('aria-hidden', 'false');
-                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+                // Calculate the full height of the menu
+                mobileMenu.style.display = 'block';
+                const height = mobileMenu.scrollHeight;
+                mobileMenu.style.display = '';
+                // Set the calculated height
+                mobileMenu.style.maxHeight = height + 'px';
             } else {
                 mobileMenu.setAttribute('aria-hidden', 'true');
                 mobileMenu.style.maxHeight = '0';
             }
         });
 
+        // Enhanced mobile products menu toggle
+        const mobileProductsToggle = document.getElementById('mobile-products-toggle');
+        const mobileProductsMenu = document.getElementById('mobile-products-menu');
+        const mobileProductsChevron = document.getElementById('mobile-products-chevron');
+        
+        if (mobileProductsToggle) {
+            mobileProductsToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const isExpanded = !mobileProductsMenu.classList.contains('hidden');
+                
+                if (isExpanded) {
+                    // Collapse submenu
+                    mobileProductsMenu.classList.add('hidden');
+                    mobileProductsChevron.classList.remove('rotate-180');
+                } else {
+                    // Expand submenu
+                    mobileProductsMenu.classList.remove('hidden');
+                    mobileProductsChevron.classList.add('rotate-180');
+                    
+                    // Recalculate parent menu height to accommodate the dropdown
+                    setTimeout(() => {
+                        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+                    }, 10);
+                }
+            });
+        }
+
+        // Fix for desktop dropdown menus
+        const dropdownItems = document.querySelectorAll('.group\\/dropdown');
+        dropdownItems.forEach(item => {
+            // Get the dropdown menu element
+            const dropdownMenu = item.querySelector('.dropdown-menu');
+            
+            // Ensure visibility on hover
+            item.addEventListener('mouseenter', () => {
+                if (dropdownMenu) {
+                    dropdownMenu.classList.add('opacity-100', 'visible');
+                    dropdownMenu.classList.remove('opacity-0', 'invisible');
+                    dropdownMenu.style.transform = 'translate(-50%, 0)';
+                }
+            });
+            
+            // Reset on mouse leave
+            item.addEventListener('mouseleave', () => {
+                if (dropdownMenu) {
+                    dropdownMenu.classList.remove('opacity-100', 'visible');
+                    dropdownMenu.classList.add('opacity-0', 'invisible');
+                    dropdownMenu.style.transform = 'translate(-50%, 10px)';
+                }
+            });
+        });
+
         // Close menu when clicking on links
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
+        document.querySelectorAll('#mobile-menu a:not(#mobile-products-menu a)').forEach(link => {
             link.addEventListener('click', () => {
                 toggleButton.setAttribute('aria-expanded', 'false');
                 mobileMenu.setAttribute('aria-hidden', 'true');
@@ -178,19 +362,22 @@ import Logo from "../assets/images/digitallogo.svg";
         window.addEventListener('scroll', () => {
             if (window.scrollY > 10) {
                 nav.classList.add('shadow-lg', 'bg-gray-200', 'dark:bg-gray-900');
-                nav.classList.remove('shadow-sm');
+                nav.classList.remove('shadow-sm', 'bg-gray-200/90', 'dark:bg-gray-900/90');
             } else {
-                nav.classList.remove('shadow-lg');
-                nav.classList.add('shadow-sm');
+                nav.classList.remove('shadow-lg', 'bg-gray-200', 'dark:bg-gray-900');
+                nav.classList.add('shadow-sm', 'bg-gray-200/90', 'dark:bg-gray-900/90');
             }
         });
 
         // Handle window resize
         window.addEventListener('resize', () => {
             if (window.innerWidth >= 1024) {
+                // Reset mobile menu state on desktop view
                 toggleButton.setAttribute('aria-expanded', 'false');
                 mobileMenu.setAttribute('aria-hidden', 'true');
                 mobileMenu.style.maxHeight = '0';
+                mobileProductsMenu.classList.add('hidden');
+                mobileProductsChevron.classList.remove('rotate-180');
             }
         });
     });
