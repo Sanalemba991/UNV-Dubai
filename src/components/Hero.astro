@@ -26,6 +26,21 @@
                 transform: translateY(0);
             }
         }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes mobileReveal {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
     
         /* Professional font styling */
         body {
@@ -172,6 +187,23 @@
         [data-carousel-slide-to]:hover {
             transform: scale(1.2);
         }
+        
+        /* Active slide animations */
+        .carousel-item.active .carousel-item-container .carousel-caption {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .carousel-item.active .carousel-item-container .carousel-caption h3 {
+            animation: slideUp 0.5s ease 0.2s forwards;
+        }
+        
+        .carousel-item.active .carousel-item-container .carousel-caption p {
+            animation: slideUp 0.5s ease 0.3s forwards;
+        }
+        
+        .carousel-item.active .carousel-item-container .shop-now-btn {
+            animation: buttonReveal 0.5s ease 0.4s forwards;
+        }
     
         /* Desktop-specific styles */
         @media (min-width: 1024px) {
@@ -256,27 +288,21 @@
                 transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
             }
             
-            /* Always show caption on mobile but with proper transitions */
-            .carousel-item-container .carousel-caption {
-                opacity: 1 !important;
+            /* Mobile animations - enhanced */
+            .carousel-item.active .carousel-item-container .carousel-caption {
+                animation: fadeIn 0.8s ease-out forwards;
             }
             
-            .carousel-item-container .carousel-caption h3,
-            .carousel-item-container .carousel-caption p {
-                opacity: 1 !important;
-                transform: translateY(0) !important;
+            .carousel-item.active .carousel-item-container .carousel-caption h3 {
+                animation: mobileReveal 0.6s ease 0.2s forwards;
             }
             
-            .carousel-item-container .shop-now-btn {
-                opacity: 1 !important;
-                transform: translateY(0) !important;
-                animation: none !important;
+            .carousel-item.active .carousel-item-container .carousel-caption p {
+                animation: mobileReveal 0.6s ease 0.4s forwards;
             }
             
-            /* Adjust indicator position for mobile */
-            [data-carousel-slide-to] {
-                width: 10px;
-                height: 10px;
+            .carousel-item.active .carousel-item-container .shop-now-btn {
+                animation: mobileReveal 0.6s ease 0.6s forwards;
             }
         }
     </style>
@@ -462,7 +488,7 @@
         showItem(index) {
             // Reset all items
             this.items.forEach((item) => {
-                item.classList.remove('opacity-100', 'translate-x-0');
+                item.classList.remove('opacity-100', 'translate-x-0', 'active');
                 item.classList.add('opacity-0', 'translate-x-full');
             });
             
@@ -476,13 +502,24 @@
             // Show current item
             const currentItem = this.items[index];
             currentItem.classList.remove('opacity-0', 'translate-x-full');
-            currentItem.classList.add('opacity-100', 'translate-x-0');
+            currentItem.classList.add('opacity-100', 'translate-x-0', 'active');
             
             // Activate current indicator
             const currentIndicator = this.indicators[index];
             currentIndicator.classList.remove('bg-white/50');
             currentIndicator.classList.add('bg-white');
             currentIndicator.setAttribute('aria-current', 'true');
+            
+            // For mobile devices, add mobile-active class to carousel container
+            if (this.isMobile) {
+                this.items.forEach((item) => {
+                    const container = item.querySelector('.carousel-item-container');
+                    container.classList.remove('mobile-active');
+                });
+                
+                const activeContainer = currentItem.querySelector('.carousel-item-container');
+                activeContainer.classList.add('mobile-active');
+            }
             
             // Reset auto-slide timer
             this.resetAutoSlide();
@@ -524,7 +561,15 @@
     // Initialize carousel when DOM is fully loaded
     document.addEventListener('DOMContentLoaded', () => {
         const carouselElement = document.querySelector('[data-carousel="static"]');
-        new Carousel(carouselElement);
+        const carousel = new Carousel(carouselElement);
+        
+        // Force enable animations on the first slide at load
+        setTimeout(() => {
+            const activeItem = document.querySelector('[data-carousel-item].opacity-100');
+            if (activeItem) {
+                activeItem.classList.add('active');
+            }
+        }, 100);
     });
 </script>
 </body>
