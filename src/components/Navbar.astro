@@ -135,43 +135,13 @@ import Logo from "../assets/images/digitallogo.svg";
                 <span>Services</span>
             </a>
             
-            <!-- Mobile Products Dropdown -->
-            <div class="mobile-nav-link" id="mobile-products-toggle">
+            <!-- Simple Products link (no dropdown) -->
+            <a href="/products" class="mobile-nav-link">
                 <svg class="mobile-nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
                 <span>Products</span>
-                <svg class="w-5 h-5 ml-auto transform transition-transform duration-200" id="mobile-products-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </div>
-            <div id="mobile-products-menu" class="hidden ml-4 mt-2 space-y-2">
-                <a href="/categories/ip-cameras" class="block pl-8 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 rounded-lg flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                    </svg>
-                    Network Cameras
-                </a>
-                <a href="/categories/analog-cameras" class="block pl-8 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 rounded-lg flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                    </svg>
-                    Analog Cameras
-                </a>
-                <a href="/categories/ptz-cameras" class="block pl-8 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 rounded-lg flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
-                    </svg>
-                    PTZ Cameras
-                </a>
-                <a href="/categories/dvr" class="block pl-8 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 rounded-lg flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
-                    </svg>
-                    DVR
-                </a>
-            </div>
-            <!-- End Mobile Products Dropdown -->
+            </a>
             
             <a href="/blog" class="mobile-nav-link">
                 <svg class="mobile-nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -229,14 +199,6 @@ import Logo from "../assets/images/digitallogo.svg";
     .mobile-nav-link:hover .mobile-nav-icon {
         @apply text-blue-600 dark:text-blue-400;
     }
-    
-    #mobile-products-chevron {
-        @apply text-gray-500 dark:text-gray-400;
-    }
-    
-    #mobile-products-toggle:hover #mobile-products-chevron {
-        @apply text-blue-600 dark:text-blue-400;
-    }
 
     /* Fixed dropdown styles */
     .dropdown-menu {
@@ -252,10 +214,6 @@ import Logo from "../assets/images/digitallogo.svg";
     /* Mobile menu transitions */
     #mobile-menu {
         @apply transition-all duration-500 ease-in-out;
-    }
-
-    #mobile-products-menu {
-        @apply transition-all duration-300;
     }
 </style>
 
@@ -296,34 +254,6 @@ import Logo from "../assets/images/digitallogo.svg";
             }
         });
 
-        // Enhanced mobile products menu toggle
-        const mobileProductsToggle = document.getElementById('mobile-products-toggle');
-        const mobileProductsMenu = document.getElementById('mobile-products-menu');
-        const mobileProductsChevron = document.getElementById('mobile-products-chevron');
-        
-        if (mobileProductsToggle) {
-            mobileProductsToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                const isExpanded = !mobileProductsMenu.classList.contains('hidden');
-                
-                if (isExpanded) {
-                    // Collapse submenu
-                    mobileProductsMenu.classList.add('hidden');
-                    mobileProductsChevron.classList.remove('rotate-180');
-                } else {
-                    // Expand submenu
-                    mobileProductsMenu.classList.remove('hidden');
-                    mobileProductsChevron.classList.add('rotate-180');
-                    
-                    // Recalculate parent menu height to accommodate the dropdown
-                    setTimeout(() => {
-                        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-                    }, 10);
-                }
-            });
-        }
-
         // Fix for desktop dropdown menus
         const dropdownItems = document.querySelectorAll('.group\\/dropdown');
         dropdownItems.forEach(item => {
@@ -350,7 +280,7 @@ import Logo from "../assets/images/digitallogo.svg";
         });
 
         // Close menu when clicking on links
-        document.querySelectorAll('#mobile-menu a:not(#mobile-products-menu a)').forEach(link => {
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 toggleButton.setAttribute('aria-expanded', 'false');
                 mobileMenu.setAttribute('aria-hidden', 'true');
@@ -376,8 +306,6 @@ import Logo from "../assets/images/digitallogo.svg";
                 toggleButton.setAttribute('aria-expanded', 'false');
                 mobileMenu.setAttribute('aria-hidden', 'true');
                 mobileMenu.style.maxHeight = '0';
-                mobileProductsMenu.classList.add('hidden');
-                mobileProductsChevron.classList.remove('rotate-180');
             }
         });
     });
