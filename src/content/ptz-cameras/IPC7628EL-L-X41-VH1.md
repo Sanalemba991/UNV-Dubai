@@ -4,7 +4,7 @@ description: "8MP 41X Lighthunter Laser Network Positioning system with advanced
 images:
   - url: "/images/categories/products/ptz-cameras/IPC7628EL-L-X41-VH1/IPC7628EL-L-X41-VH1.png"
     caption: "Front view"
-  - url:  "/images/categories/products/ptz-cameras/IPC7628EL-L-X41-VH1/IPC7628EL-L-X41-VH11.png"
+  - url:  "/images/categories/products/ptz-cameras/IPC7628EL-L-X41-VH1/IPC7628EL-L-X41-VH.png"
     caption: "Side view"
   - url:  "/images/categories/products/ptz-cameras/IPC7628EL-L-X41-VH1/IPC7628EL-L-X41-VH12.png"
     caption: "Back view"
