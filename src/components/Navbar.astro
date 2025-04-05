@@ -284,7 +284,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 if (dropdownMenu) {
                     dropdownMenu.classList.add('opacity-100', 'visible');
                     dropdownMenu.classList.remove('opacity-0', 'invisible');
-             
+                    dropdownMenu.style.transform = 'translate(-50%, 0)';
                 }
             });
             
@@ -293,7 +293,7 @@ import Logo from "../assets/images/digitallogo.svg";
                 if (dropdownMenu) {
                     dropdownMenu.classList.remove('opacity-100', 'visible');
                     dropdownMenu.classList.add('opacity-0', 'invisible');
-                 
+                    dropdownMenu.style.transform = 'translate(-50%, 10px)';
                 }
             });
         });
