@@ -1,85 +1,90 @@
 ---
+// src/components/Carousel.astro
+
+interface CarouselItem {
+  title: string;
+  description: string;
+  ctaText: string;
+  desktopImage: string;
+  mobileImage: string;
+  link: string;
+}
+
+const items: CarouselItem[] = [
+  {
+    title: "OUR PRODUCTS",
+    description: "Cutting-edge surveillance solutions designed for superior performance.",
+    ctaText: "Explore Our Products",
+    desktopImage: "/images/categories/products/hero/Products.png",
+    mobileImage: "/images/categories/products/hero/mobile2.png",
+    link: "/products"
+  },
+  {
+    title: "LATEST BLOGS",
+    description: "Enhance your home's security with state-of-the-art monitoring solutions.",
+    ctaText: "Discover More",
+    desktopImage: "/images/categories/products/hero/Blog.png",
+    mobileImage: "/images/categories/products/hero/mobile.png",
+    link: "/blog"
+  },
+  {
+    title: "INSIGHTS",
+    description: "Top-tier surveillance solutions tailored for businesses and institutions.",
+    ctaText: "Explore Insights",
+    desktopImage: "/images/categories/products/hero/Insights.png",
+    mobileImage: "/images/categories/products/hero/mobile1.png",
+    link: "/insights"
+  }
+];
 ---
 
 <div class="carousel-wrapper mb-10">
     <div id="default-carousel" class="relative w-full" data-carousel="static">
         <!-- Carousel wrapper -->
         <div class="relative h-full overflow-hidden rounded-none">
-            <!-- Item 1 -->
-            <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
-                <div class="carousel-item-container" onclick="window.location.href='/products'">
-                    <!-- Desktop Image -->
-                    <img
-                        src="/images/categories/products/hero/Products.png"
-                        class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 hidden sm:block"
-                        alt="UNV Security Products"
-                    />
-                    <!-- Mobile Image -->
-                    <img
-                        src="/images/categories/products/hero/mobile2.png"
-                        class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 sm:hidden"
-                        alt="UNV Security Products Mobile"
-                    />
-                    <div class="carousel-caption">
-                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold heading-font">OUR PRODUCTS</h3>
-                        <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-4 opacity-90">Cutting-edge surveillance solutions designed for superior performance.</p>
-                        <span class="shop-now-btn">Explore Our Products</span>
+            <!-- Items -->
+            {items.map((item, index) => (
+                <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
+                    <div class="carousel-item-container" onclick={`window.location.href='${item.link}'`}>
+                        <!-- Desktop Image -->
+                        <img
+                            src={item.desktopImage}
+                            class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 hidden sm:block"
+                            alt={`UNV ${item.title}`}
+                            width="1920"
+                            height="1080"
+                            loading={index === 0 ? 'eager' : 'lazy'}
+                        />
+                        <!-- Mobile Image -->
+                        <img
+                            src={item.mobileImage}
+                            class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 sm:hidden"
+                            alt={`UNV ${item.title} Mobile`}
+                            width="600"
+                            height="900"
+                            loading={index === 0 ? 'eager' : 'lazy'}
+                        />
+                        <div class="carousel-caption">
+                            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold heading-font">{item.title}</h3>
+                            <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-4 opacity-90">{item.description}</p>
+                            <span class="shop-now-btn">{item.ctaText}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Item 2 -->
-            <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
-                <div class="carousel-item-container" onclick="window.location.href='/blog'">
-                    <!-- Desktop Image -->
-                    <img
-                        src="/images/categories/products/hero/Blog.png"
-                        class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 hidden sm:block"
-                        alt="UNV Security Blog"
-                    />
-                    <!-- Mobile Image -->
-                    <img
-                        src="/images/categories/products/hero/mobile.png"
-                        class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 sm:hidden"
-                        alt="UNV Security Blog Mobile"
-                    />
-                    <div class="carousel-caption">
-                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold heading-font">LATEST BLOGS</h3>
-                        <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-4 opacity-90">Enhance your home's security with state-of-the-art monitoring solutions.</p>
-                        <span class="shop-now-btn">Discover More</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Item 3 -->
-            <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
-                <div class="carousel-item-container" onclick="window.location.href='/insights'">
-                    <!-- Desktop Image -->
-                    <img
-                        src="/images/categories/products/hero/Insights.png"
-                        class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 hidden sm:block"
-                        alt="UNV Security Insights"
-                    />
-                    <!-- Mobile Image -->
-                    <img
-                        src="/images/categories/products/hero/mobile1.png"
-                        class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 sm:hidden"
-                        alt="UNV Security Insights Mobile"
-                    />
-                    <div class="carousel-caption">
-                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold heading-font">INSIGHTS</h3>
-                        <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-4 opacity-90">Top-tier surveillance solutions tailored for businesses and institutions.</p>
-                        <span class="shop-now-btn">Explore Insights</span>
-                    </div>
-                </div>
-            </div>
+            ))}
         </div>
 
         <!-- Slider indicators -->
         <div class="absolute z-30 flex -translate-x-1/2 bottom-3 sm:bottom-4 md:bottom-5 left-1/2 space-x-2 sm:space-x-3 rtl:space-x-reverse">
-            <button type="button" class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-            <button type="button" class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-            <button type="button" class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+            {items.map((_, index) => (
+                <button
+                    type="button"
+                    class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-colors"
+                    aria-current={index === 0 ? "true" : "false"}
+                    aria-label={`Slide ${index + 1}`}
+                    data-carousel-slide-to={index}
+                ></button>
+            ))}
         </div>
 
         <!-- Slider controls -->
@@ -102,7 +107,7 @@
     </div>
 </div>
 
-<style>
+<style is:global>
     /* Base animations with more professional effects */
     @keyframes subtleGlow {
         0% { text-shadow: 0 0 1px rgba(255,255,255,0.2); }
@@ -137,13 +142,6 @@
     }
 
     /* Professional font styling */
-    :global(body) {
-    
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-    }
-
     .heading-font {
         font-family: 'Montserrat', sans-serif;
         letter-spacing: 0.5px;
@@ -165,6 +163,19 @@
         perspective: 1000px;
         touch-action: manipulation;
     }
+
+body, html {
+    overflow-x: hidden; 
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel-wrapper {
+    width: 100%;
+    position: relative;
+   
+}
 
     .carousel-caption {
         position: absolute;
@@ -302,9 +313,9 @@
     /* Desktop-specific styles */
     @media (min-width: 1024px) {
         #default-carousel {
-            height: 90vh; /* Increased from 80vh to 90vh */
-            min-height: 700px; /* Increased minimum height */
-            max-height: 1000px; /* Increased maximum height */
+            height: 90vh;
+            min-height: 700px;
+            max-height: 1000px;
         }
         
         .carousel-image {
@@ -401,7 +412,8 @@
     }
 </style>
 
-<script>
+<script is:inline>
+// Using TypeScript in Astro with proper typing
 class Carousel {
     constructor(carouselElement) {
         if (!carouselElement) {
@@ -567,8 +579,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
-
-<!-- Font imports -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
