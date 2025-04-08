@@ -8,11 +8,99 @@ const publishedTeamMembers = await getCollection("teams", ({ data }) => {
    return !data.draft && data.publishDate < new Date();
 });
 
-const title="UNV Camera distributor in Dubai,U.A.E"
-const description="Discover Digital Link Technology, your authorized supplier and distributor of UNV camera products in Dubai, Sharjah, and across the UAE"
+const title = "UNV Camera distributor in Dubai,U.A.E";
+const description = "Discover Digital Link Technology, your authorized supplier and distributor of UNV camera products in Dubai, Sharjah, and across the UAE";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://unvdubai.com/#organization",
+      "name": "Digital Link Technology LLC",
+      "url": "https://unvdubai.com",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": `${Astro.url.origin}/unvdubai.png`,
+        "url": `${Astro.url.origin}/unvdubai.png`,
+        "contentUrl": "https://digitallink.ae/wp-content/uploads/2023/04/imageedit_3_7633242330.png",
+        "caption": "unvdubai",
+        "inLanguage": "en-US",
+        "width": 1000,
+        "height": 375
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://unvdubai.com/#website",
+      "url": "https://unvdubai.com",
+      "name": "unvdubai.com",
+      "publisher": {
+        "@id": "https://unvdubai.com/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://unvdubai.com/about/#webpage",
+      "url": "https://unvdubai.com/about/",
+      "name": "About UNV Authorized Distributor in Dubai | Digital Link Technology",
+      "description": "Learn about Digital Link Technology, the authorized UNV distributor in Dubai and UAE. Our team, mission, and commitment to providing top-quality security solutions.",
+      "isPartOf": {
+        "@id": "https://unvdubai.com/#website"
+      },
+      "about": {
+        "@id": "https://unvdubai.com/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "AboutPage",
+      "@id": "https://unvdubai.com/about/#aboutpage",
+      "url": "https://unvdubai.com/about/",
+      "name": "About UNV Dubai Distributor",
+      "description": "About page for Digital Link Technology LLC, authorized UNV distributor in Dubai, UAE. Learn about our team, company history, and commitment to quality security solutions.",
+      "isPartOf": {
+        "@id": "https://unvdubai.com/about/#webpage"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://unvdubai.com/about/#abdulgafoor",
+      "name": "Abdul Gafoor",
+      "jobTitle": "CEO & CO-FOUNDER",
+      "worksFor": {
+        "@id": "https://unvdubai.com/#organization"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": `${Astro.url.origin}${gafoor.src}`,
+        "width": 400,
+        "height": 400
+      }
+    },
+    {
+      "@type": "ItemList",
+      "itemListElement": publishedTeamMembers.map((member, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Person",
+          "name": member.data.name,
+          "jobTitle": member.data.title,
+          "image": `${Astro.url.origin}${member.data.avatar.src}`,
+          "worksFor": {
+            "@id": "https://unvdubai.com/#organization"
+          }
+        }
+      }))
+    }
+  ]
+};
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} structuredData={structuredData}>
 	
     <!-- <Hero client:load /> -->
 	<section

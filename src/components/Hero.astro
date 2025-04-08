@@ -38,6 +38,64 @@ const items: CarouselItem[] = [
 ];
 ---
 
+<!-- Carousel Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "WebPage",
+        "name": "OUR PRODUCTS",
+        "description": "Cutting-edge surveillance solutions designed for superior performance.",
+        "url": "/products",
+        "image": {
+          "@type": "ImageObject",
+          "url": "/images/categories/products/hero/Products.png",
+          "width": 1920,
+          "height": 1080
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "WebPage",
+        "name": "LATEST BLOGS",
+        "description": "Enhance your home's security with state-of-the-art monitoring solutions.",
+        "url": "/blog",
+        "image": {
+          "@type": "ImageObject",
+          "url": "/images/categories/products/hero/Blog.png",
+          "width": 1920,
+          "height": 1080
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "WebPage",
+        "name": "INSIGHTS",
+        "description": "Top-tier surveillance solutions tailored for businesses and institutions.",
+        "url": "/insights",
+        "image": {
+          "@type": "ImageObject",
+          "url": "/images/categories/products/hero/Insights.png",
+          "width": 1920,
+          "height": 1080
+        }
+      }
+    }
+  ]
+}
+</script>
+
 <div class="carousel-wrapper mb-10">
     <div id="default-carousel" class="relative w-full" data-carousel="static">
         <!-- Carousel wrapper -->

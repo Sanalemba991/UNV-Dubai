@@ -1,12 +1,70 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContactDigi from '~/components/ContactDigi.astro';
-const title="Authorized UNV Camera Supplier & Distributor in Dubai, Sharjah & UAE"
-const description= "Digital Link Technology: Your trusted supplier and distributor of UNV cameras across Dubai, Sharjah, and the UAE. Discover our range of products today!"
+
+const title = "Authorized UNV Camera Supplier & Distributor in Dubai, Sharjah & UAE";
+const description = "Digital Link Technology: Your trusted supplier and distributor of UNV cameras across Dubai, Sharjah, and the UAE. Discover our range of products today!";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://unvdubai.com/#organization",
+      "name": "Digital Link Technology LLC",
+      "url": "https://unvdubai.com",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": `${Astro.url.origin}/unvdubai.png`,
+        "url": `${Astro.url.origin}/unvdubai.png`,
+        "contentUrl": "https://digitallink.ae/wp-content/uploads/2023/04/imageedit_3_7633242330.png",
+        "caption": "unvdubai",
+        "inLanguage": "en-US",
+        "width": 1000,
+        "height": 375
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://unvdubai.com/#website",
+      "url": "https://unvdubai.com",
+      "name": "unvdubai.com",
+      "publisher": {
+        "@id": "https://unvdubai.com/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://unvdubai.com/contact/#webpage",
+      "url": "https://unvdubai.com/contact/",
+      "name": "Contact UNV Authorized Distributor in Dubai, UAE | Digital Link Technology",
+      "description": "Get in touch with Digital Link Technology, the authorized UNV distributor in Dubai and UAE. Contact us for inquiries, support, and professional security solutions.",
+      "isPartOf": {
+        "@id": "https://unvdubai.com/#website"
+      },
+      "about": {
+        "@id": "https://unvdubai.com/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "ContactPage",
+      "@id": "https://unvdubai.com/contact/#contactpage",
+      "url": "https://unvdubai.com/contact/",
+      "name": "Contact UNV Dubai Distributor",
+      "description": "Contact page for Digital Link Technology LLC, authorized UNV distributor in Dubai, UAE. Reach out for product inquiries, technical support, and professional security solutions.",
+      "isPartOf": {
+        "@id": "https://unvdubai.com/contact/#webpage"
+      },
+      "inLanguage": "en-US"
+    }
+  ]
+};
 ---
 
-<Layout title={title}, description= {description}>
-	<main>
+<Layout title={title} description={description} structuredData={structuredData}>
+  <main>
     <ContactDigi/>	
-	</main>
+  </main>
 </Layout>
