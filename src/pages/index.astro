@@ -12,9 +12,11 @@ import Sections from "~/components/Sections.astro";
 import Unvdigi from "~/components/Unvdigi.astro";
 import Whatsapp from "~/components/Whatsapp";
 import Feature from "~/components/features/Feature.astro";
-const title: string =
-  "UNV Authorized distributor in Dubai,U.A.E";
-const description: string = "Premier Hikvision Distributor in Dubai, UAE. Explore our range of genuine products and benefit from expert support. Contact us for inquiries";
+
+// SEO Meta Configuration
+const title: string = "UNV Authorized Distributor in Dubai, UAE | Digital Link Technology LLC";
+const description: string = "Premier UNV Distributor in Dubai, UAE offering security cameras, NVRs, video surveillance systems. Authorized UNV partner with expert support & installation services.";
+const keywords: string = "UNV Dubai, UNV UAE, UNV distributor, security cameras Dubai, CCTV systems UAE, IP cameras, video surveillance, NVR systems, UNV authorized dealer, security solutions Dubai";
 
 const testimonials: CollectionEntry<"testimonials">[] = (
   await getCollection("testimonials")
@@ -22,6 +24,7 @@ const testimonials: CollectionEntry<"testimonials">[] = (
   (a: CollectionEntry<"testimonials">, b: CollectionEntry<"testimonials">) =>
     a.data.id - b.data.id
 );
+
 const structuredData = {
  "@context": "https://schema.org",
   "@graph": [
@@ -45,12 +48,16 @@ const structuredData = {
       "@type": "WebSite",
       "@id": "https://unvdubai.com/#website",
       "url": "https://unvdubai.com",
-      "name": "unvdubai.com",
+      "name": "UNV Dubai | Authorized Distributor in UAE | Digital Link Technology",
       "publisher": {
         "@id": "https://unvdubai.com/#organization"
       },
       "inLanguage": "en-US",
-      
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://unvdubai.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     },
     {
       "@type": "ImageObject",
@@ -64,8 +71,8 @@ const structuredData = {
       "@type": "WebPage",
       "@id": "https://unvdubai.com/#webpage",
       "url": "https://unvdubai.com/",
-      "name": "Digital Link Technology LLC - UNV National Distributor in Dubai, UAE, 25th St - Naif - Dubai - United Arab Emirates - Digital Link Technology LLC",
-      "description": "UNV Dubai Authorized Distributor in the UAE offering premium surveillance solutions including IP cameras, NVRs, and video management systems. Providing cutting-edge security technology with local support and tailored solutions for businesses and homes in the UAE.",
+      "name": "UNV Authorized Distributor in Dubai, UAE | Security Solutions | Digital Link Technology",
+      "description": description,
       "datePublished": "2023-05-05T12:19:39+01:00",
       "dateModified": "2024-11-25T11:05:33+00:00",
       "about": {
@@ -81,14 +88,14 @@ const structuredData = {
     },
     {
       "@type": "Article",
-      "headline": "Digital Link Technology LLC - UNV National Distributor in Dubai, UAE, 25th St - Naif - Dubai - United Arab Emirates - Digital Link Technology LLC",
+      "headline": "UNV Security Solutions in Dubai - Authorized Distributor",
       "datePublished": "2023-05-05T12:19:39+01:00",
       "dateModified": "2024-11-25T11:05:33+00:00",
       "publisher": {
         "@id": "https://unvdubai.com/#organization"
       },
-      "description": "UNV Dubai Authorized Distributor in the UAE offering premium surveillance solutions including IP cameras, NVRs, and video management systems. Providing cutting-edge security technology with local support and tailored solutions for businesses and homes in the UAE.",
-      "name": "Digital Link Technology LLC - UNV National Distributor in Dubai, UAE, 25th St - Naif - Dubai - United Arab Emirates - Digital Link Technology LLC",
+      "description": description,
+      "name": title,
       "@id": "https://unvdubai.com/#richSnippet",
       "isPartOf": {
         "@id": "https://unvdubai.com/#webpage"
@@ -110,15 +117,25 @@ const structuredData = {
       },
       "speakable": {
         "@type": "SpeakableSpecification",
-        "cssSelector": []
+        "cssSelector": [".hero", ".testimonials"]
       }
     }
   ]
 };
-
 ---
 
-<Layout title={title} description ={description} structuredData={structuredData}>
+<Layout 
+  title={title} 
+  description={description} 
+  keywords={keywords}
+  structuredData={structuredData}
+  canonicalUrl={Astro.url.href}
+  ogTitle={title}
+  ogDescription={description}
+  ogImage={`${Astro.url.origin}/unvdubai.png`}
+  ogUrl={Astro.url.href}
+  twitterCard="summary_large_image"
+>
 <Unvdigi/> 
 <Sections>
 <Hero/>
