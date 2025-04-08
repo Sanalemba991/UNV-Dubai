@@ -16,13 +16,13 @@ const structuredData = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://unvdubai.com/#organization",
+      "@id": "https://unvbang.netlify.app/#organization",
       "name": "Digital Link Technology LLC",
-      "url": "https://unvdubai.com",
+      "url": "https://unvbang.netlify.app",
       "logo": {
         "@type": "ImageObject",
-        "@id": `${Astro.url.origin}/unvdubai.png`,
-        "url": `${Astro.url.origin}/unvdubai.png`,
+        "@id": "https://unvbang.netlify.app/unvdubai.png",
+        "url": "https://unvbang.netlify.app/unvdubai.png",
         "contentUrl": "https://digitallink.ae/wp-content/uploads/2023/04/imageedit_3_7633242330.png",
         "caption": "unvdubai",
         "inLanguage": "en-US",
@@ -32,50 +32,50 @@ const structuredData = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://unvdubai.com/#website",
-      "url": "https://unvdubai.com",
-      "name": "unvdubai.com",
+      "@id": "https://unvbang.netlify.app/#website",
+      "url": "https://unvbang.netlify.app",
+      "name": "unvbang.netlify.app",
       "publisher": {
-        "@id": "https://unvdubai.com/#organization"
+        "@id": "https://unvbang.netlify.app/#organization"
       },
       "inLanguage": "en-US"
     },
     {
       "@type": "WebPage",
-      "@id": "https://unvdubai.com/about/#webpage",
-      "url": "https://unvdubai.com/about/",
+      "@id": "https://unvbang.netlify.app/about/#webpage",
+      "url": "https://unvbang.netlify.app/about/",
       "name": "About UNV Authorized Distributor in Dubai | Digital Link Technology",
       "description": "Learn about Digital Link Technology, the authorized UNV distributor in Dubai and UAE. Our team, mission, and commitment to providing top-quality security solutions.",
       "isPartOf": {
-        "@id": "https://unvdubai.com/#website"
+        "@id": "https://unvbang.netlify.app/#website"
       },
       "about": {
-        "@id": "https://unvdubai.com/#organization"
+        "@id": "https://unvbang.netlify.app/#organization"
       },
       "inLanguage": "en-US"
     },
     {
       "@type": "AboutPage",
-      "@id": "https://unvdubai.com/about/#aboutpage",
-      "url": "https://unvdubai.com/about/",
+      "@id": "https://unvbang.netlify.app/about/#aboutpage",
+      "url": "https://unvbang.netlify.app/about/",
       "name": "About UNV Dubai Distributor",
       "description": "About page for Digital Link Technology LLC, authorized UNV distributor in Dubai, UAE. Learn about our team, company history, and commitment to quality security solutions.",
       "isPartOf": {
-        "@id": "https://unvdubai.com/about/#webpage"
+        "@id": "https://unvbang.netlify.app/about/#webpage"
       },
       "inLanguage": "en-US"
     },
     {
       "@type": "Person",
-      "@id": "https://unvdubai.com/about/#abdulgafoor",
+      "@id": "https://unvbang.netlify.app/about/#abdulgafoor",
       "name": "Abdul Gafoor",
       "jobTitle": "CEO & CO-FOUNDER",
       "worksFor": {
-        "@id": "https://unvdubai.com/#organization"
+        "@id": "https://unvbang.netlify.app/#organization"
       },
       "image": {
         "@type": "ImageObject",
-        "url": `${Astro.url.origin}${gafoor.src}`,
+        "url": `https://unvbang.netlify.app${gafoor.src}`,
         "width": 400,
         "height": 400
       }
@@ -89,9 +89,9 @@ const structuredData = {
           "@type": "Person",
           "name": member.data.name,
           "jobTitle": member.data.title,
-          "image": `${Astro.url.origin}${member.data.avatar.src}`,
+          "image": `https://unvbang.netlify.app${member.data.avatar.src}`,
           "worksFor": {
-            "@id": "https://unvdubai.com/#organization"
+            "@id": "https://unvbang.netlify.app/#organization"
           }
         }
       }))
