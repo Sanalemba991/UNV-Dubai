@@ -49,14 +49,13 @@ const schemaOrg = {
         description: product.data.description,
         image: new URL(product.data.image, Astro.site).toString(), // Fix image URL
         url: new URL(`/categories/ip-cameras/${product.slug}`, Astro.site).toString(),
-       "offers": {
-  "@type": "Offer",
-  "priceCurrency": "AED",
-  "price": product.data.price || "0.00",
-  "availability": "https://schema.org/InStock",
-  "itemCondition": "https://schema.org/NewCondition",
-  "priceValidUntil": "2025-12-31"
-}
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "AED",
+          price: product.data.price || "0.00",
+          availability: "https://schema.org/InStock",
+          itemCondition: "https://schema.org/NewCondition"
+        },
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: product.data.rating || "4.5",
