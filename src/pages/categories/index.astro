@@ -35,6 +35,7 @@ const metadata = {
         canonical: canonicalURL.toString(),
     },
 };
+
 // Define your categories data first
 const categories = [
     {
@@ -103,48 +104,47 @@ const categories = [
     },
 ];
 
-/// Schema.org markup
+// Schema.org markup - Create the properly formatted JSON-LD
 const schemaOrg = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: title,
-    description: description,
-    url: canonicalURL.toString(),
-    datePublished: new Date().toISOString(),
-    dateModified: new Date().toISOString(), // Add this for freshness
-    mainEntity: {
+    "name": title,
+    "description": description,
+    "url": canonicalURL.toString(),
+    "datePublished": new Date().toISOString(),
+    "dateModified": new Date().toISOString(),
+    "mainEntity": {
         "@type": "ItemList",
-        itemListElement: categories.map((category, index) => ({
+        "itemListElement": categories.map((category, index) => ({
             "@type": "ListItem",
-            position: index + 1,
-            item: {
+            "position": index + 1,
+            "item": {
                 "@type": "Product",
-                name: category.title,
-                description: category.description,
-                url: new URL(category.href, Astro.site).toString(),
-                image: new URL(category.imageUrl, Astro.site).toString(),
-                // Add product availability and condition
-                offers: {
+                "name": category.title,
+                "description": category.description,
+                "url": new URL(category.href, Astro.site).toString(),
+                "image": new URL(category.imageUrl, Astro.site).toString(),
+                "offers": {
                     "@type": "Offer",
-                    availability: "https://schema.org/InStock",
-                    itemCondition: "https://schema.org/NewCondition"
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
                 }
-            },
-        })),
+            }
+        }))
     },
-    // Add publisher/organization information
-    publisher: {
+    "publisher": {
         "@type": "Organization",
-        name: "UNV Dubai",
-        logo: {
+        "name": "UNV Dubai",
+        "logo": {
             "@type": "ImageObject",
-            url: new URL("/images/logo.png", Astro.site).toString()
+            "url": new URL("/images/logo.png", Astro.site).toString()
         }
     }
 };
----
----
 
+// Convert to a proper string for embedding in HTML
+const schemaOrgString = JSON.stringify(schemaOrg);
+---
 
 <Layout
     title={metadata.title}
@@ -152,10 +152,9 @@ const schemaOrg = {
     canonical={metadata.canonical}
     openGraph={metadata.openGraph}
     twitter={metadata.twitter}
-    schema={schemaOrg}
 >
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+    <!-- Schema.org JSON-LD - IMPORTANT: This needs to be in the rendered HTML -->
+    <script type="application/ld+json" set:html={schemaOrgString}></script>
 
     <!-- Additional meta tags -->
     <meta name="robots" content="index, follow" slot="head" />
