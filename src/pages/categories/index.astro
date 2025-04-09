@@ -4,34 +4,37 @@ import CategoryCard from "~/components/CategoryCard.astro";
 import Sections from "~/components/Sections.astro";
 
 const title = "Product Categories | Surveillance Solutions";
-const description =
-    "Explore our comprehensive range of surveillance solutions including IP cameras, analog cameras, PTZ cameras, thermal cameras, NVR, DVR, storage solutions, and accessories.";
+const description = "Explore our comprehensive range of surveillance solutions including IP cameras, analog cameras, PTZ cameras, thermal cameras, NVR, DVR, storage solutions, and accessories.";
 const canonicalURL = new URL("/categories", Astro.site);
 
-// Enhanced meta tags and SEO
+// Enhanced SEO metadata
 const metadata = {
-    title,
-    description,
+    title: title,
+    description: description,
     canonical: canonicalURL.toString(),
     openGraph: {
-        title,
-        description,
-        type: "website",
-        image: "/images/og-image.png",
-        url: canonicalURL.toString(),
-        site_name: "Your Company Name",
+        basic: {
+            title: title,
+            type: "website",
+            image: "/images/og-image.png",
+            url: canonicalURL.toString(),
+        },
+        optional: {
+            description: description,
+            locale: "en_US",
+            siteName: "UNV Dubai",
+        },
     },
     twitter: {
         card: "summary_large_image",
-        title,
-        description,
+        title: title,
+        description: description,
         image: "/images/og-image.png",
     },
     alternates: {
         canonical: canonicalURL.toString(),
     },
 };
-
 // Define your categories data first
 const categories = [
     {
@@ -100,7 +103,7 @@ const categories = [
     },
 ];
 
-// Schema.org markup (now categories is defined)
+/// Schema.org markup
 const schemaOrg = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -124,6 +127,7 @@ const schemaOrg = {
 };
 ---
 
+
 <Layout
     title={metadata.title}
     description={metadata.description}
@@ -132,6 +136,14 @@ const schemaOrg = {
     twitter={metadata.twitter}
     schema={schemaOrg}
 >
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+
+    <!-- Additional meta tags -->
+    <meta name="robots" content="index, follow" slot="head" />
+    <meta name="keywords" content="PRODUCTS, surveillance, security, UNV, Dubai" slot="head" />
+    <link rel="alternate" hreflang="en" href={canonicalURL} slot="head" />
+
     <div class="bg-gradient-to-b from-gray-50 to-white dark:from-neutral-950 dark:to-neutral-900">
         <Sections>
             <div class="py-16">
