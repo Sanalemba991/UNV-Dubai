@@ -63,8 +63,8 @@ const categories = [
     },
 ];
 
-// Corrected Schema.org markup for rich results
-const schemaOrg = {
+// Prepare schema data separately to avoid template literal issues
+const schemaData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": title,
@@ -141,9 +141,9 @@ const schemaOrg = {
     <meta name="keywords" content="PRODUCTS, surveillance, security, UNV, Dubai" slot="head" />
     <link rel="alternate" hreflang="en" href={canonicalURL} slot="head" />
     
-    <!-- JSON-LD Structured Data -->
+    <!-- JSON-LD Structured Data - Fixed with proper stringification -->
     <script is:inline type="application/ld+json">
-        {JSON.stringify(schemaOrg)}
+        {JSON.stringify(schemaData, null, 2)}
     </script>
 
     <div class="bg-gradient-to-b from-gray-50 to-white dark:from-neutral-950 dark:to-neutral-900">
