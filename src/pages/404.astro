@@ -1,8 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// SEO meta data for error page
+const title = "404 Page Not Found | UNV Camera Dubai";
+const description = "The page you're looking for doesn't exist. Return to UNV Camera Dubai's homepage for surveillance solutions and security systems.";
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const keywords = "404 error, page not found, UNV Dubai, security cameras, CCTV systems";
+
+// JSON-LD Structured Data for error page
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "404 Not Found",
+  "description": description,
+  "url": canonicalUrl.toString(),
+  "isPartOf": {
+    "@type": "WebSite",
+    "url": Astro.site,
+    "name": "UNV Camera Dubai"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Page Not Found Error"
+  }
+};
 ---
 
-<Layout title="Error Not Found">
+<Layout 
+  title={title}
+  description={description}
+  canonical={canonicalUrl.toString()}
+  keywords={keywords}
+  structuredData={structuredData}
+  noindex={true}  // Important for error pages
+>
 	<main class="bg-gray-100 h-screen flex flex-col justify-center items-center">
         <div class="max-w-sm w-full text-center">
             <h1 class="text-6xl font-bold text-gray-800">404</h1>
@@ -14,4 +45,3 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </main>
 </Layout>
-
