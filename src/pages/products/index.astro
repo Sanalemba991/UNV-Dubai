@@ -66,23 +66,26 @@ const categories = [
 // Corrected Schema.org markup for rich results
 const schemaOrg = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": "CollectionPage",
     "name": title,
     "description": description,
     "url": canonicalURL.toString(),
     "breadcrumb": {
         "@type": "BreadcrumbList",
-        "itemListElement": [{
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": Astro.site.toString()
-        }, {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Categories",
-            "item": canonicalURL.toString()
-        }]
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": Astro.site.toString()
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Categories",
+                "item": canonicalURL.toString()
+            }
+        ]
     },
     "mainEntity": {
         "@type": "ItemList",
@@ -133,11 +136,16 @@ const schemaOrg = {
     canonical={metadata.canonical}
     openGraph={metadata.openGraph}
     twitter={metadata.twitter}
-    schema={schemaOrg}
 >
-<meta name="robots" content="index, follow" slot="head" />
+    <meta name="robots" content="index, follow" slot="head" />
     <meta name="keywords" content="PRODUCTS, surveillance, security, UNV, Dubai" slot="head" />
     <link rel="alternate" hreflang="en" href={canonicalURL} slot="head" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script is:inline type="application/ld+json">
+        {JSON.stringify(schemaOrg)}
+    </script>
+
     <div class="bg-gradient-to-b from-gray-50 to-white dark:from-neutral-950 dark:to-neutral-900">
         <Sections>
             <div class="py-16">
