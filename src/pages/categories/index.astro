@@ -110,6 +110,8 @@ const schemaOrg = {
     name: title,
     description: description,
     url: canonicalURL.toString(),
+    datePublished: new Date().toISOString(),
+    dateModified: new Date().toISOString(), // Add this for freshness
     mainEntity: {
         "@type": "ItemList",
         itemListElement: categories.map((category, index) => ({
@@ -121,10 +123,26 @@ const schemaOrg = {
                 description: category.description,
                 url: new URL(category.href, Astro.site).toString(),
                 image: new URL(category.imageUrl, Astro.site).toString(),
+                // Add product availability and condition
+                offers: {
+                    "@type": "Offer",
+                    availability: "https://schema.org/InStock",
+                    itemCondition: "https://schema.org/NewCondition"
+                }
             },
         })),
     },
+    // Add publisher/organization information
+    publisher: {
+        "@type": "Organization",
+        name: "UNV Dubai",
+        logo: {
+            "@type": "ImageObject",
+            url: new URL("/images/logo.png", Astro.site).toString()
+        }
+    }
 };
+---
 ---
 
 
