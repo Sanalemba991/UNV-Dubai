@@ -3,44 +3,44 @@ import Layout from "../../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 type Props = {
-    product: Product;
+  product: Product;
 };
 
 interface ProductImage {
-    url: string;
-    caption?: string;
-    type?: string;
+  url: string;
+  caption?: string;
+  type?: string;
 }
 
 interface ProductSpecifications {
-    sensor: string;
-    resolution: string;
-    focalLength: string;
-    irRange: string;
-    powerSupply: string;
-    protection: string;
-    storage: string;
-    dimensions: string;
+  sensor: string;
+  resolution: string;
+  focalLength: string;
+  irRange: string;
+  powerSupply: string;
+  protection: string;
+  storage: string;
+  dimensions: string;
 }
 
 interface Product {
-    title: string;
-    description: string;
-    image: string;
-    images?: ProductImage[];
-    features: string[];
-    price: string;
-    specifications: ProductSpecifications;
-    rating?: number;
-    reviewCount?: number;
+  title: string;
+  description: string;
+  image: string;
+  images?: ProductImage[];
+  features: string[];
+  price: string;
+  specifications: ProductSpecifications;
+  rating?: number;
+  reviewCount?: number;
 }
 
 export async function getStaticPaths() {
-    const analogCameras = await getCollection("analog-cameras");
-    return analogCameras.map((entry) => ({
-        params: { slug: entry.slug },
-        props: { product: entry.data as Product },
-    }));
+  const analogCameras = await getCollection("analog-cameras");
+  return analogCameras.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { product: entry.data as Product },
+  }));
 }
 
 const { product } = Astro.props as Props;
@@ -65,11 +65,11 @@ const productSchema = {
 };
 
 // Add aggregate rating if available
-if (product.rating || product.reviewCount) {
+if (product.rating && product.reviewCount) {
   productSchema.aggregateRating = {
     "@type": "AggregateRating",
-    "ratingValue": product.rating || "4.5",
-    "reviewCount": product.reviewCount || "10"
+    "ratingValue": product.rating,
+    "reviewCount": product.reviewCount
   };
 }
 
@@ -101,10 +101,11 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-    title={`${product.title} - UNV Dubai`}
-    description={product.description}
-    canonical={canonicalURL.toString()}
+  title={`${product.title} - UNV Dubai`}
+  description={product.description}
+  canonical={canonicalURL.toString()}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)}></script>
     <section class="py-16 relative overflow-hidden">
         <!-- Background elements -->
         <div class="absolute w-96 h-96 -top-48 -left-48 rounded-full bg-blue-500/5 blur-3xl animate-float-slow"></div>
