@@ -18,14 +18,15 @@ const title: string = "UNV Authorized Distributor in Dubai, UAE | Digital Link T
 const description: string = "Premier UNV Distributor in Dubai, UAE offering security cameras, NVRs, video surveillance systems. Authorized UNV partner with expert support & installation services.";
 const keywords: string = "UNV Dubai, UNV UAE, UNV distributor, security cameras Dubai, CCTV systems UAE, IP cameras, video surveillance, NVR systems, UNV authorized dealer, security solutions Dubai";
 
-// Fetch testimonials data
 const testimonials: CollectionEntry<"testimonials">[] = (
   await getCollection("testimonials")
-).sort((a, b) => a.data.id - b.data.id);
+).sort(
+  (a: CollectionEntry<"testimonials">, b: CollectionEntry<"testimonials">) =>
+    a.data.id - b.data.id
+);
 
-// Structured Data for SEO
 const structuredData = {
-  "@context": "https://schema.org",
+ "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
@@ -81,7 +82,7 @@ const structuredData = {
         "@id": "https://unvdubai.com/#website"
       },
       "primaryImageOfPage": {
-        "@id": `${Astro.url.origin}/unvdubai.png`
+        "@id": `${Astro.url.origin}/unvdubai.png`,
       },
       "inLanguage": "en-US"
     },
@@ -109,7 +110,7 @@ const structuredData = {
       },
       "image": {
         "@type": "ImageObject",
-        "url": `${Astro.url.origin}/unvdubai.png`,
+        "url":  `${Astro.url.origin}/unvdubai.png`,
         "width": 1200,
         "height": 630,
         "caption": "UNV Dubai Authorized Distributor"
@@ -121,19 +122,11 @@ const structuredData = {
     }
   ]
 };
-
-// ✅ Google Search Console Meta Tag
-const additionalMetaTags = [
-  {
-    name: "google-site-verification",
-    content: "4ao82n1PeDP29Ilg6klOlW0jdu8CNGMMai1Z1G7b6-Y"
-  }
-];
 ---
 
 <Layout 
-  title={title}
-  description={description}
+  title={title} 
+  description={description} 
   keywords={keywords}
   structuredData={structuredData}
   canonicalUrl={Astro.url.href}
@@ -142,20 +135,19 @@ const additionalMetaTags = [
   ogImage={`${Astro.url.origin}/unvdubai.png`}
   ogUrl={Astro.url.href}
   twitterCard="summary_large_image"
-  additionalMeta={additionalMetaTags}
 >
-  <Unvdigi />
-  <Sections>
-    <Hero />
-    <Feature />
-    <TitleComponents title="Why Digital Link Technology?" />
-    <FeatureComponents />
-    <TestimonialsSection
-      title="What Our Customers Say?"
-      testimonials={testimonials}
-    />
-    <TitleComponents title="Award and Recognitions" />
-    <Slider client:visible />
-    <Whatsapp client:load />
-  </Sections>
+<Unvdigi/> 
+<Sections>
+<Hero/>
+<Feature/>
+<TitleComponents title="Why Digital Link Technology?" />
+<FeatureComponents/>
+<TestimonialsSection
+    title="What Our Customers Say?"
+    testimonials={testimonials}
+  />
+<TitleComponents title="Award and Recognitions" />
+<Slider client:visible />
+<Whatsapp client:load />
+</Sections>
 </Layout>
