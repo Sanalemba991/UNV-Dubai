@@ -18,15 +18,14 @@ const title: string = "UNV Authorized Distributor in Dubai, UAE | Digital Link T
 const description: string = "Premier UNV Distributor in Dubai, UAE offering security cameras, NVRs, video surveillance systems. Authorized UNV partner with expert support & installation services.";
 const keywords: string = "UNV Dubai, UNV UAE, UNV distributor, security cameras Dubai, CCTV systems UAE, IP cameras, video surveillance, NVR systems, UNV authorized dealer, security solutions Dubai";
 
+// Fetch testimonials data
 const testimonials: CollectionEntry<"testimonials">[] = (
   await getCollection("testimonials")
-).sort(
-  (a: CollectionEntry<"testimonials">, b: CollectionEntry<"testimonials">) =>
-    a.data.id - b.data.id
-);
+).sort((a, b) => a.data.id - b.data.id);
 
+// Structured Data for SEO
 const structuredData = {
- "@context": "https://schema.org",
+  "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
@@ -82,7 +81,7 @@ const structuredData = {
         "@id": "https://unvdubai.com/#website"
       },
       "primaryImageOfPage": {
-        "@id": `${Astro.url.origin}/unvdubai.png`,
+        "@id": `${Astro.url.origin}/unvdubai.png`
       },
       "inLanguage": "en-US"
     },
@@ -110,7 +109,7 @@ const structuredData = {
       },
       "image": {
         "@type": "ImageObject",
-        "url":  `${Astro.url.origin}/unvdubai.png`,
+        "url": `${Astro.url.origin}/unvdubai.png`,
         "width": 1200,
         "height": 630,
         "caption": "UNV Dubai Authorized Distributor"
@@ -123,7 +122,7 @@ const structuredData = {
   ]
 };
 
-// Additional meta tags
+// ✅ Google Search Console Meta Tag
 const additionalMetaTags = [
   {
     name: "google-site-verification",
@@ -133,8 +132,8 @@ const additionalMetaTags = [
 ---
 
 <Layout 
-  title={title} 
-  description={description} 
+  title={title}
+  description={description}
   keywords={keywords}
   structuredData={structuredData}
   canonicalUrl={Astro.url.href}
@@ -145,12 +144,12 @@ const additionalMetaTags = [
   twitterCard="summary_large_image"
   additionalMeta={additionalMetaTags}
 >
-  <Unvdigi/> 
+  <Unvdigi />
   <Sections>
-    <Hero/>
-    <Feature/>
+    <Hero />
+    <Feature />
     <TitleComponents title="Why Digital Link Technology?" />
-    <FeatureComponents/>
+    <FeatureComponents />
     <TestimonialsSection
       title="What Our Customers Say?"
       testimonials={testimonials}
