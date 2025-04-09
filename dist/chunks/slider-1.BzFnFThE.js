@@ -1,1 +1,0 @@
-const e="slider-1.md",s="slider",t="slider-1",i="",l={id:1,slider:"../slider/1.webp",sliderAlt:"Digital link"},n={type:"content",filePath:"C:/Users/sanalemba/UNV-Dubai/src/content/slider/slider-1.md",rawData:void 0};export{n as _internal,i as body,s as collection,l as data,e as id,t as slug};
