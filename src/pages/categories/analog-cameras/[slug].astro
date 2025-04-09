@@ -31,6 +31,8 @@ interface Product {
     features: string[];
     price: string;
     specifications: ProductSpecifications;
+    rating?: number;
+    reviewCount?: number;
 }
 
 export async function getStaticPaths() {
@@ -43,11 +45,65 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props as Props;
 const images = product.images || (product.image ? [{ url: product.image }] : []);
+// Generate canonical URL
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Product schema markup
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": product.title,
+  "description": product.description,
+  "image": new URL(product.image, Astro.site).toString(),
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "AED",
+    "price": product.price || "0.00",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition"
+  }
+};
+
+// Add aggregate rating if available
+if (product.rating || product.reviewCount) {
+  (productSchema as any).aggregateRating = {
+    "@type": "AggregateRating",
+    "ratingValue": product.rating || "4.5",
+    "reviewCount": product.reviewCount || "10"
+  };
+}
+
+// Breadcrumb schema markup
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": new URL("/", Astro.site).toString()
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Network Cameras",
+      "item": new URL("/categories/analog-cameras", Astro.site).toString()
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": product.title,
+      "item": canonicalURL.toString()
+    }
+  ]
+};
 ---
 
 <Layout
     title={`${product.title} - UNV Dubai`}
     description={product.description}
+    canonical={canonicalURL.toString()}
 >
     <section class="py-16 relative overflow-hidden">
         <!-- Background elements -->
