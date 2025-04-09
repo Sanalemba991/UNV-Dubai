@@ -23,9 +23,56 @@ const allInsights = await getCollection("insights");
 const relatedInsights = allInsights
   .filter(insight => insight.slug !== post.slug)
   .slice(0, 3);
+
+// SEO meta data
+const title = `${post.data.title} | UNV Camera Dubai | Digital Link Technology`;
+const description = post.data.description;
+const canonicalUrl = new URL(`/insights/${post.slug}`, Astro.site);
+const keywords = [
+  "CCTV insights Dubai",
+  "surveillance technology trends",
+  "UNV camera news",
+  post.data.title,
+  ...(post.data.tags || [])
+].join(", ");
+
+// JSON-LD Structured Data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.data.title,
+  "description": description,
+  "url": canonicalUrl.toString(),
+  "image": `${Astro.site}${post.data.cardImage}`,
+  "datePublished": post.data.pubDate,
+  "dateModified": post.data.pubDate, // Update this if you have a modified date field
+  "author": {
+    "@type": "Organization",
+    "name": "Digital Link Technology LLC",
+    "url": Astro.site
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Digital Link Technology LLC",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${Astro.site}/images/logo.png` // Update with your logo path
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalUrl.toString()
+  }
+};
 ---
 
-<Layout title={`${post.data.title} | UNV Camera Dubai | Digital Link Technology`}>
+<Layout
+  title={title}
+  description={description}
+  canonical={canonicalUrl.toString()}
+  keywords={keywords}
+  structuredData={structuredData}
+>
   <div class="bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen">
     <article class="py-8 sm:py-12 md:py-16">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
