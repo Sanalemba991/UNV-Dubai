@@ -10,27 +10,46 @@ const canonicalURL = new URL("/categories/analog-cameras", Astro.site);
 const products = await getCollection("analog-cameras");
 
 // Prepare schema markup
-const schemaMarkup = {
+// Schema.org markup
+const products = await getCollection('analog-cameras');
+
+const schemaOrg = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": title,
-  "description": description,
-  "url": canonicalURL,
-  "mainEntity": {
+  name: title,
+  description: description,
+  url: canonicalURL,
+  mainEntity: {
     "@type": "ItemList",
-    "itemListElement": products.map((camera, index) => ({
+    itemListElement: products.map((product, index) => ({
       "@type": "ListItem",
-      "position": index + 1,
-      "item": {
+      position: index + 1,
+      item: {
         "@type": "Product",
-        "name": camera.data.title,
-        "description": camera.data.description,
-        "image": camera.data.image,
-        "url": new URL(`/categories/analog-cameras/${camera.slug}`, Astro.site)
+        name: product.data.title || "",
+        description: product.data.description || "",
+        image: product.data.image
+          ? new URL(product.data.image, Astro.site).toString()
+          : undefined,
+        url: new URL(`/categories/analog-cameras/${product.slug}`, Astro.site).toString(),
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "AED",
+          price: product.data.price?.toString() || "0.00",
+          availability: "https://schema.org/InStock",
+          itemCondition: "https://schema.org/NewCondition"
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: product.data.rating?.toString() || "4.5",
+          reviewCount: product.data.reviewCount?.toString() || "10"
+        }
       }
     }))
   }
 };
+
+
 ---
 
 <Layout title={title} description={description}>
