@@ -36,54 +36,68 @@ const categories = [
     {
         title: "Network Cameras",
         description: "Uniview provides affordable, high-quality IP cameras with smart analytics and performance",
-        imageUrl: "/images/categories/ip-camera.png",  // Added leading slash
+        imageUrl: "/images/categories/ip-camera.png",
         href: "/categories/ip-cameras",
         icon: "video",
     },
     {
         title: "Analog Camera",
         description: "Uniview's analog cameras offer high-definition video, easy maintenance, and affordability.",
-        imageUrl: "/images/categories/analog-camera.png",  // Added leading slash
+        imageUrl: "/images/categories/analog-camera.png",
         href: "/categories/analog-cameras",
         icon: "camera",
     },
     {
         title: "PTZ CAMERA",
         description: "Uniview's PTZ cameras offer wide coverage, zoom, and robust stability",
-        imageUrl: "/images/categories/ptz-camera.png",  // Added leading slash
+        imageUrl: "/images/categories/ptz-camera.png",
         href: "/categories/ptz-cameras",
         icon: "rotate-cw",
     },
     {
         title: "DVR",
         description: "Uniview offers diverse XVR models for project and home use.",
-        imageUrl: "/images/categories/dvr.png",  // Added leading slash
+        imageUrl: "/images/categories/dvr.png",
         href: "/categories/dvr",
         icon: "server",
     },
 ];
 
-// Schema.org markup
+// Corrected Schema.org markup for rich results
 const schemaOrg = {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: title,
-    description: description,
-    url: canonicalURL.toString(),
-    mainEntity: {
-        "@type": "ItemList",
-        itemListElement: categories.map((category, index) => ({
+    "@type": "WebPage",
+    "name": title,
+    "description": description,
+    "url": canonicalURL.toString(),
+    "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
             "@type": "ListItem",
-            position: index + 1,
-            item: {
-                "@type": "Product",
-                name: category.title,
-                description: category.description,
-                url: new URL(category.href, Astro.site).toString(),
-                image: new URL(category.imageUrl, Astro.site).toString(),
-            },
-        })),
+            "position": 1,
+            "name": "Home",
+            "item": Astro.site.toString()
+        }, {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Categories",
+            "item": canonicalURL.toString()
+        }]
     },
+    "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": categories.map((category, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+                "@type": "ProductCategory",
+                "name": category.title,
+                "description": category.description,
+                "url": new URL(category.href, Astro.site).toString(),
+                "image": new URL(category.imageUrl, Astro.site).toString()
+            }
+        }))
+    }
 };
 ---
 
@@ -103,7 +117,7 @@ const schemaOrg = {
     /* Apply the animation to the product categories */
     .category-item {
         animation: slideUp 0.5s ease-out forwards;
-        opacity: 0; /* Start with opacity 0 to make it invisible before animation */
+        opacity: 0;
     }
 
     /* Delay each category item's animation */
@@ -111,10 +125,6 @@ const schemaOrg = {
     .category-item:nth-child(2) { animation-delay: 0.2s; }
     .category-item:nth-child(3) { animation-delay: 0.3s; }
     .category-item:nth-child(4) { animation-delay: 0.4s; }
-    .category-item:nth-child(5) { animation-delay: 0.5s; }
-    .category-item:nth-child(6) { animation-delay: 0.6s; }
-    .category-item:nth-child(7) { animation-delay: 0.7s; }
-    .category-item:nth-child(8) { animation-delay: 0.8s; }
 </style>
 
 <Layout
@@ -125,6 +135,9 @@ const schemaOrg = {
     twitter={metadata.twitter}
     schema={schemaOrg}
 >
+<meta name="robots" content="index, follow" slot="head" />
+    <meta name="keywords" content="PRODUCTS, surveillance, security, UNV, Dubai" slot="head" />
+    <link rel="alternate" hreflang="en" href={canonicalURL} slot="head" />
     <div class="bg-gradient-to-b from-gray-50 to-white dark:from-neutral-950 dark:to-neutral-900">
         <Sections>
             <div class="py-16">
