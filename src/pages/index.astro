@@ -14,19 +14,25 @@ import Whatsapp from "~/components/Whatsapp";
 import Feature from "~/components/features/Feature.astro";
 
 // SEO Meta Configuration
-const title: string = "UNV Authorized Distributor in Dubai, UAE | Digital Link Technology LLC";
-const description: string = "Premier UNV Distributor in Dubai, UAE offering security cameras, NVRs, video surveillance systems. Authorized UNV partner with expert support & installation services.";
-const keywords: string = "UNV Dubai, UNV UAE, UNV distributor, security cameras Dubai, CCTV systems UAE, IP cameras, video surveillance, NVR systems, UNV authorized dealer, security solutions Dubai";
+const title = "UNV Authorized Distributor in Dubai, UAE | Digital Link Technology LLC";
+const description = "Premier UNV Distributor in Dubai, UAE offering security cameras, NVRs, video surveillance systems. Authorized UNV partner with expert support & installation services.";
+const keywords = "UNV Dubai, UNV UAE, UNV distributor, security cameras Dubai, CCTV systems UAE, IP cameras, video surveillance, NVR systems, UNV authorized dealer, security solutions Dubai";
 
 const testimonials: CollectionEntry<"testimonials">[] = (
   await getCollection("testimonials")
 ).sort(
-  (a: CollectionEntry<"testimonials">, b: CollectionEntry<"testimonials">) =>
-    a.data.id - b.data.id
+  (a, b) => a.data.id - b.data.id
 );
 
+const additionalMetaTags = [
+  {
+    name: "google-site-verification",
+    content: "4ao82n1PeDP29Ilg6klOlW0jdu8CNGMMai1Z1G7b6-Y"
+  }
+];
+
 const structuredData = {
- "@context": "https://schema.org",
+  "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
@@ -82,7 +88,7 @@ const structuredData = {
         "@id": "https://unvdubai.com/#website"
       },
       "primaryImageOfPage": {
-        "@id": `${Astro.url.origin}/unvdubai.png`,
+        "@id": `${Astro.url.origin}/unvdubai.png`
       },
       "inLanguage": "en-US"
     },
@@ -110,7 +116,7 @@ const structuredData = {
       },
       "image": {
         "@type": "ImageObject",
-        "url":  `${Astro.url.origin}/unvdubai.png`,
+        "url": `${Astro.url.origin}/unvdubai.png`,
         "width": 1200,
         "height": 630,
         "caption": "UNV Dubai Authorized Distributor"
@@ -135,19 +141,20 @@ const structuredData = {
   ogImage={`${Astro.url.origin}/unvdubai.png`}
   ogUrl={Astro.url.href}
   twitterCard="summary_large_image"
+  additionalMetaTags={additionalMetaTags}
 >
-<Unvdigi/> 
-<Sections>
-<Hero/>
-<Feature/>
-<TitleComponents title="Why Digital Link Technology?" />
-<FeatureComponents/>
-<TestimonialsSection
-    title="What Our Customers Say?"
-    testimonials={testimonials}
-  />
-<TitleComponents title="Award and Recognitions" />
-<Slider client:visible />
-<Whatsapp client:load />
-</Sections>
+  <Unvdigi /> 
+  <Sections>
+    <Hero />
+    <Feature />
+    <TitleComponents title="Why Digital Link Technology?" />
+    <FeatureComponents />
+    <TestimonialsSection
+      title="What Our Customers Say?"
+      testimonials={testimonials}
+    />
+    <TitleComponents title="Award and Recognitions" />
+    <Slider client:visible />
+    <Whatsapp client:load />
+  </Sections>
 </Layout>
