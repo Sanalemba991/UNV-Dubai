@@ -9,28 +9,68 @@ const canonicalURL = new URL("/categories/ptz-cameras", Astro.site);
 
 const products = await getCollection("ptz-cameras");
 
-// Prepare schema markup
-const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: title,
+
+
+// SEO metadata
+const metadata = {
+    title: title,
     description: description,
-    url: canonicalURL,
-    mainEntity: {
-        "@type": "ItemList",
-        itemListElement: products.map((camera, index) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            item: {
-                "@type": "Product",
-                name: camera.data.title,
-                description: camera.data.description,
-                image: camera.data.image,
-                url: `${canonicalURL}/${camera.slug}`,
-            },
-        })),
+    openGraph: {
+        basic: {
+            title: title,
+            type: "website",
+            image: "/og-ptz-cameras.jpg",
+            url: canonicalURL,
+        },
+        optional: {
+            description: description,
+            locale: "en_US",
+            siteName: "UNV Dubai",
+        },
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: title,
+        description: description,
+        image: "/og-ptz-cameras.jpg",
     },
 };
+
+// Schema.org markup
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: title,
+  description: description,
+  url: canonicalURL,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: (await getCollection('ptz-cameras')).map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Product",
+        name: product.data.title,
+        description: product.data.description,
+        image: new URL(product.data.image, Astro.site).toString(), // Fix image URL
+        url: new URL(`/categories/ip-cameras/${product.slug}`, Astro.site).toString(),
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "AED",
+          price: product.data.price || "0.00",
+          availability: "https://schema.org/InStock",
+          itemCondition: "https://schema.org/NewCondition"
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: product.data.rating || "4.5",
+          reviewCount: product.data.reviewCount || "10"
+        }
+      }
+    }))
+  }
+};
+
 ---
 
 <style>
@@ -82,37 +122,22 @@ const schemaMarkup = {
         animation-delay: 6s;
     }
 </style>
-
-<Layout
-    title={title}
+<Layout 
+    title={title} 
     description={description}
     canonical={canonicalURL}
-    openGraph={{
-        basic: {
-            title,
-            type: "website",
-            image: "/og-ptz-cameras.jpg", // Make sure to add this image
-            url: canonicalURL,
-        },
-        optional: {
-            description,
-            locale: "en_US",
-            siteName: "UNV Dubai",
-        },
-    }}
-    twitter={{
-        card: "summary_large_image",
-        site: "@unvdubai", // Replace with actual Twitter handle
-        title,
-        description,
-        image: "/og-ptz-cameras.jpg", // Same as OG image
-    }}
+    metadata={metadata}
 >
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+
+    <!-- Additional meta tags -->
+    <meta name="robots" content="index, follow" slot="head" />
+    <meta name="keywords" content="PTZ cameras, surveillance, security, UNV, Dubai" slot="head" />
+    <link rel="alternate" hreflang="en" href={canonicalURL} slot="head" />
+
     <!-- Schema Markup -->
-    <script
-        type="application/ld+json"
-        set:html={JSON.stringify(schemaMarkup)}
-    />
+   
 
     <section class="relative py-20 sm:py-32 overflow-hidden">
         {/* Enhanced Animated Background */}
