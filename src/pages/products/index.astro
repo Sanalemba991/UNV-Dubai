@@ -63,7 +63,7 @@ const categories = [
     },
 ];
 
-// Prepare schema data separately to avoid template literal issues
+// Prepare schema data - convert URL objects to strings explicitly
 const schemaData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -93,15 +93,18 @@ const schemaData = {
             "@type": "ListItem",
             "position": index + 1,
             "item": {
-                "@type": "ProductCategory",
+                "@type": "Product",  // Changed from ProductCategory to Product which is a recognized type
                 "name": category.title,
                 "description": category.description,
-                "url": new URL(category.href, Astro.site).toString(),
-                "image": new URL(category.imageUrl, Astro.site).toString()
+                "url": new URL(category.href, Astro.site).toString(),  // Ensure URL is converted to string
+                "image": new URL(category.imageUrl, Astro.site).toString()  // Ensure URL is converted to string
             }
         }))
     }
 };
+
+// Pre-stringify the schema to avoid runtime JSON issues
+const schemaString = JSON.stringify(schemaData);
 ---
 
 <style>
@@ -142,9 +145,7 @@ const schemaData = {
     <link rel="alternate" hreflang="en" href={canonicalURL} slot="head" />
     
     <!-- JSON-LD Structured Data - Fixed with proper stringification -->
-    <script is:inline type="application/ld+json">
-        {JSON.stringify(schemaData, null, 2)}
-    </script>
+    <script is:inline type="application/ld+json" set:html={schemaString}></script>
 
     <div class="bg-gradient-to-b from-gray-50 to-white dark:from-neutral-950 dark:to-neutral-900">
         <Sections>
