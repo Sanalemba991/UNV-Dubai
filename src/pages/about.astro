@@ -8,24 +8,8 @@ const publishedTeamMembers = await getCollection("teams", ({ data }) => {
    return !data.draft && data.publishDate < new Date();
 });
 
-// Enhanced SEO metadata
-const title = "UNV Camera Distributor in Dubai, UAE | Digital Link Technology";
-const description = "Authorized UNV security camera distributor in Dubai & UAE. Meet our expert team providing top-quality surveillance solutions with professional installation support.";
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-
-// Primary and secondary keywords
-const keywords = [
-  "UNV distributor Dubai",
-  "UNV cameras UAE",
-  "security camera supplier",
-  "CCTV solutions Dubai",
-  "UNV authorized dealer",
-  "video surveillance systems",
-  "IP camera installation",
-  "security system providers UAE",
-  "UNV products UAE",
-  "professional CCTV installation"
-].join(", ");
+const title = "UNV Camera distributor in Dubai,U.A.E";
+const description = "Discover Digital Link Technology, your authorized supplier and distributor of UNV camera products in Dubai, Sharjah, and across the UAE";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -40,76 +24,44 @@ const structuredData = {
         "@id": `${Astro.url.origin}/unvdubai.png`,
         "url": `${Astro.url.origin}/unvdubai.png`,
         "contentUrl": "https://digitallink.ae/wp-content/uploads/2023/04/imageedit_3_7633242330.png",
-        "caption": "UNV Dubai Distributor",
+        "caption": "unvdubai",
         "inLanguage": "en-US",
         "width": 1000,
         "height": 375
-      },
-      "sameAs": [
-        "https://www.facebook.com/unvdubai",
-        "https://www.linkedin.com/company/unv-dubai",
-        "https://twitter.com/unvdubai"
-      ]
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://unvdubai.com/#website",
       "url": "https://unvdubai.com",
-      "name": "UNV Security Cameras Dubai | Digital Link Technology",
-      "description": description,
+      "name": "unvdubai.com",
       "publisher": {
         "@id": "https://unvdubai.com/#organization"
       },
-      "inLanguage": "en-US",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://unvdubai.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+      "inLanguage": "en-US"
     },
     {
       "@type": "WebPage",
-      "@id": `${canonicalUrl}#webpage`,
-      "url": canonicalUrl.toString(),
-      "name": title,
-      "description": description,
+      "@id": "https://unvdubai.com/about/#webpage",
+      "url": "https://unvdubai.com/about/",
+      "name": "About UNV Authorized Distributor in Dubai | Digital Link Technology",
+      "description": "Learn about Digital Link Technology, the authorized UNV distributor in Dubai and UAE. Our team, mission, and commitment to providing top-quality security solutions.",
       "isPartOf": {
         "@id": "https://unvdubai.com/#website"
       },
       "about": {
         "@id": "https://unvdubai.com/#organization"
       },
-      "inLanguage": "en-US",
-      "breadcrumb": {
-        "@id": `${canonicalUrl}#breadcrumb`
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": `${canonicalUrl}#breadcrumb`,
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://unvdubai.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "About Us",
-          "item": canonicalUrl.toString()
-        }
-      ]
+      "inLanguage": "en-US"
     },
     {
       "@type": "AboutPage",
-      "@id": `${canonicalUrl}#aboutpage`,
-      "url": canonicalUrl.toString(),
-      "name": "About UNV Dubai Distributor - Digital Link Technology",
-      "description": "Learn about our expert team and company providing UNV security camera solutions in Dubai and across UAE. Authorized distributor with professional installation services.",
+      "@id": "https://unvdubai.com/about/#aboutpage",
+      "url": "https://unvdubai.com/about/",
+      "name": "About UNV Dubai Distributor",
+      "description": "About page for Digital Link Technology LLC, authorized UNV distributor in Dubai, UAE. Learn about our team, company history, and commitment to quality security solutions.",
       "isPartOf": {
-        "@id": `${canonicalUrl}#webpage`
+        "@id": "https://unvdubai.com/about/#webpage"
       },
       "inLanguage": "en-US"
     },
@@ -126,11 +78,7 @@ const structuredData = {
         "url": `${Astro.url.origin}${gafoor.src}`,
         "width": 400,
         "height": 400
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/abdulgafoor",
-        "https://twitter.com/abdulgafoor"
-      ]
+      }
     },
     {
       "@type": "ItemList",
@@ -152,13 +100,7 @@ const structuredData = {
 };
 ---
 
-<Layout 
-  title={title} 
-  description={description} 
-  structuredData={structuredData}
-  canonical={canonicalUrl.toString()}
-  keywords={keywords}
->
+<Layout title={title} description={description} structuredData={structuredData}>
 	
     <!-- <Hero client:load /> -->
 	<section
