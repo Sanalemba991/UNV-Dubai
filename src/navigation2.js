@@ -19,8 +19,8 @@ export const footerLinks = [
   {
     section: "Company",
     links: [
-      { name: "About us", url: "#" },
-      { name: "Blog", url: "#" },
+      { name: "About us", url: "/about" },
+      { name: "Blog", url: "/blog" },
       { name: "Careers", url: "#" },
       { name: "Customers", url: "#" },
     ],
@@ -28,9 +28,10 @@ export const footerLinks = [
 ];
 // An object of links for social icons
 export const socialLinks = {
-  facebook: "https://www.facebook.com/p/Digital-Link-Technology-LLC-100087290161175/",
+  facebook: "",
   x: "https://twitter.com",
   github: "#",
   google: "https://g.co/kgs/yq4CrN8",
-  instagram: "https://www.instagram.com/digitallinktechnologyllc/",
+  instagram: "#",
+  linkedin:"https://www.linkedin.com/company/univiewuae/"
 };
