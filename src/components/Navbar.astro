@@ -1,4 +1,5 @@
 ---
+// src/components/Navigation.astro
 import { Image } from "astro:assets";
 import Logo from "../assets/images/UNVLOGO.png";
 ---
@@ -17,9 +18,12 @@ import Logo from "../assets/images/UNVLOGO.png";
             />
         </a>
 
+        <!-- Contact Info - Desktop -->
+       
+
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex flex-1 justify-center">
-            <ul class="flex space-x-10 xl:space-x-8 text-lg items-center">
+            <ul class="flex space-x-10 xl:space-x-8 text-base items-center">
                 <li>
                     <a href="/" class="nav-link">
                         <span class="nav-link-text">Home</span>
@@ -35,124 +39,206 @@ import Logo from "../assets/images/UNVLOGO.png";
                 
                 <!-- Products with dropdown -->
                 <li class="relative group/dropdown">
-                    <a href="/products" class="nav-link flex items-center px-4 py-3 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 ">
-                        <span class="nav-link-text">Products</span>
-                        <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover/dropdown:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <a href="/products" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-all duration-200 group-hover/dropdown:bg-gray-100 dark:group-hover/dropdown:bg-gray-800/50">
+                        <span class="nav-link-text mr-1">Products</span>
+                        <svg class="w-4 h-4 transition-transform duration-200 group-hover/dropdown:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </a>
                     
                     <!-- Main Dropdown menu -->
-                    <div class="absolute left-1/2 transform -translate-x-1/2 mt-1 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-xl opacity-0 invisible transition-all duration-200 z-50 border border-gray-100 dark:border-gray-700 group-hover/dropdown:opacity-100 group-hover/dropdown:visible dropdown-menu">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-72 bg-white dark:bg-gray-800 rounded-xl shadow-2xl opacity-0 invisible transition-all duration-300 z-50 border border-gray-100 dark:border-gray-700 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 dropdown-menu">
                         <div class="py-2">
-                            <!-- Category header -->
-                           
-                            
                             <!-- Network Cameras with nested dropdown -->
                             <div class="relative group/subdropdown">
-                                <a href="/categories/ip-cameras" class="block px-4 py-3 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150 flex items-center justify-between">
-                                  <div class="flex items-center">
-                                    <svg class="w-5 h-5 mr-3 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                                    </svg>
-                                    <span>Network Cameras</span>
-                                  </div>
+                                <a href="/categories/ip-cameras" class="block px-5 py-3 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150 flex items-center">
+                                    <div class="flex items-center w-full">
+                                        <div class="p-2 mr-3 rounded-lg bg-blue-50 dark:bg-gray-700">
+                                            <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex-1">
+                                            <span>Network Cameras</span>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">High-resolution IP cameras</p>
+                                        </div>
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </div>
                                 </a>
                                 <!-- Nested dropdown for Network Cameras -->
-                                <div class="absolute left-full top-0 ml-1 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-xl opacity-0 invisible transition-all duration-200 z-50 border border-gray-100 dark:border-gray-700 group-hover/subdropdown:opacity-100 group-hover/subdropdown:visible">
-                                  <div class="py-2">
-                                    <div class="px-4 py-2">
-                                      <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Uniview IP Cameras</h4>
+                                <div class="absolute left-full top-0 ml-1 w-72 bg-white dark:bg-gray-800 rounded-xl shadow-2xl opacity-0 invisible transition-all duration-300 z-50 border border-gray-100 dark:border-gray-700 group-hover/subdropdown:opacity-100 group-hover/subdropdown:visible">
+                                    <div class="py-2">
+                                        <div class="px-5 py-3 border-b border-gray-100 dark:border-gray-700">
+                                            <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200 flex items-center">
+                                                <svg class="w-4 h-4 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                                </svg>
+                                                Uniview Network Cameras
+                                            </h4>
+                                        </div>
+                                        <a href="/categories/ip-cameras/ipc2122lb-af2840-a2" class="block px-5 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150 flex items-center">
+                                            <span class="truncate">IPC2122LB-AF28(40)A2</span>
+                                            <span class="ml-auto text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full">Popular</span>
+                                        </a>
+                                        <a href="/categories/ip-cameras/ipc3222ss-adf40k-i1" class="block px-5 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC3222SS-ADF40K-I1</a>
+                                        <a href="/categories/ip-cameras/ipc3238sa-adzk-wp-pi-i2a" class="block px-5 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC3238SA-ADZK-WP-PI-I2A</a>
+                
+                                        <div class="px-5 py-3 border-t border-gray-100 dark:border-gray-700 text-center">
+                                            <a href="/categories/ip-cameras" class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-150 inline-flex items-center">
+                                                View all Network cameras
+                                                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <a href="/categories/ip-cameras/ipc2122lb-af28-40-a2" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC2122LB-AF28(40)A2</a>
-                                    <a href="/categories/ip-camerasipc3222ss-adf40k-i1" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC3222SS-ADF40K-I1</a>
-                                    <a href="/categories/ip-cameras/ipc3238sa-adzk-wp-pi-i2a" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC3238SA-ADZK-WP-PI-I2A</a>
-                                    <a href="/categories/ip-cameras/ipc324lb-af28-a2" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC324LB-AF28-A2</a>
-                                    <a href="/categories/ip-cameras/ipc8544ea-km-i1" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC8544EA-KM-I1</a>
-                                    <a href="/categories/ip-cameras/ipc8645ea-adzkm-i1" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC8645EA-ADZKM-I1</a>
-                                  </div>
                                 </div>
-                              </div>
+                            </div>
+                            
                             <!-- Analog Cameras with nested dropdown -->
                             <div class="relative group/subdropdown">
-                                <a href="/categories/analog-cameras" class="block px-4 py-3 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150 flex items-center justify-between border-t border-gray-100 dark:border-gray-700">
-                                    <div class="flex items-center">
-                                        <svg class="w-5 h-5 mr-3 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <a href="/categories/analog-cameras" class="block px-5 py-3 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150 flex items-center border-t border-gray-100 dark:border-gray-700">
+                                    <div class="flex items-center w-full">
+                                        <div class="p-2 mr-3 rounded-lg bg-blue-50 dark:bg-gray-700">
+                                            <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex-1">
+                                            <span>Analog Cameras</span>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Traditional CCTV solutions</p>
+                                        </div>
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                         </svg>
-                                        <span>Analog Cameras</span>
                                     </div>
                                 </a>
                                 <!-- Nested dropdown for Analog Cameras -->
-                                <div class="absolute left-full top-0 ml-1 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-xl opacity-0 invisible transition-all duration-200 z-50 border border-gray-100 dark:border-gray-700 group-hover/subdropdown:opacity-100 group-hover/subdropdown:visible">
+                                <div class="absolute left-full top-0 ml-1 w-72 bg-white dark:bg-gray-800 rounded-xl shadow-2xl opacity-0 invisible transition-all duration-300 z-50 border border-gray-100 dark:border-gray-700 group-hover/subdropdown:opacity-100 group-hover/subdropdown:visible">
                                     <div class="py-2">
-                                        <div class="px-4 py-2">
-                                            <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Uniview Analog Cameras</h4>
+                                        <div class="px-5 py-3 border-b border-gray-100 dark:border-gray-700">
+                                            <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200 flex items-center">
+                                                <svg class="w-4 h-4 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                </svg>
+                                                Uniview Analog Cameras
+                                            </h4>
                                         </div>
-                                        <a href="/categories/analog-cameras/uac-b115-af2840-w" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">UAC-B115-AF28(40)-W</a>
-                                        <a href="/categories/analog-cameras/uac-b112-af2840" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">UAC-B112-AF28(40)</a>
-                                        <a href="/categories/analog-cameras/uac-b142-af2840lm-dl" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">UAC-B142-AF28(40)LM-DL</a>
-                                        <a href="/categories/analog-cameras/uac-d112-f2840" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">UAC-D112-F28(40)</a>
-                                        <a href="/categories/analog-cameras/uac-t112-f28-w-x" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">UAC-T112-F28-W-X</a>
-                                        <a href="/categories/analog-cameras/uac-t142-af2840lm-dl" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">UAC-T142-AF28(40)LM-DL</a>
+                                        <a href="/categories/analog-cameras/uac-b115-af2840-w" class="block px-5 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">UAC-B115-AF28(40)-W</a>
+                                        <a href="/categories/analog-cameras/uac-b112-af2840" class="block px-5 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">UAC-B112-AF28(40)</a>
+                                        <a href="/categories/analog-cameras/uac-b142-af2840lm-dl" class="block px-5 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">UAC-B142-AF28(40)LM-DL</a>
+                                        <div class="px-5 py-3 border-t border-gray-100 dark:border-gray-700 text-center">
+                                            <a href="/categories/analog-cameras" class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-150 inline-flex items-center">
+                                                View all analog cameras
+                                                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- PTZ Cameras with nested dropdown -->
                             <div class="relative group/subdropdown">
-                                <a href="/categories/ptz-cameras" class="block px-4 py-3 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150 flex items-center justify-between border-t border-gray-100 dark:border-gray-700">
-                                    <div class="flex items-center">
-                                        <svg class="w-5 h-5 mr-3 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                                <a href="/categories/ptz-cameras" class="block px-5 py-3 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150 flex items-center border-t border-gray-100 dark:border-gray-700">
+                                    <div class="flex items-center w-full">
+                                        <div class="p-2 mr-3 rounded-lg bg-blue-50 dark:bg-gray-700">
+                                            <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex-1">
+                                            <span>PTZ Cameras</span>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Pan-tilt-zoom surveillance</p>
+                                        </div>
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                         </svg>
-                                        <span>PTZ Cameras</span>
                                     </div>
                                 </a>
                                 <!-- Nested dropdown for PTZ Cameras -->
-                                <div class="absolute left-full top-0 ml-1 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-xl opacity-0 invisible transition-all duration-200 z-50 border border-gray-100 dark:border-gray-700 group-hover/subdropdown:opacity-100 group-hover/subdropdown:visible">
+                                <div class="absolute left-full top-0 ml-1 w-72 bg-white dark:bg-gray-800 rounded-xl shadow-2xl opacity-0 invisible transition-all duration-300 z-50 border border-gray-100 dark:border-gray-700 group-hover/subdropdown:opacity-100 group-hover/subdropdown:visible">
                                     <div class="py-2">
-                                        <div class="px-4 py-2">
-                                            <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Uniview PTZ Cameras</h4>
+                                        <div class="px-5 py-3 border-b border-gray-100 dark:border-gray-700">
+                                            <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200 flex items-center">
+                                                <svg class="w-4 h-4 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                                                </svg>
+                                                Uniview PTZ Cameras
+                                            </h4>
                                         </div>
-                                        <a href="/categories/ptz-cameras/ipc6325lfw-ax5c-vg" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC6325LFW-AX5C-VG</a>
-                                        <a href="/categories/ptz-cameras/ipc6424sr-x25-vf-b" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC6424SR-X25-VF-B</a>
-                                        <a href="/categories/ptz-cameras/ipc6432lr-x16-vg1" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC6432LR-X16-VG1</a>
-                                        <a href="/categories/ptz-cameras/ipc6622sr-x25-vf" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC6622SR-X25-VF</a>
-                                        <a href="/categories/ptz-cameras/ipc7628el-l-x41-vh1" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC7628EL-L-X41-VH1</a>
-                                        <a href="/categories/ptz-cameras/ipc94144sr-x25-f40c" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC94144SR-X25-F40C</a> </div>
+                                        <a href="/categories/ptz-cameras/ipc6325lfw-ax5c-vg" class="block px-5 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC6325LFW-AX5C-VG</a>
+                                        <a href="/categories/ptz-cameras/ipc6424sr-x25-vf-b" class="block px-5 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC6424SR-X25-VF-B</a>
+                                        <a href="/categories/ptz-cameras/ipc6432lr-x16-vg1" class="block px-5 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">IPC6432LR-X16-VG1</a>
+                                        <div class="px-5 py-3 border-t border-gray-100 dark:border-gray-700 text-center">
+                                            <a href="/categories/ptz-cameras" class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-150 inline-flex items-center">
+                                                View all PTZ cameras
+                                                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             
                             <!-- DVR with nested dropdown -->
                             <div class="relative group/subdropdown">
-                                <a href="/categories/dvr" class="block px-4 py-3 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150 flex items-center justify-between border-t border-gray-100 dark:border-gray-700">
-                                    <div class="flex items-center">
-                                        <svg class="w-5 h-5 mr-3 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                                <a href="/categories/dvr" class="block px-5 py-3 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150 flex items-center border-t border-gray-100 dark:border-gray-700">
+                                    <div class="flex items-center w-full">
+                                        <div class="p-2 mr-3 rounded-lg bg-blue-50 dark:bg-gray-700">
+                                            <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex-1">
+                                            <span>DVR Systems</span>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Digital video recording</p>
+                                        </div>
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                         </svg>
-                                        <span>DVR Systems</span>
                                     </div>
-                                   
                                 </a>
                                 <!-- Nested dropdown for DVR -->
-                                <div class="absolute left-full top-0 ml-1 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-xl opacity-0 invisible transition-all duration-200 z-50 border border-gray-100 dark:border-gray-700 group-hover/subdropdown:opacity-100 group-hover/subdropdown:visible">
+                                <div class="absolute left-full top-0 ml-1 w-72 bg-white dark:bg-gray-800 rounded-xl shadow-2xl opacity-0 invisible transition-all duration-300 z-50 border border-gray-100 dark:border-gray-700 group-hover/subdropdown:opacity-100 group-hover/subdropdown:visible">
                                     <div class="py-2">
-                                        <div class="px-4 py-2">
-                                            <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Uniview DVR Systems</h4>
+                                        <div class="px-5 py-3 border-b border-gray-100 dark:border-gray-700">
+                                            <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200 flex items-center">
+                                                <svg class="w-4 h-4 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                                                </svg>
+                                                Uniview DVR Systems
+                                            </h4>
                                         </div>
-                                        <a href="/categories/dvr/xvr301-04u3-p4" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">XVR301-04U3-P4</a>
-                                        <a href="/categories/dvr/xvr301-08u3" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">XVR302-16U3</a>
-                                        <a href="/categories/dvr/xvr301-f-series" class="block px-6 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">XVR301-F Series
-                                        </a>
+                                        <a href="/categories/dvr/xvr301-04u3-p4" class="block px-5 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">XVR301-04U3-P4</a>
+                                        <a href="/categories/dvr/xvr301-08u3" class="block px-5 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">XVR302-16U3</a>
+                                        <a href="/categories/dvr/xvr301-f-series" class="block px-5 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">XVR301-F Series</a>
+                                        <div class="px-5 py-3 border-t border-gray-100 dark:border-gray-700 text-center">
+                                            <a href="/categories/dvr" class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-150 inline-flex items-center">
+                                                View all DVR systems
+                                                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Footer with contact link -->
-                            <div class="px-4 py-2 border-t border-gray-100 dark:border-gray-700">
-                                <a href="/contact" class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-150">Contact Sales →</a>
+                            <div class="px-5 py-3 border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/20 rounded-b-xl">
+                                <a href="/contact" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-150 inline-flex items-center justify-center w-full">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                    Contact Sales Team
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -175,6 +261,40 @@ import Logo from "../assets/images/UNVLOGO.png";
                     </a>
                 </li>
             </ul>
+        </div>
+        <div class="hidden lg:flex items-center space-x-6">
+            <!-- Email -->
+            <a href="mailto:info@digitallinktechnology.com" class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                <span class="text-sm">sales@unvdubai.com</span>
+            </a>
+            
+            <!-- Phone -->
+            <a href="tel:+1234567890" class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                </svg>
+                <span class="text-sm">+971552929644</span>
+            </a>
+            
+            <!-- Social Media Links -->
+            <div class="flex items-center space-x-3 ml-2">
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/company/yourcompany" target="_blank" rel="noopener noreferrer" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                
+                <!-- Google (Business/Reviews) -->
+                <a href="https://g.page/yourbusiness" target="_blank" rel="noopener noreferrer" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
+                    </svg>
+                </a>
+            </div>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -238,24 +358,60 @@ import Logo from "../assets/images/UNVLOGO.png";
                 <span>Contact</span>
             </a>
         </div>
+
+        <!-- Mobile Contact Info -->
+        <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
+            <div class="space-y-2">
+                <!-- Email -->
+                <a href="mailto:info@digitallinktechnology.com" class="flex items-center text-gray-700 dark:text-gray-300 text-sm">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    info@digitallinktechnology.com
+                </a>
+                
+                <!-- Phone -->
+                <a href="tel:+1234567890" class="flex items-center text-gray-700 dark:text-gray-300 text-sm">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                    +1 (234) 567-890
+                </a>
+                
+                <!-- Social Media Links -->
+                <div class="flex space-x-4 pt-2">
+                    <a href="https://linkedin.com/company/yourcompany" target="_blank" rel="noopener noreferrer" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://g.page/yourbusiness" target="_blank" rel="noopener noreferrer" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </nav>
 
 <!-- Spacer to offset fixed navbar -->
 <div class="mt-16 sm:mt-14"></div>
 
-<style>
+<style is:global>
     /* Show main dropdown on hover */
-.group\/dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-}
+    .group\/dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+    }
 
-/* Show nested dropdown on hover */
-.group\/subdropdown:hover > div {
-    opacity: 1;
-    visibility: visible;
-}
+    /* Show nested dropdown on hover */
+    .group\/subdropdown:hover > div {
+        opacity: 1;
+        visibility: visible;
+    }
+    
     .nav-link {
         @apply relative text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400 transition-colors duration-300 py-2 px-3;
     }
@@ -312,7 +468,7 @@ import Logo from "../assets/images/UNVLOGO.png";
     }
 </style>
 
-<script>
+<script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
         const nav = document.getElementById('main-nav');
         const toggleButton = document.getElementById('menu-toggle');

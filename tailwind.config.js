@@ -18,6 +18,9 @@ module.exports = {
         serif: ['var(--aw-font-serif)', ...defaultTheme.fontFamily.serif],
         heading: ['var(--aw-font-heading)', ...defaultTheme.fontFamily.sans],
       },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
       zIndex: {
         "-1": "-1",
         "-10": "-10",
