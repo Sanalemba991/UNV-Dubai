@@ -153,6 +153,63 @@ import Logo from "../assets/images/UNVLOGO.png";
     </div>
     
     <!-- Product Grid Section -->
+   
+    <div class="mt-10 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
+        <a href="/categories/ip-cameras" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200">
+            View All Network Cameras
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </a>
+    </div>
+</template>
+
+<!-- Add similar templates for other categories -->
+<template id="analog-cameras-content">
+    <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">Featured Network Cameras</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <!-- Featured Product 1 -->
+            <div class="group/featured">
+                <a href="/categories/analog-cameras/uac-b115-af2840-w" class="block">
+                    <div class="relative h-64 w-full mb-4 overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-700">
+                        <img src="/images/categories/products/analog-cameras/UAC-B115-AF28(40)-W.png" 
+                             alt="IPC2122LB-AF28(40)A2" 
+                             class="absolute inset-0 w-full h-full object-contain transition-transform duration-500 group-hover/featured:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 group-hover/featured:text-blue-600 dark:group-hover/featured:text-blue-400">UAC-B115-AF2840-W</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-2">2MP IR Fixed Dome Network Camera</p>
+                        <div class="flex items-center">
+                            <span class="inline-block px-2 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full mr-2">Best Seller</span>
+                            <span class="inline-block px-2 py-1 text-xs font-medium bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 rounded-full">4K Resolution</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Featured Product 2 -->
+            <div class="group/featured">
+                <a href="/categories/analog-cameras/uac-t142-af2840lm-dl" class="block">
+                    <div class="relative h-64 w-full mb-4 overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-700">
+                        <img src="/images/categories/products/analog-cameras/UAC-T142-AF28LM-DL/UAC-T142-AF28(40)LM-DL1.png" 
+                             alt="IPC3222SS-ADF40K-I1" 
+                             class="absolute inset-0 w-full h-full object-contain transition-transform duration-500 group-hover/featured:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 group-hover/featured:text-blue-600 dark:group-hover/featured:text-blue-400">UAC-T142-AF2840LM-DL</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-2">2MP IR Fixed Bullet Network Camera</p>
+                        <div class="flex items-center">
+                            <span class="inline-block px-2 py-1 text-xs font-medium bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 rounded-full mr-2">Weatherproof</span>
+                            <span class="inline-block px-2 py-1 text-xs font-medium bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-200 rounded-full">Night Vision</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Product Grid Section -->
     <div>
         <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">All Network Cameras</h2>
         <div class="grid grid-cols-3 gap-6">
@@ -212,11 +269,6 @@ import Logo from "../assets/images/UNVLOGO.png";
             </svg>
         </a>
     </div>
-</template>
-
-<!-- Add similar templates for other categories -->
-<template id="analog-cameras-content">
-    <!-- Analog cameras content would go here -->
 </template>
         <!-- PTZ Cameras Content -->
         <template id="ptz-cameras-content">
