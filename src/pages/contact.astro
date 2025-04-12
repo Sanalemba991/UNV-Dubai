@@ -33,7 +33,7 @@ const structuredData = {
   },
   "mainEntity": {
     "@type": "Organization",
-    "name": "Digital Link Technology LLC",
+    "name": "UNV Dubai",
     "url": "https://unvdubai.com",
     "logo": {
       "@type": "ImageObject",
@@ -43,9 +43,9 @@ const structuredData = {
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+97150 9162488",
+      "telephone": "+971552929644",
       "contactType": ["sales", "customer service"],
-      "email": "sales1@digitallink.ae", 
+      "email": "sales@unvdubai.com", 
       "areaServed": ["AE"],
       "availableLanguage": ["English", "Arabic"],
       "address": {
@@ -66,7 +66,7 @@ const openGraph = {
   title: title,
   description: description,
   url: canonicalUrl,
-  siteName: "UNV Dubai - Digital Link Technology",
+  siteName: "UNV Dubai ",
   images: [
     {
       url: `${Astro.url.origin}/images/og-contact.jpg`, // Replace with actual image
@@ -84,9 +84,9 @@ const twitterCard = {
   card: "summary_large_image",
   title: title,
   description: description,
-  site: "@YourTwitterHandle", // Replace
-  creator: "@YourTwitterHandle", // Replace
-  image: `${Astro.url.origin}/images/twitter-contact.jpg` // Replace
+  site: "@YourTwitterHandle",
+  creator: "@YourTwitterHandle", 
+  image: `${Astro.url.origin}/images/twitter-contact.jpg` 
 };
 ---
 
@@ -104,7 +104,7 @@ const twitterCard = {
     
     <!-- Hidden microdata for better SEO -->
     <div itemscope itemtype="https://schema.org/Organization" style="display:none;">
-      <span itemprop="name">Digital Link Technology LLC</span>
+      <span itemprop="name">UNV Dubai</span>
       <span itemprop="description">Authorized UNV Camera Distributor in UAE</span>
       <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
         <span itemprop="streetAddress">25th St - Naif - Dubai - United Arab EmiratesYour Street Address</span>,
@@ -113,8 +113,8 @@ const twitterCard = {
         <span itemprop="postalCode">123241</span>,
         <span itemprop="addressCountry">United Arab Emirates</span>
       </div>
-      <span itemprop="telephone">+97150 9162488</span>
-      <span itemprop="email">info@unvdubai.com</span>
+      <span itemprop="telephone">+971552929644</span>
+      <span itemprop="email">sales@unvdubai.com</span>
       <span itemprop="url">https://unvdubai.com</span>
     </div>
   </main>

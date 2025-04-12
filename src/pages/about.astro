@@ -9,7 +9,7 @@ const publishedTeamMembers = await getCollection("teams", ({ data }) => {
 });
 
 // Enhanced SEO metadata
-const title = "UNV Camera Distributor in Dubai, UAE | Digital Link Technology";
+const title = "UNV Camera Distributor in Dubai, UAE ";
 const description = "Authorized UNV security camera distributor in Dubai & UAE. Meet our expert team providing top-quality surveillance solutions with professional installation support.";
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
@@ -33,29 +33,29 @@ const structuredData = {
     {
       "@type": "Organization",
       "@id": "https://unvdubai.com/#organization",
-      "name": "Digital Link Technology LLC",
+      "name": "UNV Dubai",
       "url": "https://unvdubai.com",
       "logo": {
         "@type": "ImageObject",
         "@id": `${Astro.url.origin}/unvdubai.png`,
         "url": `${Astro.url.origin}/unvdubai.png`,
-        "contentUrl": "https://digitallink.ae/wp-content/uploads/2023/04/imageedit_3_7633242330.png",
+       
         "caption": "UNV Dubai Distributor",
         "inLanguage": "en-US",
         "width": 1000,
         "height": 375
       },
       "sameAs": [
-        "https://www.facebook.com/unvdubai",
-        "https://www.linkedin.com/company/unv-dubai",
-        "https://twitter.com/unvdubai"
+        
+        "",
+       
       ]
     },
     {
       "@type": "WebSite",
       "@id": "https://unvdubai.com/#website",
       "url": "https://unvdubai.com",
-      "name": "UNV Security Cameras Dubai | Digital Link Technology",
+      "name": "UNV Security Cameras Dubai | UNV Dubai",
       "description": description,
       "publisher": {
         "@id": "https://unvdubai.com/#organization"
@@ -106,7 +106,7 @@ const structuredData = {
       "@type": "AboutPage",
       "@id": `${canonicalUrl}#aboutpage`,
       "url": canonicalUrl.toString(),
-      "name": "About UNV Dubai Distributor - Digital Link Technology",
+      "name": "About UNV Dubai Distributor - UNV Dubai",
       "description": "Learn about our expert team and company providing UNV security camera solutions in Dubai and across UAE. Authorized distributor with professional installation services.",
       "isPartOf": {
         "@id": `${canonicalUrl}#webpage`
@@ -128,8 +128,8 @@ const structuredData = {
         "height": 400
       },
       "sameAs": [
-        "https://www.linkedin.com/in/abdulgafoor",
-        "https://twitter.com/abdulgafoor"
+        "",
+
       ]
     },
     {

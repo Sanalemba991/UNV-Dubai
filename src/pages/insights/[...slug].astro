@@ -25,7 +25,7 @@ const relatedInsights = allInsights
   .slice(0, 3);
 
 // SEO meta data
-const title = `${post.data.title} | UNV Camera Dubai | Digital Link Technology`;
+const title = `${post.data.title} | UNV Camera Dubai `;
 const description = post.data.description;
 const canonicalUrl = new URL(`/insights/${post.slug}`, Astro.site);
 const keywords = [
@@ -48,12 +48,12 @@ const structuredData = {
   "dateModified": post.data.pubDate, // Update this if you have a modified date field
   "author": {
     "@type": "Organization",
-    "name": "Digital Link Technology LLC",
+    "name": "UNV Dubai",
     "url": Astro.site
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Digital Link Technology LLC",
+    "name": "UNV Dubai",
     "logo": {
       "@type": "ImageObject",
       "url": `${Astro.site}/images/logo.png` // Update with your logo path
