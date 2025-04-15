@@ -46,63 +46,66 @@ const images = product.images || (product.image ? [{ url: product.image }] : [])
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Product schema markup
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": product.title,
-  "description": product.description,
-  "image": new URL(product.image, Astro.site).toString(),
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "AED",
-    "price": product.price || "0.00",
-    "availability": "https://schema.org/InStock",
-    "itemCondition": "https://schema.org/NewCondition"
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.title,
+    "description": product.description,
+    "image": new URL(product.image, Astro.site).toString(),
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "AED",
+      "price": product.price || "0.00",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    // Add aggregate rating if available
+    ...(product.rating && product.reviewCount ? {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        "ratingValue": product.rating,
+        "reviewCount": product.reviewCount
+      }
+    } : {})
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": new URL("/", Astro.site).toString()
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Analog Cameras",
+        "item": new URL("/categories/ptz-cameras", Astro.site).toString()
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": product.title,
+        "item": canonicalURL.toString()
+      }
+    ]
   }
-};
+];
 
-// Add aggregate rating if available
-if (product.rating && product.reviewCount) {
-  productSchema.aggregateRating = {
-    "@type": "AggregateRating",
-    "ratingValue": product.rating,
-    "reviewCount": product.reviewCount
-  };
-}
+// In your Astro component's script section, you would use it like this:
 
-// Breadcrumb schema markup
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": new URL("/", Astro.site).toString()
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Analog Cameras",
-      "item": new URL("/categories/ptz-cameras", Astro.site).toString()
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": product.title,
-      "item": canonicalURL.toString()
-    }
-  ]
-};
 ---
 
 <Layout
   title={`${product.title} - UNV Dubai`}
+  structuredData={structuredData}
   description={product.description}
   canonical={canonicalURL.toString()}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)}></script>
+  <!-- <script type="application/ld+json" set:html={JSON.stringify(productSchema)}></script> -->
     <section class="py-16 relative overflow-hidden">
         <!-- Background elements -->
         <div class="absolute w-96 h-96 -top-48 -left-48 rounded-full bg-blue-500/5 blur-3xl animate-float-slow"></div>
