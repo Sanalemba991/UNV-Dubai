@@ -10,7 +10,7 @@ import { Image } from "astro:assets";
 import { capitalize, formatDate } from "../../utils/utils";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-
+import Logo from "../assets/images/UNVLOGO.png";
 // Define Props interface
 interface Props {
   post: CollectionEntry<"blog">;
@@ -62,7 +62,7 @@ const structuredData = {
     "name": "UNV Dubai",
     "logo": {
       "@type": "ImageObject",
-      "url": `${Astro.site}/images/logo.png` // Update with your logo path
+      "url": Logo.src  // Update with your logo path
     }
   },
   "mainEntityOfPage": {

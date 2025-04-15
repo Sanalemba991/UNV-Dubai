@@ -2,6 +2,7 @@
 import Layout from "~/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+import Logo from "../assets/images/UNVLOGO.png";
 
 export async function getStaticPaths() {
   const insightPosts = await getCollection("insights");
@@ -31,6 +32,7 @@ const canonicalUrl = new URL(`/insights/${post.slug}`, Astro.site);
 
 
 // JSON-LD Structured Data
+
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -39,7 +41,7 @@ const structuredData = {
   "url": canonicalUrl.toString(),
   "image": `${Astro.site}${post.data.cardImage}`,
   "datePublished": post.data.pubDate,
-  "dateModified": post.data.pubDate, // Update this if you have a modified date field
+  "dateModified": post.data.pubDate, // Update if you have a modified date
   "author": {
     "@type": "Organization",
     "name": "UNV Dubai",
@@ -50,7 +52,7 @@ const structuredData = {
     "name": "UNV Dubai",
     "logo": {
       "@type": "ImageObject",
-      "url": `${Astro.site}/images/logo.png` // Update with your logo path
+      "url": Logo.src // ✅ This is now correctly referencing the imported logo
     }
   },
   "mainEntityOfPage": {

@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-
+import Logo from "../assets/images/UNVLOGO.png";
 // Fetch blog posts dynamically from the 'blog' collection
 const allPosts = await getCollection("blog");
 
@@ -51,7 +51,7 @@ const structuredData = {
       "name": "UNV Dubai",
       "logo": {
         "@type": "ImageObject",
-        "url": `${Astro.site}/images/logo.png` // Update with your logo path
+        "url": Logo.src  // Update with your logo path
       }
     }
   }))
