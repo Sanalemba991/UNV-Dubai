@@ -32,7 +32,7 @@ const metadata = {
 };
 
 // Schema.org markup
-const schemaOrg = {
+const structuredData = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   name: title,
@@ -122,11 +122,12 @@ const products = await getCollection('ip-cameras');
 <Layout 
     title={title} 
     description={description}
+    structuredData={structuredData}
     canonical={canonicalURL}
     metadata={metadata}
 >
     <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+    <!-- <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} /> -->
 
     <!-- Additional meta tags -->
     <meta name="robots" content="index, follow" slot="head" />
