@@ -177,7 +177,7 @@ const products = await getCollection('ip-cameras');
             <div id="products" class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
                 {
                     products.map((product, index) => (
-                        <a href={`/categories/ip-cameras/${product.slug}`} class="product-card transform hover:-translate-y-2 transition-all duration-300" style={{ animationDelay: `${index * 150}ms` }}>
+                        <a href={`/categories/network-cameras/${product.slug}`} class="product-card transform hover:-translate-y-2 transition-all duration-300" style={{ animationDelay: `${index * 150}ms` }}>
                             <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 ease-out border border-gray-100 dark:border-gray-700/50">
                                 <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
 
