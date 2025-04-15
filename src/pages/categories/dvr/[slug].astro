@@ -54,7 +54,7 @@ const structuredData = [
       "availability": "https://schema.org/InStock",
       "itemCondition": "https://schema.org/NewCondition"
     },
-    // Add aggregate rating if available
+
     ...(product.rating && product.reviewCount ? {
       aggregateRating: {
         "@type": "AggregateRating",

@@ -63,7 +63,7 @@ const structuredData = [
       "availability": "https://schema.org/InStock",
       "itemCondition": "https://schema.org/NewCondition"
     },
-    // Add aggregate rating if available
+   
     ...(product.rating && product.reviewCount ? {
       aggregateRating: {
         "@type": "AggregateRating",
@@ -98,7 +98,7 @@ const structuredData = [
   }
 ];
 
-// In your Astro component's script section, you would use it like this:
+
 
 ---
 
