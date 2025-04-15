@@ -67,7 +67,7 @@ const categories = [
 ];
 
 // Prepare schema data - convert URL objects to strings explicitly
-const schemaData = {
+const structuredData = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": title,
@@ -124,7 +124,7 @@ const schemaData = {
   },
 };
 
-const schemaString = JSON.stringify(schemaData);
+// const schemaString = JSON.stringify(schemaData);
 ---
 
 <style>
@@ -163,6 +163,7 @@ const schemaString = JSON.stringify(schemaData);
 
 <Layout
   title={metadata.title}
+  structuredData={structuredData}
   description={metadata.description}
   canonical={metadata.canonical}
   openGraph={metadata.openGraph}
@@ -172,10 +173,10 @@ const schemaString = JSON.stringify(schemaData);
   <meta name="keywords" content="PRODUCTS, surveillance, security, UNV, Dubai" slot="head" />
   <link rel="alternate" hreflang="en" href={canonicalURL} slot="head" />
 
-  <script is:inline type="application/ld+json" set:html={schemaString}></script>
-    
+  <!-- <script is:inline type="application/ld+json" set:html={schemaString}></script>
+     -->
     <!-- JSON-LD Structured Data - Fixed with proper stringification -->
-    <script is:inline type="application/ld+json" set:html={schemaString}></script>
+    <!-- <script is:inline type="application/ld+json" set:html={schemaString}></script> -->
 
     <div class="bg-gradient-to-b from-gray-50 to-white dark:from-neutral-950 dark:to-neutral-900">
         <Sections>

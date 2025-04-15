@@ -49,7 +49,7 @@ const images = product.images ?? [{ url: product.image }];
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Product schema markup
-const productSchema = {
+const structuredData  = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": product.title,
@@ -103,9 +103,10 @@ const breadcrumbSchema = {
 <Layout
   title={`${product.title} - UNV Dubai`}
   description={product.description}
+  structuredData={structuredData}
   canonical={canonicalURL.toString()}
->
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)}></script>
+ >
+
     <section class="py-16 relative overflow-hidden">
         <!-- Background elements -->
         <div class="absolute w-96 h-96 -top-48 -left-48 rounded-full bg-blue-500/5 blur-3xl animate-float-slow"></div>
