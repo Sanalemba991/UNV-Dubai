@@ -47,8 +47,11 @@ const schemaOrg = {
         "@type": "Product",
         name: product.data.title,
         description: product.data.description,
-        image: new URL(product.data.image, Astro.site).toString(), // Fix image URL
-        url: new URL(`/categories/ip-cameras/${product.slug}`, Astro.site).toString(),
+        image: new URL(
+          product.data.image || '/images/categories/products/ip-cameras/IPC324LB-AF28-A2/Network5 (1).png',
+          Astro.site
+        ).toString(), // Fix image URL
+        url: new URL(`/categories/network-cameras/${product.slug}`, Astro.site).toString(),
         offers: {
           "@type": "Offer",
           priceCurrency: "AED",
@@ -130,7 +133,7 @@ const products = await getCollection('ip-cameras');
 
     <!-- Additional meta tags -->
     <meta name="robots" content="index, follow" slot="head" />
-    <meta name="keywords" content="IP cameras, surveillance, security, UNV, Dubai" slot="head" />
+    <meta name="keywords" content="Network cameras, surveillance, security, UNV, Dubai" slot="head" />
     <link rel="alternate" hreflang="en" href={canonicalURL} slot="head" />
 
     <section class="relative py-20 sm:py-32 overflow-hidden">
