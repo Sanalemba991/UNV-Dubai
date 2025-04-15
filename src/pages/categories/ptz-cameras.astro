@@ -53,7 +53,7 @@ const structuredData = {
         name: product.data.title,
         description: product.data.description,
         image: new URL(product.data.image, Astro.site).toString(), // Fix image URL
-        url: new URL(`/categories/ip-cameras/${product.slug}`, Astro.site).toString(),
+        url: new URL(`/categories/ptz-cameras/${product.slug}`, Astro.site).toString(),
         offers: {
           "@type": "Offer",
           priceCurrency: "AED",
