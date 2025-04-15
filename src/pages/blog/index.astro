@@ -21,16 +21,7 @@ const formatDate = (date: Date) => {
 const title = "UNV Dubai Blogs | UNV Camera Dubai Insights";
 const description = "Explore our latest blog posts on surveillance technology, CCTV trends, and security solutions from UNV Dubai in Dubai.";
 const canonicalUrl = new URL("/blog", Astro.site);
-const keywords = [
-  "CCTV blog Dubai",
-  "surveillance technology articles",
-  "UNV camera insights",
-  "security solutions blog",
-  "Dubai CCTV trends",
-  "IP camera guides",
-  "UNV product updates",
-  "security camera articles"
-].join(", ");
+
 
 // JSON-LD Structured Data
 const structuredData = {
@@ -71,7 +62,7 @@ const structuredData = {
   title={title}
   description={description}
   canonical={canonicalUrl.toString()}
-  keywords={keywords}
+
   structuredData={structuredData}
 >
   <div class="container mx-auto px-4 py-12">

@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 const title = "404 Page Not Found | UNV Camera Dubai";
 const description = "The page you're looking for doesn't exist. Return to UNV Camera Dubai's homepage for surveillance solutions and security systems.";
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-const keywords = "404 error, page not found, UNV Dubai, security cameras, CCTV systems";
+
 
 // JSON-LD Structured Data for error page
 const structuredData = {
@@ -30,7 +30,7 @@ const structuredData = {
   title={title}
   description={description}
   canonical={canonicalUrl.toString()}
-  keywords={keywords}
+ 
   structuredData={structuredData}
   noindex={true}  // Important for error pages
 >

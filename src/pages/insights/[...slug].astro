@@ -28,13 +28,7 @@ const relatedInsights = allInsights
 const title = `${post.data.title} | UNV Camera Dubai `;
 const description = post.data.description;
 const canonicalUrl = new URL(`/insights/${post.slug}`, Astro.site);
-const keywords = [
-  "CCTV insights Dubai",
-  "surveillance technology trends",
-  "UNV camera news",
-  post.data.title,
-  ...(post.data.tags || [])
-].join(", ");
+
 
 // JSON-LD Structured Data
 const structuredData = {
@@ -70,7 +64,7 @@ const structuredData = {
   title={title}
   description={description}
   canonical={canonicalUrl.toString()}
-  keywords={keywords}
+
   structuredData={structuredData}
 >
   <div class="bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen">
@@ -98,7 +92,7 @@ const structuredData = {
           <div class="lg:w-2/3 opacity-0 scale-95" data-animation="fade-in-scale">
             <div class="rounded-lg sm:rounded-xl overflow-hidden shadow-lg sm:shadow-xl transition-all duration-300 hover:shadow-xl sm:hover:shadow-2xl">
               <Image
-                src={post.data.cardImage}
+                src={post.data.cardImage.src}
                 alt={post.data.cardImageAlt}
                 width={1200}
                 height={800}
@@ -153,7 +147,7 @@ const structuredData = {
                       <div class="flex items-start">
                         <div class="w-12 h-12 sm:w-16 sm:h-16 rounded overflow-hidden flex-shrink-0 mr-3 sm:mr-4">
                           <Image
-                            src={insight.data.cardImage}
+                            src={insight.data.cardImage.src}
                             alt={insight.data.title}
                             width={200}
                             height={200}

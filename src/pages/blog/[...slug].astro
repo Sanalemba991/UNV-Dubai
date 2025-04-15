@@ -40,14 +40,7 @@ const relatedPosts = allBlogPosts
 const title = `${post.data.title} | UNV Camera Dubai Blog`;
 const description = post.data.description || post.data.contents[0]?.substring(0, 160) + '...';
 const canonicalUrl = new URL(`/blog/${post.slug}`, Astro.site);
-const keywords = [
-  "UNV Camera Dubai",
-  "surveillance technology",
-  ...(post.data.tags || []),
-  "CCTV solutions",
-  "security cameras",
-  "Dubai security systems"
-].join(", ");
+
 
 // JSON-LD Structured Data
 const structuredData = {
@@ -86,7 +79,7 @@ const { Content } = await post.render();
   title={title}
   description={description}
   canonical={canonicalUrl.toString()}
-  keywords={keywords}
+
   structuredData={structuredData}
 >
   <!-- Main blog post section with fade-in animation -->
