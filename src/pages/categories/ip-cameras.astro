@@ -47,11 +47,8 @@ const schemaOrg = {
         "@type": "Product",
         name: product.data.title,
         description: product.data.description,
-        image: new URL(
-          product.data.image || '/images/categories/products/ip-cameras/IPC324LB-AF28-A2/Network5 (1).png',
-          Astro.site
-        ).toString(), // Fix image URL
-        url: new URL(`/categories/network-cameras/${product.slug}`, Astro.site).toString(),
+        image: new URL(product.data.image, Astro.site).toString(), // Fix image URL
+        url: new URL(`/categories/ip-cameras/${product.slug}`, Astro.site).toString(),
         offers: {
           "@type": "Offer",
           priceCurrency: "AED",
@@ -133,7 +130,7 @@ const products = await getCollection('ip-cameras');
 
     <!-- Additional meta tags -->
     <meta name="robots" content="index, follow" slot="head" />
-    <meta name="keywords" content="Network cameras, surveillance, security, UNV, Dubai" slot="head" />
+    <meta name="keywords" content="IP cameras, surveillance, security, UNV, Dubai" slot="head" />
     <link rel="alternate" hreflang="en" href={canonicalURL} slot="head" />
 
     <section class="relative py-20 sm:py-32 overflow-hidden">
@@ -180,7 +177,7 @@ const products = await getCollection('ip-cameras');
             <div id="products" class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
                 {
                     products.map((product, index) => (
-                        <a href={`/categories/network-cameras/${product.slug}`} class="product-card transform hover:-translate-y-2 transition-all duration-300" style={{ animationDelay: `${index * 150}ms` }}>
+                        <a href={`/categories/ip-cameras/${product.slug}`} class="product-card transform hover:-translate-y-2 transition-all duration-300" style={{ animationDelay: `${index * 150}ms` }}>
                             <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 ease-out border border-gray-100 dark:border-gray-700/50">
                                 <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
 
