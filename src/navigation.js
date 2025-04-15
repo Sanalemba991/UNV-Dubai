@@ -113,7 +113,7 @@ export const footerData = {
     {
       title: 'Product',
       links: [
-        { text: 'Features', href: '#contact' },
+        { text: 'Features', href: '/contact' },
         { text: 'Team', href: 'about' },
         { text: 'Home', href: '/' },
         { text: 'Resources', href: 'blog' },
