@@ -16,7 +16,7 @@ import Feature from "~/components/features/Feature.astro";
 // SEO Meta Configuration
 const title: string = "UNV Authorized Distributor in Dubai, UAE | UNV Dubai";
 const description: string = "Premier UNV Distributor in Dubai, UAE offering security cameras, NVRs, video surveillance systems. Authorized UNV partner with expert support & installation services.";
-const keywords: string = "UNV Dubai, UNV UAE, UNV distributor, security cameras Dubai, CCTV systems UAE, IP cameras, video surveillance, NVR systems, UNV authorized dealer, security solutions Dubai";
+
 
 const testimonials: CollectionEntry<"testimonials">[] = (
   await getCollection("testimonials")
@@ -127,7 +127,6 @@ const structuredData = {
 <Layout 
   title={title} 
   description={description} 
-  keywords={keywords}
   structuredData={structuredData}
   canonicalUrl={Astro.url.href}
   ogTitle={title}
