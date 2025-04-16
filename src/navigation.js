@@ -98,11 +98,11 @@ export const headerData = {
     },
     {
       text: 'About',
-      href: getPermalink('about'),
+      href: getPermalink('/about'),
     },
     {
       text: 'Contact',
-      href: getPermalink('contact'),
+      href: getPermalink('/contact'),
     },
   ],
   actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
@@ -114,9 +114,9 @@ export const footerData = {
       title: 'Product',
       links: [
         { text: 'Features', href: '/contact' },
-        { text: 'Team', href: 'about' },
+        { text: 'Team', href: '/about' },
         { text: 'Home', href: '/' },
-        { text: 'Resources', href: 'blog' },
+        { text: 'Resources', href: '/blog' },
       ],
     },
     // {
@@ -142,10 +142,10 @@ export const footerData = {
     {
       title: 'Company',
       links: [
-        { text: 'About', href: 'about' },
-        { text: 'Blog', href: 'blog' },
+        { text: 'About', href: '/about' },
+        { text: 'Blog', href: '/blog' },
         // { text: 'Careers', href: '#' },
-        { text: 'Contact', href: 'contact' },
+        { text: 'Contact', href: '/contact' },
         
       ],
     },
