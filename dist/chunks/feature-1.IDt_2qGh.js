@@ -1,12 +1,1 @@
-const id = "feature-1.md";
-						const collection = "feature";
-						const slug = "feature-1";
-						const body = "";
-						const data = {id:1,title:"UNV Dubai Technology",body:"Welcome to UNV Dubai Technology, Dubai's premier distributor of UNV and Dahua CCTV cameras. Our mission is to provide you with unparalleled security solutions, from state-of-the-art surveillance systems to comprehensive security packages. Trust in our expertise to safeguard your premises and ensure peace of mind.",icon:"../icons/unvicon.svg"};
-						const _internal = {
-							type: 'content',
-							filePath: "C:/Users/sanalemba/UNV-Dubai/src/content/feature/feature-1.md",
-							rawData: undefined,
-						};
-
-export { _internal, body, collection, data, id, slug };
+const id="feature-1.md",collection="feature",slug="feature-1",body="",data={id:1,title:"UNV Dubai Technology",body:"Welcome to UNV Dubai Technology, Dubai's premier distributor of UNV and Dahua CCTV cameras. Our mission is to provide you with unparalleled security solutions, from state-of-the-art surveillance systems to comprehensive security packages. Trust in our expertise to safeguard your premises and ensure peace of mind.",icon:"../icons/unvicon.svg"},_internal={type:"content",filePath:"C:/Users/sanalemba/UNV-Dubai/src/content/feature/feature-1.md",rawData:void 0};export{_internal,body,collection,data,id,slug};
