@@ -29,9 +29,8 @@ specifications:
   resolution: "8MP"
   focalLength: "	2.7 to 13.5 mm"
   irRange: "40 m (131.2 ft)"
-  powerSupply: "DC12V (±25%) , PoE (IEEE 802.3af)"
-  protection: "	IP67,
-IK10"
+  powerSupply: "DC12V(±25%), PoE (IEEE 802.3af)"
+  protection: "	IP67,IK10"
   storage: "Micro SD up to 512 GB"
   dimensions: "Ø 148 x 111.4 mm (Ø 5.8\"” x 4.4\"”) (Ø x H)"
   videoCompression: "Ultra 265, H.265, H.264"

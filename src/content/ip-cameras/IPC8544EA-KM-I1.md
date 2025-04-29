@@ -28,7 +28,7 @@ specifications:
   focalLength: "2.8 mm"
   fieldOfView: "H: 99.5°, V: 56.5°, D: 114.4°"
   irRange: "50 m (164.0 ft)"
-  powerSupply: "AC24V±25%/DC24V±25%, PoE(IEEE 802.3at)"
+  powerSupply: "AC24V±25% / DC24V±25%, PoE(IEEE 802.3at)"
   protection: "IP67"
   storage: "Micro SD, up to 512 GB"
   dimensions: "259 × 211 × 115 mm (10.2 × 8.3 × 4.5 in) (L × W × H)"

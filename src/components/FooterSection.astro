@@ -11,6 +11,7 @@ const sectionThreeTitle: string = "Stay up to date";
 const sectionThreeContent: string =
   "Stay updated with the latest security tips.";
 ---
+<meta charset="UTF-8">
 <footer class="w-full bg-neutral-300 dark:bg-neutral-900">
   <div
     class="mx-auto w-full max-w-[85rem] px-4 py-12 sm:px-6 lg:px-16 lg:pt-20 2xl:max-w-screen-2xl"
@@ -63,10 +64,9 @@ const sectionThreeContent: string =
 
     <div class="mt-12 border-t border-neutral-400 dark:border-neutral-700 pt-8 grid gap-y-4 sm:flex sm:items-center sm:justify-between sm:gap-y-0">
       <div class="flex items-center justify-between">
-        <p class="text-sm text-neutral-600 dark:text-neutral-400">
-          © <span id="current-year"></span> UNV Dubai Technology
-          
-        </p>
+<p class="text-sm text-neutral-600 dark:text-neutral-400">
+  &copy; <span id="current-year"></span> UNV Dubai
+</p>
       </div>
       <div class="flex space-x-4">
         <FooterSocialLink url={socialLinks.linkedin}>

@@ -12,7 +12,7 @@ images:
 features:
 - High quality image with 2*2MP resolution, 1/2.8"CMOS sensor
 - Single IP with dual channels
-- 2MP (1920*1080)@30/25fps; 720P (1280*720) @30/25fps
+- 2MP (1920 x 1080)@30/25fps; 720P (1280 x 720) @30/25fps
 - Ultra 265, H.264,H.265, MJPEG
 - Both channels support intelligent perimeter protection, include cross line, intrusion, enter area, leave area detection
 - Based on target classification, smart intrusion prevention significantly reduce false alarm caused by leaves, birds and lights etc., accurately focus on human and motor vehicle and non-motor vehicle
@@ -39,9 +39,9 @@ specifications:
   power: "DC12V(±25%), PoE+ (IEEE 802.3af)"
   protection: "IP67,
                IK10 "
-  dimensions: "176×104×72mm (6.9” × 4.1’’ ×2.8”) (L x W x H)"
+  dimensions: "176 x 104 x 72mm(6.9 x 4.1  x 2.8 ) (L x W x H)"
   weight: "1.01kg (2.23lb)"
   temperature: "-30°C ~ 60°C (-22°F ~ 140°F)"
   focalLength: "4.0 mm"
-  powerSupply: "DC 12V±25%, PoE (IEEE 802.3af),DC 12V±25%, PoE (IEEE 802.3af)"
+  powerSupply: "DC12V(±25%), PoE (IEEE 802.3af)"
 ---

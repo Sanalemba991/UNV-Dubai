@@ -36,7 +36,7 @@ specifications:
   wdr: "DWDR"
   irRange: "30 m (98.4 ft)"
   compression: "Ultra 265, H.265, H.264, MJPEG"
-  powerSupply: "DC 12V±25%, PoE (IEEE 802.3af)"
+  powerSupply: "DC12V(±25%), PoE (IEEE 802.3af)"
   powerConsumption: "16W max"
   operatingTemp: "-40°C to 60°C (-40°F to 140°F)"
   protection: "IP67 ,IK10 "

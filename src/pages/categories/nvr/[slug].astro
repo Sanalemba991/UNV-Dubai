@@ -34,6 +34,7 @@ export async function getStaticPaths() {
 const { product } = Astro.props as Props;
 const images = product.images || (product.image ? [{ url: product.image }] : []);
 ---
+<meta charset="UTF-8" />
 
 <Layout
     title={`${product.title} - UNV Dubai`}
