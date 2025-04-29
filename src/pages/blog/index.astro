@@ -6,7 +6,7 @@ import { getCollection } from "astro:content";
 const allPosts = await getCollection("blog");
 
 // Limit the posts to only 2
-const posts = allPosts.slice(0, 2); // Display the first 2 posts
+const posts = allPosts.slice(0, 2); 
 
 // Format date helper
 const formatDate = (date: Date) => {
