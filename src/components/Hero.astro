@@ -1,6 +1,6 @@
----
-// src/components/Carousel.astro
+<!-- src/components/Carousel.astro -->
 
+---
 interface CarouselItem {
   title: string;
   description: string;
@@ -15,24 +15,24 @@ const items: CarouselItem[] = [
     title: "OUR PRODUCTS",
     description: "Cutting-edge surveillance solutions designed for superior performance.",
     ctaText: "Explore Our Products",
-    desktopImage: "/images/categories/products/hero/Products.png",
-    mobileImage: "/images/categories/products/hero/mobile2.png",
+    desktopImage: "/images/categories/products/hero/Products1.png",
+    mobileImage: "/images/categories/products/hero/mobile4.png",
     link: "/products"
   },
   {
     title: "LATEST BLOGS",
     description: "Enhance your home's security with state-of-the-art monitoring solutions.",
     ctaText: "Discover More",
-    desktopImage: "/images/categories/products/hero/Blog.png",
-    mobileImage: "/images/categories/products/hero/mobile.png",
+    desktopImage: "/images/categories/products/hero/Blog1.png",
+    mobileImage: "/images/categories/products/hero/mobile3.png",
     link: "/blog"
   },
   {
     title: "INSIGHTS",
     description: "Top-tier surveillance solutions tailored for businesses and institutions.",
     ctaText: "Explore Insights",
-    desktopImage: "/images/categories/products/hero/Insights.png",
-    mobileImage: "/images/categories/products/hero/mobile1.png",
+    desktopImage: "/images/categories/products/hero/Insights1.png",
+    mobileImage: "/images/categories/products/hero/mobile5.png",
     link: "/insights"
   }
 ];
@@ -104,10 +104,10 @@ const items: CarouselItem[] = [
             {items.map((item, index) => (
                 <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full opacity-0" data-carousel-item>
                     <div class="carousel-item-container" onclick={`window.location.href='${item.link}'`}>
-                        <!-- Desktop Image -->
+                        <!-- Desktop/Tablet Image -->
                         <img
                             src={item.desktopImage}
-                            class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 hidden sm:block"
+                            class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 hidden md:block"
                             alt={`UNV ${item.title}`}
                             width="1920"
                             height="1080"
@@ -116,15 +116,15 @@ const items: CarouselItem[] = [
                         <!-- Mobile Image -->
                         <img
                             src={item.mobileImage}
-                            class="carousel-image absolute block w-full h-full object-cover transition-all duration-500 sm:hidden"
+                            class="carousel-image absolute block w-full h-96 object-cover transition-all duration-500 md:hidden"
                             alt={`UNV ${item.title} Mobile`}
                             width="600"
                             height="900"
                             loading={index === 0 ? 'eager' : 'lazy'}
                         />
                         <div class="carousel-caption">
-                            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold heading-font">{item.title}</h3>
-                            <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-4 opacity-90">{item.description}</p>
+                            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold heading-font">{item.title}</h3>
+                            <p class="text-sm sm:text-base md:text-lg lg:text-xl mb-3 sm:mb-4 opacity-90">{item.description}</p>
                             <span class="shop-now-btn">{item.ctaText}</span>
                         </div>
                     </div>
@@ -209,7 +209,6 @@ const items: CarouselItem[] = [
     .carousel-image {
         object-fit: cover;
         width: 100%;
-        height: 100%;
         transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
@@ -222,18 +221,17 @@ const items: CarouselItem[] = [
         touch-action: manipulation;
     }
 
-body, html {
-    overflow-x: hidden; 
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
+    body, html {
+        overflow-x: hidden; 
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
 
-.carousel-wrapper {
-    width: 100%;
-    position: relative;
-   
-}
+    .carousel-wrapper {
+        width: 100%;
+        position: relative;
+    }
 
     .carousel-caption {
         position: absolute;
@@ -368,7 +366,87 @@ body, html {
         animation: buttonReveal 0.5s ease 0.4s forwards;
     }
 
-    /* Desktop-specific styles */
+    /* Mobile (up to 767px) */
+    @media (max-width: 767px) {
+        #default-carousel {
+            height: 24rem; /* h-96 = 24rem = 384px */
+        }
+        
+        .carousel-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 24rem; /* h-96 = 24rem = 384px */
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) !important;
+        }
+        
+        /* Caption styling for mobile */
+        .carousel-caption {
+            width: 85%;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .carousel-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .carousel-caption p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        
+        .shop-now-btn {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.85rem;
+            background: rgba(0, 0, 0, 0.6);
+        }
+    }
+
+    /* Tablet (768px to 1023px) */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        #default-carousel {
+            height: 70vh;
+            min-height: 500px;
+            max-height: 800px;
+        }
+        
+        .carousel-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Tablet-specific caption styling */
+        .carousel-caption {
+            padding: 2rem;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .carousel-caption h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .carousel-caption p {
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .shop-now-btn {
+            padding: 0.8rem 2rem;
+            font-size: 0.95rem;
+        }
+    }
+
+    /* Desktop (1024px and up) */
     @media (min-width: 1024px) {
         #default-carousel {
             height: 90vh;
@@ -406,68 +484,6 @@ body, html {
             font-size: 1rem;
         }
     }
-
-    /* Mobile Styles (applies to all mobile sizes) */
-    @media (max-width: 1023px) {
-        #default-carousel {
-            height: 100vh !important;
-            max-height: -webkit-fill-available;
-        }
-        
-        .carousel-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) !important;
-        }
-        
-        /* Caption styling for mobile */
-        .carousel-caption {
-            width: 85%;
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.6);
-            transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1) !important;
-        }
-        
-        .carousel-caption h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-            transition: all 0.4s ease !important;
-        }
-        
-        .carousel-caption p {
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            transition: all 0.4s ease 0.1s !important;
-        }
-        
-        .shop-now-btn {
-            padding: 0.6rem 1.5rem;
-            font-size: 0.85rem;
-            background: rgba(0, 0, 0, 0.6);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-        }
-        
-        /* Mobile animations - enhanced */
-        .carousel-item.active .carousel-item-container .carousel-caption {
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-        
-        .carousel-item.active .carousel-item-container .carousel-caption h3 {
-            animation: mobileReveal 0.6s ease 0.2s forwards;
-        }
-        
-        .carousel-item.active .carousel-item-container .carousel-caption p {
-            animation: mobileReveal 0.6s ease 0.4s forwards;
-        }
-        
-        .carousel-item.active .carousel-item-container .shop-now-btn {
-            animation: mobileReveal 0.6s ease 0.6s forwards;
-        }
-    }
 </style>
 
 <script is:inline>
@@ -489,14 +505,16 @@ class Carousel {
         this.autoSlideInterval = null;
         this.touchStartX = 0;
         this.touchEndX = 0;
-        this.isMobile = window.innerWidth <= 1023;
+        this.isMobile = window.innerWidth <= 767;
+        this.isTablet = window.innerWidth >= 768 && window.innerWidth <= 1023;
         
         this.initEventListeners();
         this.showItem(this.currentIndex);
         this.startAutoSlide();
         
         window.addEventListener('resize', () => {
-            this.isMobile = window.innerWidth <= 1023;
+            this.isMobile = window.innerWidth <= 767;
+            this.isTablet = window.innerWidth >= 768 && window.innerWidth <= 1023;
         });
     }
     
@@ -569,7 +587,7 @@ class Carousel {
         currentIndicator.classList.add('bg-white');
         currentIndicator.setAttribute('aria-current', 'true');
         
-        if (this.isMobile) {
+        if (this.isMobile || this.isTablet) {
             this.items.forEach((item) => {
                 const container = item.querySelector('.carousel-item-container');
                 container?.classList.remove('mobile-active');
