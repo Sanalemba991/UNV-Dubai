@@ -1,5 +1,3 @@
-<!-- src/components/Carousel.astro -->
-
 ---
 interface CarouselItem {
   title: string;
@@ -166,6 +164,7 @@ const items: CarouselItem[] = [
 </div>
 
 <style is:global>
+    
     /* Base animations with more professional effects */
     @keyframes subtleGlow {
         0% { text-shadow: 0 0 1px rgba(255,255,255,0.2); }
@@ -238,56 +237,32 @@ const items: CarouselItem[] = [
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) !important;
-        background: rgba(0, 0, 0, 0.75);
         color: white;
         padding: 2rem;
         width: 90%;
         max-width: 600px;
         text-align: center;
         border-radius: 0.5rem;
-        opacity: 0;
+        opacity: 1;
         transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        border: 1px solid rgba(255,255,255,0.08);
-        backdrop-filter: blur(3px);
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
     }
 
     .carousel-caption h3 {
         margin-bottom: 0.5rem;
-        transform: translateY(-5px);
-        transition: all 0.4s ease;
-        opacity: 0;
-    }
-
-    .carousel-caption p {
-        transform: translateY(5px);
-        transition: all 0.4s ease 0.1s;
-        opacity: 0;
-    }
-
-    .carousel-item-container:hover .carousel-caption,
-    .carousel-item-container:active .carousel-caption,
-    .carousel-item-container.mobile-active .carousel-caption {
-        opacity: 1;
-    }
-
-    .carousel-item-container:hover .carousel-caption h3,
-    .carousel-item-container:active .carousel-caption h3,
-    .carousel-item-container.mobile-active .carousel-caption h3 {
         opacity: 1;
         transform: translateY(0);
         animation: subtleGlow 4s infinite alternate;
     }
 
-    .carousel-item-container:hover .carousel-caption p,
-    .carousel-item-container:active .carousel-caption p,
-    .carousel-item-container.mobile-active .carousel-caption p {
-        opacity: 1;
+    .carousel-caption p {
         transform: translateY(0);
+        opacity: 1;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     }
 
     .shop-now-btn {
@@ -304,17 +279,12 @@ const items: CarouselItem[] = [
         position: relative;
         overflow: hidden;
         touch-action: manipulation;
-        opacity: 0;
-        transform: translateY(10px);
+        opacity: 1;
+        transform: translateY(0);
         font-family: 'Montserrat', sans-serif;
         text-transform: uppercase;
         font-size: 0.85rem;
-    }
-
-    .carousel-item-container:hover .shop-now-btn,
-    .carousel-item-container:active .shop-now-btn,
-    .carousel-item-container.mobile-active .shop-now-btn {
-        animation: buttonReveal 0.4s ease 0.2s forwards;
+        text-shadow: none;
     }
 
     .shop-now-btn:hover,
@@ -330,6 +300,7 @@ const items: CarouselItem[] = [
     .carousel-item-container.mobile-active .carousel-image {
         transform: scale(1.05);
     }
+    
 
     .carousel-wrapper {
         width: 100vw;
@@ -386,7 +357,6 @@ const items: CarouselItem[] = [
         .carousel-caption {
             width: 85%;
             padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.6);
         }
         
         .carousel-caption h3 {
@@ -427,7 +397,6 @@ const items: CarouselItem[] = [
         .carousel-caption {
             padding: 2rem;
             max-width: 600px;
-            background: rgba(0, 0, 0, 0.7);
         }
 
         .carousel-caption h3 {
@@ -484,174 +453,112 @@ const items: CarouselItem[] = [
             font-size: 1rem;
         }
     }
+    
 </style>
-
 <script is:inline>
-// Using TypeScript in Astro with proper typing
-class Carousel {
-    constructor(carouselElement) {
-        if (!carouselElement) {
-            throw new Error('Carousel element not found');
-        }
-
-        this.carousel = carouselElement;
-        this.items = this.carousel.querySelectorAll('[data-carousel-item]');
-        this.indicators = this.carousel.querySelectorAll('[data-carousel-slide-to]');
-        this.prevButton = this.carousel.querySelector('[data-carousel-prev]');
-        this.nextButton = this.carousel.querySelector('[data-carousel-next]');
-        this.carouselItemContainers = this.carousel.querySelectorAll('.carousel-item-container');
-        
-        this.currentIndex = 0;
-        this.autoSlideInterval = null;
-        this.touchStartX = 0;
-        this.touchEndX = 0;
-        this.isMobile = window.innerWidth <= 767;
-        this.isTablet = window.innerWidth >= 768 && window.innerWidth <= 1023;
-        
-        this.initEventListeners();
-        this.showItem(this.currentIndex);
-        this.startAutoSlide();
-        
-        window.addEventListener('resize', () => {
-            this.isMobile = window.innerWidth <= 767;
-            this.isTablet = window.innerWidth >= 768 && window.innerWidth <= 1023;
-        });
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.querySelector('#default-carousel');
+        if (!carousel) return;
     
-    initEventListeners() {
-        this.indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => this.goToSlide(index));
-            indicator.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                this.goToSlide(index);
-            });
-        });
-        
-        if (this.prevButton) {
-            this.prevButton.addEventListener('click', () => this.goToPrevSlide());
-            this.prevButton.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                this.goToPrevSlide();
-            });
-        }
-        
-        if (this.nextButton) {
-            this.nextButton.addEventListener('click', () => this.goToNextSlide());
-            this.nextButton.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                this.goToNextSlide();
-            });
-        }
-        
-        this.carousel.addEventListener('touchstart', (e) => {
-            this.touchStartX = e.changedTouches[0].screenX;
-        }, {passive: true});
-        
-        this.carousel.addEventListener('touchend', (e) => {
-            this.touchEndX = e.changedTouches[0].screenX;
-            this.handleSwipe();
-        }, {passive: true});
-    }
+        const items = carousel.querySelectorAll('[data-carousel-item]');
+        const indicators = carousel.querySelectorAll('[data-carousel-slide-to]');
+        const prevBtn = carousel.querySelector('[data-carousel-prev]');
+        const nextBtn = carousel.querySelector('[data-carousel-next]');
+        let currentIndex = 0;
+        let autoSlideInterval;
     
-    handleSwipe() {
-        const threshold = 50;
-        const difference = this.touchStartX - this.touchEndX;
-        
-        if (Math.abs(difference) < threshold) return;
-        
-        if (difference > 0) {
-            this.goToNextSlide();
-        } else {
-            this.goToPrevSlide();
-        }
-    }
-    
-    showItem(index) {
-        this.items.forEach((item) => {
-            item.classList.remove('opacity-100', 'translate-x-0', 'active');
-            item.classList.add('opacity-0', 'translate-x-full');
-        });
-        
-        this.indicators.forEach((btn) => {
-            btn.classList.remove('bg-white');
-            btn.classList.add('bg-white/50');
-            btn.setAttribute('aria-current', 'false');
-        });
-        
-        const currentItem = this.items[index];
-        currentItem.classList.remove('opacity-0', 'translate-x-full');
-        currentItem.classList.add('opacity-100', 'translate-x-0', 'active');
-        
-        const currentIndicator = this.indicators[index];
-        currentIndicator.classList.remove('bg-white/50');
-        currentIndicator.classList.add('bg-white');
-        currentIndicator.setAttribute('aria-current', 'true');
-        
-        if (this.isMobile || this.isTablet) {
-            this.items.forEach((item) => {
-                const container = item.querySelector('.carousel-item-container');
-                container?.classList.remove('mobile-active');
+        function resetCaptionAnimations(item) {
+            const captions = item.querySelectorAll('.carousel-caption h3, .carousel-caption p, .shop-now-btn');
+            captions.forEach(el => {
+                // Reset animations
+                el.style.animation = 'none';
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                
+                // Trigger reflow to restart animations
+                void el.offsetWidth;
             });
+        }
+    
+        function animateCaptions(item) {
+            const h3 = item.querySelector('.carousel-caption h3');
+            const p = item.querySelector('.carousel-caption p');
+            const btn = item.querySelector('.shop-now-btn');
+    
+            // Animate title
+            h3.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s';
+            h3.style.opacity = '1';
+            h3.style.transform = 'translateY(0)';
+    
+            // Animate description
+            p.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s';
+            p.style.opacity = '1';
+            p.style.transform = 'translateY(0)';
+    
+            // Animate button
+            btn.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s';
+            btn.style.opacity = '1';
+            btn.style.transform = 'translateY(0)';
+        }
+    
+        function showItem(index) {
+            // Update current index
+            currentIndex = (index + items.length) % items.length;
+    
+            // Hide all items
+            items.forEach(item => {
+                item.classList.remove('active', 'opacity-100', 'translate-x-0');
+                item.classList.add('opacity-0', 'translate-x-full');
+                resetCaptionAnimations(item);
+            });
+    
+            // Update indicators
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('bg-white', i === currentIndex);
+                indicator.classList.toggle('bg-white/50', i !== currentIndex);
+            });
+    
+            // Show current item
+            const currentItem = items[currentIndex];
+            currentItem.classList.remove('opacity-0', 'translate-x-full');
+            currentItem.classList.add('active', 'opacity-100', 'translate-x-0');
             
-            const activeContainer = currentItem.querySelector('.carousel-item-container');
-            activeContainer?.classList.add('mobile-active');
+            // Animate captions
+            animateCaptions(currentItem);
+            resetAutoSlide();
         }
-        
-        this.resetAutoSlide();
-    }
     
-    goToSlide(index) {
-        if (index < 0 || index >= this.items.length) return;
-        this.currentIndex = index;
-        this.showItem(this.currentIndex);
-    }
-    
-    goToNextSlide() {
-        this.currentIndex = (this.currentIndex + 1) % this.items.length;
-        this.showItem(this.currentIndex);
-    }
-    
-    goToPrevSlide() {
-        this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
-        this.showItem(this.currentIndex);
-    }
-    
-    startAutoSlide() {
-        this.autoSlideInterval = window.setInterval(() => {
-            this.goToNextSlide();
-        }, 5000);
-    }
-    
-    resetAutoSlide() {
-        this.stopAutoSlide();
-        this.startAutoSlide();
-    }
-    
-    stopAutoSlide() {
-        if (this.autoSlideInterval) {
-            clearInterval(this.autoSlideInterval);
-            this.autoSlideInterval = null;
+        function nextSlide() {
+            showItem(currentIndex + 1);
         }
-    }
-}
-
-// Initialize carousel when DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const carouselElement = document.querySelector('[data-carousel="static"]');
     
-    try {
-        if (carouselElement) {
-            const carousel = new Carousel(carouselElement);
-            
-            setTimeout(() => {
-                const activeItem = document.querySelector('[data-carousel-item].opacity-100');
-                activeItem?.classList.add('active');
-            }, 100);
-        } else {
-            console.warn('Carousel element not found');
+        function prevSlide() {
+            showItem(currentIndex - 1);
         }
-    } catch (error) {
-        console.error('Carousel initialization failed:', error);
-    }
-});
-</script>
+    
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+    
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+    
+        // Event listeners
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => showItem(index));
+        });
+    
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    
+        // Initialize
+        showItem(0);
+        startAutoSlide();
+    
+        // Pause on hover
+        carousel.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+        carousel.addEventListener('mouseleave', startAutoSlide);
+    });
+    </script>
