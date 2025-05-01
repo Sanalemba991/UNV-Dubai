@@ -746,7 +746,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </nav>
 
 <!-- Spacer to offset fixed navbar -->
-<div class="mt-16 sm:mt-14"></div>
+<!-- Spacer to offset fixed navbar (now with ID for JS control) -->
+<div id="nav-spacer" class="mt-16 sm:mt-14"></div>
 
 <style is:global>
     /* Show main dropdown on hover */
@@ -816,57 +817,102 @@ document.addEventListener('DOMContentLoaded', function() {
         @apply transition-all duration-500 ease-in-out;
     }
 </style>
+<!-- Spacer to offset fixed navbar (added id) -->
+<!-- Spacer after nav -->
+<div id="nav-spacer" class="mt-16 sm:mt-14"></div>
 
 <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
+        // DOM Elements
         const nav = document.getElementById('main-nav');
         const toggleButton = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
+        const spacer = document.getElementById('nav-spacer');
         
-        // Get all the nav links (both desktop and mobile)
-        const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
-        
-        // Set active link based on current URL
+        // State management
+        let baseNavHeight = nav.offsetHeight;
+        let isMobileMenuOpen = false;
+
+        // Initialize spacer
+        function updateSpacer(height = baseNavHeight) {
+            spacer.style.marginTop = `${height}px`;
+        }
+        updateSpacer();
+
+        // Active link detection
         const currentPath = window.location.pathname;
-        navLinks.forEach(link => {
+        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
             const href = link.getAttribute('href');
-            // Check for exact match or starts with (for nested pages)
-            // Fixed condition for home page - special handling for both "/" and "/home"
             if ((href === '/' && (currentPath === '/' || currentPath === '/home')) || 
-                (href !== '/' && currentPath.startsWith(href) && href !== '')) {
+                (href !== '/' && currentPath.startsWith(href))) {
                 link.classList.add('active');
-                
-                // For mobile nav links, also highlight the icon
                 if (link.classList.contains('mobile-nav-link')) {
-                    const icon = link.querySelector('.mobile-nav-icon');
-                    if (icon) {
-                        icon.classList.add('text-blue-600', 'dark:text-blue-400');
-                    }
+                    link.querySelector('.mobile-nav-icon')?.classList.add('text-blue-600', 'dark:text-blue-400');
                 }
             }
         });
 
-        // Toggle mobile menu with improved height calculation
+        // Mobile menu toggle
         toggleButton.addEventListener('click', () => {
-            const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-            toggleButton.setAttribute('aria-expanded', String(!isExpanded));
-            
-            if (!isExpanded) {
-                mobileMenu.setAttribute('aria-hidden', 'false');
-                // Calculate the full height of the menu
-                mobileMenu.style.display = 'block';
-                const height = mobileMenu.scrollHeight;
-                mobileMenu.style.display = '';
-                // Set the calculated height
-                mobileMenu.style.maxHeight = height + 'px';
+            isMobileMenuOpen = !isMobileMenuOpen;
+            toggleButton.setAttribute('aria-expanded', String(isMobileMenuOpen));
+            mobileMenu.setAttribute('aria-hidden', String(!isMobileMenuOpen));
+
+            if (isMobileMenuOpen) {
+                const menuHeight = mobileMenu.scrollHeight;
+                mobileMenu.style.maxHeight = `${menuHeight}px`;
+                updateSpacer(baseNavHeight + menuHeight);
             } else {
-                mobileMenu.setAttribute('aria-hidden', 'true');
                 mobileMenu.style.maxHeight = '0';
+                updateSpacer(baseNavHeight);
             }
         });
 
-        // Fix for desktop dropdown menus
-        const dropdownItems = document.querySelectorAll('.group\\/dropdown');
+        // Window resize handler
+        window.addEventListener('resize', () => {
+            // Update base measurements
+            baseNavHeight = nav.offsetHeight;
+            
+            if (window.innerWidth >= 1024) {
+                // Reset mobile menu on desktop
+                isMobileMenuOpen = false;
+                toggleButton.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                mobileMenu.style.maxHeight = '0';
+                updateSpacer(baseNavHeight);
+            } else if (isMobileMenuOpen) {
+                // Update open menu height
+                const menuHeight = mobileMenu.scrollHeight;
+                mobileMenu.style.maxHeight = `${menuHeight}px`;
+                updateSpacer(baseNavHeight + menuHeight);
+            } else {
+                // Regular mobile update
+                updateSpacer(baseNavHeight);
+            }
+        });
+
+        // Mobile menu link clicks
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                isMobileMenuOpen = false;
+                toggleButton.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                mobileMenu.style.maxHeight = '0';
+                updateSpacer(baseNavHeight);
+            });
+        });
+
+        // Scroll shadow effect
+        window.addEventListener('scroll', () => {
+            const shouldAddShadow = window.scrollY > 10;
+            nav.classList.toggle('shadow-lg', shouldAddShadow);
+            nav.classList.toggle('bg-gray-200', shouldAddShadow);
+            nav.classList.toggle('dark:bg-gray-900', shouldAddShadow);
+            nav.classList.toggle('shadow-sm', !shouldAddShadow);
+            nav.classList.toggle('bg-gray-200/90', !shouldAddShadow);
+            nav.classList.toggle('dark:bg-gray-900/90', !shouldAddShadow);
+        });
+ 
         dropdownItems.forEach(item => {
             // Get the dropdown menu element
             const dropdownMenu = item.querySelector('.dropdown-menu');
