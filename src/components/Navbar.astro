@@ -829,7 +829,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- Spacer after nav -->
 <!-- Spacer after nav -->
 <div id="nav-spacer" class="mt-16 sm:mt-14 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"></div>
-
 <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
         // DOM Elements
@@ -843,18 +842,41 @@ document.addEventListener('DOMContentLoaded', function() {
         let isMobileMenuOpen = false;
         let resizeTimeout;
 
-        // Initialize spacer with transition
+        // Active link handling
+        function updateActiveLinks() {
+            const currentPath = window.location.pathname;
+            
+            document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+                try {
+                    const linkUrl = new URL(link.href);
+                    const linkPath = linkUrl.pathname;
+                    const isActive = linkPath === currentPath;
+                    
+                    link.classList.toggle('active', isActive);
+                    
+                    // Handle mobile icons
+                    const icon = link.querySelector('.mobile-nav-icon');
+                    if (icon) {
+                        icon.classList.toggle('text-blue-600', isActive);
+                        icon.classList.toggle('dark:text-blue-400', isActive);
+                    }
+                } catch(e) {
+                    console.error('Error processing link:', e);
+                }
+            });
+        }
+
+        // Spacer management
         function updateSpacer(height = baseNavHeight) {
             spacer.style.marginTop = `${height}px`;
         }
         updateSpacer();
 
-        // Smooth mobile menu toggle
+        // Mobile menu toggle
         function toggleMobileMenu() {
             isMobileMenuOpen = !isMobileMenuOpen;
             const menuHeight = mobileMenu.scrollHeight;
             
-            // Animate elements together
             if (isMobileMenuOpen) {
                 mobileMenu.style.maxHeight = `${menuHeight}px`;
                 updateSpacer(baseNavHeight + menuHeight);
@@ -863,29 +885,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateSpacer(baseNavHeight);
             }
             
-            // Update ARIA attributes
             toggleButton.setAttribute('aria-expanded', String(isMobileMenuOpen));
             mobileMenu.setAttribute('aria-hidden', String(!isMobileMenuOpen));
         }
 
-        // Mobile menu click handler
-        toggleButton.addEventListener('click', () => {
-            toggleMobileMenu();
-        });
+        // Event listeners
+        toggleButton.addEventListener('click', toggleMobileMenu);
 
-        // Window resize handler with debounce
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
                 baseNavHeight = nav.offsetHeight;
                 
                 if (window.innerWidth >= 1024) {
-                    // Reset to desktop state
                     if (isMobileMenuOpen) toggleMobileMenu();
                     mobileMenu.style.maxHeight = '';
                     updateSpacer(baseNavHeight);
                 } else if (isMobileMenuOpen) {
-                    // Update mobile menu height
                     const menuHeight = mobileMenu.scrollHeight;
                     mobileMenu.style.maxHeight = `${menuHeight}px`;
                     updateSpacer(baseNavHeight + menuHeight);
@@ -893,29 +909,33 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
         });
 
-        // Mobile menu link clicks
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 if (isMobileMenuOpen) toggleMobileMenu();
             });
         });
 
-        // Enhanced scroll handler with debounce
-        let scrollTimeout;
         window.addEventListener('scroll', () => {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                const shouldAddShadow = window.scrollY > 10;
-                nav.classList.toggle('shadow-lg', shouldAddShadow);
-                nav.classList.toggle('bg-gray-200', shouldAddShadow);
-                nav.classList.toggle('dark:bg-gray-900', shouldAddShadow);
-                nav.classList.toggle('shadow-sm', !shouldAddShadow);
-                nav.classList.toggle('bg-gray-200/90', !shouldAddShadow);
-                nav.classList.toggle('dark:bg-gray-900/90', !shouldAddShadow);
-            }, 10);
+            const shouldAddShadow = window.scrollY > 10;
+            nav.classList.toggle('shadow-lg', shouldAddShadow);
+            nav.classList.toggle('bg-gray-200', shouldAddShadow);
+            nav.classList.toggle('dark:bg-gray-900', shouldAddShadow);
+            nav.classList.toggle('shadow-sm', !shouldAddShadow);
+            nav.classList.toggle('bg-gray-200/90', !shouldAddShadow);
+            nav.classList.toggle('dark:bg-gray-900/90', !shouldAddShadow);
         });
 
-        // Touch gesture support
+        // Active link initialization
+        updateActiveLinks();
+
+        // Update active links after navigation
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(updateActiveLinks, 50);
+            });
+        });
+
+        // Touch and keyboard handlers
         let touchStartY = 0;
         document.addEventListener('touchstart', e => {
             touchStartY = e.touches[0].clientY;
@@ -923,20 +943,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.addEventListener('touchmove', e => {
             if (!isMobileMenuOpen) return;
-            
-            const touchY = e.touches[0].clientY;
-            const deltaY = touchStartY - touchY;
-            
-            if (deltaY < -40) { // Swipe down to close
-                toggleMobileMenu();
-            }
+            const deltaY = touchStartY - e.touches[0].clientY;
+            if (deltaY < -40) toggleMobileMenu();
         }, { passive: true });
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && isMobileMenuOpen) {
-                toggleMobileMenu();
-            }
+            if (e.key === 'Escape' && isMobileMenuOpen) toggleMobileMenu();
         });
     });
 </script>
