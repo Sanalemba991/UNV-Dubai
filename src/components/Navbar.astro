@@ -842,21 +842,33 @@ document.addEventListener('DOMContentLoaded', function() {
         let isMobileMenuOpen = false;
         let resizeTimeout;
 
-        // Active link handling
+        // Enhanced active link handling
         function updateActiveLinks() {
             const currentPath = window.location.pathname;
             
             document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
                 try {
-                    const linkUrl = new URL(link.href);
-                    const linkPath = linkUrl.pathname;
-                    const isActive = linkPath === currentPath;
+                    const linkUrl = new URL(link.href, window.location.origin);
+                    let linkPath = linkUrl.pathname;
+
+                    // Normalize paths (remove trailing slashes)
+                    const normalize = path => path !== '/' ? path.replace(/\/$/, '') : path;
+                    const normalizedCurrent = normalize(currentPath);
+                    const normalizedLink = normalize(linkPath);
+
+                    // Check matches
+                    const isExactMatch = normalizedCurrent === normalizedLink;
+                    const isChildPath = normalizedLink !== '/' && 
+                                      normalizedCurrent.startsWith(normalizedLink + '/');
+                    const isSpecialCase = normalizedLink === '/products' && 
+                                         normalizedCurrent.startsWith('/categories');
+
+                    link.classList.toggle('active', isExactMatch || isChildPath || isSpecialCase);
                     
-                    link.classList.toggle('active', isActive);
-                    
-                    // Handle mobile icons
+                    // Update mobile icons
                     const icon = link.querySelector('.mobile-nav-icon');
                     if (icon) {
+                        const isActive = isExactMatch || isChildPath || isSpecialCase;
                         icon.classList.toggle('text-blue-600', isActive);
                         icon.classList.toggle('dark:text-blue-400', isActive);
                     }
@@ -877,16 +889,12 @@ document.addEventListener('DOMContentLoaded', function() {
             isMobileMenuOpen = !isMobileMenuOpen;
             const menuHeight = mobileMenu.scrollHeight;
             
-            if (isMobileMenuOpen) {
-                mobileMenu.style.maxHeight = `${menuHeight}px`;
-                updateSpacer(baseNavHeight + menuHeight);
-            } else {
-                mobileMenu.style.maxHeight = '0';
-                updateSpacer(baseNavHeight);
-            }
+            mobileMenu.style.maxHeight = isMobileMenuOpen ? `${menuHeight}px` : '0';
+            updateSpacer(isMobileMenuOpen ? baseNavHeight + menuHeight : baseNavHeight);
             
-            toggleButton.setAttribute('aria-expanded', String(isMobileMenuOpen));
-            mobileMenu.setAttribute('aria-hidden', String(!isMobileMenuOpen));
+            // Accessibility updates
+            toggleButton.setAttribute('aria-expanded', isMobileMenuOpen);
+            mobileMenu.setAttribute('aria-hidden', !isMobileMenuOpen);
         }
 
         // Event listeners
@@ -896,7 +904,6 @@ document.addEventListener('DOMContentLoaded', function() {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
                 baseNavHeight = nav.offsetHeight;
-                
                 if (window.innerWidth >= 1024) {
                     if (isMobileMenuOpen) toggleMobileMenu();
                     mobileMenu.style.maxHeight = '';
@@ -909,12 +916,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
         });
 
+        // Close mobile menu on link click
         document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (isMobileMenuOpen) toggleMobileMenu();
-            });
+            link.addEventListener('click', () => isMobileMenuOpen && toggleMobileMenu());
         });
 
+        // Scroll effects
         window.addEventListener('scroll', () => {
             const shouldAddShadow = window.scrollY > 10;
             nav.classList.toggle('shadow-lg', shouldAddShadow);
@@ -925,17 +932,15 @@ document.addEventListener('DOMContentLoaded', function() {
             nav.classList.toggle('dark:bg-gray-900/90', !shouldAddShadow);
         });
 
-        // Active link initialization
+        // Initialize active states
         updateActiveLinks();
 
-        // Update active links after navigation
+        // Update active states after navigation
         document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                setTimeout(updateActiveLinks, 50);
-            });
+            link.addEventListener('click', () => setTimeout(updateActiveLinks, 50));
         });
 
-        // Touch and keyboard handlers
+        // Touch gestures
         let touchStartY = 0;
         document.addEventListener('touchstart', e => {
             touchStartY = e.touches[0].clientY;
@@ -947,6 +952,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (deltaY < -40) toggleMobileMenu();
         }, { passive: true });
 
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && isMobileMenuOpen) toggleMobileMenu();
         });
