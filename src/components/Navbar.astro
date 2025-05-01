@@ -815,11 +815,20 @@ document.addEventListener('DOMContentLoaded', function() {
     /* Mobile menu transitions */
     #mobile-menu {
         @apply transition-all duration-500 ease-in-out;
+
     }
+    #mobile-menu {
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#nav-spacer {
+    transition: margin-top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 </style>
 <!-- Spacer to offset fixed navbar (added id) -->
 <!-- Spacer after nav -->
-<div id="nav-spacer" class="mt-16 sm:mt-14"></div>
+<!-- Spacer after nav -->
+<div id="nav-spacer" class="mt-16 sm:mt-14 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"></div>
 
 <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
@@ -832,137 +841,101 @@ document.addEventListener('DOMContentLoaded', function() {
         // State management
         let baseNavHeight = nav.offsetHeight;
         let isMobileMenuOpen = false;
+        let resizeTimeout;
 
-        // Initialize spacer
+        // Initialize spacer with transition
         function updateSpacer(height = baseNavHeight) {
             spacer.style.marginTop = `${height}px`;
         }
         updateSpacer();
 
-        // Active link detection
-        const currentPath = window.location.pathname;
-        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
-            const href = link.getAttribute('href');
-            if ((href === '/' && (currentPath === '/' || currentPath === '/home')) || 
-                (href !== '/' && currentPath.startsWith(href))) {
-                link.classList.add('active');
-                if (link.classList.contains('mobile-nav-link')) {
-                    link.querySelector('.mobile-nav-icon')?.classList.add('text-blue-600', 'dark:text-blue-400');
-                }
-            }
-        });
-
-        // Mobile menu toggle
-        toggleButton.addEventListener('click', () => {
+        // Smooth mobile menu toggle
+        function toggleMobileMenu() {
             isMobileMenuOpen = !isMobileMenuOpen;
+            const menuHeight = mobileMenu.scrollHeight;
+            
+            // Animate elements together
+            if (isMobileMenuOpen) {
+                mobileMenu.style.maxHeight = `${menuHeight}px`;
+                updateSpacer(baseNavHeight + menuHeight);
+            } else {
+                mobileMenu.style.maxHeight = '0';
+                updateSpacer(baseNavHeight);
+            }
+            
+            // Update ARIA attributes
             toggleButton.setAttribute('aria-expanded', String(isMobileMenuOpen));
             mobileMenu.setAttribute('aria-hidden', String(!isMobileMenuOpen));
+        }
 
-            if (isMobileMenuOpen) {
-                const menuHeight = mobileMenu.scrollHeight;
-                mobileMenu.style.maxHeight = `${menuHeight}px`;
-                updateSpacer(baseNavHeight + menuHeight);
-            } else {
-                mobileMenu.style.maxHeight = '0';
-                updateSpacer(baseNavHeight);
-            }
+        // Mobile menu click handler
+        toggleButton.addEventListener('click', () => {
+            toggleMobileMenu();
         });
 
-        // Window resize handler
+        // Window resize handler with debounce
         window.addEventListener('resize', () => {
-            // Update base measurements
-            baseNavHeight = nav.offsetHeight;
-            
-            if (window.innerWidth >= 1024) {
-                // Reset mobile menu on desktop
-                isMobileMenuOpen = false;
-                toggleButton.setAttribute('aria-expanded', 'false');
-                mobileMenu.setAttribute('aria-hidden', 'true');
-                mobileMenu.style.maxHeight = '0';
-                updateSpacer(baseNavHeight);
-            } else if (isMobileMenuOpen) {
-                // Update open menu height
-                const menuHeight = mobileMenu.scrollHeight;
-                mobileMenu.style.maxHeight = `${menuHeight}px`;
-                updateSpacer(baseNavHeight + menuHeight);
-            } else {
-                // Regular mobile update
-                updateSpacer(baseNavHeight);
-            }
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                baseNavHeight = nav.offsetHeight;
+                
+                if (window.innerWidth >= 1024) {
+                    // Reset to desktop state
+                    if (isMobileMenuOpen) toggleMobileMenu();
+                    mobileMenu.style.maxHeight = '';
+                    updateSpacer(baseNavHeight);
+                } else if (isMobileMenuOpen) {
+                    // Update mobile menu height
+                    const menuHeight = mobileMenu.scrollHeight;
+                    mobileMenu.style.maxHeight = `${menuHeight}px`;
+                    updateSpacer(baseNavHeight + menuHeight);
+                }
+            }, 100);
         });
 
         // Mobile menu link clicks
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
-                isMobileMenuOpen = false;
-                toggleButton.setAttribute('aria-expanded', 'false');
-                mobileMenu.setAttribute('aria-hidden', 'true');
-                mobileMenu.style.maxHeight = '0';
-                updateSpacer(baseNavHeight);
+                if (isMobileMenuOpen) toggleMobileMenu();
             });
         });
 
-        // Scroll shadow effect
+        // Enhanced scroll handler with debounce
+        let scrollTimeout;
         window.addEventListener('scroll', () => {
-            const shouldAddShadow = window.scrollY > 10;
-            nav.classList.toggle('shadow-lg', shouldAddShadow);
-            nav.classList.toggle('bg-gray-200', shouldAddShadow);
-            nav.classList.toggle('dark:bg-gray-900', shouldAddShadow);
-            nav.classList.toggle('shadow-sm', !shouldAddShadow);
-            nav.classList.toggle('bg-gray-200/90', !shouldAddShadow);
-            nav.classList.toggle('dark:bg-gray-900/90', !shouldAddShadow);
-        });
- 
-        dropdownItems.forEach(item => {
-            // Get the dropdown menu element
-            const dropdownMenu = item.querySelector('.dropdown-menu');
-            
-            // Ensure visibility on hover
-            item.addEventListener('mouseenter', () => {
-                if (dropdownMenu) {
-                    dropdownMenu.classList.add('opacity-100', 'visible');
-                    dropdownMenu.classList.remove('opacity-0', 'invisible');
-                   
-                }
-            });
-            
-            // Reset on mouse leave
-            item.addEventListener('mouseleave', () => {
-                if (dropdownMenu) {
-                    dropdownMenu.classList.remove('opacity-100', 'visible');
-                    dropdownMenu.classList.add('opacity-0', 'invisible');
-                
-                }
-            });
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const shouldAddShadow = window.scrollY > 10;
+                nav.classList.toggle('shadow-lg', shouldAddShadow);
+                nav.classList.toggle('bg-gray-200', shouldAddShadow);
+                nav.classList.toggle('dark:bg-gray-900', shouldAddShadow);
+                nav.classList.toggle('shadow-sm', !shouldAddShadow);
+                nav.classList.toggle('bg-gray-200/90', !shouldAddShadow);
+                nav.classList.toggle('dark:bg-gray-900/90', !shouldAddShadow);
+            }, 10);
         });
 
-        // Close menu when clicking on links
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                toggleButton.setAttribute('aria-expanded', 'false');
-                mobileMenu.setAttribute('aria-hidden', 'true');
-                mobileMenu.style.maxHeight = '0';
-            });
-        });
+        // Touch gesture support
+        let touchStartY = 0;
+        document.addEventListener('touchstart', e => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
 
-        // Add shadow on scroll
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                nav.classList.add('shadow-lg', 'bg-gray-200', 'dark:bg-gray-900');
-                nav.classList.remove('shadow-sm', 'bg-gray-200/90', 'dark:bg-gray-900/90');
-            } else {
-                nav.classList.remove('shadow-lg', 'bg-gray-200', 'dark:bg-gray-900');
-                nav.classList.add('shadow-sm', 'bg-gray-200/90', 'dark:bg-gray-900/90');
+        document.addEventListener('touchmove', e => {
+            if (!isMobileMenuOpen) return;
+            
+            const touchY = e.touches[0].clientY;
+            const deltaY = touchStartY - touchY;
+            
+            if (deltaY < -40) { // Swipe down to close
+                toggleMobileMenu();
             }
-        });
+        }, { passive: true });
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 1024) {
-                // Reset mobile menu state on desktop view
-                toggleButton.setAttribute('aria-expanded', 'false');
-                mobileMenu.setAttribute('aria-hidden', 'true');
-                mobileMenu.style.maxHeight = '0';
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMobileMenuOpen) {
+                toggleMobileMenu();
             }
         });
     });
