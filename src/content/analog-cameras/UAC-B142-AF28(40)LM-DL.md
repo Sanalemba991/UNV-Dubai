@@ -3,11 +3,11 @@ title: "UAC-B142-AF28(40)LM-DL"
 description: "2MP ColorHunter Fixed Dual-light Bullet Analog Camera with high quality imaging, smart dual light capability, and IP67 protection"
 
 images:
-  - url: "/images/categories/products/analog-cameras/UAC-B142-AF28LM-DL/UAC-B142-AF28LM-DL  (1).png"
+  - url: "/images/categories/products/analog-cameras/UAC-B142-AF28LM-DL/UAC-B142-AF28LM-DL  (2).png"
     caption: "Front view"
   - url: "/images/categories/products/analog-cameras/UAC-B142-AF28LM-DL/UAC-B142-AF28LM-DL  (3).png"
     caption: "Side view"
-  - url: "/images/categories/products/analog-cameras/UAC-B142-AF28LM-DL/UAC-B142-AF28LM-DL  (2).png"
+  - url: "/images/categories/products/analog-cameras/UAC-B142-AF28LM-DL/UAC-B142-AF28LM-DL  (1).png"
     caption: "Back view"
 image: "/images/categories/products/analog-cameras/UAC-B142-AF28LM-DL/UAC-B142-AF28LM-DL  (2).png"
 price: "Contact for pricing"

@@ -1,14 +1,14 @@
 ---
 title: "UAC-T112-F28-W-X"
 description: "2MP ColourHunter Fixed Turret Analog Camera."
-image: "/images/categories/products/analog-cameras/UAC-T112-F28-W-X/UAC-T112-F28-W-X2.png"
+image: "/images/categories/products/analog-cameras/UAC-T112-F28-W-X/UAC-T112-F28-W-X.png"
 
 images:
   - url: "/images/categories/products/analog-cameras/UAC-T112-F28-W-X/UAC-T112-F28-W-X.png"
     caption: "Front view"
-  - url: "/images/categories/products/analog-cameras/UAC-T112-F28-W-X/UAC-T112-F28-W-X1.png"
-    caption: "Side view"
   - url: "/images/categories/products/analog-cameras/UAC-T112-F28-W-X/UAC-T112-F28-W-X2.png"
+    caption: "Side view"
+  - url: "/images/categories/products/analog-cameras/UAC-T112-F28-W-X/UAC-T112-F28-W-X1.png"
     caption: "Back view"
 features:
   - 2MP high quality image

@@ -9,7 +9,7 @@ images:
     caption: "Side view"
   - url: "/images/categories/products/analog-cameras/UAC-T142-AF28LM-DL/UAC-T142-AF28(40)LM-DL2.png"
     caption: "Back view"
-image: "/images/categories/products/analog-cameras/UAC-T142-AF28LM-DL/UAC-T142-AF28(40)LM-DL1.png"
+image: "/images/categories/products/analog-cameras/UAC-T142-AF28LM-DL/UAC-T142-AF28(40)LM-DL.png"
 features:
   - High quality imaging with 2MP resolution
   - TVI/AHD/CVI/CVBS support

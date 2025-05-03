@@ -1,11 +1,11 @@
 ---
 title: "IPC8544EA-KM-I1"
 description: "16MP LightHunter OmniView Fixed IR Network Camera."
-image: "/images/categories/products/ip-cameras/IPC8544EA-KM-I1/Network2 (3).png"
+image: "/images/categories/products/ip-cameras/IPC8544EA-KM-I1/Network2 (2).png"
 images:
-  - url: "/images/categories/products/ip-cameras/IPC8544EA-KM-I1/Network2 (1).png"
-    caption: "Front view"
   - url: "/images/categories/products/ip-cameras/IPC8544EA-KM-I1/Network2 (2).png"
+    caption: "Front view"
+  - url: "/images/categories/products/ip-cameras/IPC8544EA-KM-I1/Network2 (1).png"
     caption: "Side view"
   - url: "/images/categories/products/ip-cameras/IPC8544EA-KM-I1/Network2 (3).png"
     caption: "Back view"

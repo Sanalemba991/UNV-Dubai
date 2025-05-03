@@ -8,7 +8,7 @@ images:
     caption: "Side view"
   - url:  "/images/categories/products/ptz-cameras/IPC7628EL-L-X41-VH1/IPC7628EL-L-X41-VH12.png"
     caption: "Back view"
-image:  "/images/categories/products/ptz-cameras/IPC7628EL-L-X41-VH1/IPC7628EL-L-X41-VH12.png"
+image:  "/images/categories/products/ptz-cameras/IPC7628EL-L-X41-VH1/IPC7628EL-L-X41-VH1.png"
 features:
   - "3840*2160@30fps in the main stream"
   - "Triple streams"

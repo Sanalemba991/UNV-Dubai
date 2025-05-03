@@ -1,11 +1,11 @@
 ---
 title: "IPC3238SA-ADZK-WP-PI-I2A"
 description: "8MP Super Starlight WDR IR VF P-IRIS Dome Network Camera"
-image: "/images/categories/products/ip-cameras/IPC3238SA-ADZK-WP-PI-I2A/IPC3238SA-ADZK-WP-PI-I2A (1).png"
+image: "/images/categories/products/ip-cameras/IPC3238SA-ADZK-WP-PI-I2A/IPC3238SA-ADZK-WP-PI-I2A (3).png"
 images:
-  - url: "/images/categories/products/ip-cameras/IPC3238SA-ADZK-WP-PI-I2A/IPC3238SA-ADZK-WP-PI-I2A (2).png"
-    caption: "Front view"
   - url: "/images/categories/products/ip-cameras/IPC3238SA-ADZK-WP-PI-I2A/IPC3238SA-ADZK-WP-PI-I2A (3).png"
+    caption: "Front view"
+  - url: "/images/categories/products/ip-cameras/IPC3238SA-ADZK-WP-PI-I2A/IPC3238SA-ADZK-WP-PI-I2A (2).png"
     caption: "Side view"
   - url: "/images/categories/products/ip-cameras/IPC3238SA-ADZK-WP-PI-I2A/IPC3238SA-ADZK-WP-PI-I2A (1).png"
     caption: "Side view"

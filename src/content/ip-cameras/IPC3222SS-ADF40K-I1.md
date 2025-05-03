@@ -1,11 +1,11 @@
 ---
 title: "IPC3222SS-ADF40K-I1"
 description: "2*2MP LightHunter MultiView Fixed IR Dome Network Camera."
-image: "/images/categories/products/ip-cameras/IPC3222SS-ADF40K-11/Network3 (3).png"
+image: "/images/categories/products/ip-cameras/IPC3222SS-ADF40K-11/Network3 (2).png"
 images:
-  - url: "/images/categories/products/ip-cameras/IPC3222SS-ADF40K-11/Network3 (1).png"
-    caption: "Front view"
   - url: "/images/categories/products/ip-cameras/IPC3222SS-ADF40K-11/Network3 (2).png"
+    caption: "Front view"
+  - url: "/images/categories/products/ip-cameras/IPC3222SS-ADF40K-11/Network3 (1).png"
     caption: "Side view"
   - url: "/images/categories/products/ip-cameras/IPC3222SS-ADF40K-11/Network3 (3).png"
     caption: "Back view"

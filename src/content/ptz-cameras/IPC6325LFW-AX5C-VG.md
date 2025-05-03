@@ -2,13 +2,13 @@
 title: "IPC6325LFW-AX5C-VG"
 description: "5MP 5X ColorHunter Tri-Guard Dual-light Network PTZ Camera"
 images:
-  - url: "/images/categories/products/ptz-cameras/IPC6325LFW-AX5C-VG/IPC6325LFW-AX5C-VG1.png"
+  - url: "/images/categories/products/ptz-cameras/IPC6325LFW-AX5C-VG/IPC6325LFW-AX5C-VG2.png"
     caption: "Front view"
   - url: "/images/categories/products/ptz-cameras/IPC6325LFW-AX5C-VG/IPC6325LFW-AX5C-VG.png"
     caption: "Side view"
-  - url: "/images/categories/products/ptz-cameras/IPC6325LFW-AX5C-VG/IPC6325LFW-AX5C-VG2.png"
+  - url: "/images/categories/products/ptz-cameras/IPC6325LFW-AX5C-VG/IPC6325LFW-AX5C-VG1.png"
     caption: "Back view"
-image: "/images/categories/products/ptz-cameras/IPC6325LFW-AX5C-VG/IPC6325LFW-AX5C-VG1.png"
+image: "/images/categories/products/ptz-cameras/IPC6325LFW-AX5C-VG/IPC6325LFW-AX5C-VG2.png"
 features:
   - High quality image with 5MP, 1/2.8" CMOS sensor
   - Ultra 265, H.265, H.264, MJPEG

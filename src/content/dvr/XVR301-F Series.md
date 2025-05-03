@@ -7,9 +7,9 @@ images:
     caption: "Front view"
   - url: "/images/categories/products/dvr/XVR301-04F/XVR301-F Series1.png"
     caption: "Side view"
-  - url: "/images/categories/products/dvr/XVR301-04F/XVR301-F Series2.png"
+  - url: "/images/categories/products/dvr/XVR301-04F/XVR301-F Series.png"
     caption: "Back view"
-image: "/images/categories/products/dvr/XVR301-04F/XVR301-F Series.png"  # Actual image path
+image: "/images/categories/products/dvr/XVR301-04F/XVR301-F Series2.png"  # Actual image path
 price: "Contact Sales"  # Price not provided in source
 
 features:
