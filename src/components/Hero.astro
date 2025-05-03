@@ -294,7 +294,42 @@ const items: CarouselItem[] = [
         box-shadow: 0 5px 15px rgba(30,64,175,0.3);
         transform: translateY(-2px);
     }
+    .shop-now-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    transition: all 0.5s ease-in-out;
+    transform: skewX(-20deg);
+    z-index: 0;
+}
 
+.shop-now-btn:hover::before,
+.shop-now-btn:active::before {
+    left: 200%;
+}
+
+.shop-now-btn:hover,
+.shop-now-btn:active {
+    background: #1e40af;
+    border-color: #1e40af;
+    box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Ensure text stays on top */
+.shop-now-btn span {
+    position: relative;
+    z-index: 1;
+}
     .carousel-item-container:hover .carousel-image,
     .carousel-item-container:active .carousel-image,
     .carousel-item-container.mobile-active .carousel-image {
