@@ -1,1 +1,0 @@
-async function getMod(){return import("./SSD-256G-P3-M2.CI5D_bTP.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};

@@ -1,1 +1,0 @@
-async function getMod(){return import("./IPC94144SR-X25-F40C.BJz9rZA7.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};
