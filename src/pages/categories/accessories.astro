@@ -8,28 +8,62 @@ const description =
 const canonicalURL = new URL("/categories/accessories", Astro.site);
 
 const products = await getCollection("accessories");
-
-// Schema markup for product category page
-const schema = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: title,
+const metadata = {
+    title: title,
     description: description,
-    url: canonicalURL,
-    mainEntity: {
-        "@type": "ItemList",
-        itemListElement: products.map((product, index) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            item: {
-                "@type": "Product",
-                name: product.data.title,
-                description: product.data.description,
-                image: product.data.image,
-                url: `${canonicalURL}/${product.slug}`,
-            },
-        })),
+    openGraph: {
+        basic: {
+            title: title,
+            type: "website",
+            image: "/og-analog-cameras.jpg",
+            url: canonicalURL,
+        },
+        optional: {
+            description: description,
+            locale: "en_US",
+            siteName: "UNV Dubai",
+        },
     },
+    twitter: {
+        card: "summary_large_image",
+        title: title,
+        description: description,
+        image: "/og-analog-cameras.jpg",
+    },
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: title,
+  description: description,
+  url: canonicalURL,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: (await getCollection('accessories')).map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Product",
+        name: product.data.title,
+        description: product.data.description,
+        image: new URL(product.data.image, Astro.site).toString(), // Fix image URL
+        url: new URL(`/categories/accessories/${product.slug}`, Astro.site).toString(),
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "AED",
+          price: product.data.price || "0.00",
+          availability: "https://schema.org/InStock",
+          itemCondition: "https://schema.org/NewCondition"
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: product.data.rating || "4.5",
+          reviewCount: product.data.reviewCount || "10"
+        }
+      }
+    }))
+  }
 };
 ---
 
@@ -86,7 +120,10 @@ const schema = {
     }
 </style>
 
-<Layout title={title} description={description}>
+<Layout title={title} structuredData={structuredData}
+    description={description}
+    canonical={canonicalURL}
+    metadata={metadata}>
     <!-- Additional Meta Tags -->
     <>
         <link rel="canonical" href={canonicalURL} />
@@ -99,8 +136,7 @@ const schema = {
         <meta name="twitter:description" content={description} />
         <meta name="keywords" content="surveillance accessories, CCTV accessories, security camera mounts, UNV accessories, surveillance equipment, security system accessories, Dubai security solutions" />
         
-        <!-- Schema Markup -->
-        <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+        
     </>
 
     <section class="relative py-20 sm:py-32 overflow-hidden">

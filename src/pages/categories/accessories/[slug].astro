@@ -14,6 +14,10 @@ interface Product {
     specifications: {
         [key: string]: string;
     };
+    price?: string;
+    rating?: number;
+    reviewCount?: number;
+    images?: Array<{ url: string }>;
 }
 
 export async function getStaticPaths() {
@@ -25,12 +29,67 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props as Props;
+const images = product.images ?? [{ url: product.image }];
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+/// Product schema markup
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.title,
+    "description": product.description,
+    "image": product.image ? new URL(product.image, Astro.site).toString() : undefined,
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "AED",
+      "price": product.price || "0.00",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    ...(product.rating && product.reviewCount ? {
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": product.rating.toString(),
+        "reviewCount": product.reviewCount.toString()
+      }
+    } : {})
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": new URL("/", Astro.site).toString()
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Accessories",
+        "item": new URL("/categories/accessories", Astro.site).toString()
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": product.title,
+        "item": canonicalURL.toString()
+      }
+    ]
+  }
+];
 ---
+
 <meta charset="UTF-8" />
+
 
 <Layout
     title={`${product.title} - UNV Dubai`}
     description={product.description}
+        structuredData={structuredData}
+    
 >
     <section class="py-16 relative overflow-hidden">
         <!-- Floating background elements -->
@@ -62,6 +121,9 @@ const { product } = Astro.props as Props;
                         src={product.image}
                         alt={product.title}
                         class="w-full rounded-lg shadow-lg transform transition-transform duration-700 group-hover:scale-105"
+                        width="800"
+                        height="600"
+                        loading="eager"
                     />
                 </div>
 
@@ -167,7 +229,7 @@ const { product } = Astro.props as Props;
     </section>
 </Layout>
 
-<style>
+<style is:global>
     @keyframes float {
         0% { transform: translateY(0px); }
         50% { transform: translateY(-15px); }
@@ -261,7 +323,7 @@ const { product } = Astro.props as Props;
     }
 </style>
 
-<script>
+<script is:inline>
     document.addEventListener("DOMContentLoaded", () => {
         // Tab functionality
         const tabs = document.querySelectorAll(".tab-button");
