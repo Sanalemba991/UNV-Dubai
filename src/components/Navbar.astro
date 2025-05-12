@@ -47,118 +47,98 @@ import Logo from "../assets/images/UNVLOGO.png";
     </a>
     
     <!-- Mega Dropdown Menu - Only visible on hover -->
-    <div class="fixed left-0 right-0 mt-2 mx-auto w-full max-w-7xl bg-white dark:bg-gray-800 rounded-xl shadow-2xl opacity-0 invisible transition-all duration-300 z-50 border border-gray-200 dark:border-gray-700 group-hover/dropdown:opacity-100 group-hover/dropdown:visible translate-y-1 group-hover/dropdown:translate-y-0 overflow-hidden" id="dropdown-container">
-        <div class="grid grid-cols-4 h-[80vh] overflow-y-auto">
-            <!-- Left Sidebar - Categories -->
-            <div class="col-span-1 bg-gray-50 dark:bg-gray-700/30 p-5 border-r border-gray-200 dark:border-gray-700">
-                <h3 class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-5">Product Categories</h3>
-                <ul class="space-y-2">
-                    <li class="group/category">
-                        <a href="/categories/ip-cameras" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="ip-cameras">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                            </svg>
-                            Network Cameras
-                        </a>
-                    </li>
-                    <li class="group/category">
-                        <a href="/categories/analog-cameras" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="analog-cameras">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                            Analog Cameras
-                        </a>
-                    </li>
-                    <li class="group/category">
-                        <a href="/categories/ptz-cameras" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="ptz-cameras">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
-                            </svg>
-                            PTZ Cameras
-                        </a>
-                    </li>
-                     
-                    <li class="group/category">
-                        <a href="/categories/dvr" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="dvr">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
-                            </svg>
-                            DVR Systems
-                        </a>
-                    </li>
-                     <li class="group/category">
-                        <a href="/categories/accessories" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="ptz-cameras">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
-                            </svg>
-                            Accessories
-                        </a>
-                    </li>
-                    <li class="group/category">
-                        <a href="/categories/thermal-cameras" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="ptz-cameras">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
-                            </svg>
-                            Thermal Cameras
-                        </a>
-                    </li>
-                     <li class="group/category">
-                        <a href="/categories/nvr" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="ptz-cameras">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
-                            </svg>
-                        NVR Systems
-                        </a>
-                    </li>
-                </ul>
-                
-                <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                    <Image
-                        src={Logo}
-                        alt="Digital Link Technology"
-                        width={120}
-                        height={40}
-                        class="h-8 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
-                    />
-                </div>
-            </div>
+   <div class="fixed left-0 right-0 mt-2 mx-auto w-full max-w-7xl bg-white dark:bg-gray-800 rounded-xl shadow-2xl opacity-0 invisible transition-all duration-300 z-50 border border-gray-200 dark:border-gray-700 group-hover/dropdown:opacity-100 group-hover/dropdown:visible translate-y-1 group-hover/dropdown:translate-y-0 overflow-hidden" id="dropdown-container">
+    <div class="grid grid-cols-4 h-[90vh] overflow-y-auto">
+        <!-- Left Sidebar - Categories -->
+        <div class="col-span-1 bg-gray-50 dark:bg-gray-700/30 p-5 border-r border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-5">Product Categories</h3>
+            <ul class="space-y-2">
+                <li class="group/category">
+                    <a href="/categories/ip-cameras" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="ip-cameras">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                        Network Cameras
+                    </a>
+                </li>
+                <li class="group/category">
+                    <a href="/categories/analog-cameras" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="analog-cameras">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        Analog Cameras
+                    </a>
+                </li>
+                <li class="group/category">
+                    <a href="/categories/ptz-cameras" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="ptz-cameras">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                        </svg>
+                        PTZ Cameras
+                    </a>
+                </li>
+                 
+                <li class="group/category">
+                    <a href="/categories/dvr" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="dvr">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                        </svg>
+                        DVR Systems
+                    </a>
+                </li>
+                 <li class="group/category">
+                    <a href="/categories/accessories" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="accessories">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                        Accessories
+                    </a>
+                </li>
+                <li class="group/category">
+                    <a href="/categories/thermal-cameras" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="thermal-cameras">
+                       <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h1a2 2 0 012 2v1m5.5-7a3.5 3.5 0 010 7M17 8l2-3h-6l-2 3H7a2 2 0 00-2 2v8a2 2 0 002 2h10a2 2 0 002-2v-2.5" />
+</svg>
+
+                        Thermal Cameras
+                    </a>
+                </li>
+                 <li class="group/category">
+                    <a href="/categories/nvr" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="nvr">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                        </svg>
+                    NVR Systems
+                    </a>
+                </li>
+                <li class="group/category">
+                    <a href="/categories/storage" class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300 font-medium dropdown-category" data-category="storage">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                        </svg>
+                   Storage
+                    </a>
+                </li>
+            </ul>
             
-            <!-- Main Content Area -->
-            <div class="col-span-3 p-8 overflow-y-auto" id="dropdown-content-container">
-                <!-- Dynamic content will load here based on selected category -->
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <Image
+                    src={Logo}
+                    alt="Digital Link Technology"
+                    width={120}
+                    height={40}
+                    class="h-8 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+                />
             </div>
         </div>
+        
+        <!-- Main Content Area -->
+        <div class="col-span-3 p-8 overflow-y-auto" id="dropdown-content-container">
+            <!-- Dynamic content will load here based on selected category -->
+        </div>
     </div>
-    
-    <script>
-        // Add JavaScript to handle persistent hover states
-        const dropdownContainer = document.getElementById('dropdown-container');
-        const categoryLinks = document.querySelectorAll('.dropdown-category');
-        let activeCategory = null;
-    
-        categoryLinks.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                // Remove active class from all links
-                categoryLinks.forEach(l => l.classList.remove('bg-blue-100', 'dark:bg-blue-900/30', 'dark:bg-gray-700/50'));
-                
-                // Add active class to hovered link
-                link.classList.add('bg-blue-100'); // Changed from bg-blue-300 to bg-blue-100
-                if(link.classList.contains('dark:hover:bg-blue-900/30')) {''
-                    link.classList.add('dark:bg-blue-900/30');
-                } else {
-                    link.classList.add('dark:bg-gray-700/50');
-                }
-                
-                activeCategory = link.getAttribute('data-category');
-            });
-        });
-    
-        dropdownContainer.addEventListener('mouseleave', () => {
-            categoryLinks.forEach(l => l.classList.remove('bg-blue-100', 'dark:bg-blue-900/30', 'dark:bg-gray-700/50'));
-            activeCategory = null;
-        });
-    </script>
+</div>
 </li>
 
 <template id="network-cameras-content">
@@ -371,7 +351,7 @@ import Logo from "../assets/images/UNVLOGO.png";
             <div class="group/featured transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:shadow-lg hover:-translate-y-1 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-800/50 opacity-0 animate-fade-in-up [animation-fill-mode:forwards] [animation-delay:100ms]">
                 <a href="/categories/thermal-cameras/tic2621sr-f3-4f4ac-vd" class="block">
                     <div class="relative h-56 w-full mb-3 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700 transition-all duration-300 group-hover/featured:shadow-md">
-                        <img src="/images/categories/products/thermal-cameras/TIC2621SR-F3-4F4AC-VD.png"
+                        <img src="/images/categories/products/thermal-cameras/TIC2621SR-F3-4F4AC-VD/TIC2621SR-F3-4F4AC-VD  (1).png"
                             alt="UAC-B115-AF2840-W"
                             class="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover/featured:scale-105 group-hover/featured:rotate-1">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-600/30 to-transparent opacity-0 group-hover/featured:opacity-100 transition-opacity duration-500 ease-in-out"></div>
@@ -392,7 +372,7 @@ import Logo from "../assets/images/UNVLOGO.png";
             <div class="group/featured transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:shadow-lg hover:-translate-y-1 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-800/50 opacity-0 animate-fade-in-up [animation-fill-mode:forwards] [animation-delay:200ms]">
                 <a href="/categories/thermal-cameras/tic3612sa-f7-4f6ac-i1" class="block">
                     <div class="relative h-56 w-full mb-3 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700 transition-all duration-300 group-hover/featured:shadow-md">
-                        <img src="/images/categories/products/thermal-cameras/TIC3612SA-F7-4F6AC-I1.png"
+                        <img src="/images/categories/products/thermal-cameras/TIC3612SA-F7-4F6AC/TIC3612SA-F7-4F6AC (3).png"
                             alt="UAC-T142-AF2840LM-DL"
                             class="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover/featured:scale-105 group-hover/featured:rotate-1">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-600/30 to-transparent opacity-0 group-hover/featured:opacity-100 transition-opacity duration-500 ease-in-out"></div>
@@ -573,7 +553,7 @@ import Logo from "../assets/images/UNVLOGO.png";
                     <div class="group/featured transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:shadow-lg hover:-translate-y-1 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-800/50 opacity-0 animate-fade-in-up [animation-fill-mode:forwards] [animation-delay:100ms]">
                         <a href="/categories/accessories/bat-la5800" class="block">
                             <div class="relative h-56 w-full mb-3 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700 transition-all duration-300 group-hover/featured:shadow-md">
-                                <img src="/images/categories/products/accessories/BAT-LA5800.png"
+                                <img src="/images/categories/products/accessories/BAT-LA5800/BAT-LA5800.png"
                                     alt="BAT-LA5800"
                                     class="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover/featured:scale-105 group-hover/featured:rotate-1">
                                 <div class="absolute inset-0 bg-gradient-to-t from-blue-600/30 to-transparent opacity-0 group-hover/featured:opacity-100 transition-opacity duration-500 ease-in-out"></div>
@@ -595,7 +575,7 @@ import Logo from "../assets/images/UNVLOGO.png";
                     <div class="group/featured transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:shadow-lg hover:-translate-y-1 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-800/50 opacity-0 animate-fade-in-up [animation-fill-mode:forwards] [animation-delay:200ms]">
                         <a href="/categories/accessories/ep-cs201" class="block">
                             <div class="relative h-56 w-full mb-3 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700 transition-all duration-300 group-hover/featured:shadow-md">
-                                <img src="/images/categories/products/accessories/EP-CS201.png"
+                                <img src="/images/categories/products/accessories/EP-CS201/EP-CS201  (2).png"
                                     alt="EP-CS201"
                                     class="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover/featured:scale-105 group-hover/featured:rotate-1">
                                 <div class="absolute inset-0 bg-gradient-to-t from-blue-600/30 to-transparent opacity-0 group-hover/featured:opacity-100 transition-opacity duration-500 ease-in-out"></div>
@@ -605,8 +585,8 @@ import Logo from "../assets/images/UNVLOGO.png";
                                 <h3 class="text-lg font-bold text-gray-800 dark:text-gray-200 group-hover/featured:text-blue-600 dark:group-hover/featured:text-blue-400 transition-colors duration-300 ease-in-out">EP-CS201</h3>
                                 <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 transition-all duration-500 ease-in-out group-hover/featured:translate-x-1">Compatible with multiple villa door station models</p>
                                 <div class="flex items-center space-x-1">
-                                    <span class="inline-block px-1.5 py-0.5 text-xs font-medium bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full transition-all duration-300 ease-in-out group-hover/featured:scale-105 group-hover/featured:-translate-y-0.5">179mm × 83mm × 50mm</span>
-                                    <span class="inline-block px-1.5 py-0.5 text-xs font-medium bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 rounded-full transition-all duration-300 ease-in-out group-hover/featured:scale-105 group-hover/featured:-translate-y-0.5">303.9g</span>
+                                    <span class="inline-block px-1.5 py-0.5 text-xs font-medium bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full transition-all duration-300 ease-in-out group-hover/featured:scale-105 group-hover/featured:-translate-y-0.5">303.9g </span>
+                                    <span class="inline-block px-1.5 py-0.5 text-xs font-medium bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 rounded-full transition-all duration-300 ease-in-out group-hover/featured:scale-105 group-hover/featured:-translate-y-0.5">179mm × 83mm × 50mm</span>
                                    
                                 </div>
                             </div>
@@ -866,7 +846,107 @@ import Logo from "../assets/images/UNVLOGO.png";
                 }
             </style>
         </template>
-
+ <template id="storage-content">
+            <!-- Featured Product Section -->
+            <div class="mb-8">
+                <!-- Title with fade-in transition -->
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-700 ease-out opacity-0 animate-fade-in [animation-fill-mode:forwards]">
+                    Featured Storage Solutions
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Featured Product 1 - with staggered animation -->
+                    <div class="group/featured transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:shadow-lg hover:-translate-y-1 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-800/50 opacity-0 animate-fade-in-up [animation-fill-mode:forwards] [animation-delay:100ms]">
+                        <a href="/categories/storage/vx3048-v2" class="block">
+                            <div class="relative h-56 w-full mb-3 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700 transition-all duration-300 group-hover/featured:shadow-md">
+                                <img src="/images/categories/products/storage/DE1848-V2.png"
+                                    alt="DE1848-V2"
+                                    class="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover/featured:scale-105 group-hover/featured:rotate-1">
+                                <div class="absolute inset-0 bg-gradient-to-t from-blue-600/30 to-transparent opacity-0 group-hover/featured:opacity-100 transition-opacity duration-500 ease-in-out"></div>
+                                <div class="absolute bottom-2 right-2 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium translate-y-8 opacity-0 group-hover/featured:opacity-100 group-hover/featured:translate-y-0 transition-all duration-500 ease-out">View Details</div>
+                            </div>
+                            <div class="px-1">
+                                <h3 class="text-lg font-bold text-gray-800 dark:text-gray-200 group-hover/featured:text-blue-600 dark:group-hover/featured:text-blue-400 transition-colors duration-300 ease-in-out">DE1848-V2</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 transition-all duration-500 ease-in-out group-hover/featured:translate-x-1">4 HDDs 32-Ch 2U Digital Video Recorder.</p>
+                                <div class="flex items-center space-x-1">
+                                    <span class="inline-block px-1.5 py-0.5 text-xs font-medium bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full transition-all duration-300 ease-in-out group-hover/featured:scale-105 group-hover/featured:-translate-y-0.5">4 HDD</span>
+                                    <span class="inline-block px-1.5 py-0.5 text-xs font-medium bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 rounded-full transition-all duration-300 ease-in-out group-hover/featured:scale-105 group-hover/featured:-translate-y-0.5">32 Channel BNC Input</span>
+                                   
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Featured Product 2 - with staggered animation -->
+                    <div class="group/featured transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:shadow-lg hover:-translate-y-1 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-800/50 opacity-0 animate-fade-in-up [animation-fill-mode:forwards] [animation-delay:200ms]">
+                        <a href="categories/storage/ssd-256g-p3-m2" class="block">
+                            <div class="relative h-56 w-full mb-3 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700 transition-all duration-300 group-hover/featured:shadow-md">
+                                <img src="/images/categories/products/storage/SSD-256G-P3-M2.png"
+                                    alt="NVR301-S3-P Series"
+                                    class="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover/featured:scale-105 group-hover/featured:rotate-1">
+                                <div class="absolute inset-0 bg-gradient-to-t from-blue-600/30 to-transparent opacity-0 group-hover/featured:opacity-100 transition-opacity duration-500 ease-in-out"></div>
+                                <div class="absolute bottom-2 right-2 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium translate-y-8 opacity-0 group-hover/featured:opacity-100 group-hover/featured:translate-y-0 transition-all duration-500 ease-out">View Details</div>
+                            </div>
+                            <div class="px-1">
+                                <h3 class="text-lg font-bold text-gray-800 dark:text-gray-200 group-hover/featured:text-blue-600 dark:group-hover/featured:text-blue-400 transition-colors duration-300 ease-in-out">SSD-256G-P3-M2</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 transition-all duration-500 ease-in-out group-hover/featured:translate-x-1">1 HDD 4-Ch 1U Digital Video Recorder</p>
+                                <div class="flex items-center space-x-1">
+                                    <span class="inline-block px-1.5 py-0.5 text-xs font-medium bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full transition-all duration-300 ease-in-out group-hover/featured:scale-105 group-hover/featured:-translate-y-0.5">1 HDD</span>
+                                    <span class="inline-block px-1.5 py-0.5 text-xs font-medium bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 rounded-full transition-all duration-300 ease-in-out group-hover/featured:scale-105 group-hover/featured:-translate-y-0.5">16 Channel BNC Input</span>
+                                   
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- View All button with delayed animation -->
+                <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 text-center transition-all duration-300 hover:border-blue-400/30 opacity-0 animate-fade-in [animation-fill-mode:forwards] [animation-delay:300ms]">
+                    <a href="/categories/storage" 
+                       class="group inline-flex items-center justify-center px-5 py-2 relative overflow-hidden rounded-md text-sm font-medium text-white transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+                    >
+                        <span class="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-500 group-hover:from-blue-500 group-hover:to-blue-600"></span>
+                        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-all duration-1000 ease-in-out"></span>
+                        <span class="relative flex items-center">
+                            <span class="mr-2 transform transition-transform duration-500 ease-out group-hover:translate-x-1">View All Storage Solution</span>
+                            <svg class="w-4 h-4 transform transition-all duration-500 ease-out group-hover:translate-x-1" 
+                                 fill="none" 
+                                 stroke="currentColor" 
+                                 viewBox="0 0 24 24" 
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        
+            <style>
+                @keyframes fade-in {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                
+                @keyframes fade-in-up {
+                    from { 
+                        opacity: 0;
+                        transform: translateY(10px);
+                    }
+                    to { 
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .animate-fade-in {
+                    animation: fade-in 0.7s ease-out forwards;
+                }
+                
+                .animate-fade-in-up {
+                    animation: fade-in-up 0.7s ease-out forwards;
+                }
+            </style>
+        </template>
 
 <!-- JavaScript to handle dynamic content loading -->
 <script>
@@ -879,6 +959,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const accessoriesLink = document.querySelector('a[href="/categories/accessories"]');
     const thermalCameraLink = document.querySelector('a[href="/categories/thermal-cameras"]');  
     const nvrSystemsLink = document.querySelector('a[href="/categories/nvr"]');
+    const storageLink = document.querySelector('a[href="/categories/storage"]');
     
     // Get template contents
     const networkCamerasTemplate = document.getElementById('network-cameras-content');
@@ -888,6 +969,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const accessoriesTemplate = document.getElementById('accessories-content');
     const thermalCamerasTemplate = document.getElementById('thermal-cameras-content');
     const nvrSystemsTemplate = document.getElementById('nvr-systems-content');
+    const storageTemplate = document.getElementById('storage-content');
     
     // Set default content (Network Cameras)
     if (networkCamerasTemplate) {
@@ -931,6 +1013,11 @@ document.addEventListener('DOMContentLoaded', function() {
     nvrSystemsLink.addEventListener('mouseenter', function() {
         if (nvrSystemsTemplate) {
             container.innerHTML = nvrSystemsTemplate.innerHTML;
+        }
+    });
+    storageLink.addEventListener('mouseenter', function() {
+        if (storageTemplate) {
+            container.innerHTML = storageTemplate.innerHTML;
         }
     });
 });

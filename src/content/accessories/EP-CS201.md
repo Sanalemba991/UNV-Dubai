@@ -1,8 +1,14 @@
 ---
 title: "EP-CS201"
 description: "A durable sheet metal wall-mounted waterproof cover designed for outdoor use, compatible with OEU-201B-HMK-W, OEU-201B-HMK-W-NB, OEU-201S-HMK-W, and OEU-201S-HMK-W-NB villa door stations."
-image: "/images/categories/products/accessories/EP-CS201.png"  # You'll need to add the actual image file
-
+image: "/images/categories/products/accessories/EP-CS201/EP-CS201  (2).png" # You'll need to add the actual image file
+images:
+  - url: "/images/categories/products/accessories/EP-CS201/EP-CS201  (2).png"
+    caption: "Front view"
+  - url: "/images/categories/products/accessories/EP-CS201/EP-CS201  (3).png"
+    caption: "Side view"
+  - url: "/images/categories/products/accessories/EP-CS201/EP-CS201  (1).png"
+    caption: "Back view"
 features:
   - Compatible with multiple villa door station models
   - Durable sheet metal construction
