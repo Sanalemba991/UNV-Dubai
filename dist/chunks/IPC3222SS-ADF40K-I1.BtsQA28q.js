@@ -1,1 +1,0 @@
-async function getMod(){return import("./IPC3222SS-ADF40K-I1.DhXnja52.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};

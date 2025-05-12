@@ -1,1 +1,0 @@
-async function getMod(){return import("./SSD-256G-P3-M2.D1vhZ-hN.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};

@@ -1,1 +1,0 @@
-async function getMod(){return import("./IPC8645EA-ADZKM-I1.Sd_i1env.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};
