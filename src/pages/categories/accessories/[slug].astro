@@ -6,49 +6,63 @@ type Props = {
     product: Product;
 };
 
+interface ProductImage {
+    url: string;
+    caption?: string;
+    type?: string;
+}
+
+interface ProductSpecifications {
+    sensor: string;
+    resolution: string;
+    focalLength: string;
+    irRange: string;
+    powerSupply: string;
+    protection: string;
+    storage: string;
+    dimensions: string;
+}
+
 interface Product {
     title: string;
     description: string;
     image: string;
+    images?: ProductImage[];
     features: string[];
-    specifications: {
-        [key: string]: string;
-    };
-    price?: string;
+    price?: number;
+    specifications: ProductSpecifications;
     rating?: number;
     reviewCount?: number;
-    images?: Array<{ url: string }>;
 }
 
 export async function getStaticPaths() {
-    const accessories = await getCollection("accessories");
-    return accessories.map((entry) => ({
+    const ipCameras = await getCollection("accessories");
+    return ipCameras.map((entry) => ({
         params: { slug: entry.slug },
         props: { product: entry.data as Product },
     }));
 }
 
 const { product } = Astro.props as Props;
-const images = product.images ?? [{ url: product.image }];
+const images = product.images || (product.image ? [{ url: product.image }] : []);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-/// Product schema markup
 const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": product.title,
     "description": product.description,
-    "image": product.image ? new URL(product.image, Astro.site).toString() : undefined,
+    "image": new URL(product.image, Astro.site).toString(),
     "offers": {
       "@type": "Offer",
       "priceCurrency": "AED",
-      "price": product.price || "0.00",
+      "price": product.price?.toString() || "0.00",
       "availability": "https://schema.org/InStock",
       "itemCondition": "https://schema.org/NewCondition"
     },
     ...(product.rating && product.reviewCount ? {
-      "aggregateRating": {
+      aggregateRating: {
         "@type": "AggregateRating",
         "ratingValue": product.rating.toString(),
         "reviewCount": product.reviewCount.toString()
@@ -68,7 +82,7 @@ const structuredData = [
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Accessories",
+        "name": "IP Cameras",
         "item": new URL("/categories/accessories", Astro.site).toString()
       },
       {
@@ -81,19 +95,16 @@ const structuredData = [
   }
 ];
 ---
-
 <meta charset="UTF-8" />
-
 
 <Layout
     title={`${product.title} - UNV Dubai`}
+    structuredData={structuredData}
     description={product.description}
-        structuredData={structuredData}
-        canonicalURL={canonicalURL.toString()} 
-    
+    canonical={canonicalURL.toString()}
 >
     <section class="py-16 relative overflow-hidden">
-        <!-- Floating background elements -->
+        <!-- Background elements -->
         <div class="absolute w-96 h-96 -top-48 -left-48 rounded-full bg-blue-500/5 blur-3xl animate-float-slow"></div>
         <div class="absolute w-96 h-96 -bottom-48 -right-48 rounded-full bg-indigo-500/5 blur-3xl animate-float-slow-reverse"></div>
 
@@ -103,7 +114,7 @@ const structuredData = [
                 <div class="flex items-center space-x-2 text-sm">
                     <a href="/" class="text-gray-500 hover:text-blue-600 transition-colors">Home</a>
                     <span class="text-gray-400">/</span>
-                    <a href="/categories/accessories" class="text-gray-500 hover:text-blue-600 transition-colors">Accessories</a>
+                    <a href="/categories/ip-cameras" class="text-gray-500 hover:text-blue-600 transition-colors">Accessories</a>
                     <span class="text-gray-400">/</span>
                     <span class="text-blue-600 font-medium">{product.title}</span>
                 </div>
@@ -111,64 +122,137 @@ const structuredData = [
 
             <!-- Product Header -->
             <div class="text-center mb-8 fade-in-up">
-                <h1 class="text-4xl font-bold text-gray-900 mb-2 animate-title-reveal">{product.title}</h1>
-                <p class="text-gray-600 max-w-3xl mx-auto animate-fade-up">{product.description}</p>
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2 animate-title-reveal">{product.title}</h1>
+                <p class="text-gray-600 dark:text-white max-w-3xl mx-auto animate-fade-up">{product.description}</p>
+                {product.price && (
+                    <div class="mt-4 text-xl font-semibold text-blue-600">
+                        AED {product.price.toLocaleString()}
+                    </div>
+                )}
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8 slide-in-bottom">
-                <!-- Product Image -->
+                <!-- Product Image Gallery -->
                 <div class="relative group">
-                    <img
-                        src={product.image}
-                        alt={product.title}
-                        class="w-full rounded-lg shadow-lg transform transition-transform duration-700 group-hover:scale-105"
-                        width="800"
-                        height="600"
-                        loading="eager"
-                    />
+                    {images.length > 0 ? (
+                        <div class="space-y-4">
+                            <!-- Main Image -->
+                            <div class="relative rounded-lg overflow-hidden shadow-lg">
+                                <img
+                                    src={images[0].url}
+                                    alt={images[0].caption || product.title}
+                                    class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                                    id="main-image"
+                                    loading="lazy"
+                                    width="800"
+                                    height="600"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                            </div>
+
+                            <!-- Thumbnail Gallery -->
+                            {images.length > 1 && (
+                                <div class="flex items-center gap-4">
+                                    <button
+                                        class="nav-btn w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition-all"
+                                        onclick="navigateGallery(-1)"
+                                        aria-label="Previous image"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    
+                                    <div class="flex-1 overflow-x-auto py-2">
+                                        <div class="grid grid-flow-col auto-cols-fr gap-2" role="tablist">
+                                            {images.map((image, index) => (
+                                                <button
+                                                    class={`thumbnail-btn relative min-w-[60px] rounded-md overflow-hidden transition-all duration-300 ${index === 0 ? 'active-thumbnail' : ''}`}
+                                                    onclick={`updateMainImage('${image.url}', this)`}
+                                                    aria-label={`View image ${index + 1}`}
+                                                    role="tab"
+                                                    aria-selected={index === 0 ? "true" : "false"}
+                                                    tabindex={index === 0 ? "0" : "-1"}
+                                                >
+                                                    <img
+                                                        src={image.url}
+                                                        alt={image.caption || `${product.title} - view ${index + 1}`}
+                                                        class="w-full h-16 object-cover"
+                                                        loading="lazy"
+                                                        width="80"
+                                                        height="60"
+                                                    />
+                                                    {image.type && (
+                                                        <span class="absolute bottom-1 left-1 bg-black/70 text-white text-xs px-1 rounded">
+                                                            {image.type}
+                                                        </span>
+                                                    )}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    
+                                    <button
+                                        class="nav-btn w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition-all"
+                                        onclick="navigateGallery(1)"
+                                        aria-label="Next image"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
+                            No images available
+                        </div>
+                    )}
                 </div>
 
                 <!-- Product Details -->
-                <div class="bg-white rounded-lg p-6 shadow-lg relative overflow-hidden">
-                    <!-- Animated background pattern -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg relative overflow-hidden">
                     <div class="absolute inset-0 opacity-5">
                         <div class="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat"></div>
                     </div>
 
                     <div class="relative space-y-6">
-                        <!-- Tabs for Features and Specifications -->
+                        <!-- Tabs -->
                         <div class="tabs-container">
                             <div class="relative flex border-b border-gray-200 mb-4">
                                 <button
                                     class="tab-button flex-1 active px-4 py-3 text-sm font-semibold transition-all duration-300 relative focus:outline-none"
                                     data-tab="features"
                                     aria-selected="true"
+                                    role="tab"
                                 >
-                                    <span class="relative z-10">Features</span>
+                                    <span class="relative z-10 dark:text-white">Features</span>
                                     <div class="tab-indicator absolute bottom-0 inset-x-0 h-0.5 bg-blue-600 transition-all duration-300"></div>
                                 </button>
                                 <button
                                     class="tab-button flex-1 px-4 py-3 text-sm font-semibold transition-all duration-300 relative focus:outline-none"
                                     data-tab="specifications"
                                     aria-selected="false"
+                                    role="tab"
                                 >
-                                    <span class="relative z-10">Specifications</span>
+                                    <span class="relative z-10 dark:text-white">Specifications</span>
                                     <div class="tab-indicator absolute bottom-0 inset-x-0 h-0.5 bg-transparent transition-all duration-300"></div>
                                 </button>
                             </div>
 
                             <!-- Features Tab Content -->
-                            <div class="tab-content block animate-fade" id="features">
+                            <div class="tab-content block animate-fade" id="features" role="tabpanel">
                                 <div class="space-y-3">
                                     {product.features.map((feature, index) => (
-                                        <div class="feature-item flex items-start gap-3 p-2 rounded-lg hover:bg-blue-50 transition-colors duration-300 opacity-0 animate-slide-in" style={`animation-delay: ${index * 100}ms;`}>
+                                        <div class="feature-item flex items-start gap-3 p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-300 opacity-0 animate-slide-in" style={`animation-delay: ${index * 100}ms;`}>
                                             <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                                 </svg>
                                             </div>
                                             <div>
-                                                <h3 class="text-sm font-medium text-gray-900">{feature}</h3>
+                                                <h3 class="text-sm font-medium text-gray-900 dark:text-white">{feature}</h3>
                                             </div>
                                         </div>
                                     ))}
@@ -176,12 +260,12 @@ const structuredData = [
                             </div>
 
                             <!-- Specifications Tab Content -->
-                            <div class="tab-content hidden animate-fade" id="specifications">
+                            <div class="tab-content hidden animate-fade" id="specifications" role="tabpanel">
                                 <div class="grid grid-cols-2 gap-3">
                                     {Object.entries(product.specifications).map(([key, value], index) => (
-                                        <div class="spec-item p-3 rounded-lg bg-gray-50 opacity-0 animate-slide-in" style={`animation-delay: ${index * 100}ms;`}>
-                                            <div class="text-xs text-gray-500">{key}</div>
-                                            <div class="text-sm font-bold text-gray-900">{value}</div>
+                                        <div class="spec-item p-3 rounded-lg bg-gray-50 dark:bg-gray-700 opacity-0 animate-slide-in" style={`animation-delay: ${index * 100}ms;`}>
+                                            <div class="text-xs text-gray-500 dark:text-gray-300">{key}</div>
+                                            <div class="text-sm font-bold text-gray-900 dark:text-white">{value}</div>
                                         </div>
                                     ))}
                                 </div>
@@ -195,7 +279,7 @@ const structuredData = [
                                 class="group relative inline-flex items-center justify-center w-auto px-3 py-1.5 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-semibold overflow-hidden hover:shadow-blue-500/20 transition-all duration-300"
                             >
                                 <span class="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                                <span class="relative z-10">Contact Sales</span>
+                                <span class="relative z-10">Request Quote</span>
                                 <svg
                                     class="ml-2 w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-2"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -215,26 +299,55 @@ const structuredData = [
                     </div>
                 </div>
             </div>
-
-            <!-- Related Products Section -->
-            <div class="mt-16 slide-in-bottom-delay">
-                <div class="text-center mb-8">
-                    <h2 class="text-2xl font-bold text-gray-900">Related Products</h2>
-                    <div class="mt-2 w-16 h-1 bg-blue-600 mx-auto rounded-full"></div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Related product cards would go here -->
-                </div>
-            </div>
         </div>
     </section>
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData[0])} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData[1])} />
 </Layout>
 
 <style is:global>
-    @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
-        100% { transform: translateY(0px); }
+    .thumbnail-btn {
+        aspect-ratio: 1;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    .thumbnail-btn:hover {
+        border-color: #3b82f6;
+        transform: none;
+    }
+
+    .thumbnail-btn::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: #2563eb;
+        transition: width 0.3s ease;
+    }
+
+    .thumbnail-btn.active-thumbnail {
+        border: 2px solid transparent;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .thumbnail-btn.active-thumbnail::after {
+        width: 100%;
+    }
+
+    #main-image:hover {
+        transform: none !important;
+    }
+
+    @keyframes underline-slide-right {
+        from { width: 0; }
+        to { width: 100%; }
     }
 
     @keyframes float-slow {
@@ -279,8 +392,9 @@ const structuredData = [
         to { transform: translateX(0); opacity: 1; }
     }
 
-    .animate-float {
-        animation: float 6s ease-in-out infinite;
+    @keyframes fade {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 
     .animate-float-slow {
@@ -315,8 +429,13 @@ const structuredData = [
         animation: slide-in 0.6s ease-out forwards;
     }
 
+    .animate-fade {
+        animation: fade 0.3s ease-out forwards;
+    }
+
+    /* Tab Styles */
     .tab-button.active .tab-indicator {
-        background-color: #2563eb; /* Blue-600 color */
+        background-color: #2563eb;
     }
 
     .tab-button:not(.active) .tab-indicator {
@@ -325,29 +444,114 @@ const structuredData = [
 </style>
 
 <script is:inline>
+    // Image gallery navigation functions
+    function updateMainImage(imageUrl, thumbnailElement) {
+        const mainImage = document.getElementById('main-image');
+        if (mainImage) {
+            mainImage.src = imageUrl;
+            mainImage.setAttribute('src', imageUrl);
+        }
+
+        // Update ARIA attributes and active state
+        const thumbnails = document.querySelectorAll('.thumbnail-btn');
+        thumbnails.forEach((thumb, index) => {
+            thumb.classList.remove('active-thumbnail');
+            thumb.setAttribute('aria-selected', 'false');
+            thumb.setAttribute('tabindex', '-1');
+        });
+
+        if (thumbnailElement) {
+            thumbnailElement.classList.add('active-thumbnail');
+            thumbnailElement.setAttribute('aria-selected', 'true');
+            thumbnailElement.setAttribute('tabindex', '0');
+        }
+    }
+
+    function navigateGallery(direction) {
+        const thumbnails = Array.from(document.querySelectorAll('.thumbnail-btn'));
+        if (thumbnails.length === 0) return;
+
+        let currentIndex = thumbnails.findIndex(thumb => 
+            thumb.classList.contains('active-thumbnail')
+        );
+        
+        if (currentIndex === -1) currentIndex = 0;
+        
+        let newIndex = currentIndex + direction;
+        
+        // Wrap around if needed
+        if (newIndex < 0) newIndex = thumbnails.length - 1;
+        if (newIndex >= thumbnails.length) newIndex = 0;
+        
+        // Update main image and thumbnail state
+        const newThumbnail = thumbnails[newIndex];
+        if (newThumbnail) {
+            const newImage = newThumbnail.querySelector('img');
+            if (newImage) {
+                updateMainImage(newImage.src, newThumbnail);
+                
+                // Scroll thumbnails container to make active thumbnail visible
+                const container = document.querySelector('.overflow-x-auto');
+                if (container) {
+                    const containerWidth = container.offsetWidth;
+                    const thumbWidth = newThumbnail.offsetWidth;
+                    const scrollPosition = newThumbnail.offsetLeft - (containerWidth / 2) + (thumbWidth / 2);
+                    
+                    container.scrollTo({
+                        left: scrollPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        }
+    }
+
+    // Tab functionality
     document.addEventListener("DOMContentLoaded", () => {
-        // Tab functionality
         const tabs = document.querySelectorAll(".tab-button");
         const contents = document.querySelectorAll(".tab-content");
 
-        // Set initial active state
-        const initialActiveTab = document.querySelector('[data-tab="features"]');
+        function setActiveTab(tab) {
+            if (!tab) return;
+            
+            tab.setAttribute("aria-selected", "true");
+            tab.classList.add("active");
+            const indicator = tab.querySelector(".tab-indicator");
+            if (indicator) {
+                indicator.style.backgroundColor = "#2563eb";
+            }
+
+            // Remove active state from other tabs
+            tabs.forEach(t => {
+                if (t !== tab) {
+                    t.setAttribute("aria-selected", "false");
+                    t.classList.remove("active");
+                    const otherIndicator = t.querySelector(".tab-indicator");
+                    if (otherIndicator) {
+                        otherIndicator.style.backgroundColor = "transparent";
+                    }
+                }
+            });
+        }
+
+        // Set initial active tab
+        const initialActiveTab = document.querySelector('.tab-button[data-tab="features"]');
         setActiveTab(initialActiveTab);
 
-        tabs.forEach((tab) => {
+        // Add click handlers
+        tabs.forEach(tab => {
             tab.addEventListener("click", () => {
-                tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
+                const targetId = tab.getAttribute("data-tab");
                 setActiveTab(tab);
 
-                const targetId = tab.getAttribute("data-tab");
-                contents.forEach((content) => {
+                // Show/hide content
+                contents.forEach(content => {
                     if (content.id === targetId) {
                         content.classList.remove("hidden");
                         content.classList.add("block");
-
-                        // Trigger fade animation
+                        // Trigger animation
                         content.classList.remove("animate-fade");
-                        void content.offsetWidth; // Force reflow
+                        void content.offsetWidth;
                         content.classList.add("animate-fade");
                     } else {
                         content.classList.remove("block");
@@ -357,18 +561,20 @@ const structuredData = [
             });
         });
 
-        function setActiveTab(tab) {
-            tab.setAttribute("aria-selected", "true");
-            const indicator = tab.querySelector(".tab-indicator");
-            indicator.style.backgroundColor = "#2563eb"; // Blue-600 color
-
-            // Remove underline from the other tab
-            tabs.forEach((t) => {
-                if (t !== tab) {
-                    const otherIndicator = t.querySelector(".tab-indicator");
-                    otherIndicator.style.backgroundColor = "transparent";
+        // Keyboard navigation for tabs
+        tabs.forEach(tab => {
+            tab.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    tab.click();
+                } else if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+                    const currentIndex = Array.from(tabs).indexOf(tab);
+                    const direction = e.key === "ArrowRight" ? 1 : -1;
+                    const newIndex = (currentIndex + direction + tabs.length) % tabs.length;
+                    tabs[newIndex].focus();
+                    tabs[newIndex].click();
                 }
             });
-        }
+        });
     });
 </script>
