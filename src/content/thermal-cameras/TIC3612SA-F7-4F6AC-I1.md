@@ -1,7 +1,14 @@
 ---
 title: "TIC3612SA-F7-4F6AC-I1"
 description: "Advanced thermal and optical dual-spectrum network camera featuring reliable fire detection, temperature monitoring, and smart intrusion prevention capabilities. Perfect for 24/7 surveillance with dual video output through a single IP address."
-image: "/images/categories/products/thermal-cameras/TIC3612SA-F7-4F6AC-I1.png"
+image: "/images/categories/products/thermal-cameras/TIC3612SA-F7-4F6AC/TIC3612SA-F7-4F6AC (3).png"
+images:
+  - url: "/images/categories/products/thermal-cameras/TIC3612SA-F7-4F6AC/TIC3612SA-F7-4F6AC (3).png"
+    caption: "Front view"
+  - url: "/images/categories/products/thermal-cameras/TIC3612SA-F7-4F6AC/TIC3612SA-F7-4F6AC (2).png"
+    caption: "Side view"
+  - url: "/images/categories/products/thermal-cameras/TIC3612SA-F7-4F6AC/TIC3612SA-F7-4F6AC (1).png"
+    caption: "Back view"
 features:
   - Thermal & Optical dual spectrum imaging with single IP address
   - 1/2.8" high-sensitivity sensor for starlight monitoring

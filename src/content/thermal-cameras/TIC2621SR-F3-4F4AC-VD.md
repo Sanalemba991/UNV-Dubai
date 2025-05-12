@@ -1,7 +1,14 @@
 ---
 title: "TIC2621SR-F3-4F4AC-VD"
 description: "Advanced thermal and optical dual-spectrum camera with reliable fire detection, temperature monitoring, and smart intrusion prevention capabilities. Features dual video output with single IP address and high sensitivity 1/1.8\" sensor for superior starlight monitoring."
-image: "/images/categories/products/thermal-cameras/TIC2621SR-F3-4F4AC-VD.png"
+image: "/images/categories/products/thermal-cameras/TIC2621SR-F3-4F4AC-VD/TIC2621SR-F3-4F4AC-VD  (1).png"
+images:
+  - url: "/images/categories/products/thermal-cameras/TIC2621SR-F3-4F4AC-VD/TIC2621SR-F3-4F4AC-VD  (1).png"
+    caption: "Front view"
+  - url: "/images/categories/products/thermal-cameras/TIC2621SR-F3-4F4AC-VD/TIC2621SR-F3-4F4AC-VD  (2).png"
+    caption: "Side view"
+  - url: "/images/categories/products/thermal-cameras/TIC2621SR-F3-4F4AC-VD/TIC2621SR-F3-4F4AC-VD  (3).png"
+    caption: "Back view"
 price: "Contact Sales"
 features:
   - Thermal & Optical dual-spectrum imaging with single IP address

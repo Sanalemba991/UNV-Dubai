@@ -78,6 +78,13 @@ const ptzCamerasSchema = z.object({
 const thermalCamerasSchema = z.object({
   title: z.string(),
   description: z.string(),
+   images: z.array(
+    z.object({
+      url: z.string(),
+      caption: z.string().optional(), // Optional caption for each image
+      type: z.string().optional(),    // Optional type, e.g., 'front', 'side'
+    })
+  ),
   image: z.string(),
   features: z.array(z.string()),
   specifications: z.object({

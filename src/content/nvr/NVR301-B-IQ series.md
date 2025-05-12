@@ -1,5 +1,5 @@
 ---
-title: "NVR301-B-IQ series"
+title: "NVR301-B-IQ Series"
 description: "Compact 4/8/16-channel network video recorder with intelligent features and reliable performance for small-scale surveillance systems"
 image: "/images/categories/products/nvr/NVR301-B-IQ series.png"
 features:
