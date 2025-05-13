@@ -1,7 +1,14 @@
 ---
 title: "NVR301-B-IQ Series"
 description: "Compact 4/8/16-channel network video recorder with intelligent features and reliable performance for small-scale surveillance systems"
-image: "/images/categories/products/nvr/NVR301-B-IQ series.png"
+image: "/images/categories/products/nvr/NVR301-04B-IQ/NVR301-04B-IQ1.png"
+images:
+  - url: "/images/categories/products/nvr/NVR301-04B-IQ/NVR301-04B-IQ1.png"
+    caption: "Front view"
+  - url: "/images/categories/products/nvr/NVR301-04B-IQ/NVR301-04B-IQ2.png"
+    caption: "Side view"
+  - url: "/images/categories/products/nvr/NVR301-04B-IQ/NVR301-04B-IQ.png"
+    caption: "Back view"
 features:
   - "Ultra 265/H.265/H.264 video formats support"
   - "4/8/16-channel IP camera input options"

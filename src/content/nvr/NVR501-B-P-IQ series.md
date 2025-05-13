@@ -1,7 +1,14 @@
 ---
 title: "NVR501-B-P-IQ Series"
 description: "1 HDD 4-ch/8-ch 4/8 PoE 1U Network Video Recorder with advanced features including Ultra 265/H.265/H.264 support and up to 16MP resolution recording"
-image: "/images/categories/products/nvr/NVR501-B-P-IQ Series.png"
+image: "/images/categories/products/nvr/NVR501-04B-P4-IQ/NVR501-04B-P4-IQ  (2).png"
+images:
+  - url: "/images/categories/products/nvr/NVR501-04B-P4-IQ/NVR501-04B-P4-IQ  (2).png"
+    caption: "Front view"
+  - url: "/images/categories/products/nvr/NVR501-04B-P4-IQ/NVR501-04B-P4-IQ  (3).png"
+    caption: "Side view"
+  - url: "/images/categories/products/nvr/NVR501-04B-P4-IQ/NVR501-04B-P4-IQ  (1).png"
+    caption: "Back view"
 features:
   - Support Ultra 265/H.265/H.264 video formats
   - 4/16-channel input

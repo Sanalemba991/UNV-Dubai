@@ -104,6 +104,13 @@ const nvrSchema = z.object({
   title: z.string(),
   description: z.string(),
   image: z.string(),
+  images: z.array(
+    z.object({
+      url: z.string(),
+      caption: z.string().optional(), // Optional caption for each image
+      type: z.string().optional(),    // Optional type, e.g., 'front', 'side'
+    })
+  ),
   features: z.array(z.string()),
   specifications: z.object({
     channels: z.string(),
@@ -145,6 +152,13 @@ const storageSchema = z.object({
   title: z.string(),
   description: z.string(),
   image: z.string(),
+  images: z.array(
+      z.object({
+        url: z.string(),
+        caption: z.string().optional(), // Optional caption for each image
+        type: z.string().optional(),    // Optional type, e.g., 'front', 'side'
+      })
+    ),
   features: z.array(z.string()),
   specifications: z.object({
     capacity: z.string(),
