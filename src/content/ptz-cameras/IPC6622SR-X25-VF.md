@@ -1,6 +1,6 @@
 ---
 title: "IPC6622SR-X25-VF"
-description: "2MP 25x Lighthunter IR Network PTZ Camera with advanced features including smart intrusion prevention, people counting, and superior low-light performance"
+description: "2MP 25x Lighthunter IR Network PTZ Camera with advanced features including smart intrusion prevention, people counting, and superior low-light performance."
 images:
   - url: "/images/categories/products/ptz-cameras/IPC6622SR-X25-VF/IPC6622SR-X25-VF2.png"
     caption: "Front view"

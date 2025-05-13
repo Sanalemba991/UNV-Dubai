@@ -1,7 +1,7 @@
 ---
 id: 3
-title: "Navigating Today's Security Landscape: Challenges and Solutions"
-description: "Affordable, durable tools for efficient construction projects"
+title: "Navigating Today's Security Landscape: Challenges and Solutions."
+description: "Affordable, durable tools for efficient construction projects."
 author: "Shajid"
 role: "Strategic Marketing Manager"
 authorImage: "../../assets/images/shajid.png"

@@ -1,12 +1,12 @@
 ---
 title: "IPC324LB-AF28-A2"
-description: "4MP Fixed IR Dome Network Camera"
+description: "4MP Fixed IR Dome Network Camera."
 images:
   - url: "/images/categories/products/ip-cameras/IPC324LB-AF28-A2/Network5 (1).png"
     caption: "Front view"
-  - url: "/images/categories/products/ip-cameras/IPC324LB-AF28-A2/Network5 (2).png"
-    caption: "Side view"
   - url: "/images/categories/products/ip-cameras/IPC324LB-AF28-A2/Network5 (3).png"
+    caption: "Side view"
+  - url: "/images/categories/products/ip-cameras/IPC324LB-AF28-A2/Network5 (2).png"
     caption: "Back view"
 image: "/images/categories/products/ip-cameras/IPC324LB-AF28-A2/Network5 (1).png"
 price: "Contact for Price"

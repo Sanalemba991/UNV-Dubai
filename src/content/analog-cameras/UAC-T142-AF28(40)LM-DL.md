@@ -1,6 +1,6 @@
 ---
 title: "UAC-T142-AF28(40)LM-DL"
-description: "2MP ColorHunter Fixed Dual-light Turret Analog Camera with high quality imaging and smart dual light technology"
+description: "2MP ColorHunter Fixed Dual-light Turret Analog Camera with high quality imaging and smart dual light technology."
 
 images:
   - url: "/images/categories/products/analog-cameras/UAC-T142-AF28LM-DL/UAC-T142-AF28(40)LM-DL.png"

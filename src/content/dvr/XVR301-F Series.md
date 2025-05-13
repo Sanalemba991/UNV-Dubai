@@ -1,9 +1,9 @@
 ---
 title: "XVR301-F Series"
-description: "1 HDD 4-Ch 1U Digital Video Recorder"
+description: "1 HDD 4-Ch 1U Digital Video Recorder."
 
 images:
-  - url: "/images/categories/products/dvr/XVR301-04F/XVR301-F Series.png"
+  - url: "/images/categories/products/dvr/XVR301-04F/XVR301-F Series2.png"
     caption: "Front view"
   - url: "/images/categories/products/dvr/XVR301-04F/XVR301-F Series1.png"
     caption: "Side view"

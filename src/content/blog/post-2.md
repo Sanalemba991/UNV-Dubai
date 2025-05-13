@@ -1,7 +1,7 @@
 ---
 id: 2
 title: "Why Choose Uniview Cameras for Your Business Security Solutions Needs?"
-description: "Quality security solution for lasting results"
+description: "Quality security solution for lasting results."
 author: "Shajid"
 authorImage: "../../assets/images/shajid.png"
 authorImageAlt: "Avatar Description"

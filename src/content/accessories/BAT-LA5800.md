@@ -1,6 +1,6 @@
 ---
 title: "BAT-LA5800"
-description: "Professional lead-acid battery module designed for backup power applications, offering reliable performance with 34W capacity at 15-minute rate"
+description: "Professional lead-acid battery module designed for backup power applications, offering reliable performance with 34W capacity at 15-minute rate."
 image: "/images/categories/products/accessories/BAT-LA5800/BAT-LA5800.png"
 images:
   - url: "/images/categories/products/accessories/BAT_LA5800_BG_Removed_3000x1688.png"

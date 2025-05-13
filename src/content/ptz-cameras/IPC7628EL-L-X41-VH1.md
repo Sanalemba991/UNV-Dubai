@@ -1,12 +1,12 @@
 ---
 title: "IPC7628EL-L-X41-VH1"
-description: "8MP 41X Lighthunter Laser Network Positioning system with advanced features including triple streams, smart intrusion prevention, and up to 1000m IR distance"
+description: "8MP 41X Lighthunter Laser Network Positioning system with advanced features including triple streams, smart intrusion prevention, and up to 1000m IR distance."
 images:
   - url: "/images/categories/products/ptz-cameras/IPC7628EL-L-X41-VH1/IPC7628EL-L-X41-VH1.png"
     caption: "Front view"
-  - url:  "/images/categories/products/ptz-cameras/IPC7628EL-L-X41-VH1/IPC7628EL-L-X41-VH.png"
-    caption: "Side view"
   - url:  "/images/categories/products/ptz-cameras/IPC7628EL-L-X41-VH1/IPC7628EL-L-X41-VH12.png"
+    caption: "Side view"
+  - url:  "/images/categories/products/ptz-cameras/IPC7628EL-L-X41-VH1/IPC7628EL-L-X41-VH.png"
     caption: "Back view"
 image:  "/images/categories/products/ptz-cameras/IPC7628EL-L-X41-VH1/IPC7628EL-L-X41-VH1.png"
 features:

@@ -5,9 +5,9 @@ image: "/images/categories/products/thermal-cameras/TIC2A32SA-F10-4F8AC-I1/TIC2A
 images:
   - url: "/images/categories/products/thermal-cameras/TIC2A32SA-F10-4F8AC-I1/TIC2A32SA-F10-4F8AC-I1 (1).png"
     caption: "Front view"
-  - url: "/images/categories/products/thermal-cameras/TIC2A32SA-F10-4F8AC-I1/TIC2A32SA-F10-4F8AC-I1 (2).png"
-    caption: "Side view"
   - url: "/images/categories/products/thermal-cameras/TIC2A32SA-F10-4F8AC-I1/TIC2A32SA-F10-4F8AC-I1 (3).png"
+    caption: "Side view"
+  - url: "/images/categories/products/thermal-cameras/TIC2A32SA-F10-4F8AC-I1/TIC2A32SA-F10-4F8AC-I1 (2).png"
     caption: "Back view"
 price: "Contact Sales"
 features:

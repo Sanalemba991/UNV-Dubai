@@ -1,7 +1,7 @@
 ---
 id: 1 
-title: "Welcome to UNV Dubai. Your Trusted Partner in Security Solutions"
-description: "Innovating Construction Efficiency with Precision Tools & Support"
+title: "Welcome to UNV Dubai. Your Trusted Partner in Security Solutions."
+description: "Innovating Construction Efficiency with Precision Tools & Support."
 author: "Shajid"
 authorImage: "../../assets/images/shajid.png"
 authorImageAlt: "Avatar Description"

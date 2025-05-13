@@ -5,9 +5,9 @@ image: "/images/categories/products/thermal-cameras/TIC2621SR-F3-4F4AC-VD/TIC262
 images:
   - url: "/images/categories/products/thermal-cameras/TIC2621SR-F3-4F4AC-VD/TIC2621SR-F3-4F4AC-VD  (1).png"
     caption: "Front view"
-  - url: "/images/categories/products/thermal-cameras/TIC2621SR-F3-4F4AC-VD/TIC2621SR-F3-4F4AC-VD  (2).png"
-    caption: "Side view"
   - url: "/images/categories/products/thermal-cameras/TIC2621SR-F3-4F4AC-VD/TIC2621SR-F3-4F4AC-VD  (3).png"
+    caption: "Side view"
+  - url: "/images/categories/products/thermal-cameras/TIC2621SR-F3-4F4AC-VD/TIC2621SR-F3-4F4AC-VD  (2).png"
     caption: "Back view"
 price: "Contact Sales"
 features:
