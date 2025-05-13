@@ -140,6 +140,34 @@ import Logo from "../assets/images/UNVLOGO.png";
     </div>
 </div>
 </li>
+ <script>
+        // Add JavaScript to handle persistent hover states
+        const dropdownContainer = document.getElementById('dropdown-container');
+        const categoryLinks = document.querySelectorAll('.dropdown-category');
+        let activeCategory = null;
+    
+        categoryLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                // Remove active class from all links
+                categoryLinks.forEach(l => l.classList.remove('bg-blue-100', 'dark:bg-blue-900/30', 'dark:bg-gray-700/50'));
+                
+                // Add active class to hovered link
+                link.classList.add('bg-blue-100'); // Changed from bg-blue-300 to bg-blue-100
+                if(link.classList.contains('dark:hover:bg-blue-900/30')) {''
+                    link.classList.add('dark:bg-blue-900/30');
+                } else {
+                    link.classList.add('dark:bg-gray-700/50');
+                }
+                
+                activeCategory = link.getAttribute('data-category');
+            });
+        });
+    
+        dropdownContainer.addEventListener('mouseleave', () => {
+            categoryLinks.forEach(l => l.classList.remove('bg-blue-100', 'dark:bg-blue-900/30', 'dark:bg-gray-700/50'));
+            activeCategory = null;
+        });
+    </script>
 
 <template id="network-cameras-content">
     <div class="mb-8">
