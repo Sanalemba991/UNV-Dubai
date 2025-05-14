@@ -2051,31 +2051,35 @@ import Logo from "../assets/images/UNVLOGO.png";
         <span>About</span>
       </a>
 
-     <!-- Products button - shows products submenu when clicked -->
-<button
+      <!-- Products button - shows products submenu when clicked -->
+       <button
   id="show-products-menu-button"
   class="mobile-nav-link w-full text-left flex items-center justify-between"
 >
   <div class="flex items-center">
-    <svg
-      class="mobile-nav-icon"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-      ></path>
-    </svg>
-    <span class="sam {% if request.path starts with '/categories' %}text-blue-500{% endif %}">Products</span>
+   <svg
+  class={`mobile-nav-icon ${Astro.url.pathname.startsWith('/categories') ? 'text-blue-500' : ''}`}
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke="currentColor"
+>
+  <path
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+    class={Astro.url.pathname.startsWith('/categories') ? 'stroke-blue-500' : ''}
+  ></path>
+</svg>
+
+    <span>
+      Products
+    </span>
   </div>
   <!-- Arrow icon to go next -->
   <svg
-    class="h-5 w-5"
+    class={`h-5 w-5 ${Astro.url.pathname.startsWith('/categories') ? 'text-blue-500' : ''}`}
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -2085,7 +2089,8 @@ import Logo from "../assets/images/UNVLOGO.png";
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="2"
-      d="M9 5l7 7-7 7"></path>
+      d="M9 5l7 7-7 7"
+    ></path>
   </svg>
 </button>
 
@@ -2153,20 +2158,20 @@ import Logo from "../assets/images/UNVLOGO.png";
           <!-- You can add your main icon here if needed -->
           <span class="font-semibold">Back to Main Menu</span>
         </div>
-        <!-- Left-pointing arrow icon -->
-        <svg
-          class="h-5 w-5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 19l-7-7 7-7"></path>
-        </svg>
+ <svg
+  class={`h-5 w-5 ${Astro.url.pathname.startsWith('/categories') ? 'text-blue-500' : ''}`}
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke="currentColor"
+>
+  <path
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d={Astro.url.pathname.startsWith('/categories') ? 'M15 19l-7-7 7-7' : 'M9 5l7 7-7 7'}
+  />
+</svg>
       </button>
 
       <!-- Products header -->
@@ -2413,7 +2418,8 @@ import Logo from "../assets/images/UNVLOGO.png";
         </div>
       </div>
     </div>
-  </div><script>
+  </div>
+  <script>
     document.addEventListener("DOMContentLoaded", function () {
       const nav = document.getElementById("main-nav");
       const menuToggle = document.getElementById("menu-toggle");
@@ -2545,7 +2551,6 @@ import Logo from "../assets/images/UNVLOGO.png";
             }
           });
       }
-      
 
       // Event Listeners
       menuToggle?.addEventListener("click", toggleMainMenu);
