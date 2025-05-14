@@ -1,1 +1,0 @@
-async function getMod(){return import("./IPC6622SR-X25-VF.7EMYCrKB.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};

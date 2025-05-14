@@ -1,0 +1,1 @@
+async function getMod(){return import("./IPC6325LFW-AX5C-VG.BnvI8k_f.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};

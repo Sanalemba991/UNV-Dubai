@@ -1,1 +1,0 @@
-async function getMod(){return import("./TIC7626EL-GAF75-4X56-VH1.DU4Fy-kD.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};
