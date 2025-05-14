@@ -54,6 +54,8 @@ const structuredData = [
     "name": product.title,
     "description": product.description,
     "image": new URL(product.image, Astro.site).toString(),
+    "productType": "Storage",
+    
     "offers": {
       "@type": "Offer",
       "priceCurrency": "AED",

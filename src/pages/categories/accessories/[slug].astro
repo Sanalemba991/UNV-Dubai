@@ -46,7 +46,6 @@ export async function getStaticPaths() {
 const { product } = Astro.props as Props;
 const images = product.images || (product.image ? [{ url: product.image }] : []);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
 const structuredData = [
   {
     "@context": "https://schema.org",
@@ -54,6 +53,7 @@ const structuredData = [
     "name": product.title,
     "description": product.description,
     "image": new URL(product.image, Astro.site).toString(),
+    "productType": "Accessories", // Hardcoded product type
     "offers": {
       "@type": "Offer",
       "priceCurrency": "AED",
