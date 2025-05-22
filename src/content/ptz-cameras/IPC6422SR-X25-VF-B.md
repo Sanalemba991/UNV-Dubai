@@ -1,0 +1,39 @@
+---
+title: "IPC6422SR-X25-VF-B"
+description: "2MP 25x LightHunter Network PTZ Dome Camera."
+image: "/images/categories/products/ptz-cameras/IPC6422SR-X25-VF-B/IPC6422SR-X25-VF-B (1).jpg"
+images:
+  - url: "/images/categories/products/ptz-cameras/IPC6422SR-X25-VF-B/IPC6422SR-X25-VF-B (1).jpg"
+    caption: "Front view"
+  - url: "/images/categories/products/ptz-cameras/IPC6422SR-X25-VF-B/IPC6422SR-X25-VF-B (2).jpg"
+    caption: "Side view"
+  - url: "/images/categories/products/ptz-cameras/IPC6422SR-X25-VF-B/IPC6422SR-X25-VF-B (3).jpg"
+    caption: "Side view"
+ 
+ 
+
+features:
+  - High quality image with 2MP,1/2.8’’ CMOS sensor
+  - 1920*1080@60fps in the main stream
+  - Ultra 265, H.265, H.264, MJPEG
+  - 25X Optical Zoom
+  - LightHunter technology ensures ultra-high image quality in low illumination environment
+  - Smart IR, up to 100m (328ft) IR distance
+  - DC 12V±25% or PoE+ (IEEE 802.3at)
+  - Alarm 2 in and 1 out, Audio 1 in and 1 out
+  - IP67 ingress protection
+  - IK10 vandal resistant
+
+
+specifications:
+  sensor: "1/2.8, 2.0 megapixel, progressive scan, CMOS"
+  resolution: "2MP"
+  focalLength: "N/A"
+  irRange: "Up to 100m (328 ft)"
+  powerSupply: "DC12V(±25%, 3A), PoE+(IEEE 802.3at)"
+  protection: "IP67"
+  storage: "Micro SD, up to 256GB"
+  dimensions: "Ø166 x 295mm (Ø6.5” x 11.6”)"
+
+price: "Contact for pricing"
+---
