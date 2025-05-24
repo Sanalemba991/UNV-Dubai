@@ -12,16 +12,16 @@ images:
 features: [
  "High quality image with 8MP, 1/1.8 CMOS sensor" ,
  "3840*2160@30fps in the main stream, deliver ultra high definition live",
-"Motorized lens with P-iris, support accurate control of exposure",
-" Ultra 265, H.265, H.264, MJPEG",
-" Smart intrusion prevention, support false alarm filtering, include Cross Line, Intrusion, Enter Area, Leave Area detection",
-" People counting, support people flow counting and crowd density monitoring, suitable for different statistical scenarios",
-"Traffic monitoring, support capturing license plate and collect car information when the car passes tripwire",
-"Wise-ISP technology, comprehensive improvement in image quality",
-" Up to 130 dB optical WDR (Wide Dynamic Range)",
-"DC12V or PoE (IEEE 802.3af) power supply",
-"Audio 1 in and 1 out, Alarm 1 in and 1 out",
-"IP67, IK10"
+ "Motorized lens with P-iris, support accurate control of exposure",
+ " Ultra 265, H.265, H.264, MJPEG",
+ " Smart intrusion prevention, support false alarm filtering, include Cross Line, Intrusion, Enter Area, Leave Area detection",
+ " People counting, support people flow counting and crowd density monitoring, suitable for different statistical scenarios",
+ "Traffic monitoring, support capturing license plate and collect car information when the car passes tripwire",
+ "Wise-ISP technology, comprehensive improvement in image quality",
+ " Up to 130 dB optical WDR (Wide Dynamic Range)",
+ "DC12V or PoE (IEEE 802.3af) power supply",
+ "Audio 1 in and 1 out, Alarm 1 in and 1 out",
+ "IP67, IK10"
 ]
 price: "Contact for Price"
 specifications:

@@ -13,17 +13,17 @@ images:
 features: [
   "Starlight illumination",
   "Day/night functionality",
- "Up to 120dB WDR (Wide Dynamic Range)",
- "Smart IR, up to 30m (98ft) IR distance",
- "Ultra 265, H.264, MJPEG",
- "Triple streams",
- "9:16 corridor format ",
- "ONVIF Conformance",
- "Wide temperature range: -30°C ~ 60°C (-22°F ~ 140°F)",
- "Wide voltage range of ±25%",
- "4KV surge protection designed for network interface",
- "IP67",
- "3-Axis"
+  "Up to 120dB WDR (Wide Dynamic Range)",
+  "Smart IR, up to 30m (98ft) IR distance",
+  "Ultra 265, H.264, MJPEG",
+  "Triple streams",
+  "9:16 corridor format ",
+  "ONVIF Conformance",
+  "Wide temperature range: -30°C ~ 60°C (-22°F ~ 140°F)",
+  "Wide voltage range of ±25%",
+  "4KV surge protection designed for network interface",
+  "IP67",
+  "3-Axis"
 
 ]
 price: "Contact for Price"

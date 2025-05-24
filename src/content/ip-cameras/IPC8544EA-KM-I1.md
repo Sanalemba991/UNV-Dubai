@@ -12,14 +12,14 @@ images:
     
 features: [
   "High quality image with 16MP, 1/1.8'' CMOS sensor4800*2688@30fps in the main stream offers 180° panoramic view, and 16:9 ratio can better fit the screen",
-"Smart IR, up to 50m (164 ft) IR distance",
-" Built-in fan, allows dissipating heat and eliminating the mist of window",
-"Ultra 265,H.265, H.264, MJPEG",
-"2D/3D DNR (Digital Noise Reduction)",
-"AC24V, DC24V or PoE(IEEE 802.3at) power supply",
-" Micro SD, up to 512 GB",
-"Alarm 2 in and 1 out, Audio 1 in and 1 out",
-"IP67 ingress protection"
+ "Smart IR, up to 50m (164 ft) IR distance",
+ " Built-in fan, allows dissipating heat and eliminating the mist of window",
+ "Ultra 265,H.265, H.264, MJPEG",
+ "2D/3D DNR (Digital Noise Reduction)",
+ "AC24V, DC24V or PoE(IEEE 802.3at) power supply",
+ " Micro SD, up to 512 GB",
+ "Alarm 2 in and 1 out, Audio 1 in and 1 out",
+ "IP67 ingress protection"
 ]
 price: "Contact for Price"
 specifications:
