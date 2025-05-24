@@ -1,13 +1,14 @@
 ---
 title: "IPC6634S-X33-VF"
 description: "4MP 33X Lighthunter Network PTZ Dome Camera."
-image: "/images/categories/products/ptz-cameras/IPC6634S-X33-VF/IPC6634S-X33-VF (1).jpg"
+image: "/images/categories/products/ptz-cameras/IPC6634S-X33-VF/IPC6634S-X33-VF (2).png"
 images:
-  - url: "/images/categories/products/ptz-cameras/IPC6634S-X33-VF/IPC6634S-X33-VF (1).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC6634S-X33-VF/IPC6634S-X33-VF (2).png"
     caption: "Front view"
-  - url: "/images/categories/products/ptz-cameras/IPC6634S-X33-VF/IPC6634S-X33-VF (2).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC6634S-X33-VF/IPC6634S-X33-VF (3).png"
     caption: "Side view"
- 
+  - url: "/images/categories/products/ptz-cameras/IPC6634S-X33-VF/IPC6634S-X33-VF (1).png"
+    caption: "back view"
 
 features:
   - High quality image with 4MP,1/2.8’’ CMOS sensor

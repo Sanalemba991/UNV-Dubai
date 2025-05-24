@@ -1,13 +1,13 @@
 ---
 title: "IPC3615ER3-ADUPF28(40)M"
 description: "5MP WDR Starlight Network IR Fixed Dome Camera."
-image: "/images/categories/products/ip-cameras/IPC3615ER3-ADUPF28(40)M/IPC3615ER3-ADUPF28M (3).png"
+image: "/images/categories/products/ip-cameras/IPC3615ER3-ADUPF28(40)M/IPC3618SR3-ADUPF28(42)KM-G.png"
 images:
-  - url: "/images/categories/products/ip-cameras/IPC3615ER3-ADUPF28(40)M/IPC3615ER3-ADUPF28M (3).png"
+  - url: "/images/categories/products/ip-cameras/IPC3615ER3-ADUPF28(40)M/IPC3618SR3-ADUPF28(42)KM-G.png"
     caption: "Front view"
-  - url: "/images/categories/products/ip-cameras/IPC3615ER3-ADUPF28(40)M/IPC3615ER3-ADUPF28M (2).png"
+  - url: "/images/categories/products/ip-cameras/IPC3615ER3-ADUPF28(40)M/IPC3618SR3-ADUPF28(41)KM-G.png"
     caption: "Side view"
-  - url: "/images/categories/products/ip-cameras/IPC3615ER3-ADUPF28(40)M/IPC3615ER3-ADUPF28M (1).png"
+  - url: "/images/categories/products/ip-cameras/IPC3615ER3-ADUPF28(40)M/IPC3618SR3-ADUPF28(43)KM-G.png"
     caption: "Back view"
     
 features: [

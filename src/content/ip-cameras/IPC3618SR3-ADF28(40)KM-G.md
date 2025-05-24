@@ -1,13 +1,13 @@
 ---
 title: "IPC3618SR3-ADF28(40)KM-G"
 description: "4K HD IR Fixed Eyeball Network Camera."
-image: "/images/categories/products/ip-cameras/IPC3618SR3-ADF28(40)KM-G/IPC3618SR3-ADF28(42)KM-G.jpg"
+image: "/images/categories/products/ip-cameras/IPC3618SR3-ADF28(40)KM-G/IPC3618SR3-ADF28(41)KM-G.png"
 images:
-  - url: "/images/categories/products/ip-cameras/IPC3618SR3-ADF28(40)KM-G/IPC3618SR3-ADF28(42)KM-G.jpg"
+  - url: "/images/categories/products/ip-cameras/IPC3618SR3-ADF28(40)KM-G/IPC3618SR3-ADF28(41)KM-G.png"
     caption: "Front view"
-  - url: "/images/categories/products/ip-cameras/IPC3618SR3-ADF28(40)KM-G/IPC3618SR3-ADF28(40)KM-G.jpg"
+  - url: "/images/categories/products/ip-cameras/IPC3618SR3-ADF28(40)KM-G/IPC3618SR3-ADF28(42)KM-G.png"
     caption: "Side view"
-  - url: "/images/categories/products/ip-cameras/IPC3618SR3-ADF28(40)KM-G/IPC3618SR3-ADF28(41)KM-G.jpg"
+  - url: "/images/categories/products/ip-cameras/IPC3618SR3-ADF28(40)KM-G/IPC3618SR3-ADF28(40)KM-G.png"
     caption: "Back view"
     
 features: [
@@ -34,7 +34,7 @@ specifications:
   irRange: "Up to 30m (98ft)"
   powerSupply: "DC 12V±25%, PoE (IEEE 802.3af)"
   protection: "IP67"
-  storage: "Micro SD, up to 512 GB"
+  storage: "Micro SD, up to 256 GB"
   dimensions: "Φ118 x 95mm (Φ4.6” x 3.8”)"
   videoCompression: "Ultra 265, H.265, H.264, MJPEG"
   operatingTemp: "N/A"

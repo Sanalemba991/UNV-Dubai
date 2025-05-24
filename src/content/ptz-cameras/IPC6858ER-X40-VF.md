@@ -1,11 +1,11 @@
 ---
 title: "IPC6858ER-X40-VF"
 description: "8MP 40X Lighthunter IR Network PTZ Dome Camera."
-image: "/images/categories/products/ptz-cameras/IPC6858ER-X40-VF (1)/IPC6858ER-X40-VF (1).jpg"
+image: "/images/categories/products/ptz-cameras/IPC6858ER-X40-VF (1)/IPC6858ER-X40-VF (2).png"
 images:
-  - url: "/images/categories/products/ptz-cameras/IPC6858ER-X40-VF (1)/IPC6858ER-X40-VF (1).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC6858ER-X40-VF (1)/IPC6858ER-X40-VF (2).png"
     caption: "Front view"
-  - url: "/images/categories/products/ptz-cameras/IPC6858ER-X40-VF (1)/IPC6858ER-X40-VF (2).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC6858ER-X40-VF (1)/IPC6858ER-X40-VF (1).png"
     caption: "Side view"
 
 features:

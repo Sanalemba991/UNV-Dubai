@@ -23,14 +23,14 @@ features:
   - IP66 ingress protection
 
 specifications:
-  sensor: "1/2.8 CMOS"
+  sensor: "	1/2.8, 2.0 megapixel, progressive scan, CMOS"
   resolution: "2MP"
-  focalLength: "4.5 to 148.5 mm"
+  focalLength: "N/A"
   irRange: "N/A"
   powerSupply: "AC 24V ±25%, DC 24V±25%, PoE (PSE Required)"
-  protection: "IP66"
-  storage: "Micro SD, up to 512 GB"
-  dimensions: "Ø 270 x 385mm (Ø 8.9 x 15.2)(Ø x H)"
+  protection: "	IP66 (IEC 60529:1989+AMD1:1999+AMD2:2013)"
+  storage: "Micro SD, up to 256GB"
+  dimensions: "Ø227 x 385mm (Ø8.9 x 15.2)"
 
 price: "Contact for pricing"
 ---

@@ -1,13 +1,13 @@
 ---
 title: "IPC7622ER-X44-VF"
 description: "2MP 44X Lighthunter Intelligent Network Positioning system."
-image: "/images/categories/products/ptz-cameras/IPC7622ER-X44-VF/IPC7622ER-X44-VF (3).jpg"
+image: "/images/categories/products/ptz-cameras/IPC7622ER-X44-VF/IPC7622ER-X44-VF (1).png"
 images:
-  - url: "/images/categories/products/ptz-cameras/IPC7622ER-X44-VF/IPC7622ER-X44-VF (3).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC7622ER-X44-VF/IPC7622ER-X44-VF (1).png"
     caption: "Front view"
-  - url: "/images/categories/products/ptz-cameras/IPC7622ER-X44-VF/IPC7622ER-X44-VF (2).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC7622ER-X44-VF/IPC7622ER-X44-VF (3).png"
     caption: "Side view"
-  - url: "/images/categories/products/ptz-cameras/IPC7622ER-X44-VF/IPC7622ER-X44-VF (1).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC7622ER-X44-VF/IPC7622ER-X44-VF (2).png"
     caption: "Back view"
 
 features:
@@ -29,7 +29,7 @@ specifications:
   sensor: "1/2.8,2.0 megapixel, progressive scan, CMOS "
   resolution: "2MP"
   focalLength: "N/A"
-  irRange: "N/A"
+  irRange: "Up to 400m (1312 ft) IR range"
   powerSupply: "DC ±48V±25%, DC 24V±15% (DC20V~DC60V), AC 24V±25%"
   protection: "IP67"
   storage: "	Micro SD, up to 256GB"

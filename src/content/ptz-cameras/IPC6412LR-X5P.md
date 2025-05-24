@@ -1,13 +1,13 @@
 ---
 title: "IPC6412LR-X5P"
 description: "2MP IR Network Indoor Mini PTZ Dome Camera."
-image: "/images/categories/products/ptz-cameras/IPC6412LR-X5P/IPC6412LR-X5P (1).jpg"
+image: "/images/categories/products/ptz-cameras/IPC6412LR-X5P/IPC6412LR-X5P (2).png"
 images:
-  - url: "/images/categories/products/ptz-cameras/IPC6412LR-X5P/IPC6412LR-X5P (1).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC6412LR-X5P/IPC6412LR-X5P (2).png"
     caption: "Front view"
-  - url: "/images/categories/products/ptz-cameras/IPC6412LR-X5P/IPC6412LR-X5P (2).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC6412LR-X5P/IPC6412LR-X5P (3).png"
     caption: "Side view"
-  - url: "/images/categories/products/ptz-cameras/IPC6412LR-X5P/IPC6412LR-X5P (3).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC6412LR-X5P/IPC6412LR-X5P (1).png"
     caption: "Back view"
 
 features:

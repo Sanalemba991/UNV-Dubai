@@ -1,13 +1,13 @@
 ---
 title: "IPC2122LB-DSF28(40)KM"
 description: "2MP Mini Fixed Bullet Network Camera."
-image: "/images/categories/products/ip-cameras/IPC2122LB-DSF28(40)KM/IPC2122LB-DSF28(40)KM .jpg"
+image: "/images/categories/products/ip-cameras/IPC2122LB-DSF28(40)KM/IPC2122LB-DSF28(40)KM .png"
 images:
-  - url: "/images/categories/products/ip-cameras/IPC2122LB-DSF28(40)KM/IPC2122LB-DSF28(40)KM .jpg"
+  - url: "/images/categories/products/ip-cameras/IPC2122LB-DSF28(40)KM/IPC2122LB-DSF28(40)KM .png"
     caption: "Front view"
-  - url: "/images/categories/products/ip-cameras/IPC2122LB-DSF28(40)KM/IPC2122LB-DSF28(42)KM .jpg"
+  - url: "/images/categories/products/ip-cameras/IPC2122LB-DSF28(40)KM/IPC2122LB-DSF28(42)KM .png"
     caption: "Side view"
-  - url: "/images/categories/products/ip-cameras/IPC2122LB-DSF28(40)KM/IPC2122LB-DSF28(41)KM .jpg"
+  - url: "/images/categories/products/ip-cameras/IPC2122LB-DSF28(40)KM/IPC2122LB-DSF28(41)KM .png"
     caption: "Back view"
     
 features: [

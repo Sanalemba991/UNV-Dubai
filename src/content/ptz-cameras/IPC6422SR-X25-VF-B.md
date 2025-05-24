@@ -1,13 +1,13 @@
 ---
 title: "IPC6422SR-X25-VF-B"
 description: "2MP 25x LightHunter Network PTZ Dome Camera."
-image: "/images/categories/products/ptz-cameras/IPC6422SR-X25-VF-B/IPC6422SR-X25-VF-B (1).jpg"
+image: "/images/categories/products/ptz-cameras/IPC6422SR-X25-VF-B/IPC6422SR-X25-VF-B (2).png"
 images:
-  - url: "/images/categories/products/ptz-cameras/IPC6422SR-X25-VF-B/IPC6422SR-X25-VF-B (1).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC6422SR-X25-VF-B/IPC6422SR-X25-VF-B (2).png"
     caption: "Front view"
-  - url: "/images/categories/products/ptz-cameras/IPC6422SR-X25-VF-B/IPC6422SR-X25-VF-B (2).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC6422SR-X25-VF-B/IPC6422SR-X25-VF-B (3).png"
     caption: "Side view"
-  - url: "/images/categories/products/ptz-cameras/IPC6422SR-X25-VF-B/IPC6422SR-X25-VF-B (3).jpg"
+  - url: "/images/categories/products/ptz-cameras/IPC6422SR-X25-VF-B/IPC6422SR-X25-VF-B (1).png"
     caption: "Side view"
  
  
