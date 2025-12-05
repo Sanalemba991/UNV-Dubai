@@ -1,1 +1,0 @@
-async function getMod(){return import("./insight-4.DKNapr0Y.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};

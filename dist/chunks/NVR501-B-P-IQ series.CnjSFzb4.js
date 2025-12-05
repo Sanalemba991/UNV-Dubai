@@ -1,0 +1,1 @@
+async function getMod(){return import("./NVR501-B-P-IQ series.B-RB4HZe.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};

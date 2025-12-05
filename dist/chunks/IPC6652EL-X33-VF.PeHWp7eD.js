@@ -1,1 +1,0 @@
-async function getMod(){return import("./IPC6652EL-X33-VF.BO5VhNk8.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};

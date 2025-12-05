@@ -1,1 +1,0 @@
-async function getMod(){return import("./IPC2122LB-DSF28(40)KM.BTGagpR3.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};

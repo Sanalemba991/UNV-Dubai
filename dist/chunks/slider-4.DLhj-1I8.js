@@ -1,1 +1,0 @@
-async function getMod(){return import("./slider-4.Cevo9Vj7.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};

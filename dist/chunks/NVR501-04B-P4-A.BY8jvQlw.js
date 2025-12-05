@@ -1,0 +1,1 @@
+async function getMod(){return import("./NVR501-04B-P4-A.JQKv4V5t.js")}const collectedLinks=[],collectedStyles=[],collectedScripts=[],defaultMod={__astroPropagation:!0,getMod:getMod,collectedLinks:collectedLinks,collectedStyles:collectedStyles,collectedScripts:collectedScripts};export{defaultMod as default};

@@ -1,0 +1,1 @@
+const e="slider-1.md",s="slider",t="slider-1",i="",d={id:1,slider:"../slider/1.webp",sliderAlt:"UNV Dubai link"},n={type:"content",filePath:"C:/Users/LENOVO/UNV-Dubai/src/content/slider/slider-1.md",rawData:void 0};export{n as _internal,i as body,s as collection,d as data,e as id,t as slug};

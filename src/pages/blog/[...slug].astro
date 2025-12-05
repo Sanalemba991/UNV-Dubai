@@ -37,7 +37,7 @@ const relatedPosts = allBlogPosts
   .filter(blogEntry => blogEntry.slug !== post.slug)
   .slice(0, 4);
 // SEO meta data
-const title = `${post.data.title} | UNV Camera Dubai Blog`;
+const title = `${post.data.title} | UNV Camera Dubai Blog | (+971) 50 998 2727`;
 const description = post.data.description || post.data.contents[0]?.substring(0, 160) + '...';
 const canonicalUrl = new URL(`/blog/${post.slug}`, Astro.site);
 
